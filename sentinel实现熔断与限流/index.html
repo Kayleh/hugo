@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/" />
+  <link rel="next" href="https://blog.kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" />
+  <link rel="canonical" href="https://blog.kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Sentinel实现熔断与限流 | Kayleh
+       
+  </title>
+  <meta name="title" content="Sentinel实现熔断与限流 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Sentinel实现熔断与限流",
+    "headline" : "Sentinel实现熔断与限流",
+    "description" : "\u003cp\u003eSentinel\u003c\/p\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-24 21:18:27 \u002b0800 CST",
+    "dateModified" : "2020-08-24 21:18:27 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81\/",
+    "wordCount" : "1335",
+    "keywords" : [ "DistributedMicroservices", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Sentinel实现熔断与限流</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-08-24 itemprop="datePublished">August 24, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://blog.kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>Sentinel</p>
+<h3 id="是什么">是什么</h3>
+<p>Hystrix</p>
+<h3 id="下载">下载</h3>
+<p><a href="https://github.com/alibaba/Sentinel/releases">https://github.com/alibaba/Sentinel/releases</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/1.png" alt="1598275246796"></p>
+<h3 id="怎么使用">怎么使用？</h3>
+<p><a href="https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html#_spring_cloud_alibaba_sentinel">https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html#_spring_cloud_alibaba_sentinel</a></p>
+<h4 id="服务使用中的各种问题">服务使用中的各种问题</h4>
+<blockquote>
+<p>服务雪崩</p>
+<p>服务降级</p>
+<p>服务熔断</p>
+<p>服务限流</p>
+</blockquote>
+<h2 id="安装sentinel控制台">安装Sentinel控制台</h2>
+<h3 id="sentinel组件由2部分组成">sentinel组件由2部分组成</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/2.png" alt="1598275337431"></p>
+<blockquote>
+<p>后台</p>
+<p>前台8080</p>
+</blockquote>
+<h3 id="安装步骤">安装步骤</h3>
+<h4 id="下载-1">下载</h4>
+<blockquote>
+<p><a href="https://github.com/alibaba/Sentinel/releases">https://github.com/alibaba/Sentinel/releases</a></p>
+<p>下载到本地sentinel-dashboard-1.7.0.jar</p>
+</blockquote>
+<h4 id="运行命令">运行命令</h4>
+<p>前提:</p>
+<ul>
+<li>java8环境OK</li>
+<li>8080端口不能被占用</li>
+</ul>
+<p>命令:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">java -jar sentinel-dashboard-1.7.0.jar 
+</code></pre></div><h4 id="访问sentinel管理界面">访问sentinel管理界面</h4>
+<blockquote>
+<p>http://localhost:8080</p>
+<p>登录账号密码均为sentinel</p>
+</blockquote>
+<h2 id="初始化演示工程">初始化演示工程</h2>
+<p>启动Nacos8848成功</p>
+<blockquote>
+<p>http://localhost:8848/nacos/#/login</p>
+</blockquote>
+<h4 id="module">Module</h4>
+<h5 id="cloudalibaba-sentinel-service8401">cloudalibaba-sentinel-service8401</h5>
+<h5 id="pom">POM</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">	<span style="color:#f92672">&lt;dependencies&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.atguigu.springcloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>cloud-api-commons<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${project.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.csp<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>sentinel-datasource-nacos<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-sentinel<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-openfeign<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+      
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-devtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+            <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>cn.hutool<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>hutool-all<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>4.6.3<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.projectlombok<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>lombok<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><h5 id="yml">YML</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8401</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cloudalibaba-sentinel-service</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+      <span style="color:#75715e">#nacos服务注册中心地址</span>
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848</span>
+    <span style="color:#f92672">sentinel</span>:
+      <span style="color:#f92672">transport</span>:
+        <span style="color:#f92672">dashboard</span>: <span style="color:#ae81ff">localhost:8080</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8719</span>  <span style="color:#75715e">#默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;*&#39;</span>
+</code></pre></div><h5 id="主启动">主启动</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@EnableDiscoveryClient</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainApp8401</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>MainApp8401<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h5 id="业务类flowlimitcontroller">业务类FlowLimitController</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.controller<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FlowLimitController</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testA&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testA</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testA&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testB&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testB</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testB&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="启动sentinel8080">启动Sentinel8080</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">java <span style="color:#f92672">-</span>jar sentinel<span style="color:#f92672">-</span>dashboard<span style="color:#f92672">-</span>1<span style="color:#f92672">.</span><span style="color:#a6e22e">7</span><span style="color:#f92672">.</span><span style="color:#a6e22e">0</span>
+</code></pre></div><h4 id="启动微服务8401">启动微服务8401</h4>
+<h4 id="启动8401微服务后查看sentienl控制台">启动8401微服务后查看sentienl控制台</h4>
+<p>空空如也，啥都没有</p>
+<h3 id="sentinel采用的懒加载说明">Sentinel采用的懒加载说明</h3>
+<p>执行一次访问即可</p>
+<p>http://localhost:8401/testA</p>
+<p>http://localhost:8401/testB</p>
+<h5 id="效果">效果</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/3.png" alt="1598275789442"></p>
+<h5 id="结论">结论</h5>
+<p>sentinel8080正在监控微服务8401</p>
+<h2 id="流控规则">流控规则</h2>
+<h3 id="基本介绍">基本介绍</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/4.png" alt="1598275892803"></p>
+<p>进一步解释说明</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/5.png" alt="1598275917235"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/6.png" alt="1598275930554"></p>
+<h3 id="流控模式">流控模式</h3>
+<h4 id="直接默认">直接（默认）</h4>
+<h5 id="直接-快速失败">直接-&gt;快速失败</h5>
+<ul>
+<li>系统默认</li>
+</ul>
+<h5 id="配置及说明">配置及说明</h5>
+<h5 id="1598276075851httpscdnjsdelivrnetghkaylehcdnimgsentinel实现熔断与限流httpscdnjsdelivrnetghkaylehcdnimgsentinel实现熔断与限流7png测试"><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/7.png" alt="1598276075851">测试</h5>
+<pre><code>快速点击访问http://localhost:8401/testA
+</code></pre><p>结果</p>
+<p>Blocked by Sentinel (flow limiting)</p>
+<p>思考？？？</p>
+<p>直接调用默认报错信息，技术方面OK but，是否应该有我们自己的后续处理？</p>
+<p>类似有一个fallback的兜底方法？</p>
+<h4 id="关联">关联</h4>
+<h5 id="是什么-1">是什么？</h5>
+<p>当关联的资源达到阈值时，就限流自己</p>
+<p>当与A关联的资源B达到阈值后，就限流自己</p>
+<p>B惹事，A挂了</p>
+<h5 id="配置a">配置A</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/8.png" alt="1598276511243"></p>
+<h5 id="postman模拟并发密集访问testb">postman模拟并发密集访问testB</h5>
+<p>先把请求save as，保存到Collections</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/9.png" alt="1598276562818"></p>
+<p>访问testB成功</p>
+<ul>
+<li><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/10.png" alt="1598276623255"></li>
+</ul>
+<p>postman里新建多线程集合组</p>
+<ul>
+<li><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/11.png" alt="1598276640905"></li>
+</ul>
+<p>将访问地址添加进新线程组</p>
+<ul>
+<li><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/12.png" alt="1598276659894"></li>
+</ul>
+<p>Run</p>
+<ul>
+<li>大批量线程高并发访问B，导致A失效了</li>
+</ul>
+<h5 id="运行后发现testa挂了">运行后发现testA挂了</h5>
+<blockquote>
+<p>点击访问http://localhost:8401/testA</p>
+<p>结果</p>
+<p>Blocked by Sentinel (flow limiting)</p>
+</blockquote>
+<h4 id="链路">链路</h4>
+<p>多个请求调用了同一个微服务</p>
+<p>家庭作业试试</p>
+<h3 id="流控效果">流控效果</h3>
+<h4 id="直接-快速失败默认的流控处理">直接-&gt;快速失败（默认的流控处理）</h4>
+<p>直接失败，抛出异常</p>
+<ul>
+<li>Blocked by Sentinel (flow limiting)</li>
+</ul>
+<p>源码</p>
+<ul>
+<li>com.alibaba.csp.sentinel.slots.block.flow.controller.DefaultController</li>
+</ul>
+<h4 id="预热">预热</h4>
+<h5 id="说明">说明</h5>
+<ul>
+<li>公式：阈值除以coldFactor（默认值为3），经过预热时长后才会达到阈值</li>
+</ul>
+<h5 id="官网">官网</h5>
+<ul>
+<li>
+<p>默认coldFactor为3，即请求QPS从threshold/3开始，经预热时长逐渐升至设定的QPS阈值。</p>
+</li>
+<li>
+<p>限流 冷启动</p>
+<p><a href="https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8">https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF%E5%8A%A8</a></p>
+</li>
+</ul>
+<h5 id="源码">源码</h5>
+<p>com.alibaba.csp.sentinel.slots.block.flow.controller.WarmUpController</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/14.png" alt="1598276768339"></p>
+<h5 id="warmup配置">Warmup配置</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/15.png" alt="1598277103340"></p>
+<h5 id="多次点击httplocalhost8401testb">多次点击http://localhost:8401/testB</h5>
+<ul>
+<li>刚开始不行，后续慢慢OK</li>
+</ul>
+<h5 id="应用场景">应用场景</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/16.png" alt="1598277148535"></p>
+<h4 id="排队等待">排队等待</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/13.png" alt="1598276768339"></p>
+<h5 id="匀速排队阈值必须设置为qps">匀速排队，阈值必须设置为QPS</h5>
+<h5 id="官网-1">官网</h5>
+<h5 id="源码-1">源码</h5>
+<p>com.alibaba.csp.sentinel.slots.block.flow.controller.RateLimiterController</p>
+<h5 id="测试">测试</h5>
+<p>testB在控制台输出日志sl4j</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span>thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;\t&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;...testB&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/17.png" alt="1598277222170"></p>
+<h3 id="降级规则">降级规则</h3>
+<h4 id="基本介绍-1">基本介绍</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/18.png" alt="1598277395163"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/19.png" alt="1598277412123"></p>
+<p>进一步说明</p>
+<h5 id="sentinel的断路器是没有半开状态的">Sentinel的断路器是没有半开状态的</h5>
+<blockquote>
+<p>半开的状态系统自动去检测是否请求有异常，没有异常就关闭断路器恢复使用，有异常则继续打开断路器不可用。具体可以参考Hystrix</p>
+</blockquote>
+<p>复习Hystrix</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/20.png" alt="1598277556742"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/21.png" alt="1598277592247"></p>
+<h3 id="降级策略实战">降级策略实战</h3>
+<h4 id="rt">RT</h4>
+<h5 id="是什么-2">是什么?</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/22.png" alt="1598277795422"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/23.png" alt="1598277815933"></p>
+<h5 id="测试-1">测试</h5>
+<p>代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testD&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testD</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">SECONDS</span><span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span> <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>InterruptedException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span> <span style="color:#f92672">}</span>
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;testD 测试RT&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testD&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+</code></pre></div><p>配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/24.png" alt="1598277885759"></p>
+<p>jmeter压测</p>
+<p>结论</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/25.png" alt="1598277904111"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/26.png" alt="1598277918812"></p>
+<h4 id="异常比例">异常比例</h4>
+<p>是什么</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/27.png" alt="1598277953235"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/28.png" alt="1598277965489"></p>
+<p>测试</p>
+<ul>
+<li>
+<p>代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testD&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testD</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">{</span>
+  
+        log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;testD 测试RT&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> 10<span style="color:#f92672">/</span>0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testD&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/29.png" alt="1598278071559"></p>
+</li>
+<li>
+<p>jmeter</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/30.png" alt="1598278103683"></p>
+</li>
+<li>
+<p>结论</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/1598278121021.png" alt="1598278121021"></p>
+</li>
+</ul>
+<h4 id="异常数">异常数</h4>
+<p>是什么</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/31.png" alt="1598278157875"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/32.png" alt="1598278172535"></p>
+<p>异常数是按照分钟统计的</p>
+<p>测试</p>
+<ul>
+<li>代码</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testE&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testE</span><span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    log<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;testE 测试异常数&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> 10<span style="color:#f92672">/</span>0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testE 测试异常数&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>配置</li>
+</ul>
+<p>http://localhost:8401/testE</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/33.png" alt="1598278242551"></p>
+<ul>
+<li>jmeter</li>
+</ul>
+<h2 id="热点key限流">热点key限流</h2>
+<h4 id="基本介绍-2">基本介绍</h4>
+<p>是什么</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/34.png" alt="1598281015660"></p>
+<p><a href="https://github.com/alibaba/Sentinel/wiki/">https://github.com/alibaba/Sentinel/wiki/</a>热点参数限流</p>
+<h4 id="承上启下复习start">承上启下复习start</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/35.png" alt="1598281047415"></p>
+<p>@SentinelResource</p>
+<h4 id="代码">代码</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testHotKey&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@SentinelResource</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;testHotKey&#34;</span><span style="color:#f92672">,</span>blockHandler <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;deal_testHotKey&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">testHotKey</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@RequestParam</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p1&#34;</span><span style="color:#f92672">,</span>required <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">)</span> String p1<span style="color:#f92672">,</span>
+                         <span style="color:#a6e22e">@RequestParam</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;p2&#34;</span><span style="color:#f92672">,</span>required <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">)</span> String p2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//int age = 10/0;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------testHotKey&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+ 
+<span style="color:#75715e">//兜底方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">deal_testHotKey</span> <span style="color:#f92672">(</span>String p1<span style="color:#f92672">,</span> String p2<span style="color:#f92672">,</span> BlockException exception<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;------deal_testHotKey,o(╥﹏╥)o&#34;</span><span style="color:#f92672">;</span>  
+<span style="color:#f92672">}</span>
+</code></pre></div><p>com.alibaba.csp.sentinel.slots.block.BlockException</p>
+<h4 id="配置">配置</h4>
+<p>配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/36.png" alt="1598281119051"></p>
+<p>1</p>
+<p>@SentinelResource(value = &ldquo;testHotKey&rdquo;)</p>
+<p>异常打到了前台用户界面看不到，不友好</p>
+<p>2</p>
+<p>@SentinelResource(value = &ldquo;testHotKey&rdquo;,blockHandler = &ldquo;deal_testHotKey&rdquo;)</p>
+<p>方法testHostKey里面第一个参数只要QPS超过每秒1次，马上降级处理</p>
+<p>用了我们自己定义的</p>
+<h4 id="测试-2">测试</h4>
+<p>❌ error</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">http:<span style="color:#75715e">//localhost:8401/testHotKey?p1=abc
+</span></code></pre></div><p>❌ error</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">http:<span style="color:#75715e">//localhost:8401/testHotKey?p1=abc&amp;p2=33
+</span></code></pre></div><p>✔️ right</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">http:<span style="color:#75715e">//localhost:8401/testHotKey?p2=abc
+</span></code></pre></div><h4 id="参数例外项">参数例外项</h4>
+<p>上述案例演示了第一个参数p1,当QPS超过1秒1次点击后马上被限流</p>
+<p>特殊情况</p>
+<blockquote>
+<p>普通</p>
+<ul>
+<li>超过1秒钟一个后，达到阈值1后马上被限流</li>
+</ul>
+<p>我们期望p1参数当它是某个特殊值时，它的限流值和平时不一样</p>
+<p>特例</p>
+<ul>
+<li>假如当p1的值等于5时，它的阈值可以达到200</li>
+</ul>
+</blockquote>
+<p>配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/37.png" alt="1598281694486"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/38.png" alt="1598281694486"></p>
+<ul>
+<li>添加按钮不能忘</li>
+</ul>
+<h5 id="测试-3">测试</h5>
+<blockquote>
+<p>✔️ http://localhost:8401/testHotKey?p1=5</p>
+<p>❌http://localhost:8401/testHotKey?p1=3</p>
+<p>当p1等于5的时候，阈值变为200</p>
+<p>当p1不等于5的时候，阈值就是平常的1</p>
+</blockquote>
+<h5 id="前提条件">前提条件</h5>
+<p>热点参数的注意点，参数必须是基本类型或者String</p>
+<h4 id="其他">其他,</h4>
+<p>添加异常看看&hellip;.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/39.png" alt="1598281913264"></p>
+<h2 id="系统规则">系统规则</h2>
+<p>是什么？</p>
+<blockquote>
+<p><a href="https://github.com/alibaba/Sentinel/wiki/%E7%B3%BB%E7%BB%9F%E8%87%AA%E9%80%82%E5%BA%94%E9%99%90%E6%B5%81">https://github.com/alibaba/Sentinel/wiki/%E7%B3%BB%E7%BB%9F%E8%87%AA%E9%80%82%E5%BA%94%E9%99%90%E6%B5%81</a></p>
+</blockquote>
+<p>各项配置参数说明</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/40.png" alt="1598337022929"></p>
+<p>配置全局QPS</p>
+<h2 id="sentinelresource">@SentinelResource</h2>
+<h3 id="按资源名称限流后续处理">按资源名称限流+后续处理</h3>
+<p>启动Nacos成功</p>
+<p>启动Sentinel成功</p>
+<p>Module</p>
+<blockquote>
+<p>cloudalibaba-sentinel-service8401</p>
+<p>POM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>com.atguigu.springcloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>cloud-api-commons<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>${project.version}<span style="color:#f92672">&lt;/version&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8401</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cloudalibaba-sentinel-service</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848</span>
+    <span style="color:#f92672">sentinel</span>:
+      <span style="color:#f92672">transport</span>:
+        <span style="color:#f92672">dashboard</span>: <span style="color:#ae81ff">localhost:8080</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8719</span>  <span style="color:#75715e">#默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;*&#39;</span>
+</code></pre></div><p>业务类RateLimitController</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.controller<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.alibaba.csp.sentinel.annotation.SentinelResource<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.alibaba.csp.sentinel.slots.block.BlockException<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.atguigu.springcloud.entities.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RateLimitController</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/byResource&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@SentinelResource</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;byResource&#34;</span><span style="color:#f92672">,</span>blockHandler <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;handleException&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">byResource</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>200<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;按资源名称限流测试OK&#34;</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>2020L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;serial001&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">handleException</span><span style="color:#f92672">(</span>BlockException exception<span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>444<span style="color:#f92672">,</span>exception<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getCanonicalName</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;\t 服务不可用&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>主启动</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@EnableDiscoveryClient</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainApp8401</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>MainApp8401<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+</code></pre></div></blockquote>
+<p>配置流控规则</p>
+<ul>
+<li>配置步骤</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/41.png" alt="1598337203454"></p>
+<ul>
+<li>图形配置和代码关系</li>
+<li>表示1秒钟内查询次数大于1，就跑到我们自定义的处流，限流</li>
+</ul>
+<p>测试</p>
+<ul>
+<li>
+<p>1秒钟点击1下，OK</p>
+</li>
+<li>
+<p>超过上述问题，疯狂点击，返回了自己定义的限流处理信息，限流发送</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/42.png" alt="1598337235793"></p>
+</li>
+</ul>
+<p>额外问题</p>
+<ul>
+<li>
+<p>此时关闭微服务8401看看</p>
+</li>
+<li>
+<p>Sentinel控制台，流控规则消失了？？</p>
+<p>临时/持久？</p>
+</li>
+</ul>
+<h3 id="按照url地址限流后续处理">按照Url地址限流+后续处理</h3>
+<p>通过访问的URL来限流，会返回Sentinel自带默认的限流处理信息</p>
+<p>业务类RateLimitController</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/rateLimit/byUrl&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@SentinelResource</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;byUrl&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">byUrl</span><span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>200<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;按url限流测试OK&#34;</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>2020L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;serial002&#34;</span><span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>访问一次</p>
+<p>Sentinel控制台配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/43.png" alt="1598337354555"></p>
+<p>测试</p>
+<ul>
+<li>
+<p>疯狂点击http://localhost:8401/rateLimit/byUrl</p>
+</li>
+<li>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/44.png" alt="1598337380401"></p>
+</li>
+</ul>
+<h3 id="上面兜底方法面临的问题">上面兜底方法面临的问题</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/45.png" alt="1598337405346"></p>
+<h3 id="客户自定义限流处理逻辑">客户自定义限流处理逻辑</h3>
+<p>创建customerBlockHandler类用于自定义限流处理逻辑</p>
+<p>自定义限流处理类</p>
+<ul>
+<li>
+<p>CustomerBlockHandler</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/46.png" alt="1598337444808"></p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.myhandler<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.alibaba.csp.sentinel.slots.block.BlockException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.entities.*<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomerBlockHandler</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> CommonResult <span style="color:#a6e22e">handleException</span><span style="color:#f92672">(</span>BlockException exception<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>2020<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;自定义限流处理信息....CustomerBlockHandler&#34;</span><span style="color:#f92672">);</span>
+
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>RateLimitController</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/rateLimit/customerBlockHandler&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@SentinelResource</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;customerBlockHandler&#34;</span><span style="color:#f92672">,</span>
+        blockHandlerClass <span style="color:#f92672">=</span> CustomerBlockHandler<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>
+        blockHandler <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;handlerException2&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">customerBlockHandler</span><span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>200<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;按客戶自定义&#34;</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>2020L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;serial003&#34;</span><span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>启动微服务后先调用一次</p>
+<blockquote>
+<p>http://localhost:8401/rateLimit/customerBlockHandler</p>
+</blockquote>
+<p>Sentinel控制台配置</p>
+<p>测试后我们自定义的出来了</p>
+<p>进一步说明:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/47.png" alt="1598337533657"></p>
+<h3 id="更多注解属性说明">更多注解属性说明</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/48.png" alt="1598337561019"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/49.png" alt="1598337573475"></p>
+<p>多说一句</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/50.png" alt="1598337587461"></p>
+<p>Sentinel主要有三个核心API</p>
+<ul>
+<li>
+<p>SphU定义资源</p>
+</li>
+<li>
+<p>Tracer定义统计</p>
+</li>
+<li>
+<p>ContextUtil定义了上下文</p>
+</li>
+</ul>
+<h2 id="服务熔断功能">服务熔断功能</h2>
+<h3 id="sentinel整合ribbonopenfeignfallback">sentinel整合ribbon+openFeign+fallback</h3>
+<h3 id="ribbon系列">Ribbon系列</h3>
+<h4 id="启动nacos和sentinel">启动nacos和sentinel</h4>
+<h4 id="提供者90039004">提供者9003/9004</h4>
+<blockquote>
+<p>新建cloudalibaba-provider-payment9003/9004</p>
+<p>POM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencies&gt;</span>
+    <span style="color:#75715e">&lt;!--SpringCloud ailibaba nacos --&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span><span style="color:#75715e">&lt;!-- 引入自己定义的api通用包，可以使用Payment支付Entity --&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>com.atguigu.springcloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>cloud-api-commons<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>${project.version}<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#75715e">&lt;!-- SpringBoot整合Web组件 --&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#75715e">&lt;!--日常通用jar包配置--&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-devtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+        <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.projectlombok<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>lombok<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">9003</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nacos-payment-provider</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848 #配置Nacos地址</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;*&#39;</span>
+</code></pre></div><ul>
+<li>记得修改不同的端口号</li>
+</ul>
+<p>主启动</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableDiscoveryClient</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentMain9003</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>PaymentMain9003<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>业务类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.controller<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.CommonResult<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.Payment<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.beans.factory.annotation.Value<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PathVariable<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.HashMap<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentController</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Value</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;${server.port}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> String serverPort<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> HashMap<span style="color:#f92672">&lt;</span>Long<span style="color:#f92672">,</span> Payment<span style="color:#f92672">&gt;</span> hashMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+    <span style="color:#66d9ef">static</span><span style="color:#f92672">{</span>
+        hashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>1L<span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>1L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;28a8c1e3bc2742d8848569891fb42181&#34;</span><span style="color:#f92672">));</span>
+        hashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>2L<span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>2L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;bba8c1e3bc2742d8848569891ac32182&#34;</span><span style="color:#f92672">));</span>
+        hashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>3L<span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>3L<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;6ua8c1e3bc2742d8848569891xt92183&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/paymentSQL/{id}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">paymentSQL</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span> Long id<span style="color:#f92672">){</span>
+        Payment payment <span style="color:#f92672">=</span> hashMap<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+        CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">(</span>200<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;from mysql,serverPort:  &#34;</span><span style="color:#f92672">+</span>serverPort<span style="color:#f92672">,</span>payment<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>测试地址</p>
+<pre><code>http://localhost:9003/paymentSQL/1
+</code></pre></blockquote>
+<h4 id="消费者84">消费者84</h4>
+<blockquote>
+<p>新建cloudalibaba-consumer-nacos-order84</p>
+<p>POM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#f92672">&lt;dependencies&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-openfeign<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-sentinel<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>com.atguigu.springcloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>cloud-api-commons<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;version&gt;</span>${project.version}<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-devtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+            <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.projectlombok<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>lombok<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+            <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>YML</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">84</span>
+
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nacos-order-consumer</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848</span>
+    <span style="color:#f92672">sentinel</span>:
+      <span style="color:#f92672">transport</span>:
+        <span style="color:#f92672">dashboard</span>: <span style="color:#ae81ff">localhost:8080</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8719</span>
+
+<span style="color:#f92672">service-url</span>:
+  <span style="color:#f92672">nacos-user-service</span>: <span style="color:#ae81ff">http://nacos-payment-provider</span>
+</code></pre></div><p>主启动</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.openfeign.EnableFeignClients<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@EnableDiscoveryClient</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableFeignClients</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderNacosMain84</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>OrderNacosMain84<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>业务类</p>
+<p>ApplicationContextConfig</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.config<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.cloud.client.loadbalancer.LoadBalanced<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Bean<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Configuration<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.client.RestTemplate<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApplicationContextConfig</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#a6e22e">@LoadBalanced</span>
+    <span style="color:#66d9ef">public</span> RestTemplate <span style="color:#a6e22e">getRestTemplate</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> RestTemplate<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><blockquote>
+<p>CircleBreakerController的全部源码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.controller<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> com.alibaba.csp.sentinel.annotation.SentinelResource<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.alibaba.csp.sentinel.slots.block.BlockException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.CommonResult<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.Payment<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> lombok.extern.slf4j.Slf4j<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PathVariable<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RequestMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.client.RestTemplate<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> javax.annotation.Resource<span style="color:#f92672">;</span>
+
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#a6e22e">@Slf4j</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CircleBreakerController</span> <span style="color:#f92672">{</span>
+   
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String SERVICE_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://nacos-payment-provider&#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Resource</span>
+    <span style="color:#66d9ef">private</span> RestTemplate restTemplate<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/consumer/fallback/{id}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#75715e">//@SentinelResource(value = &#34;fallback&#34;) //没有配置
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//@SentinelResource(value = &#34;fallback&#34;,fallback = &#34;handlerFallback&#34;) //fallback只负责业务异常
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//@SentinelResource(value = &#34;fallback&#34;,blockHandler = &#34;blockHandler&#34;) //blockHandler只负责sentinel控制台配置违规
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@SentinelResource</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fallback&#34;</span><span style="color:#f92672">,</span>fallback <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;handlerFallback&#34;</span><span style="color:#f92672">,</span>blockHandler <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blockHandler&#34;</span><span style="color:#f92672">,</span>
+            exceptionsToIgnore <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>IllegalArgumentException<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">})</span>
+    <span style="color:#66d9ef">public</span> CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">fallback</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span> Long id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> restTemplate<span style="color:#f92672">.</span><span style="color:#a6e22e">getForObject</span><span style="color:#f92672">(</span>SERVICE_URL <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/paymentSQL/&#34;</span><span style="color:#f92672">+</span>id<span style="color:#f92672">,</span> CommonResult<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>id<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>id <span style="color:#f92672">==</span> 4<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;IllegalArgumentException,非法参数异常....&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>result<span style="color:#f92672">.</span><span style="color:#a6e22e">getData</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> NullPointerException <span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NullPointerException,该ID没有对应记录,空指针异常&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+  
+    <span style="color:#75715e">//fallback
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">handlerFallback</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span>  Long id<span style="color:#f92672">,</span>Throwable e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Payment payment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>id<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;null&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">&lt;&gt;(</span>444<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;兜底异常handlerFallback,exception内容  &#34;</span><span style="color:#f92672">+</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(),</span>payment<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+  
+    <span style="color:#75715e">//blockHandler
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> CommonResult <span style="color:#a6e22e">blockHandler</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span>  Long id<span style="color:#f92672">,</span>BlockException blockException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Payment payment <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>id<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;null&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">&lt;&gt;(</span>445<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;blockHandler-sentinel限流,无此流水: blockException  &#34;</span><span style="color:#f92672">+</span>blockException<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(),</span>payment<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>修改后请重启微服务</p>
+<ul>
+<li>热部署对java代码级生效及时</li>
+<li>对@SentinelResource注解内属性，有时效果不好</li>
+</ul>
+<p>目的</p>
+<ul>
+<li>fallback管运行异常</li>
+<li>blockHandler管配置违规</li>
+</ul>
+<p>测试地址</p>
+<ul>
+<li>http://localhost:84/consumer/fallback/1</li>
+</ul>
+<p>没有任何配置</p>
+<ul>
+<li>给客户error页面，不友好</li>
+</ul>
+<p>只配置fallback</p>
+<ul>
+<li>编码（那个业务类下面的CircleBreakerController的全部源码）</li>
+</ul>
+<p>只配置blockHandler</p>
+<ul>
+<li>编码（那个业务类下面的CircleBreakerController的全部源码）</li>
+</ul>
+<p>fallback和blockHandler都配置</p>
+<ul>
+<li>
+<p>结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/51.png" alt="1598338239282"></p>
+</li>
+</ul>
+<p>忽略属性&hellip;</p>
+<ul>
+<li>
+<p>编码（那个业务类下面的CircleBreakerController的全部源码）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/52.png" alt="1598338281914"></p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="feign系列">Feign系列</h3>
+<p>修改84模块</p>
+<p>POM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-openfeign<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">84</span>
+
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nacos-order-consumer</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848</span>
+    <span style="color:#f92672">sentinel</span>:
+      <span style="color:#f92672">transport</span>:
+        <span style="color:#f92672">dashboard</span>: <span style="color:#ae81ff">localhost:8080</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8719</span>
+
+<span style="color:#f92672">service-url</span>:
+  <span style="color:#f92672">nacos-user-service</span>: <span style="color:#ae81ff">http://nacos-payment-provider</span>
+
+<span style="color:#75715e">#对Feign的支持</span>
+<span style="color:#f92672">feign</span>:
+  <span style="color:#f92672">sentinel</span>:
+    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>业务类</p>
+<ul>
+<li>
+<p>带@FeignClient注解的业务接口</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.service<span style="color:#f92672">;</span>
+  
+  
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.CommonResult<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.Payment<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.openfeign.FeignClient<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.PathVariable<span style="color:#f92672">;</span>
+  
+  
+<span style="color:#a6e22e">@FeignClient</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nacos-payment-provider&#34;</span><span style="color:#f92672">,</span>fallback <span style="color:#f92672">=</span> PaymentFallbackService<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">PaymentService</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/paymentSQL/{id}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">paymentSQL</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span> Long id<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>fallback = PaymentFallbackService.class</p>
+</li>
+<li>
+<p>PaymentFallbackService实现类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba.service<span style="color:#f92672">;</span>
+  
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.CommonResult<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.atguigu.springcloud.alibaba.entities.Payment<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.stereotype.Component<span style="color:#f92672">;</span>
+  
+<span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PaymentFallbackService</span> <span style="color:#66d9ef">implements</span> PaymentService
+<span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">paymentSQL</span><span style="color:#f92672">(</span>Long id<span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> CommonResult<span style="color:#f92672">&lt;&gt;(</span>44444<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;服务降级返回,---PaymentFallbackService&#34;</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> Payment<span style="color:#f92672">(</span>id<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;errorSerial&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>Controller</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// OpenFeign
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Resource</span>
+<span style="color:#66d9ef">private</span> PaymentService paymentService<span style="color:#f92672">;</span>
+  
+<span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/consumer/paymentSQL/{id}&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> CommonResult<span style="color:#f92672">&lt;</span>Payment<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">paymentSQL</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@PathVariable</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span> Long id<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> paymentService<span style="color:#f92672">.</span><span style="color:#a6e22e">paymentSQL</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+</ul>
+<p>主启动</p>
+<p>添加@EnableFeignClients启动Feign的功能</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.atguigu.springcloud.alibaba<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.client.discovery.EnableDiscoveryClient<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.openfeign.EnableFeignClients<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@EnableDiscoveryClient</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableFeignClients</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderNacosMain84</span>
+<span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>OrderNacosMain84<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>http://lcoalhost:84/consumer/openfeign/1</p>
+<p>http://lcoalhost:84/consumer/paymentSQL/1</p>
+<p>测试84调用9003，此时故意关闭9003微服务提供者，看84消费侧自动降级，不会被耗死</p>
+<h4 id="熔断框架比较">熔断框架比较</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/53.png" alt="1598339929387"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/54.png" alt="1598339942749"></p>
+<h3 id="规则持久化">规则持久化</h3>
+<h4 id="是什么-3">是什么</h4>
+<p>一旦我们重启应用，Sentinel规则将消失，生产环境需要将配置规则进行持久化</p>
+<h4 id="怎么玩">怎么玩</h4>
+<p>将限流配置规则持久化进Nacos保存，只要刷新8401某个rest地址，sentinel控制台的流控规则就能看到，只要Nacos里面的配置不删除，针对8401上Sentinel上的流控规则持续有效</p>
+<h4 id="步骤">步骤</h4>
+<p>修改cloudalibaba-sentinel-service8401</p>
+<p>POM</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>com.alibaba.csp<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>sentinel-datasource-nacos<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>YML</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8401</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cloudalibaba-sentinel-service</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">nacos</span>:
+      <span style="color:#f92672">discovery</span>:
+        <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848 #Nacos服务注册中心地址</span>
+    <span style="color:#f92672">sentinel</span>:
+      <span style="color:#f92672">transport</span>:
+        <span style="color:#f92672">dashboard</span>: <span style="color:#ae81ff">localhost:8080 #配置Sentinel dashboard地址</span>
+        <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8719</span>
+      <span style="color:#f92672">datasource</span>:
+        <span style="color:#f92672">ds1</span>:
+          <span style="color:#f92672">nacos</span>:
+            <span style="color:#f92672">server-addr</span>: <span style="color:#ae81ff">localhost:8848</span>
+            <span style="color:#f92672">dataId</span>: <span style="color:#ae81ff">cloudalibaba-sentinel-service</span>
+            <span style="color:#f92672">groupId</span>: <span style="color:#ae81ff">DEFAULT_GROUP</span>
+            <span style="color:#f92672">data-type</span>: <span style="color:#ae81ff">json</span>
+            <span style="color:#f92672">rule-type</span>: <span style="color:#ae81ff">flow</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;*&#39;</span>
+
+<span style="color:#f92672">feign</span>:
+  <span style="color:#f92672">sentinel</span>:
+    <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># 激活Sentinel对Feign的支持</span>
+</code></pre></div><p>添加Nacos数据源配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">spring</span>:
+   <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">sentinel</span>:
+    <span style="color:#f92672">datasource</span>:
+     <span style="color:#f92672">ds1</span>:
+      <span style="color:#f92672">nacos</span>:
+        <span style="color:#ae81ff">server-addr:localhost:8848</span>
+        <span style="color:#ae81ff">dataid:${spring.application.name}</span>
+        <span style="color:#ae81ff">groupid:DEFAULT_GROUP</span>
+        <span style="color:#ae81ff">data-type:json</span>
+            <span style="color:#ae81ff">rule-type:flow</span>
+</code></pre></div><p>添加Nacos业务规则配置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/55.png" alt="1598340101146"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/56.png" alt="1598340112967"></p>
+<p>内容解析</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
+    {
+         <span style="color:#f92672">&#34;resource&#34;</span>: <span style="color:#e6db74">&#34;/retaLimit/byUrl&#34;</span>,
+         <span style="color:#f92672">&#34;limitApp&#34;</span>: <span style="color:#e6db74">&#34;default&#34;</span>,
+         <span style="color:#f92672">&#34;grade&#34;</span>:   <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;count&#34;</span>:   <span style="color:#ae81ff">1</span>,
+         <span style="color:#f92672">&#34;strategy&#34;</span>: <span style="color:#ae81ff">0</span>,
+         <span style="color:#f92672">&#34;controlBehavior&#34;</span>: <span style="color:#ae81ff">0</span>,
+         <span style="color:#f92672">&#34;clusterMode&#34;</span>: <span style="color:#66d9ef">false</span>    
+    }
+]
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/57.png" alt="1598340151536"></p>
+<p>启动8401后刷新sentinel发现业务规则有了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/58.png" alt="1598340340265"></p>
+<p>快速访问测试接口</p>
+<ul>
+<li>
+<p>http://localhost:8401/rateLimit/byUrl</p>
+</li>
+<li>
+<p>默认</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/59.png" alt="图像"></p>
+</li>
+</ul>
+<p>停止8401再看sentinel</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/Sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/60.png" alt="1598340454693"></p>
+<p>重新启动8401再看sentinel:</p>
+<p>扎一看还是没有，稍等一会儿</p>
+<p>多次调用</p>
+<blockquote>
+<p>http://localhost:8401/rateLimit/byUrl</p>
+</blockquote>
+<p>重新配置出现了，持久化验证通过</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/>https://blog.kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/distributedmicroservices/">
+                    #DistributedMicroservices</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/" class="prev" rel="prev" title="gulp压缩静态资源"><i class="iconfont icon-left"></i>&nbsp;gulp压缩静态资源</a>
+         
+        
+        <a href="https://blog.kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="next" rel="next" title="Seata处理分布式事务">Seata处理分布式事务&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/" />
+  <link rel="next" href="https://blog.kayleh.top/c-algorithm/" />
+  <link rel="canonical" href="https://blog.kayleh.top/c-programming/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           C programming | Kayleh
+       
+  </title>
+  <meta name="title" content="C programming | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "C programming",
+    "headline" : "C programming",
+    "description" : "程序 1.什么是程序?什么是程序设计? 程序是一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具。 程序设计（programming），是给出解决特定问题程序的过程，软件开发过程中的重要步骤。程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。\n2.为什么需要计算机语言?高级语言有哪些特点? 人和计算机交流信息需要解决语言问题,需要创造一种计算机和人都能识别的语言.\n高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。\n3.正确解释一下名词以及含义: (1)源程序,目标程序,可执行程序。 源程序：指未编译的按照一定的程序设计语言规范书写的文本文件，是一系列人类可读的计算机语言指令\n目标程序：为源程序经编译可直接被计算机运行的机器码集合，在计算机文件上以.obj作扩展名\n可执行程序：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体，生成一个可供计算机执行的目标程序，成为可执行程序\n(2)程序编辑,程序编译,程序连接。 程序编辑：上机输入或者编辑源程序。\n程序编译：\n 先用C提供的“预处理器”，对程序中的预处理指令进行编译预处理 对源程序进行语法检查， 判断是否有语法错误，直到没有语法错误未知 编译程序自动把源程序转换为二进制形式的目标程序  程序连接：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体的过程称之为程序连接\n(3)程序,程序模块,程序文件。 程序：一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具\n程序模块：可由汇编程序、编译程序、装入程序或翻译程序作为一个整体来处理的一级独立的、可识别的程序指令\n程序文件：程序的文件称为程序文件，程序文件存储的是程序，包括源程序和可执行程序\n(4)函数,主函数，被调用函数,库函数。 函数：将一段经常需要使用的代码封装起来，在需要使用时可以直接调用，来完成一定功能\n主函数：又称main函数，是程序执行的起点\n被调用函数：由一个函数调用另一个函数，则称第二个函数为被调用函数\n库函数：一般是指编译器提供的可在c源程序中调用的函数。可分为两类，一类是c语言标准规定的库函数，一类是\n编译器特定的库函数\n(5)程序调试,程序测试。 程序调试：是将编制的程序投入实际运行前，用手工或编译程序等方法进行测试，修正语法错误和逻辑错误的过程\n程序测试：是指对一个完成了全部或部分功能、模块的计算机程序在正式使用前的检测，以确保该程序能按预定的\n方式正确地运行\n4.编写一个c程序,运行时输出 Hello World!\n#include\u0026lt;stdio.h\u0026gt; int main() { printf(\u0026#34;Hello World!\u0026#34;); return 0; } 5.编写一个c程序,运行时输出一下图形 *****\n​\t*****\n​\t*****\n​\t*****\n#include\u0026lt;stdio.h\u0026gt; int main() { printf(\u0026#34;*****\\n\u0026#34;); printf(\u0026#34; *****\\n\u0026#34;); printf(\u0026#34; *****\\n\u0026#34;); printf(\u0026#34; *****\\n\u0026#34;); return 0; } 6.",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-10-26 01:14:40 \u002b0800 CST",
+    "dateModified" : "2020-10-26 01:14:40 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/c-programming\/",
+    "wordCount" : "111",
+    "keywords" : [ "C", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">C programming</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-10-26 itemprop="datePublished">October 26, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="程序">程序</h1>
+<h4 id="1什么是程序什么是程序设计">1.什么是程序?什么是程序设计?</h4>
+<p><code>程序</code>是一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具。
+<code>程序设计</code>（programming），是给出解决特定问题程序的过程，软件开发过程中的重要步骤。程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。</p>
+<h4 id="2为什么需要计算机语言高级语言有哪些特点">2.为什么需要计算机语言?高级语言有哪些特点?</h4>
+<p>人和计算机交流信息需要解决语言问题,需要创造一种计算机和人都能识别的语言.</p>
+<p>高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。</p>
+<h4 id="3正确解释一下名词以及含义">3.正确解释一下名词以及含义:</h4>
+<h5 id="1源程序目标程序可执行程序">(1)源程序,目标程序,可执行程序。</h5>
+<p>源程序：指未编译的按照一定的程序设计语言规范书写的文本文件，是一系列人类可读的计算机语言指令</p>
+<p>目标程序：为源程序经编译可直接被计算机运行的机器码集合，在计算机文件上以.obj作扩展名</p>
+<p>可执行程序：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体，生成一个可供计算机执行的目标程序，成为可执行程序</p>
+<h5 id="2程序编辑程序编译程序连接">(2)程序编辑,程序编译,程序连接。</h5>
+<p>程序编辑：上机输入或者编辑源程序。</p>
+<p>程序编译：</p>
+<ul>
+<li>先用C提供的“预处理器”，对程序中的预处理指令进行编译预处理</li>
+<li>对源程序进行语法检查， 判断是否有语法错误，直到没有语法错误未知</li>
+<li>编译程序自动把源程序转换为二进制形式的目标程序</li>
+</ul>
+<p>程序连接：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体的过程称之为程序连接</p>
+<h5 id="3程序程序模块程序文件">(3)程序,程序模块,程序文件。</h5>
+<p>程序：一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具</p>
+<p>程序模块：可由汇编程序、编译程序、装入程序或翻译程序作为一个整体来处理的一级独立的、可识别的程序指令</p>
+<p>程序文件：程序的文件称为程序文件，程序文件存储的是程序，包括源程序和可执行程序</p>
+<h5 id="4函数主函数被调用函数库函数">(4)函数,主函数，被调用函数,库函数。</h5>
+<p>函数：将一段经常需要使用的代码封装起来，在需要使用时可以直接调用，来完成一定功能</p>
+<p>主函数：又称main函数，是程序执行的起点</p>
+<p>被调用函数：由一个函数调用另一个函数，则称第二个函数为被调用函数</p>
+<p>库函数：一般是指编译器提供的可在c源程序中调用的函数。可分为两类，一类是c语言标准规定的库函数，一类是</p>
+<p>编译器特定的库函数</p>
+<h5 id="5程序调试程序测试">(5)程序调试,程序测试。</h5>
+<p>程序调试：是将编制的程序投入实际运行前，用手工或编译程序等方法进行测试，修正语法错误和逻辑错误的过程</p>
+<p>程序测试：是指对一个完成了全部或部分功能、模块的计算机程序在正式使用前的检测，以确保该程序能按预定的</p>
+<p>方式正确地运行</p>
+<h4 id="4编写一个c程序运行时输出">4.编写一个c程序,运行时输出</h4>
+<p>Hello World!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    printf(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h4 id="5编写一个c程序运行时输出一下图形">5.编写一个c程序,运行时输出一下图形</h4>
+<p>*****</p>
+<p>​	*****</p>
+<p>​		*****</p>
+<p>​			*****</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    printf(<span style="color:#e6db74">&#34;*****</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    printf(<span style="color:#e6db74">&#34;    *****</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    printf(<span style="color:#e6db74">&#34;        *****</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    printf(<span style="color:#e6db74">&#34;            *****</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h4 id="6编写一个c程序运行时输入abc三个值输出其中值最大值">6.编写一个c程序,运行时输入a,b,c三个值,输出其中值最大值</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">int</span> a, b, c, max;
+    printf(<span style="color:#e6db74">&#34;input 3 number:&#34;</span>);
+    scanf(<span style="color:#e6db74">&#34;%d%d%d&#34;</span>, <span style="color:#f92672">&amp;</span>a, <span style="color:#f92672">&amp;</span>b, <span style="color:#f92672">&amp;</span>c);
+    max <span style="color:#f92672">=</span> a;
+    <span style="color:#66d9ef">if</span> (max <span style="color:#f92672">&lt;</span> b)
+    {
+        max <span style="color:#f92672">=</span> b;
+    }
+    <span style="color:#66d9ef">if</span> (max <span style="color:#f92672">&lt;</span> c)
+    {
+        max <span style="color:#f92672">=</span> c;
+    }
+    printf(<span style="color:#e6db74">&#34;max:%d&#34;</span>, max);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/c-programming/>https://blog.kayleh.top/c-programming/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/" class="prev" rel="prev" title="ubuntu.deb安装包"><i class="iconfont icon-left"></i>&nbsp;ubuntu.deb安装包</a>
+         
+        
+        <a href="https://blog.kayleh.top/c-algorithm/" class="next" rel="next" title="C algorithm">C algorithm&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

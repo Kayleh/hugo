@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/" />
+  <link rel="next" href="https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ubuntu fixed IP setting method | Kayleh
+       
+  </title>
+  <meta name="title" content="ubuntu fixed IP setting method | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "ubuntu fixed IP setting method",
+    "headline" : "ubuntu fixed IP setting method",
+    "description" : "ubuntu固定IP设置方法 确认你要修改的网卡号 先确认你要修改的网卡号，假设你的服务器有多张网卡：\n`ubuntu1804:~$ ip addr` 我的服务器配置如下：\n`1: lo: mtu 65536 qdisc noqueue state UNKNOWN ``group` `default` `qlen 1000``link\/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00``inet 127.0.0.1\/8 scope host lo``valid_lft forever preferred_lft forever``inet6 ::1\/128 scope host``valid_lft forever preferred_lft forever``2: ens33: mtu 1500 qdisc fq_codel state UP ``group` `default` `qlen 1000``link\/ether 00:0c:29:f1:b5:e1 brd ff:ff:ff:ff:ff:ff``inet 172.16.87.140\/24 brd 172.16.87.255 scope global dynamic ens33``valid_lft 1500sec preferred_lft 1500sec``inet6 fe80::20c:29ff:fef1:b5e1\/64 scope link``valid_lft forever preferred_lft forever` 3. 默认的网卡配置文件 默认情况下，网络使用DHCP\n`ubuntu1804:~$ cat \/etc\/netplan\/50-cloud-init.",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-13 23:23:35 \u002b0800 CST",
+    "dateModified" : "2020-11-13 23:23:35 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95\/",
+    "wordCount" : "122",
+    "keywords" : [ "linux", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ubuntu fixed IP setting method</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-11-13 itemprop="datePublished">November 13, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="ubuntu固定ip设置方法">ubuntu固定IP设置方法</h1>
+<h2 id="确认你要修改的网卡号">确认你要修改的网卡号</h2>
+<p>先确认你要修改的网卡号，假设你的服务器有多张网卡：</p>
+<pre><code>`ubuntu1804:~$ ip addr`
+</code></pre><p>我的服务器配置如下：</p>
+<pre><code>`1: lo:  mtu 65536 qdisc noqueue state UNKNOWN ``group` `default` `qlen 1000``link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00``inet 127.0.0.1/8 scope host lo``valid_lft forever preferred_lft forever``inet6 ::1/128 scope host``valid_lft forever preferred_lft forever``2: ens33:  mtu 1500 qdisc fq_codel state UP ``group` `default` `qlen 1000``link/ether 00:0c:29:f1:b5:e1 brd ff:ff:ff:ff:ff:ff``inet 172.16.87.140/24 brd 172.16.87.255 scope global dynamic ens33``valid_lft 1500sec preferred_lft 1500sec``inet6 fe80::20c:29ff:fef1:b5e1/64 scope link``valid_lft forever preferred_lft forever`
+</code></pre><p><img src="https://img2018.cnblogs.com/blog/1024482/201909/1024482-20190926195311926-778081344.png" alt="img"></p>
+<h2 id="3-默认的网卡配置文件">3. 默认的网卡配置文件</h2>
+<p>默认情况下，网络使用DHCP</p>
+<pre><code>`ubuntu1804:~$ cat /etc/netplan/50-cloud-init.yaml``配置文件内容如下` `network:``  ``ethernets:``    ``ens33:``      ``dhcp4: yes``      ``addresses: []` `  ``version: 2`
+</code></pre><h2 id="4-设置静态ip">4. 设置静态IP</h2>
+<p>需要把配置文件修改为以下内容：</p>
+<pre><code>`ubuntu1804:~$ sudo vi /etc/netplan/50-cloud-init.yaml`
+</code></pre><p>假设IP地址修改为192.168.1.100，子网掩码24位即255.255.255.0，网关设置为192.168.1.1，DNS1：223.5.5.5，DNS2：223.6.6.6</p>
+<pre><code>`network:``  ``ethernets:``    ``ens33:``      ``dhcp4: no``      ``addresses: [192.168.1.100/24]``      ``optional: ``true``      ``gateway4: 192.168.1.1``      ``nameservers:``          ``addresses: [223.5.5.5,223.6.6.6]` `  ``version: 2`
+</code></pre><p>　　</p>
+<p><img src="https://img2018.cnblogs.com/blog/1024482/201909/1024482-20190926195125025-1367860921.png" alt="img"></p>
+<h2 id="5-应用新配置">5. 应用新配置</h2>
+<pre><code>`ubuntu1804:~$ sudo netplan apply`
+</code></pre><p>使用<code>ip addr</code>检查新地址</p>
+<pre><code>`ubuntu1804:~$ ip addr`
+</code></pre><p><img src="https://img2018.cnblogs.com/blog/1024482/201909/1024482-20190926195452363-191570303.png" alt="img"></p>
+<h2 id="6-测试网络连通性">6. 测试网络连通性</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ubuntu1804:~$ ping 192.168.1.100
+</code></pre></div><p><img src="https://img2018.cnblogs.com/blog/1024482/201909/1024482-20190926195509927-312010988.png" alt="img"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/>https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/linux/">
+                    #linux</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/" class="prev" rel="prev" title="Java高性能高并发秒杀系统(10)"><i class="iconfont icon-left"></i>&nbsp;Java高性能高并发秒杀系统(10)</a>
+         
+        
+        <a href="https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="next" rel="next" title="Java network programming">Java network programming&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

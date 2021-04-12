@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/" />
+  <link rel="next" href="https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           dynamic-array | Kayleh
+       
+  </title>
+  <meta name="title" content="dynamic-array | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "dynamic-array",
+    "headline" : "dynamic-array",
+    "description" : "\u003cp\u003e动态数组\u003c\/p\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-04-26 09:02:37 \u002b0800 CST",
+    "dateModified" : "2020-04-26 09:02:37 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84\/",
+    "wordCount" : "883",
+    "keywords" : [ "algorithm", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">dynamic-array</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-04-26 itemprop="datePublished">April 26, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>动态数组</p>
+<h4 id="数组是一种顺序储存的线性表所有元素的内存地址是连续">数组是一种顺序储存的线性表,所有元素的内存地址是连续.</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> array <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]{</span>20<span style="color:#f92672">,</span> 30<span style="color:#f92672">,</span> 40<span style="color:#f92672">}</span>
+<span style="color:#75715e">//向内存申请了12个字节地址
+</span></code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328103402109.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>
+<p>在很多编程语言中，数组有个致命的缺点， <strong>无法动态修改容量</strong>。</p>
+</li>
+<li>
+<p>实际开发中我们希望数组的容量是动态变化的。</p>
+</li>
+</ul>
+<h1 id="动态数组">动态数组</h1>
+<p>创建ArrayList类,创建size属性来管理数组中元素的个数,创建element属性来管理存取的数据.</p>
+<p>可以对动态数组进行增删改查操作.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/0200328103943700.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArrayList</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> size<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> E<span style="color:#f92672">[]</span> elements<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">// 元素的数量
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">();</span> 
+	<span style="color:#75715e">// 是否为空
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">();</span>
+	<span style="color:#75715e">// 是否包含某个元素
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 添加元素到最后面
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 返回index位置对应的元素
+</span><span style="color:#75715e"></span>	E <span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 设置index位置的元素
+</span><span style="color:#75715e"></span>	E <span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> E element<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 往index位置添加元素
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> E element<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 删除index位置对应的元素 
+</span><span style="color:#75715e"></span>	E <span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 查看元素的位置
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">);</span> 
+	<span style="color:#75715e">// 清除所有元素
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span> 
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h3 id="动态数组的实现">动态数组的实现</h3>
+<h4 id="构造方法">构造方法</h4>
+<p>如果构建的数组空间小于默认空间,则会以默认空间创建数组.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArrayList</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 元素的数量
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> size<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 所有元素
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> E<span style="color:#f92672">[]</span> elements<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 数组的默认容量
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> DEFAULT_CAPACITY <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
+
+	<span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 找不到元素返回-1
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> ELEMENT_NOT_FOUNT <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ArrayList</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 默认容量
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//elements = new int[DEFAULT_CAPACITY];
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>DEFAULT_CAPACITY<span style="color:#f92672">);</span> <span style="color:#75715e">// 调用下面的构造器
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ArrayList</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> capacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 设置默认容量为 10
+</span><span style="color:#75715e"></span>        capacity <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>capacity <span style="color:#f92672">&lt;</span> DEFAULT_CAPACITY<span style="color:#f92672">)</span> <span style="color:#f92672">?</span> DEFAULT_CAPACITY <span style="color:#f92672">:</span> capacity<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">// 因为泛型(所以传一个Object数组,然后通过强转)
+</span><span style="color:#75715e"></span>        elements <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>E<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>capacity<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="添加元素">添加元素</h4>
+<ul>
+<li>数组添加元素分为<code>在最后一个元素的后面添加新元素</code>和<code>将元素插入到某个位置（非最后面）</code>两种情况。</li>
+<li>第一种情况，这个<code>新元素需要添加到的索引</code>等于<code>当前数组元素的个数</code>，在ArrayList中<code>size</code>属性就是<code>当前数组元素的个数</code>，所以就是将新元素添加到数组的<code>size</code>位置上，然后<code>size加1</code>。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328104623565.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    elements<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> element<span style="color:#f92672">;</span>
+    size<span style="color:#f92672">++;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>如果是第二种情况，只需要将插入位置后面的元素向后移动即可。</li>
+<li>注意：需要从后向前移动元素，如果从前向后移动元素，那么会进行元素覆盖, 最后出错。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328105012778.png" alt=""></p>
+<h4 id="数组越界">数组越界</h4>
+<p>添加元素,还要注意传入的索引不能越界,即不能小于0,也不能大于size.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 根据index插入元素时,判断index是否有效
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rangeCheckForAdd</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>index <span style="color:#f92672">&lt;</span> 0 <span style="color:#f92672">||</span> index <span style="color:#f92672">&gt;</span> size<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        indexOutOfBounds<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 封装数组越界异常
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">indexOutOfBounds</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IndexOutOfBoundsException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Index:&#34;</span> <span style="color:#f92672">+</span> index <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Size:&#34;</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="数组扩容">数组扩容</h4>
+<p>动态扩容思路:</p>
+<ul>
+<li>
+<p>通过默认容量创建的数组,是在堆空间中随机生成的地址;如此一来再申请空间拼接到该数组后,这种方式不可能实现;</p>
+</li>
+<li>
+<p>我们只能再创建一个大容量的数组,然后将之前数组中的元素移动到这个数组中;然后将引用指向新数组即可!</p>
+</li>
+<li>
+<p>由于数组elements最大的容量只有10，所以当数组存满元素时，就需要对数组进行扩容。</p>
+</li>
+<li>
+<p>因为数组是无法动态扩容的，所以需要创建一个新的数组，这个数组的容量要比之前数组的容量大。</p>
+</li>
+<li>
+<p>然后在将原数组中的元素存放到新数组中，这样就实现了数组的扩容。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/2020032810554134.png" alt=""></p>
+<ul>
+<li>该方法确保默认容量为多少,为了验证<code>是否超过给定的默认容量</code>,然后进行判断是否要扩容;这里<code>size+1</code>为数组当前数量+1, 因为每次<code>add</code>都会增加一个容量。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 确保至少要有capacity个容量
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param capacity
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureCapacity</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> capacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#75715e">// 获取数组当前容量
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> oldCapacity <span style="color:#f92672">=</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 判断是否要扩容
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;=</span> capacity<span style="color:#f92672">)</span>
+        <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 此时不扩容
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// 这种方式是扩容1.5倍
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> oldCapacity <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">);</span>
+
+    E<span style="color:#f92672">[]</span> newElements <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>E<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>newCapacity<span style="color:#f92672">];</span>
+    <span style="color:#75715e">// 将原来数组中的元素移动到新数组中
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        newElements<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 将数组引用指向新数组
+</span><span style="color:#75715e"></span>    elements <span style="color:#f92672">=</span> newElements<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>实现add函数，需要在添加新元素之前，判断数组越界和扩容。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 在index位置插入一个元素
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 在添加元素的时候,判断index是否有效
+</span><span style="color:#75715e"></span>    rangeCheckForAdd<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+
+    ensureCapacity<span style="color:#f92672">(</span>size <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">// 注意: 插入元素后,元素是从后开始往后挪
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> size <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&gt;=</span> index<span style="color:#f92672">;</span> i<span style="color:#f92672">--)</span> <span style="color:#f92672">{</span>
+        elements<span style="color:#f92672">[</span>i <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+    elements<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> element<span style="color:#f92672">;</span>
+    size<span style="color:#f92672">++;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p>最终在最后一个元素的后面添加新元素，即添加元素到尾部的实现方式如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 添加元素到尾部
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// elements[size++] = element;
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 传入数组数量(相当于在最后插入元素)
+</span><span style="color:#75715e"></span>    add<span style="color:#f92672">(</span>size<span style="color:#f92672">,</span> element<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="删除元素">删除元素</h4>
+<ul>
+<li>删除元素，实际上就是<code>移除指定位置的元素</code>，并将<code>后面的元素向前移动</code>。</li>
+<li>如下图，当删除索引为<code>3</code>的元素时，只需要将后面的元素向前移动，然后在去掉最后一个元素，<code>size减1</code>即可。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328110106999.png" alt=""></p>
+<h4 id="数组越界-1">数组越界</h4>
+<ul>
+<li>删除元素时传入的索引不能越界, 即不能小于0, 也不能大于等于size所以我们在删除元素之前需要先进行索引检查。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">indexOutOfBounds</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IndexOutOfBoundsException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Index:&#34;</span> <span style="color:#f92672">+</span> index <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Size:&#34;</span> <span style="color:#f92672">+</span> size<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+	
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rangeCheck</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>index <span style="color:#f92672">&lt;</span> 0 <span style="color:#f92672">||</span> index <span style="color:#f92672">&gt;=</span> size<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        outOfBounds<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="数组缩容">数组缩容</h4>
+<ul>
+<li>
+<p>当数组中的元素删除后，数组剩余的空间可能会很大，这样就会造成内存的浪费。</p>
+</li>
+<li>
+<p>所以当数组中元素删除后，我们需要对数组进行<code>缩容</code>。</p>
+</li>
+<li>
+<p>实现方法类似于扩容，当数组中容量小于某个值时，创建新的数组，然后将原有数组中的元素存入新数组即可。</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 数组缩容
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">trim</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 获取当前数组的容量
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> capacity <span style="color:#f92672">=</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 当size大于等于容量的一半, 或则容量已经小于默认容量(10)时, 直接返回
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">&gt;=</span> capacity <span style="color:#f92672">&gt;&gt;</span> 1 <span style="color:#f92672">||</span> capacity <span style="color:#f92672">&lt;</span> CAPACITY_DEFAULT<span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 计算新的容量 = 原有容量的一半
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> capacity <span style="color:#f92672">&gt;&gt;</span> 1<span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 创建新数组
+</span><span style="color:#75715e"></span>    E<span style="color:#f92672">[]</span> newElements <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>E<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>newCapacity<span style="color:#f92672">];</span>
+    <span style="color:#75715e">// 将原数组元素存入新数组
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+    	newElements<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 引用新数组
+</span><span style="color:#75715e"></span>    elements <span style="color:#f92672">=</span> newElements<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>最终, remove方法实现如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 删除index位置的元素
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> * @return 被删除的元素
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> E <span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    rangeCheck<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+    E delEle <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>index<span style="color:#f92672">];</span>
+
+    <span style="color:#75715e">// 当删除一个元素时,需要挪动后面元素的范围
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> size <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        elements<span style="color:#f92672">[</span>i <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+    <span style="color:#f92672">}</span>
+    size<span style="color:#f92672">--;</span>
+    <span style="color:#75715e">// 同clear的细节,当从后往前以后时,最后一个的地址需要释放
+</span><span style="color:#75715e"></span>    elements<span style="color:#f92672">[</span>size<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 判断数组是否需要缩容
+</span><span style="color:#75715e"></span>    trim<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">return</span> delEle<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 删除传入的元素
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">){</span>
+    remove<span style="color:#f92672">(</span>indexOf<span style="color:#f92672">(</span>element<span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="清空数组">清空数组</h4>
+<p>清空数组时，需要将所有的元素置为null，只有这样才能真正的释放对象，然后size置为0。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328110807352.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 清除所有元素
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">clear</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        elements<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    size <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="修改元素">修改元素</h4>
+<p>修改元素时，只需要将原有位置的元素<code>替换</code>掉即可，同样需要注意一下索引是否<code>越界</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 设置index位置的元素
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> * @return 原来的元素
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> E <span style="color:#a6e22e">set</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">,</span> E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    rangeCheck<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+
+    E oldEle <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span>index<span style="color:#f92672">];</span>
+    elements<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> element<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> oldEle<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="查询元素">查询元素</h4>
+<p>查询元素，只需要将指定索引的元素返回，注意索引是否越界即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 获取index位置的元素
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param index
+</span><span style="color:#75715e"> * @return
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> E <span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 约束Index
+</span><span style="color:#75715e"></span>    rangeCheck<span style="color:#f92672">(</span>index<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> elements<span style="color:#f92672">[</span>index<span style="color:#f92672">];</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="查看元素位置">查看元素位置</h4>
+<ul>
+<li>可以通过循环, 查找元素在数组中的位置。</li>
+<li>注意：假如数组中可以存储<code>null</code>，而null是不能调用<code>equals</code>方法的，所以需要对传入的元素进行判断，如果查找的元素是<code>null</code>，需要单独处理。</li>
+<li>当元素存在时返回索引，否则返回变量<code>ELEMENT_ON_FOUND</code>的值。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 查看元素的索引
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> * @return
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">indexOf</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>element <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 循环判断如果element为null,直接返回null的索引
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>elements<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+                <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 因为element肯定不为null了,所以放在前面;避免空指针异常
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>element<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">[</span>i<span style="color:#f92672">]))</span>
+                <span style="color:#66d9ef">return</span> i<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> ELEMENT_NOT_FOUNT<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="是否包含某元素">是否包含某元素</h4>
+<p>只需通过判断索引是否等于<code>ELEMENT_ON_FOUND</code>即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 是否包含某个元素
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @param element
+</span><span style="color:#75715e"> * @return
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contains</span><span style="color:#f92672">(</span>E element<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 如果element元素可以找到
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> indexOf<span style="color:#f92672">(</span>element<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> ELEMENT_NOT_FOUNT<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="元素的数量">元素的数量</h4>
+<p>size的值，即为元素的数量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 元素的数量
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @return
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> size<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="数组是否为空">数组是否为空</h4>
+<p>通过判断<code>size</code>的值是否为<code>0</code>即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 是否为空
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * @return
+</span><span style="color:#75715e"> */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">inEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> 0<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h4 id="动态数组打印">动态数组打印</h4>
+<p>可以重写<code>toString</code>方法, 来打印<code>ArrayList</code>中的元素。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 打印格式: size=3, [10, 20, 30]
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 使用StringBuilder 效率高一些
+</span><span style="color:#75715e"></span>    StringBuilder string <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder<span style="color:#f92672">();</span>
+    string<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;size=&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>size<span style="color:#f92672">).</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;, [&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> size<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        string<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">[</span>i<span style="color:#f92672">]);</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">!=</span> size <span style="color:#f92672">-</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            string<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;, &#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    string<span style="color:#f92672">.</span><span style="color:#a6e22e">append</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> string<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><p><strong>这样就实现了动态数组的基本操作。</strong></p>
+<h1 id="arraylist能否进一步优化">ArrayList能否进一步优化？</h1>
+<ul>
+<li>在ArrayList中，如果要删除索引0位置的元素，则需要将索引0之后的元素全部往前移一位。</li>
+<li>如果要在索引<code>0</code>位置添加元素，也需要将索引<code>0</code>及之后的元素全<code>部往后移一位</code>。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328112238774.png" alt=""></p>
+<ul>
+<li>在ArrayList中<code>增加一个记录首元素位置的属性</code>。</li>
+<li>删除索引<code>0</code>位置的元素，我们只需要将<code>first</code>属性改为<code>1</code>。</li>
+<li>-在索引<code>0</code>位置添加元素，则只需要将<code>first</code>属性改为<code>0</code>。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200328112539197.png" alt=""></p>
+<ul>
+<li>如果继续往前插入元素，则将插入的元素存放在索引<code>8</code>这个位置，并将<code>first</code>改为<code>8</code>。</li>
+<li>当要获取索引<code>8</code>下一个元素时，对索引取<code>模</code>，则拿到索引<code>0</code>位置的元素。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/D:%5CBlog%5Csource_posts%5C%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E3%80%91%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84%5C20200328112630777.png" alt=""></p>
+<ul>
+<li>如果插入元素，则可选择挪动<code>前半段</code>数据或<code>后半段</code>数据。</li>
+<li>在索引<code>2</code>处插入元素<code>99</code>，可以选择将元素<code>22</code>，<code>33</code>左移，然后插入<code>99</code>即可。</li>
+<li><code>扩容</code>和<code>缩容</code>同样可以优化。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/20200413231142422.png" alt=""></p>
+<h1 id="重点总结">重点总结</h1>
+<h4 id="动态扩容思路">动态扩容思路</h4>
+<p>通过默认容量创建的数组,是在堆空间中随机生成的地址;如此一来
+再申请空间拼接到该数组后,这种方式不可能实现;
+我们只能再创建一个大容量的数组,然后将之前数组中的元素移动到
+这个数组中;然后将引用指向新数组即可!</p>
+<h4 id="如何确保容量是否越界">如何确保容量是否越界</h4>
+<p>该方法确保默认容量为多少, 为了验证是否超过给定的默认容量,然后进行判断是否要扩容; 这里size+1为数组当前数量+1, 因为每次add都会增加一个容量。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  ensureCapacity<span style="color:#f92672">(</span>size <span style="color:#f92672">+</span> 1<span style="color:#f92672">);</span>
+</code></pre></div><h4 id="增加泛型">增加泛型</h4>
+<p>使用泛型, 使动态数组可以添加任何类型的数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  elements <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>E<span style="color:#f92672">[])</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>capacity<span style="color:#f92672">];</span>
+</code></pre></div><h5 id="clear方法的过渡细节">clear方法的过渡细节</h5>
+<p>因为之前存储的都是int数据, 直接设置size=0时, 开辟的存储int类型的空间就不能被访问, 当add后, 就可以访问后面的空间, 所以此时的空间可以重复利用;</p>
+<p>当使用泛型后, 动态数组中存储的都是对象类型, 实际存储的都是对象的地址, 每一个对象的地址又有一块空间引用着; 此时如果仍设置 size=0, 当clear后,开辟的存储空间中的地址没有被销毁, 地址仍被对象空间引用着; 这样以来存储对象的空间就不会被释放; 但是存储地址的数组可以重复利用; 所以要将地址数组都置为null, 然后size=0, 这样以来,引用该地址的对象空间也就释放了!</p>
+<h4 id="removeindexof的细节">remove、indexOf的细节</h4>
+<p>remove最后一个地址也要情况, 同clear细节
+在indexOf方法中,不用==比较, 因为比较的是地址值,一般重写equals方法自己定义比较内容即可;
+null值处理: 当往数组传null的时候,indexOf的比较处理: 如果那null.equals来比较会出现空指针异常;</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/algorithm/">
+                    #algorithm</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/" class="prev" rel="prev" title="Spring、SpringMVC、Mybatis整合"><i class="iconfont icon-left"></i>&nbsp;Spring、SpringMVC、Mybatis整合</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/" class="next" rel="next" title="面向对象">面向对象&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

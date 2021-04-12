@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/" />
+  <link rel="next" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/" />
+  <link rel="canonical" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Java高性能高并发秒杀系统(6) | Kayleh
+       
+  </title>
+  <meta name="title" content="Java高性能高并发秒杀系统(6) | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Java高性能高并发秒杀系统(6)",
+    "headline" : "Java高性能高并发秒杀系统(6)",
+    "description" : "页面缓存和对象缓存",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/blog.kayleh.top\/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5\/",
+    "wordCount" : "319",
+    "keywords" : [ "project", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Java高性能高并发秒杀系统(6)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="1-页面缓存优化">1. 页面缓存优化</h2>
+<h3 id="11-未经优化之前的代码">1.1 未经优化之前的代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/to_list&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toList</span><span style="color:#f92672">(</span>Model model<span style="color:#f92672">,</span>MiaoShaUser user<span style="color:#f92672">){</span>
+        model<span style="color:#f92672">.</span><span style="color:#a6e22e">addAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">,</span>user<span style="color:#f92672">);</span>
+        List<span style="color:#f92672">&lt;</span>GoodsVo<span style="color:#f92672">&gt;</span> goodsVos <span style="color:#f92672">=</span> goodsService<span style="color:#f92672">.</span><span style="color:#a6e22e">listGoodsVo</span><span style="color:#f92672">();</span>
+        model<span style="color:#f92672">.</span><span style="color:#a6e22e">addAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;goodsList&#34;</span><span style="color:#f92672">,</span>goodsVos<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;goods_list&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+1234567
+</code></pre></div><h3 id="12-优化产生的改变">1.2 优化产生的改变</h3>
+<p><img src="D:%5CBlog%5Csource_posts%5CJava%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%5C20200714171300573.png" alt="在这里插入图片描述"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/to_list&#34;</span><span style="color:#f92672">,</span>produces <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/html&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@ResponseBody</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toList</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> Model model<span style="color:#f92672">,</span> MiaoShaUser user<span style="color:#f92672">){</span>
+        model<span style="color:#f92672">.</span><span style="color:#a6e22e">addAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">,</span>user<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//在有缓存的情况下，取出缓存
+</span><span style="color:#75715e"></span>        String html <span style="color:#f92672">=</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>GoodsKey<span style="color:#f92672">.</span><span style="color:#a6e22e">goodsKeyPrefix</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span> StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span>html<span style="color:#f92672">))</span> <span style="color:#66d9ef">return</span> html<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">//在没有缓存的时候，手动渲染，添加缓存
+</span><span style="color:#75715e"></span>        List<span style="color:#f92672">&lt;</span>GoodsVo<span style="color:#f92672">&gt;</span> goodsVos <span style="color:#f92672">=</span> goodsService<span style="color:#f92672">.</span><span style="color:#a6e22e">listGoodsVo</span><span style="color:#f92672">();</span>
+        model<span style="color:#f92672">.</span><span style="color:#a6e22e">addAttribute</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;goodsList&#34;</span><span style="color:#f92672">,</span>goodsVos<span style="color:#f92672">);</span>
+        IWebContext ctx <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> WebContext<span style="color:#f92672">(</span>request<span style="color:#f92672">,</span>response<span style="color:#f92672">,</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getServletContext</span><span style="color:#f92672">(),</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocale</span><span style="color:#f92672">(),</span>model<span style="color:#f92672">.</span><span style="color:#a6e22e">asMap</span><span style="color:#f92672">());</span>
+        html <span style="color:#f92672">=</span> thymeleafViewResolver<span style="color:#f92672">.</span><span style="color:#a6e22e">getTemplateEngine</span><span style="color:#f92672">().</span><span style="color:#a6e22e">process</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;goods_list&#34;</span><span style="color:#f92672">,</span>ctx<span style="color:#f92672">);</span><span style="color:#75715e">//这里需要注入IContext
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>StringUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">(</span>html<span style="color:#f92672">)){</span>
+            redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>GoodsKey<span style="color:#f92672">.</span><span style="color:#a6e22e">goodsKeyPrefix</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span>html<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">return</span> html<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//return &#34;goods_list&#34;;
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+
+</code></pre></div><ul>
+<li>首先，我们应用缓存，一定要引入RedisService</li>
+</ul>
+<ol>
+<li>@RequestMapping(value = “/to_list”,<code>produces = &quot;text/html&quot;</code>)produces标注了返回值的类型，必须与@ResponseBody搭配使用</li>
+<li>手动渲染过程中，我们要注入<code>ThymeleafViewResolver</code>，这个是框架给我们准备好的Bean，利用它来渲染页面，其中第二个参数，需要注入<code>IContext</code></li>
+<li>在<code>Spring5</code>版本中，<code>SpringWebContext</code>已经没有了，我们需要使用<code>WebContext</code>来代替。它剔除了之前对ApplicationContext 过多的依赖，现在thymeleaf渲染不再过多依赖spring容器</li>
+<li>再者，我们对Redis缓存的时间设置了<code>60秒</code>的限制，超过60秒过期，这个时间不宜过长。在60秒内我们看到的网页一直一样是暂且可以接受的</li>
+</ol>
+<hr>
+<h2 id="2-对象缓存与缓存更新">2. 对象缓存与缓存更新</h2>
+<h3 id="21-对象缓存">2.1 对象缓存</h3>
+<p>对象缓存，我们之前已经做过了一个，就是在MiaoshaService中的<code>getByToken</code>方法，通过token值，从Redis中获取对象信息。
+这次，我们实现一个getById()方法，即通过Id值，从Redis中获取user对象。（对象缓存<code>没有设置过期时间</code>，而且对象缓存是<code>粒度最小</code>的缓存）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> MiaoShaUser <span style="color:#a6e22e">getById</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> id<span style="color:#f92672">){</span>
+        <span style="color:#75715e">//先从缓存中取
+</span><span style="color:#75715e"></span>        MiaoShaUser user <span style="color:#f92672">=</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>MiaoShaUserKey<span style="color:#f92672">.</span><span style="color:#a6e22e">idPrefix</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> id<span style="color:#f92672">,</span> MiaoShaUser<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">return</span> user<span style="color:#f92672">;</span>
+
+        <span style="color:#75715e">//缓存中没有，从数据库中取，并且把它添加到缓存中
+</span><span style="color:#75715e"></span>        user <span style="color:#f92672">=</span> miaoShaUserDao<span style="color:#f92672">.</span><span style="color:#a6e22e">getById</span><span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>MiaoShaUserKey<span style="color:#f92672">.</span><span style="color:#a6e22e">idPrefix</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> id<span style="color:#f92672">,</span>user<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> user<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+1234567891011
+</code></pre></div><h3 id="22-缓存更新">2.2 缓存更新</h3>
+<p>我们模拟一个场景，我们要对密码进行修改，那么缓存也需要修改，现在先列出视频中给的方法，通过Id值取出用户，修改数据库，之后，对token-user缓存进行修改，id-user缓存进行删除</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">updatePassword</span><span style="color:#f92672">(</span><span style="color:#66d9ef">long</span> id<span style="color:#f92672">,</span>String formPass<span style="color:#f92672">,</span>String token<span style="color:#f92672">){</span>
+        <span style="color:#75715e">//取出user
+</span><span style="color:#75715e"></span>        MiaoShaUser user <span style="color:#f92672">=</span> getById<span style="color:#f92672">(</span>id<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//没有这个用户
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> GlobalException<span style="color:#f92672">(</span>CodeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">MOBILE_NOT_EXIST</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//修改密码，更新数据库
+</span><span style="color:#75715e"></span>        user<span style="color:#f92672">.</span><span style="color:#a6e22e">setPassword</span><span style="color:#f92672">(</span>MD5Util<span style="color:#f92672">.</span><span style="color:#a6e22e">formPassToDBPass</span><span style="color:#f92672">(</span>formPass<span style="color:#f92672">,</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getSalt</span><span style="color:#f92672">()));</span>
+        miaoShaUserDao<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//更新缓存,token-user缓存（登陆用的）这个不能删除，id-user缓存删除
+</span><span style="color:#75715e"></span>        redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>MiaoShaUserKey<span style="color:#f92672">.</span><span style="color:#a6e22e">getTokenPrefix</span><span style="color:#f92672">,</span>token<span style="color:#f92672">,</span>user<span style="color:#f92672">);</span>
+        redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span>MiaoShaUserKey<span style="color:#f92672">.</span><span style="color:#a6e22e">idPrefix</span><span style="color:#f92672">,</span>id<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+123456789101112131415
+</code></pre></div><ul>
+<li><strong>个人理解</strong>：我们上网时的多数场景，修改完密码之后都要我们进行重新登录，而且在我们这个项目中，登录的过程中会对token-user缓存进行重新添加，那么我们在修改密码的时候，可以直接将token-user和id-user全部都删除，而不需要对其中的缓存进行值的修改。</li>
+</ul>
+<hr>
+<h2 id="3-页面静态化">3. 页面静态化</h2>
+<h3 id="31-将商品详情页进行静态化处理订单详情也做了静态化">3.1 将商品详情页进行静态化处理（订单详情也做了静态化）</h3>
+<p>通常情况下，页面不采用第一种缓存的方式实现优化，而是通过静态化处理，比较常用的技术有Vue。通过静态化处理，我们将页面缓存在客户端浏览器中，不需要与服务器交互就能访问到页面。</p>
+<p>以下，我们用JQuery实现。</p>
+<h4 id="311-对后端代码进行处理">3.1.1 对后端代码进行处理</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/detail/{goodsId}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#a6e22e">@ResponseBody</span>
+    <span style="color:#66d9ef">public</span> Result<span style="color:#f92672">&lt;</span>GoodsDetailVo<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toDetail</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> Model model<span style="color:#f92672">,</span> MiaoShaUser user<span style="color:#f92672">,</span> <span style="color:#a6e22e">@PathVariable</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;goodsId&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">long</span> goodsId<span style="color:#f92672">){</span>
+
+        GoodsVo goodsVo <span style="color:#f92672">=</span> goodsService<span style="color:#f92672">.</span><span style="color:#a6e22e">getGoodsVoByGoodsId</span><span style="color:#f92672">(</span>goodsId<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//秒杀开始、结束时间，当前时间
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">long</span> startDate <span style="color:#f92672">=</span> goodsVo<span style="color:#f92672">.</span><span style="color:#a6e22e">getStartDate</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">long</span> endDate <span style="color:#f92672">=</span> goodsVo<span style="color:#f92672">.</span><span style="color:#a6e22e">getEndDate</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getTime</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">long</span> now <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">//秒杀状态，0为没开始，1为正在进行，2为秒杀已经结束
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> miaoshaStatus <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//距离秒杀剩余的时间
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> remainSeconds <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>now <span style="color:#f92672">&lt;</span> startDate<span style="color:#f92672">){</span>
+            <span style="color:#75715e">//秒杀没开始，进行倒计时
+</span><span style="color:#75715e"></span>            remainSeconds <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>startDate <span style="color:#f92672">-</span> now<span style="color:#f92672">)</span> <span style="color:#f92672">/</span> 1000<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>now <span style="color:#f92672">&gt;</span> endDate<span style="color:#f92672">){</span>
+            <span style="color:#75715e">//秒杀已经结束
+</span><span style="color:#75715e"></span>            miaoshaStatus <span style="color:#f92672">=</span> 2<span style="color:#f92672">;</span>
+            remainSeconds <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//秒杀进行时
+</span><span style="color:#75715e"></span>            remainSeconds <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            miaoshaStatus <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        GoodsDetailVo goodsDetailVo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> GoodsDetailVo<span style="color:#f92672">();</span>
+        goodsDetailVo<span style="color:#f92672">.</span><span style="color:#a6e22e">setGoods</span><span style="color:#f92672">(</span>goodsVo<span style="color:#f92672">);</span>
+        goodsDetailVo<span style="color:#f92672">.</span><span style="color:#a6e22e">setUser</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+        goodsDetailVo<span style="color:#f92672">.</span><span style="color:#a6e22e">setMiaoshaStatus</span><span style="color:#f92672">(</span>miaoshaStatus<span style="color:#f92672">);</span>
+        goodsDetailVo<span style="color:#f92672">.</span><span style="color:#a6e22e">setRemainSeconds</span><span style="color:#f92672">(</span>remainSeconds<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> Result<span style="color:#f92672">.</span><span style="color:#a6e22e">success</span><span style="color:#f92672">(</span>goodsDetailVo<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+123456789101112131415161718192021222324252627282930313233343536
+</code></pre></div><ul>
+<li>@RequestMapping中，去掉produces属性</li>
+<li><code>去掉Model向前端传值的逻辑</code>，只留下业务处理过程，并将所需要的的值封装在<code>GoodsDetailVo</code>对象中</li>
+<li><code>注意事项</code>在GoodsDetailVo中的属性字段要与前端所需要的字段名保持一致，如下所示，这样才能获取</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Data</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodsDetailVo</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">long</span> miaoshaStatus<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">long</span> remainSeconds<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> GoodsVo goods<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> MiaoShaUser user<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+12345678
+</code></pre></div><p>对应前端
+<img src="D:%5CBlog%5Csource_posts%5CJava%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%5C20200714222548967.png" alt="在这里插入图片描述"></p>
+<h4 id="312-对前端跳转的修改">3.1.2 对前端跳转的修改</h4>
+<p>我们从商品列表页面跳转到商品详情页，修改为如下
+<img src="D:%5CBlog%5Csource_posts%5CJava%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%5C20200714222755538.png" alt="在这里插入图片描述">
+注意其中<code>/goods_detail.htm</code>，它是放在static目录下的静态资源，为了防止视图解析器的跳转，将<code>html写为htm</code>
+<img src="D:%5CBlog%5Csource_posts%5CJava%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%5C20200714223101420.png" alt="在这里插入图片描述"></p>
+<h4 id="313-在applicationproperties中配置">3.1.3 在application.properties中配置</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#66d9ef">static</span>
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">-</span>mappings<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cache</span><span style="color:#f92672">.</span><span style="color:#a6e22e">period</span><span style="color:#f92672">=</span> 3600 <span style="color:#960050;background-color:#1e0010">#</span>缓存时间
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">chain</span><span style="color:#f92672">.</span><span style="color:#a6e22e">cache</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span> 
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">chain</span><span style="color:#f92672">.</span><span style="color:#a6e22e">enabled</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
+<span style="color:#960050;background-color:#1e0010">#</span>spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">chain</span><span style="color:#f92672">.</span><span style="color:#a6e22e">gzipped</span><span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">chain</span><span style="color:#f92672">.</span><span style="color:#a6e22e">html</span><span style="color:#f92672">-</span>application<span style="color:#f92672">-</span>cache<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
+spring<span style="color:#f92672">.</span><span style="color:#a6e22e">resources</span><span style="color:#f92672">.</span><span style="color:#a6e22e">static</span><span style="color:#f92672">-</span>locations<span style="color:#f92672">=</span>classpath<span style="color:#f92672">:/</span><span style="color:#66d9ef">static</span><span style="color:#f92672">/</span>
+12345678
+</code></pre></div><h2 id="4-post请求和get请求的区别">4. POST请求和GET请求的区别</h2>
+<ul>
+<li>GET：这个请求是幂等的，从服务端获取数据，反复获取不会对数据有影响。因为GET因为是读取，就可以对GET请求的数据做缓存。这个缓存可以做到浏览器本身上（彻底避免浏览器发请求），也可以做到代理上（如nginx），或者做到server端（用Etag，至少可以减少带宽消耗）</li>
+<li>POST：该请求是不幂等的，它会在页面表单上提交数据，请求服务器的响应，往往会对数据进行修改</li>
+</ul>
+<h2 id="5-解决超卖问题">5. 解决超卖问题</h2>
+<ol>
+<li>当多个线程同时读取到同一个库存数量时，防止超卖，修改SQL语句</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">添加</span>stock_count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">的条件</span>
+<span style="color:#66d9ef">update</span> miaosha_goods <span style="color:#66d9ef">set</span> stock_count <span style="color:#f92672">=</span> stock_count <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">where</span> goods_id <span style="color:#f92672">=</span> <span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">{</span>goodsId<span style="color:#960050;background-color:#1e0010">}</span> <span style="color:#66d9ef">and</span> stock_count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+<span style="color:#ae81ff">12</span>
+</code></pre></div><ol>
+<li>防止同一个用户秒杀多个，添加唯一索引，绑定user_id和goods_id，这样同一个用户对同一个商品的秒杀订单是唯一的</li>
+</ol>
+<p><img src="D:%5CBlog%5Csource_posts%5CJava%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%5C20200715211412343.png" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/project/">
+                    #project</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/" class="prev" rel="prev" title="Java高性能高并发秒杀系统(7)"><i class="iconfont icon-left"></i>&nbsp;Java高性能高并发秒杀系统(7)</a>
+         
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/" class="next" rel="next" title="Java高性能高并发秒杀系统(5)">Java高性能高并发秒杀系统(5)&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

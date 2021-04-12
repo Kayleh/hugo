@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/" />
+  <link rel="next" href="https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Software testing process | Kayleh
+       
+  </title>
+  <meta name="title" content="Software testing process | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Software testing process",
+    "headline" : "Software testing process",
+    "description" : "软件测试流程 过程模型 ★V模型 ★W模型 H模型 X模型 测试过程理念 软件测试的分类 测试需求分析 1.列出待测需求\n2.设定需求优先级\n3.详细描述测试需求内容\n4.经过评审并通过\n5.需求统计及分析\n   测试需求编号 测试需求名称 质量特性 所在模块 所在页面 优先级 负责人 版本号 需求详情描述     JXC-SRS-GN-XT-JBXX-001 公司名称 功能特性 系统设置模块 基本信息设置模块 低级 张三 v2.1 1.内容:文本 2.约束:非空                          测试用例 缺陷报告    缺陷编号 缺陷标题 状态(new新提交,open确认修改,fixed修改完成,closed回归通过,reopen回归不通过) 优先级(高,中,低) 严重程度(致命,严重,一般,轻微,建议) 提交人 缺陷描述     1                            QC 需求",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-01-16 01:17:42 \u002b0800 CST",
+    "dateModified" : "2021-01-16 01:17:42 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B\/",
+    "wordCount" : "58",
+    "keywords" : [ "test", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Software testing process</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2021-01-16 itemprop="datePublished">January 16, 2021</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="软件测试流程">软件测试流程</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610797689455.png" alt="1610797689455"></p>
+<h2 id="过程模型">过程模型</h2>
+<h3 id="v模型">★V模型</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610798317382.png" alt="1610798317382"></p>
+<h3 id="w模型">★W模型</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610799034052.png" alt="1610799034052"></p>
+<h3 id="h模型">H模型</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610800924088.png" alt="1610800924088"></p>
+<h3 id="x模型">X模型</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610801339901.png" alt="1610801339901"></p>
+<h2 id="测试过程理念">测试过程理念</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610802495380.png" alt="1610802495380"></p>
+<h3 id="软件测试的分类">软件测试的分类</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610811373564.png" alt="1610811373564"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/1610811498245.png" alt="1610811498245"></p>
+<h1 id="测试需求分析">测试需求分析</h1>
+<p>1.列出待测需求</p>
+<p>2.设定需求优先级</p>
+<p>3.详细描述测试需求内容</p>
+<p>4.经过评审并通过</p>
+<p>5.需求统计及分析</p>
+<table>
+<thead>
+<tr>
+<th>测试需求编号</th>
+<th>测试需求名称</th>
+<th>质量特性</th>
+<th>所在模块</th>
+<th>所在页面</th>
+<th>优先级</th>
+<th>负责人</th>
+<th>版本号</th>
+<th>需求详情描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JXC-SRS-GN-XT-JBXX-001</td>
+<td>公司名称</td>
+<td>功能特性</td>
+<td>系统设置模块</td>
+<td>基本信息设置模块</td>
+<td>低级</td>
+<td>张三</td>
+<td>v2.1</td>
+<td>1.内容:文本        2.约束:非空</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="测试用例">测试用例</h4>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611773740638.png" alt="1611773740638"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611817748756.png" alt="1611817748756"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611818572479.png" alt="1611818572479"></p>
+<h4 id="缺陷报告">缺陷报告</h4>
+<table>
+<thead>
+<tr>
+<th>缺陷编号</th>
+<th>缺陷标题</th>
+<th>状态(new新提交,open确认修改,fixed修改完成,closed回归通过,reopen回归不通过)</th>
+<th>优先级(高,中,低)</th>
+<th>严重程度(致命,严重,一般,轻微,建议)</th>
+<th>提交人</th>
+<th>缺陷描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611818765336.png" alt="1611818765336"></p>
+<h3 id="qc">QC</h3>
+<p>需求</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858108421.png" alt="1611858108421"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858126637.png" alt="1611858126637"></p>
+<p>text plan</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858334019.png" alt="1611858334019"></p>
+<p>步骤:</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858411788.png" alt="1611858411788"></p>
+<p>test lab</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858561200.png" alt="1611858561200"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858628802.png" alt="1611858628802"></p>
+<p>有缺陷时,立即提交缺陷</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858681020.png" alt="1611858681020"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858797611.png" alt="1611858797611"></p>
+<h5 id="自定义">自定义</h5>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611858911944.png" alt="1611858911944"></p>
+<h3 id="入库数量用例分析">入库数量用例分析</h3>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611861921070.png" alt="1611861921070"></p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1611862130739.png" alt="1611862130739"></p>
+<h3 id="组合测试">组合测试</h3>
+<p>判定表</p>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1612106566517.png" alt="1612106566517"></p>
+<h3 id="删除测试">删除测试</h3>
+<p><img src="D:%5CBlog%5Csource_posts%5C%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%5C1612107740235.png" alt="1612107740235"></p>
+<h3 id="安全测试">安全测试</h3>
+<p>XSS、SQL注入</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/>https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/test/">
+                    #test</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/" class="prev" rel="prev" title="SpringBoot startup process"><i class="iconfont icon-left"></i>&nbsp;SpringBoot startup process</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/" class="next" rel="next" title="Test case">Test case&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/" />
+  <link rel="canonical" href="https://blog.kayleh.top/download/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Download | Kayleh
+       
+  </title>
+  <meta name="title" content="Download | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Download",
+    "headline" : "Download",
+    "description" : "Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。\n为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。\n用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。\n每当有一个线程完成下载任务时，就不断从剩余的部分中划分出一段给它下载，直到整个文件的所有部分都下载完毕。\n当然，文件并不能被无限地分段，IDM 会设定一个段的阈值，当剩余的最大段小于这个阈值的时候，就不再分段了给空闲的线程了，只等待活动中的所有线程下载完毕。\n说完 IDM 的下载策略，我们大致有了思路。不过优秀的软件不是一蹴而就的，虽然我们想写出像 IDM 的下载器，但还需要从简单的实现开始，不断迭代优化。\n所以我们一开始采用的策略是：固定 N 个线程，并将文件划分为 N 段，每个线程负责下载一段数据。\n实现步骤 判断服务器是否支持断点续传\n首先要明确的是，多线程下载文件利用的是每个线程下载文件的一部分，那么就需要 HTTP 服务器支持请求部分数据，或者说断点续传，因此第一步需要判断目标文件是否支持断点续传。\nHTTP 请求头中有一个 Range 字段，可以用来指定要请求的数据范围，例如我们要请求从第 10 字节到第 20 字节的数据，可以将该字段写为 Range:bytes=10-20。\n相应的，如果 HTTP 服务器支持断点续传，那么对于指定了 Range 字段的请求，会返回 206 状态码。\n我们用 Curl 来测试一下：\ncurl -I --header \u0026#34;Range: bytes=0-\u0026#34; http:\/\/mirrors.163.com\/debian\/ls-lR.gz 得到的响应：\nHTTP\/1.1 206 Partial Content Server: nginx Date: Wed, 25 Apr 2018 02:57:56 GMT Content-Type: application\/octet-stream Content-Length: 15316619 Connection: keep-alive Last-Modified: Mon, 23 Apr 2018 14:38:44 GMT ETag: \u0026quot;5addeff4-e9b68b\u0026quot; Content-Range: bytes 0-15316618\/15316619 我们设置 Range: bytes=0- ，表示请求从第 0 字节到最后一字节的数据，那为什么还要指定该字段呢？这是出于两方面的原因：一是判断响应的状态码是否为 206，二是得到文件的大小。",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/blog.kayleh.top\/download\/",
+    "wordCount" : "403",
+    "keywords" : [ "C", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Download</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="java-多线程下载器的设计与实现">Java 多线程下载器的设计与实现</h1>
+<p>应用并发的场景有很多，下载文件就是一个很常见的并发场景。</p>
+<p>为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。</p>
+<p>用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。</p>
+<p>每当有一个线程完成下载任务时，就不断从剩余的部分中划分出一段给它下载，直到整个文件的所有部分都下载完毕。</p>
+<p>当然，文件并不能被无限地分段，IDM 会设定一个段的阈值，当剩余的最大段小于这个阈值的时候，就不再分段了给空闲的线程了，只等待活动中的所有线程下载完毕。</p>
+<p><img src="D:%5CBlog%5Csource_posts%5CDOWNLOAD%5Cidm.png" alt="img"></p>
+<p>说完 IDM 的下载策略，我们大致有了思路。不过优秀的软件不是一蹴而就的，虽然我们想写出像 IDM 的下载器，但还需要从简单的实现开始，不断迭代优化。</p>
+<p>所以我们一开始采用的策略是：固定 N 个线程，并将文件划分为 N 段，每个线程负责下载一段数据。</p>
+<h3 id="实现步骤">实现步骤</h3>
+<p><strong>判断服务器是否支持断点续传</strong></p>
+<p>首先要明确的是，多线程下载文件利用的是每个线程下载文件的一部分，那么就需要 HTTP 服务器支持请求部分数据，或者说断点续传，因此第一步需要判断目标文件是否支持断点续传。</p>
+<p>HTTP 请求头中有一个 <code>Range</code> 字段，可以用来指定要请求的数据范围，例如我们要请求从第 10 字节到第 20 字节的数据，可以将该字段写为 <code>Range:bytes=10-20</code>。</p>
+<p>相应的，如果 HTTP 服务器支持断点续传，那么对于指定了 <code>Range</code> 字段的请求，会返回 206 状态码。</p>
+<p>我们用 Curl 来测试一下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -I --header <span style="color:#e6db74">&#34;Range: bytes=0-&#34;</span> http://mirrors.163.com/debian/ls-lR.gz
+</code></pre></div><p>得到的响应：</p>
+<pre><code class="language-null" data-lang="null">HTTP/1.1 206 Partial Content
+Server: nginx
+Date: Wed, 25 Apr 2018 02:57:56 GMT
+Content-Type: application/octet-stream
+Content-Length: 15316619
+Connection: keep-alive
+Last-Modified: Mon, 23 Apr 2018 14:38:44 GMT
+ETag: &quot;5addeff4-e9b68b&quot;
+Content-Range: bytes 0-15316618/15316619
+</code></pre><p>我们设置 <code>Range: bytes=0-</code> ，表示请求从第 0 字节到最后一字节的数据，那为什么还要指定该字段呢？这是出于两方面的原因：一是判断响应的状态码是否为 206，二是得到文件的大小。</p>
+<p>如果服务器支持断点续传，那么我们采用多线程进行下载，如果不支持断点续传，就采用单线程下载。</p>
+<p><strong>文件分段</strong></p>
+<p>我们得到了文件的大小 fileSize，将其分为 N 段，则每一段的大小为 <code>fileSize / N</code>，由于文件通常不会正好被分为 N 段，因此最后一段就等于剩余的部分的大小。</p>
+<p>我们用一个数组 endPoint 来存放每一段的起止位置，例如一个 10 B 的文件，起止范围是 0~9，如果分为 3 段下载，那么 <code>endPoint = {0, 3, 6, 10}</code>，对每段来说是左闭右开区间。</p>
+<p>解释：对于第 i 段（i 从 0 开始）来说，从 <code>endPoint[i]</code> 开始下载，在 <code>endPoint[i + 1] - 1</code> 处停止。同理，对第 i + 1 段来说，从 <code>endPoint[i + 1]</code> 开始，在 <code>endPoint[i + 2] - 1</code> 处停止。</p>
+<p><strong>创建下载线程</strong></p>
+<p>我们为每一段创建一个下载线程进行下载，每一段都存放在一个单独的临时文件中。</p>
+<p>下载线程需要做的事情可以总结如下：</p>
+<ul>
+<li>设置请求头的 <code>Range</code> 字段来指定请求范围</li>
+<li>设置超时时间</li>
+<li>连接 HTTP 服务器</li>
+<li>创建临时文件（第一次下载该段）</li>
+<li>读取服务器返回的数据，写入到临时文件，直到读取的字节数等于该段的大小</li>
+<li>关闭临时文件</li>
+</ul>
+<p>上面是顺利下载的流程，我们还需要在出现下列问题时进行重试：</p>
+<ul>
+<li>如果连接时间或读取时间超时</li>
+<li>临时文件读写出错</li>
+</ul>
+<p>这样又有问题了，对于该线程来说，重试时是重新下载整段，还是接着下载剩余部分？我们知道，最好就是接着下载还没下完的那部分，那如何实现呢？</p>
+<p>我们可以这么做：每个线程保存自己负责部分的起止位置，在刚启动线程时，起止位置就是段的起止位置，创建临时文件写出已下载的数据。在下载数据时，实时更新线程的起始位置为当前已下载字节的下一个字节，当出错需要重试时，直接从该位置开始，并且写出到之前创建的临时文件中。</p>
+<p><strong>创建监视线程</strong></p>
+<p>我们创建一个守护线程，负责监视文件的下载进度、下载速度、当前活跃线程数，在各线程下载结束后，通知主线程做下一步处理。</p>
+<p><strong>处理临时文件</strong></p>
+<p>当主线程收到通知，所有部分都下载完成时，就需要对临时文件进行清理。</p>
+<p>如果是多线程下载的文件，那么需要对多个临时文件进行合并。</p>
+<p>如果是单线程下载的文件，则对临时文件进行重命名。</p>
+<h3 id="具体实现">具体实现</h3>
+<p>这里给出程序的轮廓，进行整体上的介绍，完整的源码可查看 Github：https://github.com/wrayzheng/java-multithread-downloader</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HttpDownloader</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> resumable<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> URL url<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> File localFile<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> endPoint<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Object waiting <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">private</span> AtomicInteger downloadedBytes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger<span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> AtomicInteger aliveThreads <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger<span style="color:#f92672">(</span>0<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> multithreaded <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> fileSize <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> THREAD_NUM <span style="color:#f92672">=</span> 5<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> TIME_OUT <span style="color:#f92672">=</span> 5000<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> MIN_SIZE <span style="color:#f92672">=</span> 2 <span style="color:#f92672">&lt;&lt;</span> 20<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HttpDownloader</span><span style="color:#f92672">(</span>String Url<span style="color:#f92672">,</span> String localPath<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> MalformedURLException <span style="color:#f92672">{...}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HttpDownloader</span><span style="color:#f92672">(</span>String Url<span style="color:#f92672">,</span> String localPath<span style="color:#f92672">,</span>
+            <span style="color:#66d9ef">int</span> threadNum<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> timeout<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> MalformedURLException <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//开始下载文件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">get</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//检测目标文件是否支持断点续传，以决定是否开启多线程下载文件的不同部分
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">supportResumeDownload</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//监测下载速度及下载状态，下载完成时通知主线程
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startDownloadMonitor</span><span style="color:#f92672">()</span> <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//对临时文件进行合并或重命名
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cleanTempFile</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//合并多线程下载产生的多个临时文件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{...}</span>
+
+    <span style="color:#75715e">//一个下载线程负责下载文件的某一部分，如果失败则自动重试，直到下载完成
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DownloadThread</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> id<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> OutputStream out<span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">DownloadThread</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> id<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> start<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> end<span style="color:#f92672">)</span> <span style="color:#f92672">{...}</span>
+
+        <span style="color:#75715e">//保证文件的该部分数据下载完成
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{...}</span>
+
+        <span style="color:#75715e">//下载文件指定范围的部分
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">download</span><span style="color:#f92672">()</span> <span style="color:#f92672">{...}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这里将 DownloadThread 定义为 HttpDownloader 的内部类，这是因为一个 HttpDownloader 实例对应一个文件下载任务，该实例中存放了该任务的各种数据，而下载线程是与该任务是关联的，需要用到这些数据，因此定义为内部类可以直接共享这些数据，从而避免过多的参数传递和存储。</p>
+<p>要下载一个文件，首先创建一个 HttpDownloader 实例，必须传入的参数是目标文件 URL 和本地的存储位置，可选参数是线程数和超时时间。</p>
+<p>HttpDownloader 的入口方法为 get()，它的工作如下：</p>
+<ul>
+<li>调用 supportResumeDownload() 方法判断目标文件是否支持断点续传以及是否大于设定的文件最小值，以决定是否采取多线程的下载方式；</li>
+<li>计算每一段的起止位置，存入 endPoint；</li>
+<li>创建 DownloadThread 线程进行下载；</li>
+<li>调用 startDownloadMonitor() 方法启动监视线程；</li>
+<li>等待文件下载完毕；</li>
+<li>调用 cleanTempFile() 处理临时文件；</li>
+<li>输出结束信息。</li>
+</ul>
+<p>再来介绍一下 DownloadThread，它的入口方法是 run()，工作如下：</p>
+<ul>
+<li>调用 download() 方法下载指定部分的数据;</li>
+<li>如果成功，则线程结束，如果失败，则回到上一步。</li>
+</ul>
+<h3 id="下载测试">下载测试</h3>
+<p>对于单个连接限速的服务器，多线程下载才能体现其优势，如果服务器本身不对连接限速，那么单个连接也能接近带宽上限。</p>
+<p>我们来看看，对于单个连接速度远小于带宽时，单线程与多线程的对比。</p>
+<p>首先是单个线程进行下载：</p>
+<p><img src="D:%5CBlog%5Csource_posts%5CDOWNLOAD%5Cdownloader-one-threads.gif" alt="img"></p>
+<p>用时 54.133 秒，平均下载速度 42 KB/s。</p>
+<p>开启 10 个线程进行下载：</p>
+<p><img src="D:%5CBlog%5Csource_posts%5CDOWNLOAD%5Cdownloader-ten-threads.gif" alt="img"></p>
+<p>用时 10.144 秒，平均下载速度 228 KB/s。</p>
+<p>可以看到，相比单线程下载，开启多线程之后下载速度有了巨大的提升。</p>
+<p>在实际下载时，根据网络状况不同，设置不同的超时时间，对下载速度也有不小的影响。如果超时时间设置过小，会导致线程频繁建立连接，而建立连接是相对耗时的操作，导致下载效率低下；如果超时时间设置过长，可能连接已经失效，而客户端却长时间等待，无谓地消耗时间。</p>
+<h3 id="结语">结语</h3>
+<p>这是一个最基本的多线程下载器的实现，将文件划分为固定的 N 段，分配给 N 个线程下载，当一个线程下载完成后，该线程就随之结束了，没有被再次利用。</p>
+<p>之后我会对该程序做进一步的优化，一方面会采取和 IDM 类似的下载策略，进一步提高下载效率，另一方面，也会在功能和鲁棒性方面进行加强，完善异常处理。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/download/>https://blog.kayleh.top/download/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" class="prev" rel="prev" title="Java高性能高并发秒杀系统"><i class="iconfont icon-left"></i>&nbsp;Java高性能高并发秒杀系统</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/" class="next" rel="next" title="concurrency-principle">concurrency-principle&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>frame on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/frame/</link>
+    <description>Recent content in frame on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Jan 2021 20:40:54 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/frame/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringBoot startup process</title>
+      <link>https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Fri, 15 Jan 2021 20:40:54 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</guid>
+      <description>SpringBoot应用启动流程 我们将各步骤总结精炼如下：
+ 通过 SpringFactoriesLoader 加载 META-INF/spring.factories 文件，获取并创建 SpringApplicationRunListener 对象 然后由 SpringApplicationRunListener 来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener 来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener 来发出 contextPrepared 消息，告知SpringBoot 应用使用的 ApplicationContext 已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener 来发出 contextLoaded 消息，告知 SpringBoot 应用使用的 ApplicationContext 已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener 来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener 来发出 running 消息，告知程序已运行起来了  至此，全流程结束！</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC work stream</title>
+      <link>https://blog.kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Wed, 16 Dec 2020 23:13:22 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</guid>
+      <description>SpringMVC工作流程   处理模型数据方式一:将方法的返回值设置为ModelAndView
+  处理模型数据方式二:方法的返回值仍是String类型,在方法的入参中传入Map,Model或者ModelMap,
+不管将处理器方法的返回值设置为ModelAndView还是在方法的入参传入Map,Model或者ModelMap,SpringMVC都会转换为一个ModelAndView对象.
+  </description>
+    </item>
+    
+    <item>
+      <title>Spring Related</title>
+      <link>https://blog.kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <pubDate>Wed, 16 Dec 2020 21:44:11 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <description>Spring相关 什么是IOC IOC： Inversion of control 反转控制。 比如以前创建一个对象，需要自己主动new 一个对象，通过IOC，对象的创建交由Spring框架 创建，开发人员直接使用已经创建好的对象。
+什么是DI DI： Dependency Injection 依赖注入。 通过IOC创建对象的时候，可以注入字符串甚至其他对象。 比如DAO就会注入session factory.
+通常IOC和DI是紧密结合，一起使用的
+什么是AOP 把功能划分为核心业务功能和其他的周边辅助功能，比如日志，性能统计，事务等等。 其他的周边辅助功能可以都看作切面功能。核心功能和切面功能分别独立开发，通过面向切面编程，可以有机的把核心业务功能和切面功能根据需求结合在一起。 比如增加操作可以和事务切面结合在一起，查询操作可以和性能统计切面结合在一起。 在配置方面，要配置切面，切点，并且通过aspect:config 把切面和切点结合起来。
+bean的作用域  可以通过配置文件的scope属性来指定bean的作用域
+  singleton:默认值.当IOC容器一创建就会创建bean的实例.而且是单例的,每次得到的都是同一个. prototype:原型的.当IOC容器一创建不再实例化该bean,每次调用getBean方法时再实例化该bean,而且每次得到的不是同一个 request:每次请求实例化一个bean session:在一次会话中共享一个bean  Spring支持的常用数据库事务传播属性和事务隔离级别   propagation:用来设置事务的传播行为
+事务的传播行为:一个事务方法运行在了一个开启了事务的方法中时,当前方法时使用原来的事务还是开启一个新的事务
+ Propagation.REQUIRED:默认值,使用原来的事务 Propagation.REQUIRED_NEW:将原来的事务挂起,开启一个新的事务    isolation:用来设置事务的隔离级别
+ Isolation.REPEATABLE_READ:可重复读,MySQL默认的隔离级别 Isolation.READ_COMMITTED:读已提交,Oracle默认的隔离级别,开发时通常使用的隔离级别    </description>
+    </item>
+    
+    <item>
+      <title>Inversion of Control控制反转</title>
+      <link>https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</link>
+      <pubDate>Wed, 13 May 2020 16:42:55 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</guid>
+      <description>&lt;h3 id=&#34;控制反转的定义&#34;&gt;控制反转的定义&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spring、SpringMVC、Mybatis整合</title>
+      <link>https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</link>
+      <pubDate>Mon, 20 Apr 2020 21:05:31 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</guid>
+      <description>SSM整合
+整合说明 服务器开发分为三层,表现层、业务层、持久层 表现层使用SpringMVC实现,业务程使用Spring实现,持久层使用Mybatis实现 使用Spring框架来整合 SpringMVC和Mybatis框架 这里使用xml配置文件+注解的方式进行搭建
+最终目标 最终实现通过前端页面对数据库进行查询和插入,实现用户的登录注册功能 准备 创建Maven工程 选择webapp 数据库准备 create database ssm; use ssm; create table account( id int primary key auto_increment, name varchar(20), money double ); ####创建目录 ####导入依赖 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;groupId&amp;gt;com.kayleh&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;SSM&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt; &amp;lt;name&amp;gt;SSM Maven Webapp&amp;lt;/name&amp;gt; &amp;lt;!-- FIXME change it to the project&amp;#39;s website --&amp;gt; &amp;lt;url&amp;gt;http://www.example.com&amp;lt;/url&amp;gt; &amp;lt;!--版本锁定--&amp;gt; &amp;lt;properties&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;spring.version&amp;gt;5.0.2.RELEASE&amp;lt;/spring.version&amp;gt; &amp;lt;slf4j.version&amp;gt;1.6.6&amp;lt;/slf4j.version&amp;gt; &amp;lt;log4j.version&amp;gt;1.2.12&amp;lt;/log4j.version&amp;gt; &amp;lt;mysql.version&amp;gt;5.1.6&amp;lt;/mysql.version&amp;gt; &amp;lt;mybatis.version&amp;gt;3.4.5&amp;lt;/mybatis.version&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC@ModelAttribute的使用</title>
+      <link>https://blog.kayleh.top/springmvc-modelattribute/</link>
+      <pubDate>Sun, 19 Apr 2020 21:04:07 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/springmvc-modelattribute/</guid>
+      <description>@ModelAttribute？ @ModelAttribute的原理比较复杂，需要对源码有一定的理解。它可以使被
+@ModelAttribute修饰的方法在控制器的处理方法之前调用。 但如果@ModelAttribute标注在方法的入参前，它可以从隐含对象中获取隐含的模型数据中获取对象，再将请求参数绑定到对象中，再传入入参。
+ 实际场景： Spring在进行数据库update全字段更新操作提交表单的时候，从页面获取的数据会封装成一个new的pojo对象，没有带的值为null；所以我们只能更新我们提交的数据。ModelAttribute暂时保存表单pojo对象，覆盖数据库保存的pojo对象的数据即可。
+ModelAttribute提前与目标方法运行 /** * @author Kayleh */ @Controller public class ModelAttributeTest { @RequestMapping(&amp;#34;/update&amp;#34;) public String update(){ System.out.println(&amp;#34;页面update的bean对象：&amp;#34;+bean); } @ModelAttribute public void modelAttribute(){ System.out.println(&amp;#34;ModelAttribute调用了...&amp;#34;); } ===========输出========= ModelAttribute调用了... 页面update的bean对象：bean{......} 可以得出：ModelAttribute标注的方法总会在目标方法(update)前执行。 ModelAttribute可以取出隐含对象的值 @ModelAttribute public void TestModelAttribute(Map&amp;lt;String, Object&amp;gt; map){ POJO pojo = new POJO(&amp;#34;kayleh&amp;#34;, 1104); map.put(&amp;#34;value&amp;#34;,pojo); System.out.println(&amp;#34;modelAttribute方法...); } @RequestMapping(&amp;#34;/updateBook&amp;#34;) public String updateBook(@RequestParam(value=&amp;#34;author&amp;#34;)String author, Map&amp;lt;String, Object&amp;gt; model, HttpServletRequest request, @ModelAttribute(&amp;#34;value&amp;#34;)POJO pojo ){ System.out.println(pojo); return &amp;#34;ok&amp;#34;; } @ModelAttribute(&amp;ldquo;value&amp;rdquo;)这里如果指定的&amp;quot;value&amp;quot;,value就是从map取出参数的key.如果是@ModelAttribute,没有指定key,SpringMVC会默认使用返回值类型的首字母小写作为key.如pOJO.</description>
+    </item>
+    
+    <item>
+      <title>Spring架构</title>
+      <link>https://blog.kayleh.top/spring%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Sun, 19 Apr 2020 20:40:54 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/spring%E6%9E%B6%E6%9E%84/</guid>
+      <description>架构图</description>
+    </item>
+    
+    <item>
+      <title>SpringMVC环境搭建</title>
+      <link>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sun, 14 Jul 2019 13:30:23 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;h2 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h2&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

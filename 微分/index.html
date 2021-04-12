@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/" />
+  <link rel="next" href="https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%BE%AE%E5%88%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           微分 | Kayleh
+       
+  </title>
+  <meta name="title" content="微分 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "微分",
+    "headline" : "微分",
+    "description" : "微分 微分的定义： 充要条件\n可微就可导，可导就可微\nA就是$x_0$上的导数\n$$dy=f^{\u0027}(x)△x=f^{\u0027}(x)dx$$\n$△x=dx$是精确值，$△y≈dy$是近似值\n导数也叫微商 ，导数定义的dy是对dx求导，可以看做一个整体：\n例题： 微分的几何意义 基本公式 $dc=c\u0026rsquo;dx=0$\n略\n四则运算 例题： 不变性：\n微分应用  近似计算\n $$f(x_0\u002b△x)≈f(x_0)\u002bf\u0027(x_0)△x$$ ，|△x|取很小\n例题： 微分中值定理 费马定理 左导数和右导数要想相等，只能等于0\n∴$f^{\u0027}(x_0)=0$\n驻点： 导数为0的点就叫驻点。\n罗尔定理 拉姆朗日中值定理  f(x)在区间I连续，I内可导且导数恒为0。f(x)=C\n证明：\n 柯西中值定理 由拉姆朗日中值定理推出：\n柯西能推出拉格朗日定理，拉格朗日能推出罗尔\n#泰勒定理 定理：$f(x)$表示成$x-x_0$的n次多项式\u002b$R_n (x)$",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-17 23:39:06 \u002b0800 CST",
+    "dateModified" : "2020-09-17 23:39:06 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%BE%AE%E5%88%86\/",
+    "wordCount" : "38",
+    "keywords" : [ "math", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">微分</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-09-17 itemprop="datePublished">September 17, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="微分">微分</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600361375405.png" alt="1600361375405"></p>
+<h2 id="微分的定义">微分的定义：</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600361823824.png" alt="1600361823824"></p>
+<p><strong>充要条件</strong></p>
+<p>可微就可导，可导就可微</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600362288099.png" alt="1600362288099"></p>
+<p>A就是$x_0$上的导数</p>
+<p>$$dy=f^{'}(x)△x=f^{'}(x)dx$$</p>
+<p>$△x=dx$是精确值，$△y≈dy$是近似值</p>
+<p>导数也叫微商 ，导数定义的dy是对dx求导，可以看做一个整体：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600363016711.png" alt="1600363016711"></p>
+<h3 id="例题">例题：</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600363590738.png" alt="1600363590738"></p>
+<h3 id="微分的几何意义">微分的几何意义</h3>
+<p><!-- raw HTML omitted --></p>
+<h2 id="基本公式">基本公式</h2>
+<p>$dc=c&rsquo;dx=0$</p>
+<p>略</p>
+<h2 id="四则运算">四则运算</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600394726408.png" alt="1600394726408"></p>
+<h3 id="例题-1">例题：</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600395225067.png" alt="1600395225067"></p>
+<p>不变性：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600396809213.png" alt="1600396809213"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600396977930.png" alt="1600396977930"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600397139589.png" alt="1600397139589"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600398508737.png" alt="1600398508737"></p>
+<h2 id="微分应用">微分应用</h2>
+<blockquote>
+<p>近似计算</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600398647225.png" alt="1600398647225"></p>
+<p>$$f(x_0+△x)≈f(x_0)+f'(x_0)△x$$ ，|△x|取很小</p>
+<h4 id="例题-2">例题：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600400532839.png" alt="1600400532839"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600401937159.png" alt="1600401937159"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600403890381.png" alt="1600403890381"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600404415925.png" alt="1600404415925"></p>
+<h2 id="微分中值定理">微分中值定理</h2>
+<h3 id="费马定理">费马定理</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600413540338.png" alt="1600413540338"></p>
+<p>左导数和右导数要想相等，只能等于0</p>
+<p>∴$f^{'}(x_0)=0$</p>
+<h4 id="驻点">驻点：</h4>
+<p>导数为0的点就叫驻点。</p>
+<h3 id="罗尔定理">罗尔定理</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600418546474.png" alt="1600418546474"></p>
+<h3 id="拉姆朗日中值定理">拉姆朗日中值定理</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600418973628.png" alt="1600418973628"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600419102500.png" alt="1600419102500"></p>
+<blockquote>
+<p>f(x)在区间I连续，I内可导且导数恒为0。f(x)=C</p>
+<p>证明：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600419285714.png" alt="1600419285714"></p>
+</blockquote>
+<h3 id="柯西中值定理">柯西中值定理</h3>
+<p>由拉姆朗日中值定理推出：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600420461707.png" alt="1600420461707"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600420576192.png" alt="1600420576192"></p>
+<p>柯西能推出拉格朗日定理，拉格朗日能推出罗尔</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600421270529.png" alt="1600421270529"></p>
+<h3 id="泰勒定理">#泰勒定理</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600522802705.png" alt="1600522802705"></p>
+<p>定理：$f(x)$表示成$x-x_0$的n次多项式+$R_n (x)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600524775977.png" alt="1600524775977"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600525026726.png" alt="1600525026726"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600525632036.png" alt="1600525632036"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%BE%AE%E5%88%86/1600525747934.png" alt="1600525747934"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%BE%AE%E5%88%86/>https://blog.kayleh.top/%E5%BE%AE%E5%88%86/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/math/">
+                    #math</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/" class="prev" rel="prev" title="导数"><i class="iconfont icon-left"></i>&nbsp;导数</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/" class="next" rel="next" title="洛必达法则">洛必达法则&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

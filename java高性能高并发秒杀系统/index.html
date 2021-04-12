@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/" />
+  <link rel="next" href="https://blog.kayleh.top/download/" />
+  <link rel="canonical" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Java高性能高并发秒杀系统 | Kayleh
+       
+  </title>
+  <meta name="title" content="Java高性能高并发秒杀系统 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Java高性能高并发秒杀系统",
+    "headline" : "Java高性能高并发秒杀系统",
+    "description" : "集成Mybatis和Redis的知识点",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/blog.kayleh.top\/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F\/",
+    "wordCount" : "568",
+    "keywords" : [ "project", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Java高性能高并发秒杀系统</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h6 id="csdn方-圆"><em>@CSDN方 圆</em></h6>
+<h2 id="1-集成mybatis">1. 集成Mybatis</h2>
+<blockquote>
+<p>我觉得在集成Mybatis时问题并不大</p>
+</blockquote>
+<h3 id="11-新接触的不用xml文件写mapper文件">1.1 新接触的不用xml文件写Mapper文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Mapper</span>
+<span style="color:#a6e22e">@Component</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserMapper</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Select</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;select * from user where id = #{id}&#34;</span><span style="color:#f92672">)</span>
+    User <span style="color:#a6e22e">selectById</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@Param</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">int</span> id<span style="color:#f92672">);</span>
+
+    <span style="color:#a6e22e">@Insert</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;insert into user (id,name) values (#{id},#{name})&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">insertUser</span><span style="color:#f92672">(</span>User user<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ul>
+<li>注解<code>@Mapper</code>，标记该类是一个Mapper</li>
+<li>通常之前做练习写数据库的CRUD都是在xml文件中进行的，这次采用的是在对应的方法上标注注解的形式，<code>@Select</code> <code>@Insert</code></li>
+</ul>
+<h3 id="12-事务的测试">1.2 事务的测试</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> <span style="color:#f92672">{</span>
+	<span style="color:#f92672">...</span>
+	
+    <span style="color:#a6e22e">@Transactional</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">tx</span><span style="color:#f92672">(){</span>
+        User user1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;222&#34;</span><span style="color:#f92672">);</span>
+        userMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">insertUser</span><span style="color:#f92672">(</span>user1<span style="color:#f92672">);</span>
+
+        User user2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;333&#34;</span><span style="color:#f92672">);</span>
+        userMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">insertUser</span><span style="color:#f92672">(</span>user2<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ul>
+<li>在UserService中，创建了一个方法，用来测试事务，用<code>@Transactional</code>标记</li>
+</ul>
+<h3 id="13-自定义一个result类用于返回结果使用">1.3 自定义一个Result类，用于返回结果使用</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Data</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> code<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String msg<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> T data<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 成功时调用
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">success</span><span style="color:#f92672">(</span>T data<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;(</span>data<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 失败时调用
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">error</span><span style="color:#f92672">(</span>T data<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;(</span>data<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">(</span>T data<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> data<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> code<span style="color:#f92672">,</span>String msg<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> code<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> msg<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">(</span>CodeMsg codeMsg<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>codeMsg <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            msg <span style="color:#f92672">=</span> codeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">getMsg</span><span style="color:#f92672">();</span>
+            code <span style="color:#f92672">=</span> codeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">getCode</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><ul>
+<li>它包含了三个字段，<code>code用来保存状态码</code>，<code>msg状态信息</code>，<code>data是返回的对象</code>（泛型）</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>看<code>类声明的语句</code>，其中使用了泛型，这表示返回对象时，我们对其类型是“已知”的，不必强转，增加了灵活性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">success</span><span style="color:#f92672">(</span>T data<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Result<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;(</span>data<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+123
+</code></pre></div><p>其中的方法语句，在<code>返回值中标记了泛型</code>，需要我们在函数定义的中在返回值前加上<code>标识泛型</code>，可以把它想象成正常的返回值，像String等等，只不过用T来表示罢了</p>
+<p>不过，在调用这个方法的时候用两种方法</p>
+<ol>
+<li>直接调用 <code>Result.success(&quot;Success&quot;)</code>;</li>
+<li>标记泛型调用，<code>Result.success(&quot;Success&quot;)</code>;</li>
+</ol>
+<p>两种使用方法的结果都是一样的，不过第二种更能<code>突出它是泛型方法的使用</code>，推荐。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Result</span><span style="color:#f92672">(</span>T data<span style="color:#f92672">){</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> data<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+123
+</code></pre></div><p>最后这个实在简单，在构造方法参数中使用泛型，传什么类型就自动为什么类型。</p>
+<ul>
+<li>最后总结一下这个Result的功能
+1.在成功和失败的时候用于结果返回表示
+2.另外它引入CodeMsg类，在CodeMsg类中，我们自定义了一些状态码和状态信息，用起来也比较方便</li>
+</ul>
+<p>下面是CodeMsg类的代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Data</span>
+<span style="color:#a6e22e">@AllArgsConstructor</span>
+<span style="color:#a6e22e">@NoArgsConstructor</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CodeMsg</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> code<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String msg<span style="color:#f92672">;</span>
+
+    <span style="color:#75715e">//通用错误码
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> CodeMsg SUCCESS <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CodeMsg<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;success&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><a href="https://www.cnblogs.com/jpfss/p/9928747.html">Java泛型详解：和Class的使用。泛型类，泛型方法的详细使用实例</a></p>
+<hr>
+<h2 id="2-集成redis">2. 集成Redis</h2>
+<h3 id="21-与服务器的redis建立连接">2.1 与服务器的Redis建立连接</h3>
+<p>我们的最终目的是要创建出<code>JedisPool</code>，用来创建出Jedis与服务器中Redis进行交互</p>
+<p>首先，需要在配置文件<code>application.properties中写好配置信息</code>，比如主机地址、端口号、最大连接数等等</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">redis.host<span style="color:#f92672">=</span>182.xxx.xxx.xxx
+redis.port<span style="color:#f92672">=</span><span style="color:#ae81ff">6379</span>
+redis.timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+redis.poolMaxTotal<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+redis.poolMaxIdle<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+redis.poolMaxWait<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+<span style="color:#ae81ff">123456</span>
+</code></pre></div><p>写好配置文件，我们要对其进行读取，创建读取配置信息的配置类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Data</span>
+<span style="color:#a6e22e">@Component</span>
+<span style="color:#75715e">//读取配置文件的注解,指定前缀，读以redis打头的
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@ConfigurationProperties</span><span style="color:#f92672">(</span>prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;redis&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedisConfig</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> String host<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> timeout<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> poolMaxTotal<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> poolMaxIdle<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> poolMaxWait<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+123456789101112
+</code></pre></div><ul>
+<li>注意注解<code>@ConfigurationProperties(prefix = &quot;redis&quot;)</code>，用来读取前缀是redis的配置信息，字段与要读取的信息一致</li>
+</ul>
+<p>接下来就是要创建<code>JedisPool</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JedisPoolFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Autowired</span>
+    RedisConfig redisConfig<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> JedisPool <span style="color:#a6e22e">jedisPool</span><span style="color:#f92672">(){</span>
+        JedisPoolConfig jedisPoolConfig <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JedisPoolConfig<span style="color:#f92672">();</span>
+        jedisPoolConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxIdle</span><span style="color:#f92672">(</span>redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getPoolMaxIdle</span><span style="color:#f92672">());</span>
+        jedisPoolConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">setMaxTotal</span><span style="color:#f92672">(</span>redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getPoolMaxTotal</span><span style="color:#f92672">());</span>
+        jedisPoolConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">setEvictorShutdownTimeoutMillis</span><span style="color:#f92672">(</span>redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimeout</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> 1000<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> JedisPool<span style="color:#f92672">(</span>jedisPoolConfig<span style="color:#f92672">,</span>
+                redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getHost</span><span style="color:#f92672">(),</span>redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getPort</span><span style="color:#f92672">(),</span>redisConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimeout</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> 1000<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+12345678910111213141516
+</code></pre></div><p>RedisConfig，作为Bean自动装配进来，我们还要建立<code>JedisPoolConfig</code>来设置一些参数，供建立JedisPool时读取</p>
+<p>以上，完成了与服务器Redis的建立连接过程</p>
+<h3 id="22-key前缀的必要">2.2 Key前缀的必要</h3>
+<p>毕竟我们这个是高并发的项目，那么多个人在对同一个key进行读取时，如果不对key值进行修饰，很容易发生数据损坏，所以，我们采用了<code>前缀修饰</code>，在设计模式中，是对<code>模板方法模式</code>的应用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200707171433298.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>先创建一个<code>接口</code>，其中有两个方法，获得失效时间和获取前缀</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">KeyPrefix</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//添加失效时间
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">expireSeconds</span><span style="color:#f92672">();</span>
+    <span style="color:#75715e">//获取前缀
+</span><span style="color:#75715e"></span>    String <span style="color:#a6e22e">getPrefix</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+123456
+</code></pre></div><ul>
+<li>随后，我们创建的是<code>抽象类</code>，它就像是一个<code>模板</code>，为其他实现该抽象类的子类，建立了一个模板（我在说什么？？？应该传达清楚了）
+我们对接口中的方法进行全部重写，其中获取前缀时，前缀为类名，提供<code>两种构造函数</code>，一种为无失效时间的，另一种为有失效时间的</li>
+</ul>
+<blockquote>
+<p>抽象类中构造方法的理解：其中的构造方法与普通类中的构造方法<code>长得一样</code>，不过它<code>不能用来构造自己</code>，因为它是抽象的，不能实例化，但是一旦子类实现了该抽象类，那么<code>子类便可以调用其抽象类的构造函数进行实例化</code></p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BasePrefix</span> <span style="color:#66d9ef">implements</span> KeyPrefix<span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> expireSecond<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> String prefix<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BasePrefix</span><span style="color:#f92672">(</span>String prefix<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>prefix<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BasePrefix</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> expireSecond<span style="color:#f92672">,</span>String prefix<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">expireSecond</span> <span style="color:#f92672">=</span> expireSecond<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">prefix</span> <span style="color:#f92672">=</span> prefix<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">expireSeconds</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> expireSecond<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getPrefix</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//获取前缀，前面添加类名
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> getClass<span style="color:#f92672">().</span><span style="color:#a6e22e">getSimpleName</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> prefix<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+12345678910111213141516171819202122232425
+</code></pre></div><ul>
+<li>最后，展现出抽象类的<code>实现类</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserKey</span> <span style="color:#66d9ef">extends</span> BasePrefix <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserKey</span><span style="color:#f92672">(</span>String prefix<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>prefix<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//UserKey的两种前缀形式，一种是根据id另一种根据name
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> UserKey getById <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserKey<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> UserKey getByName <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserKey<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+12345678910
+</code></pre></div><p>它的构造函数就是用的<code>抽象父类中的构造函数</code>，而且定义了两个静态字段，一种是根据Id来生成前缀，前缀格式会根据getPrefix()方法，表示为<code>类名+：+id</code></p>
+<h3 id="23-简单看redisservice中的一个方法">2.3 简单看RedisService中的一个方法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Service</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RedisService</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Autowired</span>
+    JedisPool jedisPool<span style="color:#f92672">;</span>
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>KeyPrefix keyPrefix<span style="color:#f92672">,</span>String key<span style="color:#f92672">,</span>T value<span style="color:#f92672">){</span>
+        <span style="color:#75715e">//获取Jedis对象
+</span><span style="color:#75715e"></span>        Jedis jedis <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            jedis <span style="color:#f92672">=</span> jedisPool<span style="color:#f92672">.</span><span style="color:#a6e22e">getResource</span><span style="color:#f92672">();</span>
+
+            String str <span style="color:#f92672">=</span> beanToString<span style="color:#f92672">(</span>value<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>str <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> str<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">){</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+            String realKey <span style="color:#f92672">=</span> keyPrefix<span style="color:#f92672">.</span><span style="color:#a6e22e">getPrefix</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> key<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">int</span> seconds <span style="color:#f92672">=</span> keyPrefix<span style="color:#f92672">.</span><span style="color:#a6e22e">expireSeconds</span><span style="color:#f92672">();</span>
+
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>seconds <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">){</span>
+                jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>realKey<span style="color:#f92672">,</span>str<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+                <span style="color:#75715e">//设置超时时间
+</span><span style="color:#75715e"></span>                jedis<span style="color:#f92672">.</span><span style="color:#a6e22e">setex</span><span style="color:#f92672">(</span>realKey<span style="color:#f92672">,</span>seconds<span style="color:#f92672">,</span>str<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            returnToPool<span style="color:#f92672">(</span>jedis<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+1234567891011121314151617181920212223242526272829303132
+</code></pre></div><ol>
+<li>根据自动装配获取<code>JedisPool</code>，用Jedis连接池来拿出<code>Jedis</code>与Redis服务器建立连接。</li>
+<li>set方法，我们需要将<code>value值转换为String类型</code>，让Redis能够识别</li>
+<li>随后，为key<code>添加前缀</code>，生成realKey；获取其中的失效时间</li>
+<li>根据失效时间来判断是否需要调用<code>setex()方法</code></li>
+</ol>
+<h3 id="24-beantostring与stringtobean方法">2.4 beanToString与stringToBean方法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">private</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> String <span style="color:#a6e22e">beanToString</span><span style="color:#f92672">(</span>T value<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>value <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+		<span style="color:#75715e">//进行类型判断，这里用到了？通配符
+</span><span style="color:#75715e"></span>        Class<span style="color:#f92672">&lt;?&gt;</span> clazz <span style="color:#f92672">=</span> value<span style="color:#f92672">.</span><span style="color:#a6e22e">getClass</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">||</span> clazz <span style="color:#f92672">==</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> value<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> <span style="color:#66d9ef">long</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">||</span> clazz <span style="color:#f92672">==</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">+</span> value<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span>value<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+        	<span style="color:#75715e">//如果是对象的话，用JSON的静态方法转String
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">toJSONString</span><span style="color:#f92672">(</span>value<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+1234567891011121314151617
+    <span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> T <span style="color:#a6e22e">stringToBean</span><span style="color:#f92672">(</span>String str<span style="color:#f92672">,</span>Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clazz<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>str <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> str<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;=</span> 0 <span style="color:#f92672">||</span> clazz <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">||</span> clazz <span style="color:#f92672">==</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>str<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> <span style="color:#66d9ef">long</span><span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> <span style="color:#f92672">||</span> clazz <span style="color:#f92672">==</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span> Long<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>str<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>clazz <span style="color:#f92672">==</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>T<span style="color:#f92672">)</span> str<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+        	<span style="color:#75715e">//转化成对象的JSON静态方法
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">toJavaObject</span><span style="color:#f92672">(</span>JSON<span style="color:#f92672">.</span><span style="color:#a6e22e">parseObject</span><span style="color:#f92672">(</span>str<span style="color:#f92672">),</span>clazz<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+1234567891011121314151617
+</code></pre></div><ul>
+<li>注解<code>@SupressWarings(&quot;unchecked&quot;)</code>，镇压警告</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/project/">
+                    #project</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/" class="prev" rel="prev" title="Java高性能高并发秒杀系统(2)"><i class="iconfont icon-left"></i>&nbsp;Java高性能高并发秒杀系统(2)</a>
+         
+        
+        <a href="https://blog.kayleh.top/download/" class="next" rel="next" title="Download">Download&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

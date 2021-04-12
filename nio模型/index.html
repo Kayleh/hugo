@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/" />
+  <link rel="next" href="https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           NIO blocking model | Kayleh
+       
+  </title>
+  <meta name="title" content="NIO blocking model | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "NIO blocking model",
+    "headline" : "NIO blocking model",
+    "description" : "NIO模型 1. 概述 1.1 翻译翻译？什么叫NIO？ NIO：我认为翻译成Non-Blocking，更加的通俗直白，相比于BIO，也有一个对比，叫他非阻塞IO最好不过了\n 它和BIO有以下的区别  Channel是双向的，即可以读又可以写，相比于Stream，它并不区分出输入流和输出流，而且Channel可以完成非阻塞的读写，也可以完成阻塞的读写  1.2 Buffer简介  Channel的读写是离不开Buffer的，Buffer实际上内存上一块用来读写的区域。  1.2.1 写模式  其中三个指针我们要了解一下，position为当前指针位置，limit用于读模式，用它来标记可读的最大范围，capacity是最大的可写范围阈值  当我们写数据写了四个格子时，我们执行flip()方法，即可转变为读模式，limit指针就直接变到了我们刚刚写数据的极限位置，position指针回到初始位置，这样我们就可以将数据读出来了 1.2.2 读模式到写模式的两种切换  当我们将数据全部读完时，切换到写模式 调用clear()方法，它会使position指针回到初始位置，limit回到最远端，这样就可以重新开始数据了，虽然clear意为清除，但是其实它只是将指针的位置移动了，并没有将数据清除，而是会覆盖原来的位置  只读了部分数据，我想将未读的部分保留，而现在我又要开始先进行写模式的操作了，这样可以执行compact()方法 这个方法会将没有读到的数据保存到初始位置，而position指针的位置将会移动到这些数据的后面位置，从未读的数据后开始进行写数据 之后再读数据的时候，我们就能将上次没有读到的数据读出来了  1.3 Channel简介 Channel间的数据交换，都需要依赖Buffer 1.3.1 几个重要的Channel  FileChannel：用于文件传输 ServerSocketChannel和SocketChannel：用于网络编程的传输  2. 文件拷贝实战  一个字节一个字节的拷贝实在是慢的不行。  import java.io.*; import java.nio.ByteBuffer; import java.nio.channels.FileChannel; interface FileCopyRunner{ void copyFile(File source,File target); } public class FileCopyDemo { private static void close(Closeable closeable){ if(closeable != null) { try { closeable.",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-12-05 11:33:46 \u002b0800 CST",
+    "dateModified" : "2020-12-05 11:33:46 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/nio%E6%A8%A1%E5%9E%8B\/",
+    "wordCount" : "1109",
+    "keywords" : [ "network", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">NIO blocking model</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-12-05 itemprop="datePublished">December 5, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="nio模型">NIO模型</h1>
+<h2 id="1-概述">1. 概述</h2>
+<h3 id="11-翻译翻译什么叫nio">1.1 翻译翻译？什么叫NIO？</h3>
+<p>NIO：我认为翻译成<code>Non-Blocking</code>，更加的通俗直白，相比于BIO，也有一个对比，叫他非阻塞IO最好不过了</p>
+<ul>
+<li>它和BIO有以下的区别
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721215841190.png" alt="在这里插入图片描述"></li>
+<li>Channel是<code>双向</code>的，即可以读又可以写，相比于Stream，它并不区分出输入流和输出流，而且Channel可以完成非阻塞的读写，也可以完成阻塞的读写</li>
+</ul>
+<h3 id="12-buffer简介">1.2 Buffer简介</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721220142379.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>Channel的读写是离不开Buffer的，Buffer实际上内存上一块用来读写的区域。</li>
+</ul>
+<h4 id="121-写模式">1.2.1 写模式</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721220305715.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>其中三个指针我们要了解一下，<code>position</code>为当前指针位置，<code>limit</code>用于读模式，用它来标记可读的最大范围，<code>capacity</code>是最大的可写范围阈值</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721220837981.png" alt="在这里插入图片描述"></p>
+<p>当我们写数据写了四个格子时，我们执行<code>flip()</code>方法，即可转变为<code>读模式</code>，limit指针就直接变到了我们刚刚写数据的极限位置，position指针回到初始位置，这样我们就可以将数据读出来了
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721220618271.png" alt="在这里插入图片描述"></p>
+<h4 id="122-读模式到写模式的两种切换">1.2.2 读模式到写模式的两种切换</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721221126713.png" alt="在这里插入图片描述"></p>
+<ol>
+<li>当我们将数据全部读完时，切换到写模式
+调用<code>clear()</code>方法，它会使position指针回到初始位置，limit回到最远端，这样就可以重新开始数据了，虽然clear意为清除，但是其实它只是将指针的位置移动了，并没有将数据清除，而是会覆盖原来的位置
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721221133628.png" alt="在这里插入图片描述"></li>
+<li>只读了部分数据，我想将未读的部分保留，而现在我又要开始先进行写模式的操作了，这样可以执行<code>compact()</code>方法
+这个方法会<code>将没有读到的数据保存到初始位置</code>，而<code>position指针的位置将会移动到这些数据的后面位置</code>，从未读的数据后开始进行写数据
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721221448757.png" alt="在这里插入图片描述">
+之后再读数据的时候，我们就能将上次没有读到的数据读出来了</li>
+</ol>
+<h3 id="13-channel简介">1.3 Channel简介</h3>
+<p>Channel间的数据交换，都需要依赖Buffer
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721221615368.png" alt="在这里插入图片描述"></p>
+<h4 id="131-几个重要的channel">1.3.1 几个重要的Channel</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200721221704507.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>FileChannel：用于文件传输</li>
+<li>ServerSocketChannel和SocketChannel：用于网络编程的传输</li>
+</ul>
+<h2 id="2-文件拷贝实战">2. 文件拷贝实战</h2>
+<ul>
+<li>一个字节一个字节的拷贝实在是慢的不行。</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.io.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.ByteBuffer<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.channels.FileChannel<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">FileCopyRunner</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>File source<span style="color:#f92672">,</span>File target<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FileCopyDemo</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">(</span>Closeable closeable<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>closeable <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                closeable<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//不使用任何缓冲的留的拷贝
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> FileCopyRunner noBufferStreamCopy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileCopyRunner<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>File source<span style="color:#f92672">,</span> File target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            InputStream fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            OutputStream fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>source<span style="color:#f92672">);</span>
+                fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>target<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">int</span> result<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">while</span><span style="color:#f92672">((</span>result <span style="color:#f92672">=</span> fin<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">())</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">){</span>
+                    fout<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>result<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+                close<span style="color:#f92672">(</span>fin<span style="color:#f92672">);</span>
+                close<span style="color:#f92672">(</span>fout<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">};</span>
+
+    <span style="color:#75715e">//使用缓冲区的流的拷贝
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> FileCopyRunner bufferStreamCopy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileCopyRunner<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>File source<span style="color:#f92672">,</span> File target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            InputStream fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            OutputStream fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>source<span style="color:#f92672">);</span>
+                fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>target<span style="color:#f92672">);</span>
+                <span style="color:#75715e">//创建缓冲区
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">];</span>
+                <span style="color:#66d9ef">int</span> result<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">while</span><span style="color:#f92672">((</span>result <span style="color:#f92672">=</span> fin<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">))</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">){</span>
+                    <span style="color:#75715e">//result这里表示从中读出来的具体字节数
+</span><span style="color:#75715e"></span>                    <span style="color:#75715e">//虽然缓冲区中能缓存1024，但是我们读取的时候不一定就有这么多字节
+</span><span style="color:#75715e"></span>                    <span style="color:#75715e">//所以我们使用result做下面的参数
+</span><span style="color:#75715e"></span>                    fout<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span>0<span style="color:#f92672">,</span>result<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+                close<span style="color:#f92672">(</span>fin<span style="color:#f92672">);</span>
+                close<span style="color:#f92672">(</span>fout<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">};</span>
+
+    <span style="color:#75715e">//使用带有缓冲区的channel复制 nio
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> FileCopyRunner nioBufferCopy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileCopyRunner<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>File source<span style="color:#f92672">,</span> File target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            FileChannel fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+            FileChannel fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>source<span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+                fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>target<span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+                ByteBuffer byteBuffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span>1024<span style="color:#f92672">);</span>
+
+                <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>fin<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>byteBuffer<span style="color:#f92672">)</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1<span style="color:#f92672">){</span>
+                    byteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span><span style="color:#75715e">//转变为读模式
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>byteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">hasRemaining</span><span style="color:#f92672">()){</span>
+                        fout<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>byteBuffer<span style="color:#f92672">);</span>
+                    <span style="color:#f92672">}</span>
+                    byteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span><span style="color:#75715e">//转变为写模式
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+                close<span style="color:#f92672">(</span>fin<span style="color:#f92672">);</span>
+                close<span style="color:#f92672">(</span>fout<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">};</span>
+
+    <span style="color:#75715e">//使用没有缓冲区的channel复制文件
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> FileCopyRunner nioTransferCopy <span style="color:#f92672">=</span> <span style="color:#f92672">((</span>source<span style="color:#f92672">,</span> target<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+        FileChannel fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        FileChannel fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            fin <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream<span style="color:#f92672">(</span>source<span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+            fout <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream<span style="color:#f92672">(</span>target<span style="color:#f92672">).</span><span style="color:#a6e22e">getChannel</span><span style="color:#f92672">();</span>
+
+            <span style="color:#66d9ef">long</span> transferred <span style="color:#f92672">=</span> 0L<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">long</span> size <span style="color:#f92672">=</span> fin<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>transferred <span style="color:#f92672">!=</span> size<span style="color:#f92672">){</span>
+                <span style="color:#75715e">//如果拷贝的大小没有达到源文件的大小就要一直拷贝
+</span><span style="color:#75715e"></span>                transferred <span style="color:#f92672">+=</span> fin<span style="color:#f92672">.</span><span style="color:#a6e22e">transferTo</span><span style="color:#f92672">(</span>0<span style="color:#f92672">,</span>size<span style="color:#f92672">,</span>fout<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>FileNotFoundException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            close<span style="color:#f92672">(</span>fin<span style="color:#f92672">);</span>
+            close<span style="color:#f92672">(</span>fout<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">});</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        File source <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;J:\\StudySpace\\Java秒杀系统方案优化-高性能高并发实战\\project.zip&#34;</span><span style="color:#f92672">);</span>
+        File target <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;J:\\StudySpace\\Java秒杀系统方案优化-高性能高并发实战\\p1.zip&#34;</span><span style="color:#f92672">);</span>
+        File target2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;J:\\StudySpace\\Java秒杀系统方案优化-高性能高并发实战\\p2.zip&#34;</span><span style="color:#f92672">);</span>
+        File target3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;J:\\StudySpace\\Java秒杀系统方案优化-高性能高并发实战\\p3.zip&#34;</span><span style="color:#f92672">);</span>
+        File target4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;J:\\StudySpace\\Java秒杀系统方案优化-高性能高并发实战\\p4.zip&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> noBufferStreamCopy<span style="color:#f92672">.</span><span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>source<span style="color:#f92672">,</span>target<span style="color:#f92672">)).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> bufferStreamCopy<span style="color:#f92672">.</span><span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>source<span style="color:#f92672">,</span>target2<span style="color:#f92672">)).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> nioBufferCopy<span style="color:#f92672">.</span><span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>source<span style="color:#f92672">,</span>target3<span style="color:#f92672">)).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(()</span> <span style="color:#f92672">-&gt;</span> nioTransferCopy<span style="color:#f92672">.</span><span style="color:#a6e22e">copyFile</span><span style="color:#f92672">(</span>source<span style="color:#f92672">,</span>target4<span style="color:#f92672">)).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+
+</code></pre></div><h2 id="3-selector概述">3. Selector概述</h2>
+<ul>
+<li>Channel需要在Selector上注册
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722145734223.png" alt="在这里插入图片描述"></li>
+<li>注册的同时，要告诉Selector监听的状态
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722145833687.png" alt="在这里插入图片描述"></li>
+<li>Channel对应的状态有：<code>CONNECT</code>：socketChannel已经与服务器建立连接的状态；<code>ACCEPT</code>：serverSocketChannel已经与客户端建立连接的状态；<code>READ</code>：可读状态；<code>WRITE</code>：可写状态
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722150046897.png" alt="在这里插入图片描述"></li>
+<li>Channel在Selector上注册完成后，会返回一个SelectKey对象，其中有几个重要的方法：<code>interestOps</code>：查看注册的Channel绑定的状态；<code>readyOps</code>：查看哪些是可操作的状态；<code>channel</code>：返回channel对象；<code>selector</code>：返回selector对象；<code>attachment</code>：附加其他对象<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722150611349.png" alt="在这里插入图片描述"></li>
+<li>调用Selector的select方法，返回它监听的事件的数量，可同时响应多个事件。不过它是阻塞式的调用，当监听的事件中没有可以用来响应请求的，则会被阻塞，直到有可用的channel能够响应该请求，才会返回
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722150651862.png" alt="在这里插入图片描述"></li>
+</ul>
+<h1 id="实战">实战</h1>
+<h2 id="1-nio模型分析">1. NIO模型分析</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/202007222229375.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>在服务器端创建一个<code>Selector</code>，将<code>ServerSocketChannel注册到Selector上</code>，被Selector监听的事件为<code>Accept</code></li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722222907340.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>Client1请求与服务器建立连接，Selector接收到Accept事件，服务器端对其进行处理（handles），服务器与客户端连接成功</li>
+</ul>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722223243146.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>建立连接过程中，服务器通道（ServerSocketChannel）调用<code>accept方法</code>，获取到与客户端进行连接的通道（<code>SocketChannel</code>），也将其<code>注册到Selector</code>上，<code>监听READ事件</code>，这样，客户端向服务器发送消息，就能触发该READ事件进行响应，读取该消息。</li>
+</ul>
+<blockquote>
+<p>Tips: 我们处理这个建立连接并接收从客户端传过来的消息，都是在<code>一个线程</code>内完成的。在bio中，则会为单个客户端单独开辟一个线程，用于处理消息，并且客户端在不发送消息的过程中，该线程一直是阻塞的。</p>
+</blockquote>
+<hr>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722223923471.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>同样，两个客户连接过来也是一个线程在起作用，将客户端2的SocketChannel注册到服务器的Selector，并监听READ事件，随时响应随时处理。即一个客户端有一个SocketChannel，两个客户端就有两个SocketChannel，这个就是我们使用nio编程模型来用一个selector对象在一个线程里边监听以及处理多个通道的io的操作</li>
+</ul>
+<hr>
+<p>各个Channel是被配置为<code>非阻塞式</code>的（configureBlocking(false)），但是Selector本身调用的<code>select()方法</code>，它是<code>阻塞式</code>的，当监听在Selector上的事件都没有触发时，那么它就会被阻塞，直到有事件对其进行响应</p>
+<h2 id="2-聊天室项目代码重点知识">2. 聊天室项目代码重点知识</h2>
+<h3 id="21-服务器端">2.1 服务器端</h3>
+<h4 id="211-字段">2.1.1 字段</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/2020072222584984.png" alt="在这里插入图片描述"></p>
+<h4 id="212-主方法">2.1.2 主方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722230412178.png" alt="在这里插入图片描述"></p>
+<h4 id="213-处理方法">2.1.3 处理方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722230845441.png" alt="在这里插入图片描述"></p>
+<h4 id="214-转发消息方法">2.1.4 转发消息方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722233104941.png" alt="在这里插入图片描述"></p>
+<h4 id="215-接收消息方法">2.1.5 接收消息方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722231319234.png" alt="在这里插入图片描述"></p>
+<h3 id="22-客户端">2.2 客户端</h3>
+<h4 id="221-字段">2.2.1 字段</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722231507769.png" alt="在这里插入图片描述"></p>
+<h4 id="222-主方法">2.2.2 主方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722231820775.png" alt="在这里插入图片描述"></p>
+<h4 id="223-处理方法">2.2.3 处理方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/202007222330187.png" alt="在这里插入图片描述"></p>
+<h4 id="224-接收方法">2.2.4 接收方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722233204365.png" alt="在这里插入图片描述"></p>
+<h4 id="225-发送方法">2.2.5 发送方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722233310845.png" alt="在这里插入图片描述"></p>
+<hr>
+<h2 id="3-测试结果">3. 测试结果</h2>
+<ul>
+<li>服务器端显示信息正确
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/NIO%E6%A8%A1%E5%9E%8B/20200722233342438.png" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="4-完整代码">4. 完整代码</h2>
+<h3 id="41-服务器端">4.1 服务器端</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> server<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.io.Closeable<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.net.InetSocketAddress<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.ByteBuffer<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.channels.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.charset.Charset<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.charset.StandardCharsets<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.Set<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatServer</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> DEFAULT_PORT <span style="color:#f92672">=</span> 8888<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String QUIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;quit&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> BUFFER <span style="color:#f92672">=</span> 1024<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> ServerSocketChannel serverSocketChannel<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Selector selector<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> ByteBuffer rBuffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span>BUFFER<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> ByteBuffer wBuffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span>BUFFER<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> Charset charset <span style="color:#f92672">=</span> Charset<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>StandardCharsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">));</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ChatServer</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>DEFAULT_PORT<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ChatServer</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> port<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> port<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">readyToQuit</span><span style="color:#f92672">(</span>String msg<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> QUIT<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">(</span>Closeable closeable<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>closeable <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                closeable<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//创建ServerSocketChannel通道
+</span><span style="color:#75715e"></span>            serverSocketChannel <span style="color:#f92672">=</span> ServerSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+            <span style="color:#75715e">//设置非阻塞模式，默认情况也是阻塞调用的
+</span><span style="color:#75715e"></span>            serverSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+            <span style="color:#75715e">//绑定端口号
+</span><span style="color:#75715e"></span>            serverSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">bind</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InetSocketAddress<span style="color:#f92672">(</span>port<span style="color:#f92672">));</span>
+            <span style="color:#75715e">//创建selector
+</span><span style="color:#75715e"></span>            selector <span style="color:#f92672">=</span> Selector<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+            <span style="color:#75715e">//将accept事件注册到selector上
+</span><span style="color:#75715e"></span>            serverSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span> SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_ACCEPT</span><span style="color:#f92672">);</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;服务器启动成功，监听端口号：&#34;</span> <span style="color:#f92672">+</span> port <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;...&#34;</span><span style="color:#f92672">);</span>
+
+            <span style="color:#75715e">//开始进入监听模式
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">){</span>
+                <span style="color:#75715e">//阻塞式调用
+</span><span style="color:#75715e"></span>                selector<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">();</span>
+
+                <span style="color:#75715e">//获取所有的监听事件，
+</span><span style="color:#75715e"></span>                Set<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> selectionKeys <span style="color:#f92672">=</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">selectedKeys</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>SelectionKey selectionKey <span style="color:#f92672">:</span> selectionKeys<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">//处理事件
+</span><span style="color:#75715e"></span>                    handles<span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#75715e">//将已经处理完成的事件进行清空
+</span><span style="color:#75715e"></span>                selectionKeys<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            close<span style="color:#f92672">(</span>selector<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 处理事件 处理accept事件 和 read事件
+</span><span style="color:#75715e">     * @param selectionKey 与selector绑定的channel的key
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handles</span><span style="color:#f92672">(</span>SelectionKey selectionKey<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">isAcceptable</span><span style="color:#f92672">()){</span>
+            <span style="color:#75715e">//处理accept事件
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//先要获取ServerSocketChannel
+</span><span style="color:#75715e"></span>            ServerSocketChannel server <span style="color:#f92672">=(</span>ServerSocketChannel<span style="color:#f92672">)</span> selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+            <span style="color:#75715e">// 我觉得这样写也行 直接调用全局变量 SocketChannel socketChannel = serverSocketChannel.accept();
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//获取对应的客户端的通道
+</span><span style="color:#75715e"></span>            SocketChannel socketChannel <span style="color:#f92672">=</span> server<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">();</span>
+            socketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+            <span style="color:#75715e">//将客户端通道绑定到selector上，监听read事件
+</span><span style="color:#75715e"></span>            socketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span>SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_READ</span><span style="color:#f92672">);</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;客户端&#34;</span> <span style="color:#f92672">+</span> socketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">socket</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getPort</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:已经连接&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">isReadable</span><span style="color:#f92672">()){</span>
+            <span style="color:#75715e">//处理read事件
+</span><span style="color:#75715e"></span>            SocketChannel clientChannel <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SocketChannel<span style="color:#f92672">)</span> selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+            String fwdMsg <span style="color:#f92672">=</span> receive<span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">);</span>
+
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>fwdMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+                <span style="color:#75715e">//接不到消息了，那么就把这个通道给他移除了
+</span><span style="color:#75715e"></span>                selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">cancel</span><span style="color:#f92672">();</span>
+                <span style="color:#75715e">//通知selector有注册的通道被移除了，更新状态
+</span><span style="color:#75715e"></span>                selector<span style="color:#f92672">.</span><span style="color:#a6e22e">wakeup</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//转发消息
+</span><span style="color:#75715e"></span>                forwardMessage<span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">,</span>fwdMsg<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>readyToQuit<span style="color:#f92672">(</span>fwdMsg<span style="color:#f92672">)){</span>
+                    selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">cancel</span><span style="color:#f92672">();</span>
+                    selector<span style="color:#f92672">.</span><span style="color:#a6e22e">wakeup</span><span style="color:#f92672">();</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 转发消息
+</span><span style="color:#75715e">     * @param clientChannel 客户端通道
+</span><span style="color:#75715e">     * @param fwdMsg 转发的消息
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">forwardMessage</span><span style="color:#f92672">(</span>SocketChannel clientChannel<span style="color:#f92672">,</span> String fwdMsg<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//keys方法区别于selectedKeys,这个方法返回的是接下来需要被处理的通道key
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//而keys则返回与selector绑定的所有通道key
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//跳过ServerSocketChannel和本身
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>SelectionKey selectionKey <span style="color:#f92672">:</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">keys</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+            SelectableChannel channel <span style="color:#f92672">=</span> selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>channel <span style="color:#66d9ef">instanceof</span> ServerSocketChannel<span style="color:#f92672">)</span>
+                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;客户端&#34;</span> <span style="color:#f92672">+</span> clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">socket</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getPort</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;：&#34;</span> <span style="color:#f92672">+</span> fwdMsg<span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">isValid</span><span style="color:#f92672">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>channel<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">)){</span>
+                wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+                <span style="color:#75715e">//写入消息
+</span><span style="color:#75715e"></span>                wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>charset<span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;客户端&#34;</span> <span style="color:#f92672">+</span> clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">socket</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getPort</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;：&#34;</span> <span style="color:#f92672">+</span> fwdMsg<span style="color:#f92672">));</span>
+                <span style="color:#75715e">//转换为读模式
+</span><span style="color:#75715e"></span>                wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+                <span style="color:#75715e">//有数据就一直读
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">hasRemaining</span><span style="color:#f92672">())</span>
+                    <span style="color:#f92672">((</span>SocketChannel<span style="color:#f92672">)</span>channel<span style="color:#f92672">).</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>wBuffer<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * 从客户通道上读取消息
+</span><span style="color:#75715e">     * @param clientChannel 客户通道
+</span><span style="color:#75715e">     * @return 消息
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">receive</span><span style="color:#f92672">(</span>SocketChannel clientChannel<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//将当前指针置于初始位置，覆盖已有的消息（清空消息）
+</span><span style="color:#75715e"></span>        rBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//不停的向缓存中写
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>rBuffer<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//由写模式到读模式
+</span><span style="color:#75715e"></span>        rBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">return</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>charset<span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span>rBuffer<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        ChatServer chatServer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChatServer<span style="color:#f92672">();</span>
+        chatServer<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="42-客户端">4.2 客户端</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> client<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.io.Closeable<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.net.InetSocketAddress<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.ByteBuffer<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.channels.*<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.charset.Charset<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.nio.charset.StandardCharsets<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.util.Set<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatClient</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String DEFAULT_SERVER_HOST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> DEFAULT_SERVER_PORT <span style="color:#f92672">=</span> 8888<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String QUIT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;quit&#34;</span><span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> BUFFER <span style="color:#f92672">=</span> 1024<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String host<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> SocketChannel clientChannel<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> Selector selector<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> ByteBuffer rBuffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span>BUFFER<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> ByteBuffer wBuffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span>BUFFER<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">private</span> Charset charset <span style="color:#f92672">=</span> Charset<span style="color:#f92672">.</span><span style="color:#a6e22e">forName</span><span style="color:#f92672">(</span>String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>StandardCharsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">));</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ChatClient</span><span style="color:#f92672">(</span>String host<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">host</span> <span style="color:#f92672">=</span> host<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> port<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ChatClient</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>DEFAULT_SERVER_HOST<span style="color:#f92672">,</span>DEFAULT_SERVER_PORT<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">readyToQuit</span><span style="color:#f92672">(</span>String msg<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">return</span> QUIT<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">close</span><span style="color:#f92672">(</span>Closeable closeable<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>closeable <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                closeable<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//创建用户通道
+</span><span style="color:#75715e"></span>            clientChannel <span style="color:#f92672">=</span> SocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+            clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span><span style="color:#75715e">//这一步千万不能忘了
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//创建selector，并且将用户通道的connect请求注册上去
+</span><span style="color:#75715e"></span>            selector <span style="color:#f92672">=</span> Selector<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+            clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span> SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_CONNECT</span><span style="color:#f92672">);</span>
+            <span style="color:#75715e">//尝试与服务器创建连接
+</span><span style="color:#75715e"></span>            clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">connect</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InetSocketAddress<span style="color:#f92672">(</span>host<span style="color:#f92672">,</span>port<span style="color:#f92672">));</span>
+
+            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>selector<span style="color:#f92672">.</span><span style="color:#a6e22e">isOpen</span><span style="color:#f92672">()){</span>
+                <span style="color:#75715e">//一直监听selector上注册的channel请求
+</span><span style="color:#75715e"></span>                selector<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">();</span>
+
+                Set<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> selectionKeys <span style="color:#f92672">=</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">selectedKeys</span><span style="color:#f92672">();</span>
+                <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>SelectionKey selectionKey <span style="color:#f92672">:</span> selectionKeys<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">//响应请求
+</span><span style="color:#75715e"></span>                    handles<span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">);</span>
+                <span style="color:#f92672">}</span>
+                selectionKeys<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>ClosedSelectorException e<span style="color:#f92672">){</span>
+
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">finally</span> <span style="color:#f92672">{</span>
+            close<span style="color:#f92672">(</span>selector<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handles</span><span style="color:#f92672">(</span>SelectionKey selectionKey<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//处理connect事件
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">isConnectable</span><span style="color:#f92672">()){</span>
+            <span style="color:#75715e">//如果能够与服务器响应了
+</span><span style="color:#75715e"></span>            SocketChannel channel <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SocketChannel<span style="color:#f92672">)</span> selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>channel<span style="color:#f92672">.</span><span style="color:#a6e22e">isConnectionPending</span><span style="color:#f92672">()){</span>
+                channel<span style="color:#f92672">.</span><span style="color:#a6e22e">finishConnect</span><span style="color:#f92672">();</span> <span style="color:#75715e">//正式建立连接
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> UserInputHandler<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+            channel<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span>SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_READ</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">isReadable</span><span style="color:#f92672">()){</span>
+            String msg <span style="color:#f92672">=</span> receive<span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">);</span>
+            SocketChannel channel <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SocketChannel<span style="color:#f92672">)</span> selectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()){</span>
+                <span style="color:#75715e">//服务端异常
+</span><span style="color:#75715e"></span>                close<span style="color:#f92672">(</span>selector<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//TODO 看看这里信息对不对
+</span><span style="color:#75715e"></span>                System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span>
+
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">private</span> String <span style="color:#a6e22e">receive</span><span style="color:#f92672">(</span>SocketChannel clientChannel<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        rBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+        <span style="color:#75715e">//一直读数据
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>rBuffer<span style="color:#f92672">)</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">);</span>
+        rBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">return</span> String<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>charset<span style="color:#f92672">.</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span>rBuffer<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>String msg<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">.</span><span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">())</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+
+        wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">();</span>
+        wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>charset<span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">));</span>
+        wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>wBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">hasRemaining</span><span style="color:#f92672">()){</span>
+            clientChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>wBuffer<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>QUIT<span style="color:#f92672">.</span><span style="color:#a6e22e">equals</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">))</span>
+            close<span style="color:#f92672">(</span>selector<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        ChatClient chatClient <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChatClient<span style="color:#f92672">();</span>
+        chatClient<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div><h3 id="43-客户端监听用户输入进程">4.3 客户端监听用户输入进程</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> client<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.io.BufferedReader<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.io.IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> java.io.InputStreamReader<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserInputHandler</span> <span style="color:#66d9ef">implements</span> Runnable<span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">private</span> ChatClient chatClient<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserInputHandler</span><span style="color:#f92672">(</span>ChatClient chatClient<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">chatClient</span> <span style="color:#f92672">=</span> chatClient<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//等待用户输入信息
+</span><span style="color:#75715e"></span>        BufferedReader consoleReader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">));</span>
+
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">){</span>
+            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+                String msg <span style="color:#f92672">=</span> consoleReader<span style="color:#f92672">.</span><span style="color:#a6e22e">readLine</span><span style="color:#f92672">();</span>
+                chatClient<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>chatClient<span style="color:#f92672">.</span><span style="color:#a6e22e">readyToQuit</span><span style="color:#f92672">(</span>msg<span style="color:#f92672">))</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                e<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/>https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/network/">
+                    #network</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/" class="prev" rel="prev" title="BIO blocking model"><i class="iconfont icon-left"></i>&nbsp;BIO blocking model</a>
+         
+        
+        <a href="https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/" class="next" rel="next" title="AIO blocking model">AIO blocking model&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

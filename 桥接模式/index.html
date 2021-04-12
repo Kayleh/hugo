@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://blog.kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           桥接模式 | Kayleh
+       
+  </title>
+  <meta name="title" content="桥接模式 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "桥接模式",
+    "headline" : "桥接模式",
+    "description" : "\u003ch3 id=\u0022桥接模式\u0022\u003e桥接模式\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003cem\u003e将抽象部分与它的实现部分分离，使它们都可以独立地变化。\u003c\/em\u003e\u003c\/p\u003e\n\u003c\/blockquote\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-09 14:04:02 \u002b0800 CST",
+    "dateModified" : "2020-06-09 14:04:02 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "229",
+    "keywords" : [ "DesignPatterns", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">桥接模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-09 itemprop="datePublished">June 9, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://blog.kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"> 设计模式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="桥接模式">桥接模式</h3>
+<blockquote>
+<p><em>将抽象部分与它的实现部分分离，使它们都可以独立地变化。</em></p>
+</blockquote>
+<p>假设某个汽车厂商生产三种品牌的汽车：Big、Tiny和Boss，每种品牌又可以选择燃油、纯电和混合动力。如果用传统的继承来表示各个最终车型，一共有3个抽象类加9个最终子类：</p>
+<pre><code class="language-ascii" data-lang="ascii">                   ┌───────┐
+                   │  Car  │
+                   └───────┘
+                       ▲
+    ┌──────────────────┼───────────────────┐
+    │                  │                   │
+┌───────┐          ┌───────┐          ┌───────┐
+│BigCar │          │TinyCar│          │BossCar│
+└───────┘          └───────┘          └───────┘
+    ▲                  ▲                  ▲
+    │                  │                  │
+    │ ┌───────────────┐│ ┌───────────────┐│ ┌───────────────┐
+    ├─│  BigFuelCar   │├─│  TinyFuelCar  │├─│  BossFuelCar  │
+    │ └───────────────┘│ └───────────────┘│ └───────────────┘
+    │ ┌───────────────┐│ ┌───────────────┐│ ┌───────────────┐
+    ├─│BigElectricCar │├─│TinyElectricCar│├─│BossElectricCar│
+    │ └───────────────┘│ └───────────────┘│ └───────────────┘
+    │ ┌───────────────┐│ ┌───────────────┐│ ┌───────────────┐
+    └─│ BigHybridCar  │└─│ TinyHybridCar │└─│ BossHybridCar │
+      └───────────────┘  └───────────────┘  └───────────────┘
+</code></pre><p>如果要新增一个品牌，或者加一个新的引擎（比如核动力），那么子类的数量增长更快。</p>
+<p>所以，桥接模式就是为了避免直接继承带来的<strong>子类爆炸</strong>。</p>
+<p>我们来看看<strong>桥接模式</strong>如何解决上述问题。</p>
+<p>在桥接模式中，首先把<code>Car</code>按品牌进行子类化，但是，每个品牌选择什么发动机，不再使用子类扩充，而是通过一个抽象的“修正”类，以组合的形式引入。我们来看看具体的实现。</p>
+<p>首先定义抽象类<code>Car</code>，它引用一个<code>Engine</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 引用Engine:
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">protected</span> Engine engine<span style="color:#f92672">;</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Car</span><span style="color:#f92672">(</span>Engine engine<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">engine</span> <span style="color:#f92672">=</span> engine<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drive</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><code>Engine</code>的定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Engine</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>紧接着，在一个“修正”的抽象类<code>RefinedCar</code>中定义一些额外操作：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RefinedCar</span> <span style="color:#66d9ef">extends</span> Car <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RefinedCar</span><span style="color:#f92672">(</span>Engine engine<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>engine<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drive</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">engine</span><span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Drive &#34;</span> <span style="color:#f92672">+</span> getBrand<span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; car...&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> String <span style="color:#a6e22e">getBrand</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这样一来，最终的不同品牌继承自<code>RefinedCar</code>，例如<code>BossCar</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BossCar</span> <span style="color:#66d9ef">extends</span> RefinedCar <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BossCar</span><span style="color:#f92672">(</span>Engine engine<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>engine<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getBrand</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Boss&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>而针对每一种引擎，继承自<code>Engine</code>，例如<code>HybridEngine</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HybridEngine</span> <span style="color:#66d9ef">implements</span> Engine <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Start Hybrid Engine...&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>客户端通过自己选择一个品牌，再配合一种引擎，得到最终的Car：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">RefinedCar car <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BossCar<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> HybridEngine<span style="color:#f92672">());</span>
+car<span style="color:#f92672">.</span><span style="color:#a6e22e">drive</span><span style="color:#f92672">();</span>
+</code></pre></div><p>使用桥接模式的好处在于，如果要增加一种引擎，只需要针对<code>Engine</code>派生一个新的子类，如果要增加一个品牌，只需要针对<code>RefinedCar</code>派生一个子类，任何<code>RefinedCar</code>的子类都可以和任何一种<code>Engine</code>自由组合，即一辆汽车的两个维度：品牌和引擎都可以独立地变化。</p>
+<pre><code class="language-ascii" data-lang="ascii">       ┌───────────┐
+       │    Car    │
+       └───────────┘
+             ▲
+             │
+       ┌───────────┐       ┌─────────┐
+       │RefinedCar │ ─ ─ ─&gt;│ Engine  │
+       └───────────┘       └─────────┘
+             ▲                  ▲
+    ┌────────┼────────┐         │ ┌──────────────┐
+    │        │        │         ├─│  FuelEngine  │
+┌───────┐┌───────┐┌───────┐     │ └──────────────┘
+│BigCar ││TinyCar││BossCar│     │ ┌──────────────┐
+└───────┘└───────┘└───────┘     ├─│ElectricEngine│
+                                │ └──────────────┘
+                                │ ┌──────────────┐
+                                └─│ HybridEngine │
+                                  └──────────────┘
+</code></pre><p>桥接模式实现比较复杂，实际应用也非常少，但它提供的设计思想值得借鉴，即不要过度使用继承，而是优先拆分某些部件，使用组合的方式来扩展功能。</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/>https://blog.kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/designpatterns/">
+                    #DesignPatterns</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="适配器模式"><i class="iconfont icon-left"></i>&nbsp;适配器模式</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="组合模式">组合模式&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

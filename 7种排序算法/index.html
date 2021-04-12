@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/" />
+  <link rel="canonical" href="https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           7 sorting algorithms | Kayleh
+       
+  </title>
+  <meta name="title" content="7 sorting algorithms | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "7 sorting algorithms",
+    "headline" : "7 sorting algorithms",
+    "description" : "\u003ch1 id=\u00227种排序算法\u0022\u003e7种排序算法\u003c\/h1\u003e\n\u003ch2 id=\u0022冒泡排序\u0022\u003e冒泡排序\u003c\/h2\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-05-17 21:42:21 \u002b0800 CST",
+    "dateModified" : "2020-05-17 21:42:21 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95\/",
+    "wordCount" : "887",
+    "keywords" : [ "algorithm", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">7 sorting algorithms</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-05-17 itemprop="datePublished">May 17, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="7种排序算法">7种排序算法</h1>
+<h2 id="冒泡排序">冒泡排序</h2>
+<ul>
+<li><code>冒泡排序（BubbleSorting)</code>的基本思想是：通过对待排序序列从前向后（从下标较小的元素开始）,依次比较相邻元素的值，若发现逆序则交换，使值较大的元素逐渐从前移向后部。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 将前面的冒泡排序算法，封装成一个方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">bubbleSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 冒泡排序 的时间复杂度 O(n^2), 自己写出
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> <span style="color:#75715e">// 临时变量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 标识变量，表示是否进行过交换
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1 <span style="color:#f92672">-</span> i<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 如果前面的数比后面的数大，则交换
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> arr<span style="color:#f92672">[</span>j <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+                    flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                    temp <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+                    arr<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j <span style="color:#f92672">+</span> 1<span style="color:#f92672">];</span>
+                    arr<span style="color:#f92672">[</span>j <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//System.out.println(&#34;第&#34; + (i + 1) + &#34;趟排序后的数组&#34;);
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//System.out.println(Arrays.toString(arr));
+</span><span style="color:#75715e"></span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 在一趟排序中，一次交换都没有发生过
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+                <span style="color:#75715e">// 重置flag!!!, 进行下次判断
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+</code></pre></div><hr>
+<h2 id="插入排序">插入排序</h2>
+<ul>
+<li><code>插入排序（insertSorting)</code></li>
+<li>基本思想是：把n个待排序的元素看成为一个有序表和一个无序表，开始时有序表中只包含一个元素，无序表中包含有n-1个元素，排序过程中每次从无序表中取出第一个元素，把它的排序码依次与有序表元素的排序码进行比较，将它插入到有序表中的适当位置，使之成为新的有序表。</li>
+<li></li>
+</ul>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insertSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> attr<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//从第2个数开始遍历 【1】
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> attr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 等待插入的数的前一个数下标
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> insertIndex <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#75715e">//等待插入的数的值
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> insertValue <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            <span style="color:#75715e">// insertIndex不能越界
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// insertValue待插入到前面有序列表的数
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// insertValue待插入的数 小于 前1个数
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>insertIndex <span style="color:#f92672">&gt;=</span> 0 <span style="color:#f92672">&amp;&amp;</span> attr<span style="color:#f92672">[</span>insertIndex<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> insertValue<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 交换
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">//  attr[insertIndex]后移
+</span><span style="color:#75715e"></span>                attr<span style="color:#f92672">[</span>insertIndex <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>insertIndex<span style="color:#f92672">];</span>
+                insertIndex<span style="color:#f92672">--;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//当退出while循环时，说明插入的位置找到, insertIndex + 1
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>insertIndex <span style="color:#f92672">+</span> 1 <span style="color:#f92672">!=</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                attr<span style="color:#f92672">[</span>insertIndex <span style="color:#f92672">+</span> 1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> insertValue<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="选择排序">选择排序</h2>
+<ul>
+<li>
+<p><code>选择排序（selectSorting)</code>的基本思想是：</p>
+</li>
+<li>
+<p>第一次从arr[0]~arr[n-1]中选取最小值，与arr[0]交换，第二次从arr[1]~arr[n-1]中选取最小值，与arr[1]交换，第三次从arr[2]~arr[n-1]中选取最小值，与arr[2]交换，…，第i次从arr[i-1]~arr[n-1]中选取最小值，与arr[i-1]交换，…,第n-1次从arr[n-2]~arr[n-1]中选取最小值，与arr[n-2]交换，总共通过n-1次，得到一个按排序码从小到大排列的有序序列。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/2.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">selectSort</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">selectSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> attr<span style="color:#f92672">[])</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> attr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//假设第一个数就是最小值
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> minindex <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">int</span> min <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span>
+            <span style="color:#75715e">//从1开始遍历
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> attr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//如果第0个数（最小值）比第1个数 大
+</span><span style="color:#75715e"></span>                <span style="color:#75715e">//说明假设的第0个并不是最小值
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>min <span style="color:#f92672">&gt;</span> attr<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+                    min <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span><span style="color:#75715e">//重置最小值
+</span><span style="color:#75715e"></span>                    minindex <span style="color:#f92672">=</span> j<span style="color:#f92672">;</span><span style="color:#75715e">//重置最小值索引
+</span><span style="color:#75715e"></span>                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//如果最小值的索引不是0，就发生交换
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>minindex <span style="color:#f92672">!=</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//把第0个数（不是最小值）赋值到 第1个数（较小值）的位置
+</span><span style="color:#75715e"></span>                attr<span style="color:#f92672">[</span>minindex<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+                <span style="color:#75715e">//把较小值赋值给第1个数
+</span><span style="color:#75715e"></span>                attr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> min<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="希尔排序">希尔排序</h2>
+<ul>
+<li>
+<p><code>冒泡排序（BubbleSorting)</code>的基本思想是：</p>
+<p>把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/3.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">		<span style="color:#75715e">//移动法
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//增量gap，并逐步的缩小增量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> gap <span style="color:#f92672">=</span> attr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">/</span>2<span style="color:#f92672">;</span>gap<span style="color:#f92672">&gt;</span>0<span style="color:#f92672">;</span>gap<span style="color:#f92672">/=</span>2<span style="color:#f92672">){</span>
+            <span style="color:#75715e">//从第gap个元素开始，逐个对其所在的组进行直接插入排序
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span>gap<span style="color:#f92672">;</span>i<span style="color:#f92672">&lt;</span>attr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>i<span style="color:#f92672">++){</span>
+                <span style="color:#75715e">// 当前位置
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i<span style="color:#f92672">;</span>
+
+                <span style="color:#75715e">//当前位置的值赋值给temp
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+                <span style="color:#75715e">// 如果 当前组的gap个步长前面的数大于当前位置的数
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>attr<span style="color:#f92672">[</span>j<span style="color:#f92672">]&lt;</span>attr<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>gap<span style="color:#f92672">]){</span>
+                    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>j<span style="color:#f92672">-</span>gap <span style="color:#f92672">&gt;=</span> 0 <span style="color:#f92672">&amp;&amp;</span> temp <span style="color:#f92672">&lt;</span> attr<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>gap<span style="color:#f92672">]){</span>
+                        <span style="color:#75715e">//移动
+</span><span style="color:#75715e"></span>                        attr<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> attr<span style="color:#f92672">[</span>j<span style="color:#f92672">-</span>gap<span style="color:#f92672">];</span>
+                        j <span style="color:#f92672">-=</span> gap<span style="color:#f92672">;</span>
+                    <span style="color:#f92672">}</span>
+                    <span style="color:#75715e">//当退出while循环后，就给temp找到插入的位置
+</span><span style="color:#75715e"></span>                    attr<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="快速排序">快速排序</h2>
+<ul>
+<li>
+<p><code>快速排序（QuickSorting)</code></p>
+<p>是对冒泡排序的一种改进。基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/4.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">,</span><span style="color:#66d9ef">int</span> left<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> left<span style="color:#f92672">;</span> <span style="color:#75715e">//左下标
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> right<span style="color:#f92672">;</span> <span style="color:#75715e">//右下标
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//pivot 中轴值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span> arr<span style="color:#f92672">[(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">/</span> 2<span style="color:#f92672">];</span>
+        <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> <span style="color:#75715e">//临时变量，作为交换时使用
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//while循环的目的是让比pivot 值小放到左边
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//比pivot 值大放到右边
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span> l <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//在pivot的左边一直找,找到大于等于pivot值,才退出
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span> arr<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> pivot<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                l <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//在pivot的右边一直找,找到小于等于pivot值,才退出
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> pivot<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                r <span style="color:#f92672">-=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//如果l &gt;= r说明pivot 的左右两的值，已经按照左边全部是
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//小于等于pivot值，右边全部是大于等于pivot值
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> l <span style="color:#f92672">&gt;=</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//交换
+</span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>l<span style="color:#f92672">];</span>
+            arr<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>r<span style="color:#f92672">];</span>
+            arr<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
+
+            <span style="color:#75715e">//如果交换完后，发现这个arr[l] == pivot值 相等 r--， 前移
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>l<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> pivot<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                r <span style="color:#f92672">-=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//如果交换完后，发现这个arr[r] == pivot值 相等 l++， 后移
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>r<span style="color:#f92672">]</span> <span style="color:#f92672">==</span> pivot<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                l <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">// 如果 l == r, 必须l++, r--, 否则为出现栈溢出
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>l <span style="color:#f92672">==</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            l <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            r <span style="color:#f92672">-=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//向左递归
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>left <span style="color:#f92672">&lt;</span> r<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            quickSort<span style="color:#f92672">(</span>arr<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> r<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//向右递归
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>right <span style="color:#f92672">&gt;</span> l<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            quickSort<span style="color:#f92672">(</span>arr<span style="color:#f92672">,</span> l<span style="color:#f92672">,</span> right<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="归并排序">归并排序</h2>
+<ul>
+<li>
+<p><code>归并排序（mergeSorting)</code>的基本思想是：</p>
+<p>是利用归并的思想实现的排序方法，该算法采用经典的分治（divide-and-conquer）策略（分治法将问题分(divide)成一些小的问题然后递归求解，而治(conquer)的阶段则将分的阶段得到的各答案&quot;修补&quot;在一起，即分而治之)。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/5.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#75715e">//分+合方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mergeSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> temp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>left <span style="color:#f92672">&lt;</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>left <span style="color:#f92672">+</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">/</span> 2<span style="color:#f92672">;</span> <span style="color:#75715e">//中间索引
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//向左递归进行分解
+</span><span style="color:#75715e"></span>            mergeSort<span style="color:#f92672">(</span>arr<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">,</span> temp<span style="color:#f92672">);</span>
+            <span style="color:#75715e">//向右递归进行分解
+</span><span style="color:#75715e"></span>            mergeSort<span style="color:#f92672">(</span>arr<span style="color:#f92672">,</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">,</span> right<span style="color:#f92672">,</span> temp<span style="color:#f92672">);</span>
+            <span style="color:#75715e">//合并
+</span><span style="color:#75715e"></span>            merge<span style="color:#f92672">(</span>arr<span style="color:#f92672">,</span> left<span style="color:#f92672">,</span> mid<span style="color:#f92672">,</span> right<span style="color:#f92672">,</span> temp<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//合并的方法
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * @param arr 排序的原始数组
+</span><span style="color:#75715e">     * @param left 左边有序序列的初始索引
+</span><span style="color:#75715e">     * @param mid 中间索引
+</span><span style="color:#75715e">     * @param right 右边索引
+</span><span style="color:#75715e">     * @param temp 做中转的数组
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> left<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> mid<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> right<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> temp<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> left<span style="color:#f92672">;</span> <span style="color:#75715e">// 初始化i, 左边有序序列的初始索引
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> 1<span style="color:#f92672">;</span> <span style="color:#75715e">//初始化j, 右边有序序列的初始索引
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> <span style="color:#75715e">// 指向temp数组的当前索引
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//(一)
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//先把左右两边(有序)的数据按照规则填充到temp数组
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//直到左右两边的有序序列，有一边处理完毕为止
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&lt;=</span> mid <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;=</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//继续
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//如果左边的有序序列的当前元素，小于等于右边有序序列的当前元素
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//即将左边的当前元素，填充到 temp数组
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//然后 t++, i++
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">])</span> <span style="color:#f92672">{</span>
+                temp<span style="color:#f92672">[</span>t<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+                t <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+                i <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//反之,将右边有序序列的当前元素，填充到temp数组
+</span><span style="color:#75715e"></span>                temp<span style="color:#f92672">[</span>t<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+                t <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+                j <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//(二)
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//把有剩余数据的一边的数据依次全部填充到temp
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span> i <span style="color:#f92672">&lt;=</span> mid<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//左边的有序序列还有剩余的元素，就全部填充到temp
+</span><span style="color:#75715e"></span>            temp<span style="color:#f92672">[</span>t<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            t <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            i <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span> j <span style="color:#f92672">&lt;=</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//右边的有序序列还有剩余的元素，就全部填充到temp
+</span><span style="color:#75715e"></span>            temp<span style="color:#f92672">[</span>t<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+            t <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            j <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//(三)
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//将temp数组的元素拷贝到arr
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//注意，并不是每次都拷贝所有
+</span><span style="color:#75715e"></span>        t <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">int</span> tempLeft <span style="color:#f92672">=</span> left<span style="color:#f92672">;</span> <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//第一次合并 tempLeft = 0 , right = 1 //  tempLeft = 2  right = 3 // tL=0 ri=3
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//最后一次 tempLeft = 0  right = 7
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>tempLeft <span style="color:#f92672">&lt;=</span> right<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            arr<span style="color:#f92672">[</span>tempLeft<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">[</span>t<span style="color:#f92672">];</span>
+            t <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+            tempLeft <span style="color:#f92672">+=</span> 1<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+    <span style="color:#f92672">}</span>
+</code></pre></div><h2 id="基数排序">基数排序</h2>
+<ul>
+<li>
+<p><code>基数排序（mergeSorting)</code>的基本思想是：</p>
+<p>将所有待比较数值统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/6.png" alt="img"></p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+    <span style="color:#75715e">//基数排序方法
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">radixSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">//根据前面的推导过程，我们可以得到最终的基数排序代码
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//1. 得到数组中最大的数的位数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>0<span style="color:#f92672">];</span> <span style="color:#75715e">//假设第一数就是最大数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>arr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> max<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                max <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>i<span style="color:#f92672">];</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//得到最大数是几位数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> maxLength <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>max <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">length</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">//定义一个二维数组，表示10个桶, 每个桶就是一个一维数组
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//说明
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1. 二维数组包含10个一维数组
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2. 为了防止在放入数的时候，数据溢出，则每个一维数组(桶)，大小定为arr.length
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3. 名明确，基数排序是使用空间换时间的经典算法
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[][]</span> bucket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>10<span style="color:#f92672">][</span>arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">];</span>
+
+        <span style="color:#75715e">//为了记录每个桶中，实际存放了多少个数据,我们定义一个一维数组来记录各个桶的每次放入的数据个数
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//可以这里理解
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//比如：bucketElementCounts[0] , 记录的就是  bucket[0] 桶的放入数据个数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> bucketElementCounts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>10<span style="color:#f92672">];</span>
+
+        <span style="color:#75715e">//这里使用循环将代码处理
+</span><span style="color:#75715e"></span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0 <span style="color:#f92672">,</span> n <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> maxLength<span style="color:#f92672">;</span> i<span style="color:#f92672">++,</span> n <span style="color:#f92672">*=</span> 10<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//(针对每个元素的对应位进行排序处理)， 第一次是个位，第二次是十位，第三次是百位..
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> arr<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//取出每个元素的对应位的值
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> digitOfElement <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">]</span> <span style="color:#f92672">/</span> n <span style="color:#f92672">%</span> 10<span style="color:#f92672">;</span>
+                <span style="color:#75715e">//放入到对应的桶中
+</span><span style="color:#75715e"></span>                bucket<span style="color:#f92672">[</span>digitOfElement<span style="color:#f92672">][</span>bucketElementCounts<span style="color:#f92672">[</span>digitOfElement<span style="color:#f92672">]]</span> <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>j<span style="color:#f92672">];</span>
+                bucketElementCounts<span style="color:#f92672">[</span>digitOfElement<span style="color:#f92672">]++;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//按照这个桶的顺序(一维数组的下标依次取出数据，放入原来数组)
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#75715e">//遍历每一桶，并将桶中是数据，放入到原数组
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> k <span style="color:#f92672">&lt;</span> bucketElementCounts<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> k<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//如果桶中，有数据，我们才放入到原数组
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bucketElementCounts<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                    <span style="color:#75715e">//循环该桶即第k个桶(即第k个一维数组), 放入
+</span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> l <span style="color:#f92672">&lt;</span> bucketElementCounts<span style="color:#f92672">[</span>k<span style="color:#f92672">];</span> l<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+                        <span style="color:#75715e">//取出元素放入到arr
+</span><span style="color:#75715e"></span>                        arr<span style="color:#f92672">[</span>index<span style="color:#f92672">++]</span> <span style="color:#f92672">=</span> bucket<span style="color:#f92672">[</span>k<span style="color:#f92672">][</span>l<span style="color:#f92672">];</span>
+                    <span style="color:#f92672">}</span>
+                <span style="color:#f92672">}</span>
+                <span style="color:#75715e">//第i+1轮处理后，需要将每个 bucketElementCounts[k] = 0 ！！！！
+</span><span style="color:#75715e"></span>                bucketElementCounts<span style="color:#f92672">[</span>k<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+
+        <span style="color:#f92672">}</span>
+
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>各个算法的复杂度</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/7.png" alt="img"></p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/>https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/algorithm/">
+                    #algorithm</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="prev" rel="prev" title="计算机组成原理"><i class="iconfont icon-left"></i>&nbsp;计算机组成原理</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="next" rel="next" title="heap-sort">heap-sort&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

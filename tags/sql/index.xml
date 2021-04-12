@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/sql/</link>
+    <description>Recent content in sql on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Dec 2020 22:14:51 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Transaction isolation level</title>
+      <link>https://blog.kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</link>
+      <pubDate>Wed, 16 Dec 2020 22:14:51 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</guid>
+      <description>事务的隔离级别 事务是必须满足4个条件（ACID）：：原子性（Atomicity，或称不可分割性）、一致性（Consistency）、隔离性（Isolation，又称独立性）、持久性（Durability）。
+ **原子性：**一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。 **一致性：**在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。 **隔离性：**数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。 **持久性：**事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。  数据库事务并发问题 假设选择有两个事务:Transaction01和Transaction02并发执行.
+1)脏读
+①Transaction01将某条记录的AGE值从20修改为30.
+②Transaction02读取了Transaction01更新后的值:30.
+③Transaction01回滚.AGE值恢复到了20.
+④Transaction02读取到的30就是一个无效的值.
+2)不可重复读
+①Transaction01读取了AGE值为20.
+②Transaction02将AGE值修改为30.
+③Transaction01再次读取AGE值为30,和第一次读取不一致.
+3)幻读
+①Transaction01读取了STUDENT表中的一部分数据
+②Transaction02向STUDENT表中插入了新的行
+③Transaction01读取的时候,多了一些新的行,感觉出现了幻觉
+隔离级别  一个事务与其他事务隔离的程度称为隔离级别
+ 1)读未提交:READ UNCOMMITTED
+允许Transaction01读取Transaction02未提交的修改
+2)读已提交:READ COMMITTED
+要求Transaction01只能提取Transaction02已提交的修改
+3)可重复读: REPEATABLE READ
+确保Transaction01可以多次从一个字段中读取到相同的值,即Transaction01执行期间禁止其他事务对这个字段更新
+4)串行化: SERIALIZABLE
+确保Transaction01可以多次从一个表中读取到相同的行.在Transaction01执行期间,禁止其他事务对这个表进行添加,更新,删除操作.可以避免任何并发问题,但性能十分低下.
+   隔离级别 脏读 不可重复读 幻读.虚拟读取     未提交读 是 是 是   已提交读 否 是 是   可重复读 否 否 是   快照 否 否 否   可序列化 否 否 否    </description>
+    </item>
+    
+    <item>
+      <title>MYSQL</title>
+      <link>https://blog.kayleh.top/mysql/</link>
+      <pubDate>Sun, 02 Aug 2020 22:54:25 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/mysql/</guid>
+      <description>&lt;h1 id=&#34;mysql索引&#34;&gt;MYSQL索引&lt;/h1&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://blog.kayleh.top/redis/</link>
+      <pubDate>Sat, 27 Jun 2020 17:30:29 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/redis/</guid>
+      <description>&lt;h1 id=&#34;redis&#34;&gt;Redis&lt;/h1&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

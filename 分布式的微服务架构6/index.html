@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SpringCloud Bus消息总线 | Kayleh
+       
+  </title>
+  <meta name="title" content="SpringCloud Bus消息总线 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "SpringCloud Bus消息总线",
+    "headline" : "SpringCloud Bus消息总线",
+    "description" : "\u003cp\u003eSpringCloud Bus 消息总线\u003c\/p\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-14 23:29:28 \u002b0800 CST",
+    "dateModified" : "2020-08-14 23:29:28 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846\/",
+    "wordCount" : "337",
+    "keywords" : [ "DistributedMicroservices", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">SpringCloud Bus消息总线</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-08-14 itemprop="datePublished">August 14, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://blog.kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"> 分布式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>SpringCloud Bus 消息总线</p>
+<p>上一讲解的加深和扩充，一言以蔽之</p>
+<ul>
+<li>
+<p>分布式自动刷新配置功能</p>
+</li>
+<li>
+<p>Spring Cloud Bus配合Spring Cloud Config使用可以实现配置的动态刷新</p>
+</li>
+</ul>
+<h5 id="是什么">是什么？</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/1.png" alt="1597326106343"></p>
+<p>Bus支持两种消息代理：RabbitMQ和Kafka</p>
+<h5 id="能干嘛">能干嘛？</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/2.png" alt="1597326181455"></p>
+<h5 id="为何被称为总线">为何被称为总线</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/3.png" alt="1597326216800"></p>
+<h2 id="rabbitmq环境配置">RabbitMQ环境配置</h2>
+<p>安装Erlang，下载地址：http://erlang.org/download/otp_win64_21.3.exe</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/4.png" alt="1597326251762"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/5.png" alt="1597326263813"></p>
+<p>安装RabbitMQ，下载地址</p>
+<p><a href="https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe">https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/6.png" alt="1597326363871"></p>
+<p>进入RabbitMQ安装目录下的sbin目录</p>
+<p>如例我自己本机D:\scmq\rabbitmq_server-3.7.14\sbin</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/7.png" alt="1597326403266"></p>
+<p>输入以下命令启动管理功能</p>
+<p>rabbitmq-plugins enable rabbitmq_management</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/8.png" alt="1597326436344"></p>
+<p>可视化插件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/9.png" alt="1597326454063"></p>
+<p>访问地址查看是否安装成功</p>
+<pre><code>http://localhost:15672/
+</code></pre><p>输入账号密码并登录: guest guest</p>
+<h2 id="springcloud-bus动态刷新全局广播">SpringCloud Bus动态刷新全局广播</h2>
+<p>必须先具备良好的RabbitMQ环境先</p>
+<p>演示广播效果，增加复杂度，再以3355为模板再制作一个3366</p>
+<p>新建cloud-config-client-3366</p>
+<p>pom</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependencies&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-config<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-netflix-eureka-client<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>com.kayleh.springcloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>cloud-api-commons<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>${project.version}<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-devtools<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;scope&gt;</span>runtime<span style="color:#f92672">&lt;/scope&gt;</span>
+        <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.projectlombok<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>lombok<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;optional&gt;</span>true<span style="color:#f92672">&lt;/optional&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;dependency&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+    <span style="color:#f92672">&lt;/dependency&gt;</span>
+<span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div><p>bootstrap.yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">3366</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config-client</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">config</span>:
+      <span style="color:#f92672">label</span>: <span style="color:#ae81ff">master</span>
+      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config</span>
+      <span style="color:#f92672">profile</span>: <span style="color:#ae81ff">dev</span>
+      <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:3344</span>
+<span style="color:#f92672">eureka</span>:
+  <span style="color:#f92672">client</span>:
+    <span style="color:#f92672">service-url</span>:
+      <span style="color:#f92672">defaultZone</span>: <span style="color:#ae81ff">http://eureka7001.com:7001/eureka</span>
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</code></pre></div><p>主启动类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.kayleh.springcloud<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.boot.SpringApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.boot.autoconfigure.SpringBootApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.netflix.eureka.EnableEurekaClient<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@EnableEurekaClient</span>
+<span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConfigClientMain3366</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span> ConfigClientMain3366<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>args<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+ 
+</code></pre></div><p>controller</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.kayleh.springcloud.controller<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> org.springframework.beans.factory.annotation.Value<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.cloud.context.config.annotation.RefreshScope<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.GetMapping<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.web.bind.annotation.RestController<span style="color:#f92672">;</span>
+
+<span style="color:#a6e22e">@RestController</span>
+<span style="color:#a6e22e">@RefreshScope</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConfigClientController</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Value</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;${server.port}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> String serverPort<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Value</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;${config.info}&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">private</span> String configInfo<span style="color:#f92672">;</span>
+
+
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/configInfo&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getConfigInfo</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;serverPort:&#34;</span><span style="color:#f92672">+</span>serverPort<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;\t\n\n configInfo: &#34;</span><span style="color:#f92672">+</span>configInfo<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="设计思想">设计思想</h4>
+<ol>
+<li>利用消息总线触发一个客户端/bus/refresh,而刷新所有客户端的配置</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/10.png" alt="1597386232917"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/11.png" alt="1597386240399"></p>
+<ol start="2">
+<li>利用消息总线触发一个服务端ConfigServer的/bus/refresh端点,而刷新所有客户端的配置（更加推荐）</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/13.png" alt="1597386285571"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/11.png" alt="1597386240399"></p>
+<blockquote>
+<h4 id="图二的架构显然更加合适图一不适合的原因如下">图二的架构显然更加合适，图一不适合的原因如下</h4>
+<p>打破了微服务的职责单一性，因为微服务本身是业务模块，它本不应该承担配置刷新职责</p>
+<p>破坏了微服务各节点的对等性</p>
+<p>有一定的局限性。例如，微服务在迁移时，它的网络地址常常会发生变化，此时如果想要做到自动刷新，那就会增加更多的修改</p>
+</blockquote>
+<h5 id="给cloud-config-center-3344配置中心服务端添加消息总线支持">给cloud-config-center-3344配置中心服务端添加消息总线支持</h5>
+<p>pom</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-bus-amqp<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">3344</span>
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cloud-config-center</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">config</span>:
+      <span style="color:#f92672">server</span>:
+        <span style="color:#f92672">git</span>:
+          <span style="color:#f92672">uri</span>:  <span style="color:#ae81ff">https://github.com/hhf19906/springcloud-config.git  #git@github.com:hhf19906/springcloud-config.git</span>
+          <span style="color:#f92672">search-paths</span>:
+            - <span style="color:#ae81ff">springcloud-config</span>
+      <span style="color:#f92672">label</span>: <span style="color:#ae81ff">master</span>
+
+<span style="color:#f92672">rabbitmq</span>:
+    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">localhost</span>
+    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">guest</span>
+    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">guest</span>
+
+<span style="color:#f92672">eureka</span>:
+  <span style="color:#f92672">client</span>:
+    <span style="color:#f92672">service-url</span>:
+      <span style="color:#f92672">defaultZone</span>:  <span style="color:#ae81ff">http://localhost:7001/eureka</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;bus-refresh&#39;</span>
+</code></pre></div><h5 id="给cloud-config-center-3355客户端添加消息总线支持">给cloud-config-center-3355客户端添加消息总线支持</h5>
+<p>pom</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-bus-amqp<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>bootstrap.yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">3355</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config-client</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">config</span>:
+      <span style="color:#f92672">label</span>: <span style="color:#ae81ff">master</span>
+      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config</span>
+      <span style="color:#f92672">profile</span>: <span style="color:#ae81ff">dev</span>
+      <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:3344</span>
+
+<span style="color:#f92672">rabbitmq</span>:
+    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">localhost</span>
+    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">guest</span>
+    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">guest</span>
+
+<span style="color:#f92672">eureka</span>:
+  <span style="color:#f92672">client</span>:
+    <span style="color:#f92672">service-url</span>:
+      <span style="color:#f92672">defaultZone</span>: <span style="color:#ae81ff">http://eureka7001.com:7001/eureka</span>
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#34;*&#34;</span>
+</code></pre></div><h5 id="给cloud-config-center-3366客户端添加消息总线支持">给cloud-config-center-3366客户端添加消息总线支持</h5>
+<p>pom</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.cloud<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-cloud-starter-bus-amqp<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div><p>yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">server</span>:
+  <span style="color:#f92672">port</span>: <span style="color:#ae81ff">3366</span>
+
+<span style="color:#f92672">spring</span>:
+  <span style="color:#f92672">application</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config-client</span>
+  <span style="color:#f92672">cloud</span>:
+    <span style="color:#f92672">config</span>:
+      <span style="color:#f92672">label</span>: <span style="color:#ae81ff">master</span>
+      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">config</span>
+      <span style="color:#f92672">profile</span>: <span style="color:#ae81ff">dev</span>
+      <span style="color:#f92672">uri</span>: <span style="color:#ae81ff">http://localhost:3344</span>
+
+
+  <span style="color:#f92672">rabbitmq</span>:
+    <span style="color:#f92672">host</span>: <span style="color:#ae81ff">localhost</span>
+    <span style="color:#f92672">port</span>: <span style="color:#ae81ff">5672</span>
+    <span style="color:#f92672">username</span>: <span style="color:#ae81ff">guest</span>
+    <span style="color:#f92672">password</span>: <span style="color:#ae81ff">guest</span>
+
+<span style="color:#f92672">eureka</span>:
+  <span style="color:#f92672">client</span>:
+    <span style="color:#f92672">service-url</span>:
+      <span style="color:#f92672">defaultZone</span>:  <span style="color:#ae81ff">http://localhost:7001/eureka</span>
+
+<span style="color:#f92672">management</span>:
+  <span style="color:#f92672">endpoints</span>:
+    <span style="color:#f92672">web</span>:
+      <span style="color:#f92672">exposure</span>:
+        <span style="color:#f92672">include</span>: <span style="color:#e6db74">&#39;*&#39;</span>
+</code></pre></div><p>测试</p>
+<p>运维工程师</p>
+<blockquote>
+<p>修改Github上配置文件增加版本号</p>
+<p>发送Post请求</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/12.png" alt="图像"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">curl -X POST <span style="color:#e6db74">&#34;http://localhost:3344/actuator/bus-refresh&#34;</span>
+</code></pre></div></blockquote>
+<p>配置中心</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">http://config-3344.com/config-dev.yml
+</span></code></pre></div></blockquote>
+<p>客户端</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">http://localhost:3355/configInfo
+</span><span style="color:#960050;background-color:#1e0010">http://localhost:3366/configInfo
+</span></code></pre></div><p>获取配置信息，发现都已经刷新了</p>
+</blockquote>
+<p>一次发送，处处生效</p>
+<h2 id="springcloud-bus动态刷新定点通知">SpringCloud Bus动态刷新定点通知</h2>
+<p>不想全部通知，只想定点通知,只通知3355, 不通知3366</p>
+<p>简单一句话. 指定具体某一个实例生效而不是全部</p>
+<p>公式：http://localhost:配置中心的端口号/actuator/bus-refresh/{destination}</p>
+<p>/bus/refresh请求不再发送到具体的服务实例上，而是发给config server并通过destination参数类指定需要更新配置的服务或实例</p>
+<p>我们这里以刷新运行在3355端口上的config-client为例.  只通知3355, 不通知3366</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/15.png" alt="1597386973424"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">curl -X POST <span style="color:#e6db74">&#34;http://localhost:3344/actuator/bus-refresh/config-client:3355&#34;</span>
+</code></pre></div><h4 id="通知总结all">通知总结All</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/14.png" alt="1597387025181"></p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/distributedmicroservices/">
+                    #DistributedMicroservices</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/" class="prev" rel="prev" title="SpringCloud config分布式配置中心"><i class="iconfont icon-left"></i>&nbsp;SpringCloud config分布式配置中心</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/" class="next" rel="next" title="SpringCloud Stream消息驱动">SpringCloud Stream消息驱动&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

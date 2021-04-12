@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/c/</link>
+    <description>Recent content in C on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Nov 2020 02:24:07 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>file input and output</title>
+      <link>https://blog.kayleh.top/10.file-input-and-output/</link>
+      <pubDate>Wed, 04 Nov 2020 02:24:07 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/10.file-input-and-output/</guid>
+      <description>对文件的输入输出 文件  程序文件。包括源程序文件，这种文件的内容是程序代码 数据文件。供程序运行时读写的数据  操作系统把各种设备都统一作为文件来处理。
+文件一般指存储在外部介质上数据的集合。
+流(数据流) 数据的输入输出.流表示了信息从源到目的地的流动.
+文件名 文件路径+文件名主干+文件后缀
+文件的分类  ASCII文件,在存储前需要转换,文本文件 二进制文件,存储在内存的数据的映象,不需要加以转换输出到外存,称为映像文件.  文件缓冲区 ANSI C标准采用“缓冲文件系统”处理数据文件。
+所谓缓冲文件系统是指系统自动地在内存区为程序中每一个正在使用的文件开辟一个文件缓冲区从内存向磁盘输出数据必须先送到内存中的缓冲区，装满缓冲区后才一起送到磁盘去。
+如果从磁盘向计算机读入数据，则一次从磁盘文件将一批数据输入到内存缓冲区(充满缓冲区)，然后再从缓冲区逐个地将数据送到程序数据区(给程序变量) 。
+程序与磁盘之间交互，不是立即完成，系统或程序可根据需要设置缓冲区，以提高存取效率
+文件类型指针 对于操作系统而言,关键的概念是”文件指针”.每个被使用的文件都在内存中开辟一段存储单元,用来存放文件的有关信息.这些信息是保存在一个结构体变量中的.该结构体类型变量是由系统定义的,取名为FILE.有几个文件就建立几个这样的结构体变量,分别存放各文件的有关信息.同时返回对应的FILE结构指针.
+FILE结构体类型在stdio.h文件中定义如下:
+Typedef struct { short level; //缓冲区”满”或”空”的程度//  unsigned flags; //文件状态标志//  char fd; //文件描述符//  unsigned char hold; //如无缓冲区不读取字符//  short bsize; //缓冲区大小//  unsigned char *buffer; //数据缓冲区的位置//  unsigned char *curp; //指针,当前指向//  unsigned istemp; //临时文件,指示器//  short token; //用于有效性检查// }FILE; 定义一个指向文件型数据的指针变量</description>
+    </item>
+    
+    <item>
+      <title>Good use of pointers</title>
+      <link>https://blog.kayleh.top/good-use-of-pointers/</link>
+      <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/good-use-of-pointers/</guid>
+      <description>善于利用指针  Good use of pointers
+ 指针 如果在程序中定义了一个变量，在对程序进行编译时，系统就会给这个变量分配内存单元。编译系统根据程序中定义的变量类型，分配一定长度的空间。
+每一个字节都有一个编号，就是“地址”。
+ 地址指向该变量单元.地址形象化地称为&amp;quot;指针&amp;quot;,它能找到以它为地址的内存单元.
+ c语言中的地址包括位置信息(内存编号,或称为纯地址)和它指向的数据的类型信息,或者说它是&amp;quot;带类型的地址&amp;quot;.
+在程序中一般通过变量名来引用变量的值,
+printf(&amp;#34;%d\n&amp;#34;,i);  对变量的访问都是通过地址进行的.
+ 假如有输入语句:
+scanf(&amp;#34;%d&amp;#34;,&amp;amp;i); 在执行时,把键盘输入的值送到地址为2000开始的整型存储单元中.
+如果有语句:
+k=i+j; 则从2000~2003字节取出i的值(3),再从2004~2007字节取出j的值(6),将它们相加后再将其和(9)送到k所占用的2008~2011字节单元中.这种直接按变量名进行的访问称为&amp;quot;直接访问&amp;quot;
+还可以采用另一种称为“间接访问”的方式，即将变量i的地址存放在另一变量中，然后通过该变量来找到变量i的地址。从而访问i变量。
+ 为了表示将数值3送到变量中，可以有两种表达方式：
+  将3直接送到变量i所标识的单元中,例如&amp;quot;i=3;&amp;quot;
+  将3送到变量i_pointer所指向的单元(即变量i的存储单元)，例如“i_pointer=3;”,其中**i_pointer表示i_pointer*所指向的对象，
+   指向 通过i_pointer能知道i的地址，从而找到变量i的内存单元。
+i_pointer指向i
+ 指针变量 通过指针变量访问整型变量. #include&amp;lt;stdio.h&amp;gt; int main() { int a = 100, b = 10; //定义整型变量a,b,并初始  int *point_1, *point_2; //定义指向整型数据的指针变量point_1,point_2  point_1 = &amp;amp;a; //把变量a的地址赋给指针变量point_1  point_2 = &amp;amp;b; printf(&amp;#34;a=%d,b=%d\n&amp;#34;, a, b); printf(&amp;#34;*point_1=%d,*point_2=%d\n&amp;#34;, *point_1, *point_2); return 0; } ----- a=100,b=10 *point_1=100,*point_2=10 怎么定义指针变量 类型名	* 指针变量名 指针变量是基本数据类型派生出来的类型,它不能离开基本类型而独立存在.</description>
+    </item>
+    
+    <item>
+      <title>users create data types themselves</title>
+      <link>https://blog.kayleh.top/9.users-create-data-types-themselves/</link>
+      <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/9.users-create-data-types-themselves/</guid>
+      <description>用户自己建立数据类型 定义和使用结构体变量 由不同类型数据组成的组合型的数据结构，它称为结构体.
+struct Student { int num; char name[20]; char sex; int age; float score; char addr[30]; }; 声明结构体类型的一般形式
+struct 结构体名 {成员表列}; 结构体成员: 类型名 成员名; 成员可以属于另一个结构体类型
+struct Date{ int month; int day; int year; } struct Student { struct Date birthday; //成员birthday属于struct Date类型 } 定义结构体类型变量 先声明结构体类型,再定义该类型的变量. struct Student student1,student2; 在声明类型的同时定义变量 struct Student { int num; char name[20]; char sex; int age; float score; char addr[30]; } student1, student2; struct 结构体名 { 成员表列 }变量名表列; 不指定类型名而直接定义结构体类型变量 struct { 成员表列 }变量名表列; 没有名字.</description>
+    </item>
+    
+    <item>
+      <title>realize modular programming with functions</title>
+      <link>https://blog.kayleh.top/realize-modular-programming-with-functions/</link>
+      <pubDate>Mon, 26 Oct 2020 01:17:42 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/realize-modular-programming-with-functions/</guid>
+      <description>用函数实现模块化程序设计  Realize modular programming with functions
+ 用函数输出以下结果：
+***************** How do you do! ***************** #include&amp;lt;stdio.h&amp;gt; int main() { void print_star();//函数的声明  void print_message();//函数的声明  print_star(); print_message(); print_star(); return 0; } void print_star() { printf(&amp;#34;*****************\n&amp;#34;); } void print_message() { printf(&amp;#34;How do you do!\n&amp;#34;); }  函数声明的作用是把有关函数的信息(函数名,函数类型,函数参数的个数与类型)通知编译系统,以便在编译系统对程序进行编译时,在进行到main函数调用print_star()和print_message()时知道它们是函数而不是变量或其他对象,还对调用函数的正确性进行检查.
+函数间可以互相调用,但不能调用main函数,main函数是被操作系统调用的.
+函数从用户使用的角度看分为:
+ 库函数 用户自己定义的函数  从函数形式分为:
+ 无参函数 有参函数   怎么定义函数 定义函数应包括哪些内容:
+ 函数的名字,方便按名调用 函数的类型,即函数返回值的类型 函数的参数的名字和类型,调用函数时需要传递的数据 函数的功能,函数体  定义无参函数 类型名	函数名() { 函数体 } 或 类型名	函数名(void) { 函数体 } 函数体包括声明部分(变量)和语句部分.</description>
+    </item>
+    
+    <item>
+      <title>use-arrays-to-process-batch-data</title>
+      <link>https://blog.kayleh.top/use-arrays-to-process-batch-data/</link>
+      <pubDate>Mon, 26 Oct 2020 01:17:20 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/use-arrays-to-process-batch-data/</guid>
+      <description>利用数组处理批量数据  use-arrays-to-process-batch-data
+ 1.数组使一组有序数据的集合.
+2.用一个数组名和下标来唯一地确定数组中的元素
+3.数组中的每一个元素都属于同一个数据类型
+怎样定义和引用一维数组  类型符 数组名[常量表达式]
+ 怎么引用一维数组元素  数组名[下标]
+ 对10个数组元素依次赋值为0,1,2,3,4,5,6,7,8,9,要求按逆序输出.
+#include&amp;lt;stdio.h&amp;gt; int main() { int i, a[10]; for (i = 0; i &amp;lt;= 9; i++) { a[i] = i; } for (i = 9; i &amp;gt;= 0; i--) { printf(&amp;#34;%d &amp;#34;, a[i]); } return 0; } 一维数组的初始化 1)在定义数组时对全部数组元素赋予初值.
+2)可以只给数组中的一部分元素赋值(只给前n个元素赋值,其余的元素自动赋值为0)
+3)如果想使一个数组中全部元素值为0,可以写成
+int a[10]={0}; 4)在对全部元素赋值时,如果数据的个数已经确定,因此可以不指定数组长度.
+用数组来处理求Fibonacci数列问题 #include&amp;lt;stdio.h&amp;gt; int main() { int i; int f[20] = {1, 1}; for (i = 2; i &amp;lt; 20; i++) { f[i] = f[i - 2] + f[i - 1]; } for (i = 0; i &amp;lt; 20; i++) { if (i % 5 == 0) printf(&amp;#34;\n&amp;#34;); printf(&amp;#34;%12d&amp;#34;, f[i]); } printf(&amp;#34;\n&amp;#34;); return 0; } 有10个地区的面积,要求对它们按由小到大的顺序排列(冒泡排序) #include&amp;lt;stdio.</description>
+    </item>
+    
+    <item>
+      <title>cycle structure programming</title>
+      <link>https://blog.kayleh.top/cycle-structure-programming/</link>
+      <pubDate>Mon, 26 Oct 2020 01:16:57 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/cycle-structure-programming/</guid>
+      <description>循环结构体程序设计 用while语句实现循环  while (表达式) 语句
+ 求1+2+3+&amp;hellip;.+100; #include&amp;lt;stdio.h&amp;gt; int main() { int i = 1; int sum = 0; while (i &amp;lt;= 100) { sum += i; i++; } printf(&amp;#34;%d&amp;#34;, sum); return 0; } 用do&amp;hellip;while语句实现循环  do
+​	语句
+while (表达式);
+ 如:
+#include&amp;lt;stdio.h&amp;gt; int main() { int i = 1; do { printf(&amp;#34;%d\n&amp;#34;, i++); } while (i &amp;lt;= 100); return 0; } 求1+2+3+&amp;hellip;.+100; #include&amp;lt;stdio.h&amp;gt; int main() { int i = 1,sum = 0; do { sum += i; i++; } while (i &amp;lt;= 100); printf(&amp;#34;%d&amp;#34;, sum); return 0; } while和do&amp;hellip;while的区别 do&amp;hellip;while无论如何都会至少执行一次循环体</description>
+    </item>
+    
+    <item>
+      <title>select structure programming</title>
+      <link>https://blog.kayleh.top/select-structure-programming/</link>
+      <pubDate>Mon, 26 Oct 2020 01:16:20 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/select-structure-programming/</guid>
+      <description>选择结构程序设计 选择结构和条件判断 用if语句实现选择结构  if
+ 关系运算符和关系表达式    关系运算符 描述 实例     == 检查两个操作数的值是否相等，如果相等则条件为真。 (A == B) 为假。   != 检查两个操作数的值是否相等，如果不相等则条件为真。 (A != B) 为真。   &amp;gt; 检查左操作数的值是否大于右操作数的值，如果是则条件为真。 (A &amp;gt; B) 为假。   &amp;lt; 检查左操作数的值是否小于右操作数的值，如果是则条件为真。 (A &amp;lt; B) 为真。   &amp;gt;= 检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。 (A &amp;gt;= B) 为假。   &amp;lt;= 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 (A &amp;lt;= B) 为真。    输入两个实数,按由小到大的顺序输出这两个数 #include&amp;lt;stdio.h&amp;gt; int main() { float a, b, t; scanf(&amp;#34;%f,%f&amp;#34;, &amp;amp;a, &amp;amp;b); if (a &amp;gt; b) { //将a和b的值互换  t = a; a = b; b = t; } printf(&amp;#34;%5.</description>
+    </item>
+    
+    <item>
+      <title>sequential programming</title>
+      <link>https://blog.kayleh.top/sequential-programming/</link>
+      <pubDate>Mon, 26 Oct 2020 01:16:00 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/sequential-programming/</guid>
+      <description>顺序程序设计 求摄氏度
+#include&amp;lt;stdio.h&amp;gt; int main() { float f, c; f = 64.0; c = (5.0 / 9) * (f - 32); printf(&amp;#34;f=%f\nc=%f\n&amp;#34;, f, c); return 0; } 常量   整型常量
+  实性常量(有小数点)
+ 十进制小数形式 指数形式:如12.34e3(e或E之前必须有数字,e或E之后必须为整数)    字符常量
+ 普通字符,用单撇号括起来的一个字符   字符常量存储在计算机存储单元中时,并不是存储字符本身,而是以其代码(一般采用ASCII码)存储的
+  转义字符    字符串常量
+   用双撇号括起来的全部字符,双撇号内可以只有一个字符
+  符号常量  用#define指令,指定用一个符号名称代表一个常量
+ 在预编译后,符号变量会全部被置换,
+ #define PI 3.1415 //注意行末没有分号 变量 变量代表一个有名字,具有特定属性的一个存储单元,它用来存放数据,在程序运行期间,变量的值时可以改变的.</description>
+    </item>
+    
+    <item>
+      <title>C algorithm</title>
+      <link>https://blog.kayleh.top/c-algorithm/</link>
+      <pubDate>Mon, 26 Oct 2020 01:15:22 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/c-algorithm/</guid>
+      <description>算法 1.什么是算法? 算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。
+2.什么叫结构化算法?为什么要提倡结构化算法? 结构化算法是由一些基本结构顺序组成的，就是把一个大的功能的实现分隔为许多个小功能的实现。
+自顶向下,逐步细化,模块化设计,结构化编码</description>
+    </item>
+    
+    <item>
+      <title>C programming</title>
+      <link>https://blog.kayleh.top/c-programming/</link>
+      <pubDate>Mon, 26 Oct 2020 01:14:40 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/c-programming/</guid>
+      <description>程序 1.什么是程序?什么是程序设计? 程序是一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具。 程序设计（programming），是给出解决特定问题程序的过程，软件开发过程中的重要步骤。程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。
+2.为什么需要计算机语言?高级语言有哪些特点? 人和计算机交流信息需要解决语言问题,需要创造一种计算机和人都能识别的语言.
+高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。
+3.正确解释一下名词以及含义: (1)源程序,目标程序,可执行程序。 源程序：指未编译的按照一定的程序设计语言规范书写的文本文件，是一系列人类可读的计算机语言指令
+目标程序：为源程序经编译可直接被计算机运行的机器码集合，在计算机文件上以.obj作扩展名
+可执行程序：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体，生成一个可供计算机执行的目标程序，成为可执行程序
+(2)程序编辑,程序编译,程序连接。 程序编辑：上机输入或者编辑源程序。
+程序编译：
+ 先用C提供的“预处理器”，对程序中的预处理指令进行编译预处理 对源程序进行语法检查， 判断是否有语法错误，直到没有语法错误未知 编译程序自动把源程序转换为二进制形式的目标程序  程序连接：将所有编译后得到的目标模块连接装配起来，在与函数库相连接成为一个整体的过程称之为程序连接
+(3)程序,程序模块,程序文件。 程序：一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具
+程序模块：可由汇编程序、编译程序、装入程序或翻译程序作为一个整体来处理的一级独立的、可识别的程序指令
+程序文件：程序的文件称为程序文件，程序文件存储的是程序，包括源程序和可执行程序
+(4)函数,主函数，被调用函数,库函数。 函数：将一段经常需要使用的代码封装起来，在需要使用时可以直接调用，来完成一定功能
+主函数：又称main函数，是程序执行的起点
+被调用函数：由一个函数调用另一个函数，则称第二个函数为被调用函数
+库函数：一般是指编译器提供的可在c源程序中调用的函数。可分为两类，一类是c语言标准规定的库函数，一类是
+编译器特定的库函数
+(5)程序调试,程序测试。 程序调试：是将编制的程序投入实际运行前，用手工或编译程序等方法进行测试，修正语法错误和逻辑错误的过程
+程序测试：是指对一个完成了全部或部分功能、模块的计算机程序在正式使用前的检测，以确保该程序能按预定的
+方式正确地运行
+4.编写一个c程序,运行时输出 Hello World!
+#include&amp;lt;stdio.h&amp;gt; int main() { printf(&amp;#34;Hello World!&amp;#34;); return 0; } 5.编写一个c程序,运行时输出一下图形 *****
+​	*****
+​	*****
+​	*****
+#include&amp;lt;stdio.h&amp;gt; int main() { printf(&amp;#34;*****\n&amp;#34;); printf(&amp;#34; *****\n&amp;#34;); printf(&amp;#34; *****\n&amp;#34;); printf(&amp;#34; *****\n&amp;#34;); return 0; } 6.</description>
+    </item>
+    
+    <item>
+      <title>值传递</title>
+      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</link>
+      <pubDate>Thu, 10 Sep 2020 13:01:12 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</guid>
+      <description>传值调用 向函数传递参数的传值调用方法，把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数不会影响实际参数。默认情况下，C++ 使用传值调用方法来传递参数。一般来说，这意味着函数内的代码不会改变用于调用函数的实际参数。
+#include &amp;lt;iostream&amp;gt;using namespace std; // 函数声明 void swap(int x, int y); // 函数定义 void swap(int x, int y) { int temp; temp = x; /* 保存 x 的值 */ x = y; /* 把 y 赋值给 x */ y = temp; /* 把 x 赋值给 y */ return; } int main() { // 局部变量声明  int a = 100; int b = 200; cout &amp;lt;&amp;lt; &amp;#34;before swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;before swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; // 调用函数来交换值  swap(a, b); cout &amp;lt;&amp;lt; &amp;#34;After swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;After swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; return 0; }  指针调用 向函数传递参数的指针调用方法，把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</description>
+    </item>
+    
+    <item>
+      <title>C pointer</title>
+      <link>https://blog.kayleh.top/c-prime-plus/</link>
+      <pubDate>Sun, 28 Jun 2020 17:33:01 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/c-prime-plus/</guid>
+      <description>&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>Download</title>
+      <link>https://blog.kayleh.top/download/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.kayleh.top/download/</guid>
+      <description>Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。
+为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。
+用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。
+每当有一个线程完成下载任务时，就不断从剩余的部分中划分出一段给它下载，直到整个文件的所有部分都下载完毕。
+当然，文件并不能被无限地分段，IDM 会设定一个段的阈值，当剩余的最大段小于这个阈值的时候，就不再分段了给空闲的线程了，只等待活动中的所有线程下载完毕。
+说完 IDM 的下载策略，我们大致有了思路。不过优秀的软件不是一蹴而就的，虽然我们想写出像 IDM 的下载器，但还需要从简单的实现开始，不断迭代优化。
+所以我们一开始采用的策略是：固定 N 个线程，并将文件划分为 N 段，每个线程负责下载一段数据。
+实现步骤 判断服务器是否支持断点续传
+首先要明确的是，多线程下载文件利用的是每个线程下载文件的一部分，那么就需要 HTTP 服务器支持请求部分数据，或者说断点续传，因此第一步需要判断目标文件是否支持断点续传。
+HTTP 请求头中有一个 Range 字段，可以用来指定要请求的数据范围，例如我们要请求从第 10 字节到第 20 字节的数据，可以将该字段写为 Range:bytes=10-20。
+相应的，如果 HTTP 服务器支持断点续传，那么对于指定了 Range 字段的请求，会返回 206 状态码。
+我们用 Curl 来测试一下：
+curl -I --header &amp;#34;Range: bytes=0-&amp;#34; http://mirrors.163.com/debian/ls-lR.gz 得到的响应：
+HTTP/1.1 206 Partial Content Server: nginx Date: Wed, 25 Apr 2018 02:57:56 GMT Content-Type: application/octet-stream Content-Length: 15316619 Connection: keep-alive Last-Modified: Mon, 23 Apr 2018 14:38:44 GMT ETag: &amp;quot;5addeff4-e9b68b&amp;quot; Content-Range: bytes 0-15316618/15316619 我们设置 Range: bytes=0- ，表示请求从第 0 字节到最后一字节的数据，那为什么还要指定该字段呢？这是出于两方面的原因：一是判断响应的状态码是否为 206，二是得到文件的大小。</description>
+    </item>
+    
+  </channel>
+</rss>

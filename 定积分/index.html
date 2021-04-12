@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           定积分 | Kayleh
+       
+  </title>
+  <meta name="title" content="定积分 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "定积分",
+    "headline" : "定积分",
+    "description" : "定积分 性质  插入分点，区间内取任意值，求任意值的函数值，$△x_n$小区间的长度\n拉姆达是最大的区间\n 定义 $f(x)$在$[a,b]$有界，在$[a,b]$任意插入分点\n分成n个区间，△x_1,△x_2\u0026hellip;.△x_n,任取一点 $\\xi_i$\n$$\\int_a^b{f(x)dx}=\\lim_{\\lambda \\to 0} \\sum_{i=1}^n{f(\\xi_i)△x_i}$$\n$$\\lambda=max{△x_1\u0026hellip;△x_n}$$\n注意： 两个图像都是一样的\n定理 1）连续就可积\n2）有界，有限个间断点，可积\n几何意义 ②积分等于面积的相反数\n例题 定积分的近似计算 矩形法 梯形法 抛物线法 性质 1）当b=a时，\n$$\\int_a^a{f(x)=0}$$\n2）$$\\int_a^b{f(x)dx}= - \\int_b^a{f(x)dx}$$\n 不管是a\u0026lt;c\u0026lt;b还是a\u0026lt;b\u0026lt;c,性质2公式都成立\n 推论 性质6\n定积分中值定理  f(x)必须是连续的\n 在最小值和最大值之间一定能找到一点$\\xi$\n函数值$f(\\xi)$就是平均值。\n微积分的基本原理 积分上限函数 x是变化的\n 定义 积分上限函数p(x)是连续的\n 定理 如果f(x)在[a,b]上连续，那么p(x)在积分区域上可导\n$$p\u0027(x)=f(x)$$\n1)如果上限是x，直接将x代入被积函数\n2)如果x是下限，取相反数，再直接将x代入被积函数\n3）如果上限是x的函数g(x)\n复合函数求导——链式法则\n1.把上限g(x)直接代入被积函数\n2.对上限求导g\u0027(x)\n4）如果上限是x的函数h(x)\n1.把上限h(x)直接代入被积函数\n2.对上限求导h\u0027(x)\n3.取相反数，加负号\n5）上下都是x的函数，\n可以根据积分的性质，在h(x)和g(x)之间任取一点C，求h(x)到c的积分和c到g(x)的积分。\n 例题  牛顿莱布尼茨公式 例题：定积分的换元积分法 例题： 3ln3",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-26 20:38:49 \u002b0800 CST",
+    "dateModified" : "2020-09-26 20:38:49 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%AE%9A%E7%A7%AF%E5%88%86\/",
+    "wordCount" : "81",
+    "keywords" : [ "math", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">定积分</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-09-26 itemprop="datePublished">September 26, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="定积分">定积分</h1>
+<h3 id="性质">性质</h3>
+<blockquote>
+<p>插入分点，区间内取任意值，求任意值的函数值，$△x_n$小区间的长度</p>
+<p>拉姆达是最大的区间</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601053742391.png" alt="1601053742391"></p>
+<h3 id="定义">定义</h3>
+<p>$f(x)$在$[a,b]$有界，在$[a,b]$任意插入分点</p>
+<p>分成n个区间，△x_1,△x_2&hellip;.△x_n,任取一点 $\xi_i$</p>
+<p>$$\int_a^b{f(x)dx}=\lim_{\lambda \to 0} \sum_{i=1}^n{f(\xi_i)△x_i}$$</p>
+<p>$$\lambda=max{△x_1&hellip;△x_n}$$</p>
+<h4 id="注意">注意：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601055940188.png" alt="1601055940188"></p>
+<p>两个图像都是一样的</p>
+<h3 id="定理">定理</h3>
+<p>1）连续就可积</p>
+<p>2）有界，有限个间断点，可积</p>
+<h3 id="几何意义">几何意义</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601056351353.png" alt="1601056351353"></p>
+<p>②积分等于面积的相反数</p>
+<h3 id="例题">例题</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601056797153.png" alt="1601056797153"></p>
+<h2 id="定积分的近似计算">定积分的近似计算</h2>
+<h4 id="矩形法">矩形法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601089155704.png" alt="1601089155704"></p>
+<h4 id="梯形法">梯形法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601090462955.png" alt="1601090462955"></p>
+<h4 id="抛物线法">抛物线法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601090743620.png" alt="1601090743620"></p>
+<h2 id="性质-1">性质</h2>
+<p>1）当b=a时，</p>
+<p>$$\int_a^a{f(x)=0}$$</p>
+<p>2）$$\int_a^b{f(x)dx}= - \int_b^a{f(x)dx}$$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601100327822.png" alt="1601100327822"></p>
+<blockquote>
+<p>不管是a&lt;c&lt;b还是a&lt;b&lt;c,性质2公式都成立</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601100611938.png" alt="1601100611938"></p>
+<h4 id="推论">推论</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601100749415.png" alt="1601100749415"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601101052364.png" alt="1601101052364"></p>
+<p>性质6</p>
+<h3 id="定积分中值定理">定积分中值定理</h3>
+<blockquote>
+<p>f(x)必须是连续的</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601101655002.png" alt="1601101655002"></p>
+<p>在最小值和最大值之间一定能找到一点$\xi$</p>
+<p>函数值$f(\xi)$就是<strong>平均值</strong>。</p>
+<h1 id="微积分的基本原理">微积分的基本原理</h1>
+<h2 id="积分上限函数">积分上限函数</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601110706936.png" alt="1601110706936"></p>
+<p>x是变化的</p>
+<hr>
+<h3 id="定义-1">定义</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601110816738.png" alt="1601110816738"></p>
+<p>积分上限函数p(x)是连续的</p>
+<hr>
+<h3 id="定理-1">定理</h3>
+<p>如果f(x)在[a,b]上连续，那么p(x)在积分区域上<strong>可导</strong></p>
+<p>$$p'(x)=f(x)$$</p>
+<p>1)如果上限是x，直接将x代入被积函数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601111539113.png" alt="1601111539113"></p>
+<p>2)如果x是下限，取相反数，再直接将x代入被积函数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601111632965.png" alt="1601111632965"></p>
+<p>3）如果上限是x的函数g(x)</p>
+<p>复合函数求导——链式法则</p>
+<p>1.把上限g(x)直接代入被积函数</p>
+<p>2.对上限求导g'(x)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601111926046.png" alt="1601111926046"></p>
+<p>4）如果上限是x的函数h(x)</p>
+<p>1.把上限h(x)直接代入被积函数</p>
+<p>2.对上限求导h'(x)</p>
+<p>3.取相反数，加负号</p>
+<p>5）上下都是x的函数，</p>
+<p>可以根据积分的性质，在h(x)和g(x)之间任取一点C，求h(x)到c的积分和c到g(x)的积分。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601112251309.png" alt="1601112251309"></p>
+<hr>
+<h4 id="例题-1">例题</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601112870379.png" alt="1601112870379"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601139602455.png" alt="1601139602455"></p>
+<hr>
+<h3 id="牛顿莱布尼茨公式">牛顿莱布尼茨公式</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601140289642.png" alt="1601140289642"></p>
+<p>例题：<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601141863229.png" alt="1601141863229"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601142031603.png" alt="1601142031603"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601142825530.png" alt="1601142825530"></p>
+<h2 id="定积分的换元积分法">定积分的换元积分法</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601183156945.png" alt="1601183156945"></p>
+<h4 id="例题-2">例题：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601184315091.png" alt="1601184315091"></p>
+<p>3ln3</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601185910499.png" alt="1601185910499"></p>
+<p>sin的值是1到-1来回波动，在因为a是正的，所以就是从0到1的范围</p>
+<p>又可以这么写：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601186045641.png" alt="1601186045641"></p>
+<hr>
+<h4 id="heading">★</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601186556806.png" alt="1601186556806"></p>
+<p><strong>积分区间关于原点对称</strong></p>
+<p>例题：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601187310285.png" alt="1601187310285"></p>
+<p>$1+x^2$分之1是arctanx的导数，提出去所以是对$(arctanx)^2$求导</p>
+<p>证明：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601187747971.png" alt="1601187747971"></p>
+<p>sin（派/2-X）= cosx</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601189272798.png" alt="1601189272798"></p>
+<p>同时求导</p>
+<h2 id="定积分的分部积分法">定积分的分部积分法</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601190092256.png" alt="1601190092256"></p>
+<p>例题：<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601190921495.png" alt="1601190921495"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601191359757.png" alt="1601191359757"></p>
+<p>=1/2</p>
+<p>优先级：反对幂三指</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601192056564.png" alt="1601192056564"></p>
+<h1 id="应用">应用</h1>
+<h2 id="求面积">求面积</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601224434165.png" alt="1601224434165"></p>
+<p>x型：垂直于x轴</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601225369727.png" alt="1601225369727"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601225743031.png" alt="1601225743031"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601226092741.png" alt="1601226092741"></p>
+<h2 id="求体积">求体积</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601226647106.png" alt="1601226647106"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601226802688.png" alt="1601226802688"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601226875100.png" alt="1601226875100"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AE%9A%E7%A7%AF%E5%88%86/1601227123788.png" alt="1601227123788"></p>
+<h2 id="经济问题">经济问题</h2>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/>https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/math/">
+                    #math</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/" class="prev" rel="prev" title="图床"><i class="iconfont icon-left"></i>&nbsp;图床</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/" class="next" rel="next" title="广义积分和瑕积分">广义积分和瑕积分&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

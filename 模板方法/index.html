@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           模板方法 | Kayleh
+       
+  </title>
+  <meta name="title" content="模板方法 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "模板方法",
+    "headline" : "模板方法",
+    "description" : "\u003ch4 id=\u0022模板方法\u0022\u003e模板方法\u003c\/h4\u003e\n\u003chr\u003e\n\u003cblockquote\u003e\n\u003cp\u003e定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。\u003c\/p\u003e\n\u003c\/blockquote\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-13 17:22:53 \u002b0800 CST",
+    "dateModified" : "2020-06-13 17:22:53 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95\/",
+    "wordCount" : "217",
+    "keywords" : [ "DesignPatterns", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">模板方法</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-13 itemprop="datePublished">June 13, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://blog.kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"> 设计模式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="模板方法">模板方法</h4>
+<hr>
+<blockquote>
+<p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+</blockquote>
+<p>在模板模式（Template Pattern）中，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。这种类型的设计模式属于行为型模式。</p>
+<h2 id="介绍">介绍</h2>
+<p>**意图：**定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p>**主要解决：**一些方法通用，却在每一个子类都重新写了这一方法。</p>
+<p>**何时使用：**有一些通用的方法。</p>
+<p>**如何解决：**将这些通用算法抽象出来。</p>
+<p>**关键代码：**在抽象类实现，其他步骤在子类实现。</p>
+<p><strong>应用实例：</strong> 1、在造房子的时候，地基、走线、水管都一样，只有在建筑的后期才有加壁橱加栅栏等差异。 2、西游记里面菩萨定好的 81 难，这就是一个顶层的逻辑骨架。 3、spring 中对 Hibernate 的支持，将一些已经定好的方法封装起来，比如开启事务、获取 Session、关闭 Session 等，程序员不重复写那些已经规范好的代码，直接丢一个实体就可以保存。</p>
+<p><strong>优点：</strong> 1、封装不变部分，扩展可变部分。 2、提取公共代码，便于维护。 3、行为由父类控制，子类实现。</p>
+<p>**缺点：**每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大。</p>
+<p><strong>使用场景：</strong> 1、有多个子类共有的方法，且逻辑相同。 2、重要的、复杂的方法，可以考虑作为模板方法。</p>
+<p>**注意事项：**为防止恶意操作，一般模板方法都加上 final 关键词。</p>
+<h2 id="实现">实现</h2>
+<p>我们将创建一个定义操作的 <em>Game</em> 抽象类，其中，模板方法设置为 final，这样它就不会被重写。<em>Cricket</em> 和 <em>Football</em> 是扩展了 <em>Game</em> 的实体类，它们重写了抽象类的方法。</p>
+<p><em>TemplatePatternDemo</em>，我们的演示类使用 <em>Game</em> 来演示模板模式的用法。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/1.jpg" alt="模板模式的 UML 图"></p>
+<h3 id="步骤1">步骤1</h3>
+<p>创建一个抽象类，它的模板方法被设置为 final。</p>
+<p><em>Game.java</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Game</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">();</span>
+   <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startPlay</span><span style="color:#f92672">();</span>
+   <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">endPlay</span><span style="color:#f92672">();</span>
+ 
+   <span style="color:#75715e">//模板
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">play</span><span style="color:#f92672">(){</span>
+ 
+      <span style="color:#75715e">//初始化游戏
+</span><span style="color:#75715e"></span>      initialize<span style="color:#f92672">();</span>
+ 
+      <span style="color:#75715e">//开始游戏
+</span><span style="color:#75715e"></span>      startPlay<span style="color:#f92672">();</span>
+ 
+      <span style="color:#75715e">//结束游戏
+</span><span style="color:#75715e"></span>      endPlay<span style="color:#f92672">();</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="步骤-2">步骤 2</h3>
+<p>创建扩展了上述类的实体类。</p>
+<p><em>Cricket.java</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cricket</span> <span style="color:#66d9ef">extends</span> Game <span style="color:#f92672">{</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">endPlay</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cricket Game Finished!&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cricket Game Initialized! Start playing.&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startPlay</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Cricket Game Started. Enjoy the game!&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><em>Football.java</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Football</span> <span style="color:#66d9ef">extends</span> Game <span style="color:#f92672">{</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">endPlay</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Football Game Finished!&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Football Game Initialized! Start playing.&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+ 
+   <span style="color:#a6e22e">@Override</span>
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">startPlay</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Football Game Started. Enjoy the game!&#34;</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="步骤-3">步骤 3</h3>
+<p>使用 <em>Game</em> 的模板方法 play() 来演示游戏的定义方式。</p>
+<p><em>TemplatePatternDemo.java</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TemplatePatternDemo</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+ 
+      Game game <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cricket<span style="color:#f92672">();</span>
+      game<span style="color:#f92672">.</span><span style="color:#a6e22e">play</span><span style="color:#f92672">();</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">();</span>
+      game <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Football<span style="color:#f92672">();</span>
+      game<span style="color:#f92672">.</span><span style="color:#a6e22e">play</span><span style="color:#f92672">();</span>      
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="步骤-4">步骤 4</h3>
+<p>执行程序，输出结果：</p>
+<pre><code>Cricket Game Initialized! Start playing.
+Cricket Game Started. Enjoy the game!
+Cricket Game Finished!
+
+Football Game Initialized! Start playing.
+Football Game Started. Enjoy the game!
+Football Game Finished!
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/>https://blog.kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/designpatterns/">
+                    #DesignPatterns</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="访问者模式"><i class="iconfont icon-left"></i>&nbsp;访问者模式</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="next" rel="next" title="多线程">多线程&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

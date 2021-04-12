@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%BE%AE%E5%88%86/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           导数 | Kayleh
+       
+  </title>
+  <meta name="title" content="导数 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "导数",
+    "headline" : "导数",
+    "description" : "变化率 $x_0 \\to x_0\u002b△x$.\n$f(x_0) \\to f(x_0\u002b△x)$\n$\\frac{f(x_0\u002b△x)-f(x_0)}{△x}$\n从x_0到x_0\u002b△x的平均变化率\n导数的四个符号\n导数的三种表达方式\n例题：    $y=x^2$\n$y\u0027$\n$y\u0027|_{x=2}$\n=4;\n求导 导数意义 例题：\n求$y=x^3$在(1,1)的切线和法线\n左右导数，左右导数都存在并相等\n求导法则： (1)$u(x)、v(x)$可导，$(u(x)\u002bv(x))\u0027=u\u0027(x)\u002bv\u0027(x)$\n(2)$(uv)\u0027=u\u0026rsquo;v\u002buv\u0027$\n(3)$\\frac{u}{v}=\\frac{u\u0026rsquo;v\u002buv\u0027}{v^2}$\n反函数求导法则： $y=f(x)$ . $x=\\phi(y)$\n反函数=导数的倒数 $\\phi(y)=\\frac{1}{f\u0027(x)}$\n复合函数： 链式法则： 剥洋葱解法，从外往里剥。\n高阶函数 对$y$求两次导数，记作$y^{\u0027\u0027}$,二阶导数\n或者$\\frac{d^2y}{dx^2}$\n从4阶开始用数字表示:$y^{(4)}$\n例题： ",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-16 00:20:05 \u002b0800 CST",
+    "dateModified" : "2020-09-16 00:20:05 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%AF%BC%E6%95%B0\/",
+    "wordCount" : "39",
+    "keywords" : [ "math", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">导数</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-09-16 itemprop="datePublished">September 16, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="变化率">变化率</h4>
+<p>$x_0 \to x_0+△x$.</p>
+<p>$f(x_0) \to f(x_0+△x)$</p>
+<p>$\frac{f(x_0+△x)-f(x_0)}{△x}$</p>
+<p>从x_0到x_0+△x的平均变化率</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600188583801.png" alt="1600188583801"></p>
+<p>导数的四个符号</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600188748075.png" alt="1600188748075"></p>
+<p>导数的三种表达方式</p>
+<h3 id="例题">例题：</h3>
+<ol>
+<li></li>
+</ol>
+<p>$y=x^2$</p>
+<p>$y'$</p>
+<p>$y'|_{x=2}$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600189489349.png" alt="1600189489349"></p>
+<p>=4;</p>
+<h3 id="求导">求导</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600189764709.png" alt="1600189764709"></p>
+<h3 id="导数意义">导数意义</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600221028096.png" alt="1600221028096"></p>
+<p>例题：</p>
+<p>求$y=x^3$在(1,1)的切线和法线</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600250579429.png" alt="1600250579429"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600234017440.png" alt=""></p>
+<p>左右导数，左右导数都存在并相等</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600235099441.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600235529621.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600235803697.png" alt=""></p>
+<h2 id="求导法则">求导法则：</h2>
+<p>(1)$u(x)、v(x)$可导，$(u(x)+v(x))'=u'(x)+v'(x)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600252000327.png" alt="1600252000327"></p>
+<p>(2)$(uv)'=u&rsquo;v+uv'$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600252779790.png" alt="1600252779790"></p>
+<p>(3)$\frac{u}{v}=\frac{u&rsquo;v+uv'}{v^2}$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600253704886.png" alt="1600253704886"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600253831993.png" alt="1600253831993"></p>
+<h3 id="反函数求导法则">反函数求导法则：</h3>
+<p>$y=f(x)$ . $x=\phi(y)$</p>
+<p>反函数=导数的倒数 $\phi(y)=\frac{1}{f'(x)}$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600255372014.png" alt="1600255372014"></p>
+<p><!-- raw HTML omitted --></p>
+<h3 id="复合函数">复合函数：</h3>
+<h4 id="链式法则">链式法则：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600256472549.png" alt="1600256472549"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600257193054.png" alt="1600257193054"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600257319985.png" alt="1600257319985"></p>
+<p>剥洋葱解法，从外往里剥。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600257524549.png" alt="1600257524549"></p>
+<h2 id="高阶函数">高阶函数</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600271203725.png" alt="1600271203725"></p>
+<p>对$y$求两次导数，记作$y^{''}$,二阶导数</p>
+<p>或者$\frac{d^2y}{dx^2}$</p>
+<p>从4阶开始用数字表示:$y^{(4)}$</p>
+<h4 id="例题-1">例题：</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E5%AF%BC%E6%95%B0/1600272928789.png" alt="1600272928789"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/>https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/math/">
+                    #math</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/" class="prev" rel="prev" title="连续"><i class="iconfont icon-left"></i>&nbsp;连续</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%BE%AE%E5%88%86/" class="next" rel="next" title="微分">微分&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

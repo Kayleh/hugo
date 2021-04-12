@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/good-use-of-pointers/" />
+  <link rel="next" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/" />
+  <link rel="canonical" href="https://blog.kayleh.top/10.file-input-and-output/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           file input and output | Kayleh
+       
+  </title>
+  <meta name="title" content="file input and output | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "file input and output",
+    "headline" : "file input and output",
+    "description" : "对文件的输入输出 文件  程序文件。包括源程序文件，这种文件的内容是程序代码 数据文件。供程序运行时读写的数据  操作系统把各种设备都统一作为文件来处理。\n文件一般指存储在外部介质上数据的集合。\n流(数据流) 数据的输入输出.流表示了信息从源到目的地的流动.\n文件名 文件路径\u002b文件名主干\u002b文件后缀\n文件的分类  ASCII文件,在存储前需要转换,文本文件 二进制文件,存储在内存的数据的映象,不需要加以转换输出到外存,称为映像文件.  文件缓冲区 ANSI C标准采用“缓冲文件系统”处理数据文件。\n所谓缓冲文件系统是指系统自动地在内存区为程序中每一个正在使用的文件开辟一个文件缓冲区从内存向磁盘输出数据必须先送到内存中的缓冲区，装满缓冲区后才一起送到磁盘去。\n如果从磁盘向计算机读入数据，则一次从磁盘文件将一批数据输入到内存缓冲区(充满缓冲区)，然后再从缓冲区逐个地将数据送到程序数据区(给程序变量) 。\n程序与磁盘之间交互，不是立即完成，系统或程序可根据需要设置缓冲区，以提高存取效率\n文件类型指针 对于操作系统而言,关键的概念是”文件指针”.每个被使用的文件都在内存中开辟一段存储单元,用来存放文件的有关信息.这些信息是保存在一个结构体变量中的.该结构体类型变量是由系统定义的,取名为FILE.有几个文件就建立几个这样的结构体变量,分别存放各文件的有关信息.同时返回对应的FILE结构指针.\nFILE结构体类型在stdio.h文件中定义如下:\nTypedef struct { short level; \/\/缓冲区”满”或”空”的程度\/\/  unsigned flags; \/\/文件状态标志\/\/  char fd; \/\/文件描述符\/\/  unsigned char hold; \/\/如无缓冲区不读取字符\/\/  short bsize; \/\/缓冲区大小\/\/  unsigned char *buffer; \/\/数据缓冲区的位置\/\/  unsigned char *curp; \/\/指针,当前指向\/\/  unsigned istemp; \/\/临时文件,指示器\/\/  short token; \/\/用于有效性检查\/\/ }FILE; 定义一个指向文件型数据的指针变量",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-04 02:24:07 \u002b0800 CST",
+    "dateModified" : "2020-11-04 02:24:07 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/10.file-input-and-output\/",
+    "wordCount" : "713",
+    "keywords" : [ "C", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">file input and output</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-11-04 itemprop="datePublished">November 4, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="对文件的输入输出">对文件的输入输出</h1>
+<h2 id="文件">文件</h2>
+<ul>
+<li><strong>程序文件</strong>。包括源程序文件，这种文件的内容是程序代码</li>
+<li><strong>数据文件</strong>。供程序运行时读写的数据</li>
+</ul>
+<p>操作系统把各种设备都统一作为文件来处理。</p>
+<p>文件一般指存储在外部介质上数据的集合。</p>
+<h4 id="流数据流">流(数据流)</h4>
+<p>数据的输入输出.流表示了信息从源到目的地的流动.</p>
+<h4 id="文件名">文件名</h4>
+<p>文件路径+文件名主干+文件后缀</p>
+<h4 id="文件的分类">文件的分类</h4>
+<ul>
+<li><strong>ASCII文件</strong>,在存储前需要转换,<strong>文本文件</strong></li>
+<li><strong>二进制文件</strong>,存储在内存的数据的映象,不需要加以转换输出到外存,称为<strong>映像文件</strong>.</li>
+</ul>
+<h4 id="文件缓冲区">文件缓冲区</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/1183448-20200229114252989-978233196.png" alt=""></p>
+<p>ANSI C标准采用“缓冲文件系统”处理数据文件。</p>
+<p>所谓缓冲文件系统是指系统自动地在内存区为程序中每一个正在使用的文件开辟一个文件缓冲区从内存向磁盘输出数据必须先送到内存中的缓冲区，装满缓冲区后才一起送到磁盘去。</p>
+<p>如果从磁盘向计算机读入数据，则一次从磁盘文件将一批数据输入到内存缓冲区(充满缓冲区)，然后再从缓冲区逐个地将数据送到程序数据区(给程序变量) 。</p>
+<p>程序与磁盘之间交互，不是立即完成，系统或程序可根据需要设置缓冲区，以提高存取效率</p>
+<h4 id="文件类型指针">文件类型指针</h4>
+<p>对于操作系统而言,关键的概念是”<strong>文件指针</strong>”.每个被使用的文件都在内存中开辟一段存储单元,用来存放文件的有关信息.这些信息是保存在一个结构体变量中的.该结构体类型变量是由系统定义的,取名为FILE.有几个文件就建立几个这样的结构体变量,分别存放各文件的有关信息.同时返回对应的FILE结构指针.</p>
+<p>FILE结构体类型在stdio.h文件中定义如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Typedef <span style="color:#66d9ef">struct</span>
+{
+  <span style="color:#66d9ef">short</span> level;            <span style="color:#75715e">//缓冲区”满”或”空”的程度//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">unsigned</span> flags;         <span style="color:#75715e">//文件状态标志//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">char</span> fd;               <span style="color:#75715e">//文件描述符//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> hold;     <span style="color:#75715e">//如无缓冲区不读取字符//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">short</span> bsize;            <span style="color:#75715e">//缓冲区大小//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buffer;   <span style="color:#75715e">//数据缓冲区的位置//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>curp;    <span style="color:#75715e">//指针,当前指向//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">unsigned</span> istemp;       <span style="color:#75715e">//临时文件,指示器//
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">short</span> token;           <span style="color:#75715e">//用于有效性检查//
+</span><span style="color:#75715e"></span>}FILE;
+</code></pre></div><p>定义一个指向文件型数据的指针变量</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">FILE <span style="color:#f92672">*</span>fp;
+</code></pre></div><p>可以使fp指向某一个文件的文件信息区(是一个结构体变量),通过该文件信息区中的信息就能够访问该文件.</p>
+<p><strong>通过文件指针变量能够找到与它关联的文件</strong>,如果有n个文件,应设n个指针变量,分别指向n个FILE类型变量,以实现对n个文件的访问.</p>
+<p>通常将这种指向文件信息区的指针变量简称为<strong>指向文件的指针变量</strong></p>
+<blockquote>
+<p>并不是指向外部介质上的数据文件的开头,而是指向内存中的文件信息区的开头.</p>
+</blockquote>
+<h2 id="打开与关闭文件">打开与关闭文件</h2>
+<p>&ldquo;打开&quot;指为文件建立相应的信息区(用来存放有关文件的信息)和文件缓存区(用来暂时存放输入输出的数据).</p>
+<p>打开文件的同时,一般指定一个指针变量指向该文件,建立起指针变量与文件之间的联系.</p>
+<h4 id="用fopen函数打开数据文件">用fopen函数打开数据文件</h4>
+<p>fopen(文件名,使用文件方式)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">FILE <span style="color:#f92672">*</span>fp;
+fp<span style="color:#f92672">=</span>fopen(<span style="color:#e6db74">&#34;a1&#34;</span>,<span style="color:#e6db74">&#34;r&#34;</span>);
+</code></pre></div><p>实现失败返回NULL.</p>
+<h4 id="使用文件方式">使用文件方式.</h4>
+<table>
+<thead>
+<tr>
+<th>打开方式</th>
+<th>含义</th>
+<th>指定文件不存在时</th>
+<th>指定文件存在时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>只读方式打开文本文件</td>
+<td>出错</td>
+<td>正常打开</td>
+</tr>
+<tr>
+<td>w</td>
+<td>只写方式打开文本文件</td>
+<td>建立新文件</td>
+<td>文件原有内容丢失</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加方式打开文本文件</td>
+<td>建立新文件</td>
+<td>在原有内容末尾追加</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读/写方式打开文本文件</td>
+<td>出错</td>
+<td>正常打开</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>读/写方式创建新的文本文件</td>
+<td>建立新文件</td>
+<td>文件原有内容丢失</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>读/追加方式建立新的文本文件</td>
+<td>建立新文件</td>
+<td>在原有内容末尾追加</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>只读方式打开二进制文件</td>
+<td>出错</td>
+<td>正常打开</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>只写方式打开二进制文件</td>
+<td>建立新文件</td>
+<td>文件原有内容丢失</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>追加方式打开二进制文件</td>
+<td>建立新文件</td>
+<td>在原有内容末尾添加</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>读/写方式打开二进制文件</td>
+<td>出错</td>
+<td>正常打开</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>读/写方式创建新的二进制文件</td>
+<td>建立新文件</td>
+<td>文件原有内容丢失</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>读/追加方式创建新的二进制文件</td>
+<td>建立新文件</td>
+<td>在原有内容末尾追加</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>带b区别在于换行的处理</p>
+</blockquote>
+<h4 id="用fclose函数关闭数据文件">用fclose函数关闭数据文件</h4>
+<p>fclose(文件指针);</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fclose(fp);
+</code></pre></div><p>先把缓冲区中的数据输出到磁盘文件,然后才撤销文件信息区.</p>
+<h2 id="顺序读写数据文件">顺序读写数据文件</h2>
+<h4 id="怎样向文件读写字符">怎样向文件读写字符</h4>
+<p>读写一个字符的函数.</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>调用形式</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fgetc</td>
+<td>fgetc(fp)</td>
+<td>从fp指向的文件读入一个字符</td>
+<td>读成功,带回所读的字符,失败了则返回文件结束标志EOF(即-1)</td>
+</tr>
+<tr>
+<td>fputc</td>
+<td>fputc(ch,fp)</td>
+<td>把字符ch写到文件指针变量fp所指向的文件中</td>
+<td>输出成功,返回值就是输出的字符,输出失败,则返回文件结束标志EOF(即-1)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="从键盘输入一些字符并逐个把它们送到磁盘上去直到用户输入一个为止">从键盘输入一些字符,并逐个把它们送到磁盘上去,直到用户输入一个&rdquo;#&ldquo;为止.</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    FILE <span style="color:#f92672">*</span>fp;
+    <span style="color:#66d9ef">char</span> ch, filename[<span style="color:#ae81ff">10</span>];
+    printf(<span style="color:#e6db74">&#34;请输入所用的文件名:&#34;</span>);
+    scanf(<span style="color:#e6db74">&#34;%s&#34;</span>, filename);
+    getchar();<span style="color:#75715e">//用来消化最后输入的回车符
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> ((fp <span style="color:#f92672">=</span> fopen(filename, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#f92672">==</span> NULL))
+    {
+        printf(<span style="color:#e6db74">&#34;cannot open file</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);<span style="color:#75715e">//终止程序
+</span><span style="color:#75715e"></span>    }
+    printf(<span style="color:#e6db74">&#34;请输入一个准备存储到磁盘的字符串(以#结束):&#34;</span>);
+    ch <span style="color:#f92672">=</span> getchar();
+    <span style="color:#66d9ef">while</span> (ch <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;#&#39;</span>)
+    {
+        fputc(ch, fp);
+        putchar(ch);
+        ch <span style="color:#f92672">=</span> getchar(); <span style="color:#75715e">//再接收从键盘输入的一个字符
+</span><span style="color:#75715e"></span>    }
+    fclose(fp);
+    putchar(<span style="color:#ae81ff">10</span>); <span style="color:#75715e">//向屏幕输出一个换行符s
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h5 id="将一个磁盘文件中的信息复制到另一个磁盘文件中">将一个磁盘文件中的信息复制到另一个磁盘文件中</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    FILE <span style="color:#f92672">*</span>in, <span style="color:#f92672">*</span>out;
+    <span style="color:#66d9ef">char</span> ch, infile[<span style="color:#ae81ff">10</span>], outfile[<span style="color:#ae81ff">10</span>];
+    printf(<span style="color:#e6db74">&#34;输入读入文件的名字:&#34;</span>);
+    scanf(<span style="color:#e6db74">&#34;%s&#34;</span>, infile);
+    printf(<span style="color:#e6db74">&#34;输入输出文件的名字:&#34;</span>);
+    scanf(<span style="color:#e6db74">&#34;%s&#34;</span>, outfile);
+    getchar(); <span style="color:#75715e">//用来消化最后输入的回车符
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> ((in <span style="color:#f92672">=</span> fopen(infile, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#f92672">==</span> NULL))
+    {
+        printf(<span style="color:#e6db74">&#34;cannot open file</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);
+    }
+    <span style="color:#66d9ef">if</span> ((out <span style="color:#f92672">=</span> fopen(outfile, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#f92672">==</span> NULL))
+    {
+        printf(<span style="color:#e6db74">&#34;cannot open file</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);
+    }
+
+    ch <span style="color:#f92672">=</span> fgetc(in);
+    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>feof(in)) <span style="color:#75715e">//如未遇到输入文件的结束标志
+</span><span style="color:#75715e"></span>    {
+        fputc(ch, out);
+        putchar(ch); <span style="color:#75715e">//显示在屏幕上
+</span><span style="color:#75715e"></span>        ch <span style="color:#f92672">=</span> fgetc(in);
+    }
+    putchar(<span style="color:#ae81ff">10</span>); <span style="color:#75715e">//显示完全部字符后换行
+</span><span style="color:#75715e"></span>    fclose(in);
+    fclose(out);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>在访问磁盘文件时,是逐个字符(字节)进行的,为了知道当前访问到第几个字节,系统用&quot;文件读写位置标记&quot;来表示当前所访问的位置.开始时指向第1个字节,每访问完一个字节,当前读写位置就指向下一个字节.为了知道对文件的读写是否完成,只需看文件读写位置是否移到文件的末尾.</p>
+<blockquote>
+<p>feof函数可以检测文件是否已被读取过.</p>
+</blockquote>
+<h4 id="怎样向文件读写一个字符串">怎样向文件读写一个字符串</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fgets(str,n,fp);
+</code></pre></div><p>作用是从fp所指向的文件中读入一个长度为n-1的字符串,并在最后加一个'\0&rsquo;字符,然后把这n个字符存放到字符数组str中.</p>
+<p><strong>读写一个字符串的函数</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>调用形式</th>
+<th>功能</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fgets</td>
+<td>fgets(str,n,fp)</td>
+<td>从fp指向的文件读入一个长度为(n-1)的字符串,存放到字符数组str中.</td>
+<td>读成功,返回地址str,失败则返回NULL</td>
+</tr>
+<tr>
+<td>fputs</td>
+<td>fputs(str,fp)</td>
+<td>把str所指向的字符串写到文件指针变量fp所指向的文件中</td>
+<td>输出成功,返回0;否则返回非0值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>fgets函数的原型为：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">fgets</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> str,<span style="color:#66d9ef">int</span> n,FILE <span style="color:#f92672">*</span>fp);
+</code></pre></div><p>作用是从文件读入一个字符串.调用时可以写成下面的形式:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fgets(str,n,fp)
+</code></pre></div><p>n是要求得到的字符个数,但实际上只从fp所指向的文件中读入n-1字符,然后在最后加一个'\0&rsquo;字符,这样得到的字符串共有n个字符,把它们放到字符数组str中.</p>
+<p>如果在读完n-1个字符之前遇到换行符'\n&rsquo;或文件结束符EOF,读入即结束,但将所遇到的换行符&rdquo;\n&quot;也作为一个字符读入.执行成功返回值为str数组首元素的地址,如果一开始就遇到文件尾或读数据出错,则为NULL.</p>
+<p><strong>fputs函数的原型为：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">fputs</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> str,FILE <span style="color:#f92672">*</span>fp);
+</code></pre></div><p>其作用是将str所指向的字符串输出到fp所指向的文件中.调用时可以写成下面的形式:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fputs(<span style="color:#e6db74">&#34;China&#34;</span>,fp);
+</code></pre></div><p>第一个参数可以是字符串常量,字符数组名或字符型指针.字符串末尾的'\0&rsquo;不输出.输出成功,函数值为0,不成功则为EOF(-1).</p>
+<h5 id="从键盘读入若干个字符串对它们按字母大小的顺序排序然后把排好序的字符串送到磁盘文件中保存">从键盘读入若干个字符串,对它们按字母大小的顺序排序,然后把排好序的字符串送到磁盘文件中保存.</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    FILE <span style="color:#f92672">*</span>fp;
+    <span style="color:#66d9ef">char</span> str[<span style="color:#ae81ff">3</span>][<span style="color:#ae81ff">10</span>], temp[<span style="color:#ae81ff">10</span>];
+    <span style="color:#66d9ef">int</span> i, j, k, n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+    printf(<span style="color:#e6db74">&#34;Enter strings:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>)
+        gets(str[i]);
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">++</span>) <span style="color:#75715e">//用选择法对字符串排序
+</span><span style="color:#75715e"></span>    {
+        k <span style="color:#f92672">=</span> i;
+        <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> n; j<span style="color:#f92672">++</span>)
+        {
+            <span style="color:#66d9ef">if</span> (strcmp(str[k], str[j]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+                k <span style="color:#f92672">=</span> j;
+            <span style="color:#66d9ef">if</span> (k <span style="color:#f92672">!=</span> i)
+            {
+                strcpy(temp, str[i]);
+                strcpy(str[i], str[k]);
+                strcpy(str[k], temp);
+            }
+        }
+    }
+
+    <span style="color:#66d9ef">if</span> ((fp <span style="color:#f92672">=</span> fopen(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">CC</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">string.dat&#34;</span>, <span style="color:#e6db74">&#34;w&#34;</span>)) <span style="color:#f92672">==</span> NULL)
+    {
+        printf(<span style="color:#e6db74">&#34;can&#39;t open file!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);
+    }
+
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">The new sequence:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>)
+    {
+        fputs(str[i], fp);
+        fputs(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, fp);
+        printf(<span style="color:#e6db74">&#34;%s&#34;</span>, str[i]);
+    }
+    fclose(fp);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h4 id="用格式化的方式读写文本文件">用格式化的方式读写文本文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fprintf(<span style="color:#960050;background-color:#1e0010">文件指针</span>,<span style="color:#960050;background-color:#1e0010">格式化字符串</span>,<span style="color:#960050;background-color:#1e0010">输出表列</span>);
+fscanf(<span style="color:#960050;background-color:#1e0010">文件指针</span>,<span style="color:#960050;background-color:#1e0010">格式化字符串</span>,<span style="color:#960050;background-color:#1e0010">输入表列</span>);<span style="color:#75715e">//从磁盘文件上读入ASCII字符
+</span><span style="color:#75715e"></span><span style="color:#f92672">---</span>
+fprintf(fp,<span style="color:#e6db74">&#34;%d,%6.2f&#34;</span>,i,f);
+</code></pre></div><p>因为在输入时要将文件中的ASCII码<strong>转换为二进制形式</strong>再保存在内存变量中,在输出时又要将内存中的二进制形式转换成字符,要花费更多的时间,因此,在内存与磁盘交换数据的情况下,最好不用fprintf和fscanf函数,而用fread和fwrite函数.</p>
+<h4 id="用二进制方式向文件读写一组数据">用二进制方式向文件读写一组数据</h4>
+<p>允许用fread函数从文件读一个数据块,用fwrite函数向文件写一个数据块.在读写时以二进制形式进行的.在向磁盘写数据时,直接将内存中的一组数据<strong>原封不动,不加转换</strong>地复制到磁盘文件上,读入时也是将磁盘文件中若干字节的内容一批读入内存.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fread(buffer,size,count,fp);
+fwrite(buffer,size,count,fp);
+</code></pre></div><blockquote>
+<p>buffer:</p>
+<ul>
+<li>fread:用来存放从文件读入的数据的存储区的地址</li>
+<li>fwrite:把此地址开始的存储区中的数据向文件输出(指起始地址)</li>
+</ul>
+<p>size：要读的每个数据块的字节数
+count：要读的数据块的个数
+fp：文件指针</p>
+</blockquote>
+<p>如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fread(f,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">10</span>,fp);
+<span style="color:#75715e">//f是一个float型数组名(代表数组首元素地址),从fp所指向的文件读入10个4个字节的数据,存储到数组f中
+</span></code></pre></div><p>fread或fwrite执行成功返回<strong>count</strong>(输入或输出数据项的个数).</p>
+<h5 id="从键盘输入10个学生的有关数据然后把它们转存到磁盘文件上">从键盘输入10个学生的有关数据,然后把它们转存到磁盘文件上.</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define SIZE 10
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> Student_type
+{
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">10</span>];
+    <span style="color:#66d9ef">int</span> num;
+    <span style="color:#66d9ef">int</span> age;
+    <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">15</span>];
+} stu[SIZE];
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span>()
+{
+    <span style="color:#66d9ef">int</span> i;
+    FILE <span style="color:#f92672">*</span>fp;
+    <span style="color:#66d9ef">if</span> ((fp <span style="color:#f92672">=</span> fopen(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">CC</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">string.dat&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>)) <span style="color:#f92672">==</span> NULL)<span style="color:#75715e">//二进制文件
+</span><span style="color:#75715e"></span>    {
+        printf(<span style="color:#e6db74">&#34;can&#39;t open file!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);
+    }
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> SIZE; i<span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span> ((fwrite(<span style="color:#f92672">&amp;</span>stu[i], <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Student_type), <span style="color:#ae81ff">1</span>, fp) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>))
+            printf(<span style="color:#e6db74">&#34;file write error!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+
+    fclose(fp);
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">void</span> save();
+    <span style="color:#66d9ef">int</span> i;
+    printf(<span style="color:#e6db74">&#34;Enter datas of student:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> SIZE; i<span style="color:#f92672">++</span>)
+        scanf(<span style="color:#e6db74">&#34;%s %d %d %s&#34;</span>, stu[i].name, <span style="color:#f92672">&amp;</span>stu[i].num, <span style="color:#f92672">&amp;</span>stu[i].age, stu[i].addr);
+    save();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h4 id="文本文件和二进制文件">文本文件和二进制文件</h4>
+<ul>
+<li>
+<p>数据的存储方式</p>
+<p>​	文本方式: 数据以字符方式(ASCII代码)存储到文件中.如整数12,送到文件时占2个字节,而不是4个字节.以文本方式保存的数据便于阅读</p>
+<p>​	二进制方式:数据按在内存的存储状态原封不动地复制到文件.如整数12,送到文件时和内存中一样占4个字节.</p>
+</li>
+<li>
+<p>文件的分类</p>
+<p>​	文本文件(ASCII文件):文件全部为ASCII字符</p>
+<p>​	二进制文件:按二进制方式把在内存中的数据复制到文件的,称为二进制文件,即映像文件.</p>
+</li>
+<li>
+<p>文件的打开方式</p>
+<p>​	文本方式: 不带b的方式,读写文件时<strong>对换行符进行转换</strong></p>
+<p>​	文本方式: 带b的方式,读写文件时<strong>对换行符不进行转换</strong></p>
+</li>
+<li>
+<p>文件读写函数</p>
+<p>​	文本读写函数:用来向文本文件读写字符数据的函数(如fgetc,fgets,fputc,fputs,fscanf,fprintf等)</p>
+<p>​	二进制读写函数:用来向二进制文件读写二进制数据的函数(如getw,putw,fread,fwrite等)</p>
+</li>
+</ul>
+<hr>
+<h2 id="随机读写数据文件">随机读写数据文件</h2>
+<h3 id="文件位置标记及其定位">文件位置标记及其定位</h3>
+<h4 id="文件位置标记">文件位置标记</h4>
+<p>文件位置标记用来指示&quot;接下来要读写的下一个字符的位置&quot;</p>
+<h4 id="文件位置标记的定位">文件位置标记的定位</h4>
+<p>1️⃣ 用rewind函数使文件位置标记指向开头.同时feof函数的值会回复为0(假).</p>
+<h5 id="有一个磁盘文件内有一些信息要求第1次将它的内容显示在屏幕上第2次把它复制到另一文件上">有一个磁盘文件,内有一些信息.要求第1次将它的内容显示在屏幕上,第2次把它复制到另一文件上.</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    FILE <span style="color:#f92672">*</span>fp1, <span style="color:#f92672">*</span>fp2;
+    <span style="color:#66d9ef">char</span> ch;
+    fp1 <span style="color:#f92672">=</span> fopen(<span style="color:#e6db74">&#34;file1.dat&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>); <span style="color:#75715e">//不含路径默认在源文件所在目录
+</span><span style="color:#75715e"></span>    fp2 <span style="color:#f92672">=</span> fopen(<span style="color:#e6db74">&#34;file2.dat&#34;</span>, <span style="color:#e6db74">&#34;w&#34;</span>);
+    ch <span style="color:#f92672">=</span> getc(fp1);
+    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>feof(fp1)) <span style="color:#75715e">//或者 while(ch!=EOF)
+</span><span style="color:#75715e"></span>    {
+        putchar(ch);
+        ch <span style="color:#f92672">=</span> getc(fp1);
+    }
+    putchar(<span style="color:#ae81ff">10</span>);
+    rewind(fp1);
+    ch <span style="color:#f92672">=</span> getc(fp1);
+    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>feof(fp1))
+    {
+        fputc(ch, fp2);
+        ch <span style="color:#f92672">=</span> getc(fp1);
+    }
+    fclose(fp1);
+    fclose(fp2);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>2️⃣用fseek函数改变文件位置标记</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fseek(<span style="color:#960050;background-color:#1e0010">文件类型指针</span>,<span style="color:#960050;background-color:#1e0010">位移量</span>,<span style="color:#960050;background-color:#1e0010">起始点</span>);
+</code></pre></div><p><strong>起始点:</strong></p>
+<table>
+<thead>
+<tr>
+<th>起始点</th>
+<th>名字</th>
+<th>用数字代表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件开始位置</td>
+<td>SEEK_SET</td>
+<td>0</td>
+</tr>
+<tr>
+<td>文件当前位置</td>
+<td>SEEK_CUR</td>
+<td>1</td>
+</tr>
+<tr>
+<td>文件末尾位置</td>
+<td>SEEK_END</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>位移量:以&quot;起始点&quot;为基点,应是long型数据(在数字的末尾加一个字母L,就表示是long型);</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">fseek(fp,<span style="color:#ae81ff">100L</span>,<span style="color:#ae81ff">0</span>);<span style="color:#75715e">//将文件位置标记先前移到离文件开头100个字节处.
+</span></code></pre></div><p>3️⃣用ftell函数测定文件位置标记的当前位置.</p>
+<p>函数得到流式文件中文件位置标记的当前位置.调用函数时出错(如不存在fp指向的文件),返回值为-1L.</p>
+<h4 id="随机读写">随机读写</h4>
+<h5 id="在磁盘文件上存有10个学生的数据要求将第13579个学生数据输入计算机并在屏幕上显示出来">在磁盘文件上存有10个学生的数据.要求将第1,3,5,7,9个学生数据输入计算机,并在屏幕上显示出来.</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">struct</span> Student_type
+{
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">10</span>];
+    <span style="color:#66d9ef">int</span> num;
+    <span style="color:#66d9ef">int</span> age;
+    <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">15</span>];
+} stu[<span style="color:#ae81ff">10</span>];
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    FILE <span style="color:#f92672">*</span>fp;
+    <span style="color:#66d9ef">int</span> i;
+    <span style="color:#66d9ef">if</span> ((fp <span style="color:#f92672">=</span> fopen(<span style="color:#e6db74">&#34;D:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">CC</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">string.dat&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>)) <span style="color:#f92672">==</span> NULL)
+    {
+        printf(<span style="color:#e6db74">&#34;can&#39;t open file!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        exit(<span style="color:#ae81ff">0</span>);
+    }
+
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>)
+    {
+        fseek(fp, i <span style="color:#f92672">*</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Student_type), <span style="color:#ae81ff">0</span>);
+        fread(<span style="color:#f92672">&amp;</span>stu[i], <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> Student_type), <span style="color:#ae81ff">1</span>, fp);
+        printf(<span style="color:#e6db74">&#34;%-10s %4d %4d %-15s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, stu[i].name, stu[i].num, stu[i].age, stu[i].addr);
+    }
+
+    fclose(fp);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="文件读写的出错检测">文件读写的出错检测</h2>
+<p>检查输入输出函数调用时可能出现的错误.</p>
+<p><strong>ferror函数</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">ferror(fp);
+</code></pre></div><p>如果返回值为0,表示未出现错误.</p>
+<p>如果返回一个非零值,表示出错.</p>
+<blockquote>
+<p>对同一个文件每一次调用输入输出函数,都会产生一个新的ferror函数值.因此在调用一个输入输出函数后立即检查ferror的值,否则信息会丢失.</p>
+<p>在执行fopen函数时,ferror函数的初始值自动置为0.</p>
+</blockquote>
+<p><strong>clearerr函数</strong></p>
+<p>使文件出错标记和文件结束标记置为0.</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/10.file-input-and-output/>https://blog.kayleh.top/10.file-input-and-output/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/good-use-of-pointers/" class="prev" rel="prev" title="Good use of pointers"><i class="iconfont icon-left"></i>&nbsp;Good use of pointers</a>
+         
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/" class="next" rel="next" title="Java高性能高并发秒杀系统(10)">Java高性能高并发秒杀系统(10)&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

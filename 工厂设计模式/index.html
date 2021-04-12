@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           工厂设计模式 | Kayleh
+       
+  </title>
+  <meta name="title" content="工厂设计模式 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "工厂设计模式",
+    "headline" : "工厂设计模式",
+    "description" : "\u003ch2 id=\u0022工厂设计模式\u0022\u003e工厂设计模式\u003c\/h2\u003e\n\u003ch3 id=\u0022工厂方法\u0022\u003e工厂方法\u003c\/h3\u003e\n\u003cp\u003e工厂方法即Factory Method，是一种对象创建型模式。\u003c\/p\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-06 20:42:10 \u002b0800 CST",
+    "dateModified" : "2020-06-06 20:42:10 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F\/",
+    "wordCount" : "453",
+    "keywords" : [ "DesignPatterns", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">工厂设计模式</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-06 itemprop="datePublished">June 6, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="工厂设计模式">工厂设计模式</h2>
+<h3 id="工厂方法">工厂方法</h3>
+<p>工厂方法即Factory Method，是一种对象创建型模式。</p>
+<p>工厂方法的目的是使得创建对象和使用对象是分离的，并且客户端总是引用抽象工厂和抽象产品：</p>
+<pre><code class="language-ascii" data-lang="ascii">┌─────────────┐      ┌─────────────┐
+│   Product   │      │   Factory   │
+└─────────────┘      └─────────────┘
+       ▲                    ▲
+       │                    │
+┌─────────────┐      ┌─────────────┐
+│ ProductImpl │&lt;─ ─ ─│ FactoryImpl │
+└─────────────┘      └─────────────┘
+</code></pre><p>例如实现一个解析字符串到<code>Number</code>的<code>Factory</code>，可以定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberFactoryImpl</span> <span style="color:#66d9ef">implements</span> NumberFactory <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> Number <span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BigDecimal<span style="color:#f92672">(</span>s<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>而产品接口是<code>Number</code>，<code>NumberFactoryImpl</code>返回的实际产品是<code>BigDecimal</code>。</p>
+<p>那么客户端如何创建<code>NumberFactoryImpl</code>呢？通常我们会在接口<code>Factory</code>中定义一个静态方法<code>getFactory()</code>来返回真正的子类：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NumberFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 创建方法:
+</span><span style="color:#75715e"></span>    Number <span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">);</span>
+    <span style="color:#75715e">// 获取工厂实例:
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> NumberFactory <span style="color:#a6e22e">getFactory</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> impl<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">static</span> NumberFactory impl <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NumberFactoryImpl<span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在客户端中，我们只需要和工厂接口<code>NumberFactory</code>以及抽象产品<code>Number</code>打交道：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">NumberFactory factory <span style="color:#f92672">=</span> NumberFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getFactory</span><span style="color:#f92672">();</span>
+Number result <span style="color:#f92672">=</span> factory<span style="color:#f92672">.</span><span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123.456&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>调用方可以完全忽略真正的工厂<code>NumberFactoryImpl</code>和实际的产品<code>BigDecimal</code>，这样做的好处是允许创建产品的代码独立地变换，而不会影响到调用方。</p>
+<p>实际上大多数情况下我们并不需要抽象工厂，而是通过静态方法直接返回产品，即：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NumberFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Number <span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BigDecimal<span style="color:#f92672">(</span>s<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这种简化的使用静态方法创建产品的方式称为静态工厂方法（Static Factory Method）。静态工厂方法广泛地应用在Java标准库中。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Integer n <span style="color:#f92672">=</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span>100<span style="color:#f92672">);</span>
+</code></pre></div><p><code>Integer</code>既是产品又是静态工厂。它提供了静态方法<code>valueOf()</code>来创建<code>Integer</code>。那么这种方式和直接写<code>new Integer(100)</code>有何区别呢？我们观察<code>valueOf()</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Integer</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Integer <span style="color:#a6e22e">valueOf</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">&gt;=</span> IntegerCache<span style="color:#f92672">.</span><span style="color:#a6e22e">low</span> <span style="color:#f92672">&amp;&amp;</span> i <span style="color:#f92672">&lt;=</span> IntegerCache<span style="color:#f92672">.</span><span style="color:#a6e22e">high</span><span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">return</span> IntegerCache<span style="color:#f92672">.</span><span style="color:#a6e22e">cache</span><span style="color:#f92672">[</span>i <span style="color:#f92672">+</span> <span style="color:#f92672">(-</span>IntegerCache<span style="color:#f92672">.</span><span style="color:#a6e22e">low</span><span style="color:#f92672">)];</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Integer<span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>它的好处在于，<code>valueOf()</code>内部可能会使用<code>new</code>创建一个新的<code>Integer</code>实例，但也可能直接返回一个缓存的<code>Integer</code>实例。对于调用方来说，没必要知道<code>Integer</code>创建的细节。</p>
+<blockquote>
+<p>工厂方法可以隐藏创建产品的细节，且不一定每次都会真正创建产品，完全可以返回缓存的产品，从而提升速度并减少内存消耗。</p>
+</blockquote>
+<p>如果调用方直接使用<code>Integer n = new Integer(100)</code>，那么就失去了使用缓存优化的可能性。</p>
+<p>我们经常使用的另一个静态工厂方法是<code>List.of()</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> List<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;A&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;B&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;C&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>这个静态工厂方法接收可变参数，然后返回<code>List</code>接口。需要注意的是，调用方获取的产品总是<code>List</code>接口，而且并不关心它的实际类型。即使调用方知道<code>List</code>产品的实际类型是<code>java.util.ImmutableCollections$ListN</code>，也不要去强制转型为子类，因为静态工厂方法<code>List.of()</code>保证返回<code>List</code>，但也完全可以修改为返回<code>java.util.ArrayList</code>。这就是里氏替换原则：返回实现接口的任意子类都可以满足该方法的要求，且不影响调用方。</p>
+<blockquote>
+<p>总是引用接口而非实现类，能允许变换子类而不影响调用方，即尽可能面向抽象编程。</p>
+</blockquote>
+<p>和<code>List.of()</code>类似，我们使用<code>MessageDigest</code>时，为了创建某个摘要算法，总是使用静态工厂方法<code>getInstance(String)</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">MessageDigest md5 <span style="color:#f92672">=</span> MessageDigest<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;MD5&#34;</span><span style="color:#f92672">);</span>
+MessageDigest sha1 <span style="color:#f92672">=</span> MessageDigest<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;SHA-1&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>调用方通过产品名称获得产品实例，不但调用简单，而且获得的引用仍然是<code>MessageDigest</code>这个抽象类。</p>
+<h3 id="抽象工厂">抽象工厂</h3>
+<blockquote>
+<p><em>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</em></p>
+</blockquote>
+<p>抽象工厂模式（Abstract Factory）是一个比较复杂的创建型模式。</p>
+<p>抽象工厂模式和工厂方法不太一样，它要解决的问题比较复杂，不但工厂是抽象的，产品是抽象的，而且有多个产品需要创建，因此，这个抽象工厂会对应到多个实际工厂，每个实际工厂负责创建多个实际产品：</p>
+<pre><code class="language-ascii" data-lang="ascii">                                ┌────────┐
+                             ─ &gt;│ProductA│
+┌────────┐    ┌─────────┐   │   └────────┘
+│ Client │─ ─&gt;│ Factory │─ ─
+└────────┘    └─────────┘   │   ┌────────┐
+                   ▲         ─ &gt;│ProductB│
+           ┌───────┴───────┐    └────────┘
+           │               │
+      ┌─────────┐     ┌─────────┐
+      │Factory1 │     │Factory2 │
+      └─────────┘     └─────────┘
+           │   ┌─────────┐ │   ┌─────────┐
+            ─ &gt;│ProductA1│  ─ &gt;│ProductA2│
+           │   └─────────┘ │   └─────────┘
+               ┌─────────┐     ┌─────────┐
+           └ ─&gt;│ProductB1│ └ ─&gt;│ProductB2│
+               └─────────┘     └─────────┘
+</code></pre><p>这种模式有点类似于多个供应商负责提供一系列类型的产品。我们举个例子：</p>
+<p>假设我们希望为用户提供一个Markdown文本转换为HTML和Word的服务，它的接口定义如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AbstractFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 创建Html文档:
+</span><span style="color:#75715e"></span>    HtmlDocument <span style="color:#a6e22e">createHtml</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">);</span>
+    <span style="color:#75715e">// 创建Word文档:
+</span><span style="color:#75715e"></span>    WordDocument <span style="color:#a6e22e">createWord</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>注意到上面的抽象工厂仅仅是一个接口，没有任何代码。同样的，因为<code>HtmlDocument</code>和<code>WordDocument</code>都比较复杂，现在我们并不知道如何实现它们，所以只有接口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Html文档接口:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">HtmlDocument</span> <span style="color:#f92672">{</span>
+    String <span style="color:#a6e22e">toHtml</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Path path<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// Word文档接口:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">WordDocument</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Path path<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这样，我们就定义好了抽象工厂（<code>AbstractFactory</code>）以及两个抽象产品（<code>HtmlDocument</code>和<code>WordDocument</code>）。因为实现它们比较困难，我们决定让供应商来完成。</p>
+<p>现在市场上有两家供应商：FastDoc Soft的产品便宜，并且转换速度快，而GoodDoc Soft的产品贵，但转换效果好。我们决定同时使用这两家供应商的产品，以便给免费用户和付费用户提供不同的服务。</p>
+<p>我们先看看FastDoc Soft的产品是如何实现的。首先，FastDoc Soft必须要有实际的产品，即<code>FastHtmlDocument</code>和<code>FastWordDocument</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FastHtmlDocument</span> <span style="color:#66d9ef">implements</span> HtmlDocument <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toHtml</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#f92672">...</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Path path<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#f92672">...</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FastWordDocument</span> <span style="color:#66d9ef">implements</span> WordDocument <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Path path<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+        <span style="color:#f92672">...</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>然后，FastDoc Soft必须提供一个实际的工厂来生产这两种产品，即<code>FastFactory</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FastFactory</span> <span style="color:#66d9ef">implements</span> AbstractFactory <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> HtmlDocument <span style="color:#a6e22e">createHtml</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> FastHtmlDocument<span style="color:#f92672">(</span>md<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> WordDocument <span style="color:#a6e22e">createWord</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> FastWordDocument<span style="color:#f92672">(</span>md<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>这样，我们就可以使用FastDoc Soft的服务了。客户端编写代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 创建AbstractFactory，实际类型是FastFactory:
+</span><span style="color:#75715e"></span>AbstractFactory factory <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FastFactory<span style="color:#f92672">();</span>
+<span style="color:#75715e">// 生成Html文档:
+</span><span style="color:#75715e"></span>HtmlDocument html <span style="color:#f92672">=</span> factory<span style="color:#f92672">.</span><span style="color:#a6e22e">createHtml</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;#Hello\nHello, world!&#34;</span><span style="color:#f92672">);</span>
+html<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;fast.html&#34;</span><span style="color:#f92672">));</span>
+<span style="color:#75715e">// 生成Word文档:
+</span><span style="color:#75715e"></span>WordDocument word <span style="color:#f92672">=</span> fastFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createWord</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;#Hello\nHello, world!&#34;</span><span style="color:#f92672">);</span>
+word<span style="color:#f92672">.</span><span style="color:#a6e22e">save</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;fast.doc&#34;</span><span style="color:#f92672">));</span>
+</code></pre></div><p>如果我们要同时使用GoodDoc Soft的服务怎么办？因为用了抽象工厂模式，GoodDoc Soft只需要根据我们定义的抽象工厂和抽象产品接口，实现自己的实际工厂和实际产品即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 实际工厂:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodFactory</span> <span style="color:#66d9ef">implements</span> AbstractFactory <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> HtmlDocument <span style="color:#a6e22e">createHtml</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> GoodHtmlDocument<span style="color:#f92672">(</span>md<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">public</span> WordDocument <span style="color:#a6e22e">createWord</span><span style="color:#f92672">(</span>String md<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> GoodWordDocument<span style="color:#f92672">(</span>md<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// 实际产品:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodHtmlDocument</span> <span style="color:#66d9ef">implements</span> HtmlDocument <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GoodWordDocument</span> <span style="color:#66d9ef">implements</span> HtmlDocument <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>客户端要使用GoodDoc Soft的服务，只需要把原来的<code>new FastFactory()</code>切换为<code>new GoodFactory()</code>即可。</p>
+<p>注意到客户端代码除了通过<code>new</code>创建了<code>FastFactory</code>或<code>GoodFactory</code>外，其余代码只引用了产品接口，并未引用任何实际产品（例如，<code>FastHtmlDocument</code>），如果把创建工厂的代码放到<code>AbstractFactory</code>中，就可以连实际工厂也屏蔽了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AbstractFactory</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> AbstractFactory <span style="color:#a6e22e">createFactory</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>name<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;fast&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> FastFactory<span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>name<span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;good&#34;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> GoodFactory<span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Invalid factory name&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/>https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/designpatterns/">
+                    #DesignPatterns</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="单例模式"><i class="iconfont icon-left"></i>&nbsp;单例模式</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/" class="next" rel="next" title="生成器">生成器&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

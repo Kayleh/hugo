@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>safety on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/safety/</link>
+    <description>Recent content in safety on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/safety/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflected XSS Vulnerability in Font Download Website</title>
+      <link>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
+      <pubDate>Sun, 11 Apr 2021 02:26:29 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</guid>
+      <description>字体下载网站的反射XSS漏洞  URL:http://www.ztxz.org
+ 搜索框输入：
+&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 会出现弹窗，证明反射XSS的存在。
+ http://www.ztxz.org/search/?key=%3Cscript%3Ealert(1)%3C/script%3E
+ 用户在请求某条URL地址的时候，会携带一部分数据。当客户端进行访问某条链接时，攻击者可以将恶意代码植入到URL，如果服务端未对URL携带的参数做判断或者过滤处理，直接返回响应页面，那么XSS攻击代码就会一起被传输到用户的浏览器，从而触发反射型XSS。例如，当用户进行搜索时，返回结果通常会包括用户原始的搜索内容，如果攻击者精心构造包含XSS恶意代码的链接，诱导用户点击并成功执行后，用户的信息就可以被窃取，甚至可以模拟用户进行一些操作。它的利用过程如图所示。
+反射型XSS不会永久存储用户的数据，仅发生在用户的一次访问过程之后。这个过程就像一次反射，因此得名反射型XSS。反射型XSS的触发条件比较苛刻，需要攻击者想方设法引导用户点击链接，但产生的危害不容忽视。
+参考资料：https://www.bugbank.cn/q/article/598438535ecec4fe1c216740.html
+http://blog.csdn.net/binyao02123202/article/details/9041113</description>
+    </item>
+    
+  </channel>
+</rss>

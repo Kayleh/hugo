@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>front on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/front/</link>
+    <description>Recent content in front on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Sep 2020 20:45:24 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/front/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图床</title>
+      <link>https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Fri, 25 Sep 2020 20:45:24 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/</guid>
+      <description>原地址https://www.jianshu.com/u/e68ebf1b004c
+Github repo图床 Github的repo也可以储存东西，最直接的就是程序的版本控制，当然也可以用来当作备份储存，用来储存图片（github官方回复是：该行为不构成abuse，如果把github当图床算滥用，那么那么多人把微博当图床怎么就理所应当捏）。其实github对于国内的响应速度并不快，而且时不时被block，所以用github当图床完全是出于储存个人用途的自创图片，并不能当CDN使用。github自从被微软收购后，我对github的信心大增，代码以前只敢用git管理保存在本地，现在可以放心大胆上传到github了（很多是private，所以不可见），github图床主要就是图个稳定，也并不是想恶意刷github服务器的流量，恶意影响大家的体验。
+  新建repo，名称任意
+  打开账户/Settings/Developer settings/Personal access tokens,点击Generate new token
+image
+image
+  在弹出的产生token页面，Token description随意填写，但是一定要勾选上这几项
+image
+  下载PicGo客户端对应的版本并安装，github地址：https://github.com/Molunerfinn/PicGo/releases
+  启动PicGo后，打开设置界面，点击
+image
+在第一栏填入你的github名称/repo名称；在第二栏填入你的分支名称，默认为master；在第三栏填入你刚才申请到的Token；第四栏填入你的repo中的储存路径；最后点击确认，再点击设为默认图床
+  使用QQ截图Ctrl+Alt+A或者微信的Alt+A截图后，按下Ctrl+Shiht+P快捷键即可自动上传到github对应的repo中，上传完成后，会有提示，自动将对应的图片地址送入剪贴板中，直接Ctrl+V即可粘贴对应的地址出来了~~
+  </description>
+    </item>
+    
+    <item>
+      <title>gulp压缩静态资源</title>
+      <link>https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Mon, 24 Aug 2020 11:28:18 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</guid>
+      <description>&lt;p&gt;hexo&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>中英文切换</title>
+      <link>https://blog.kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</link>
+      <pubDate>Fri, 21 Aug 2020 11:28:18 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</guid>
+      <description>&lt;p&gt;hexo&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

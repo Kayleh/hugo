@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>高数 on Kayleh</title>
+    <link>https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/</link>
+    <description>Recent content in 高数 on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Sep 2020 13:41:02 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>函数作图</title>
+      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
+      <pubDate>Wed, 23 Sep 2020 13:41:02 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
+      <description>渐近线  水平、垂直、斜
+ 水平渐近线 例题：
+垂直渐近线 斜渐近线 例题：
+分子次数比分母高，取无穷
+分子与分母次数一样，极限等于最高次的系数之比
+微分法作图 “导数” 例如：</description>
+    </item>
+    
+    <item>
+      <title>无穷小与无穷大</title>
+      <link>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
+      <pubDate>Sat, 12 Sep 2020 16:33:41 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
+      <description>无穷小量 定义： 极限为0的变量称为无穷小量，简称无穷小.
+f(x)→0
+常用希腊字母 $\alpha$ ,$\beta$ ,$\gamma$
+$$\lim_{x\to0}x^2=0 极限为0$$
+$$\lim_{x\to1}x^2=1 极限为1$$
+$$\lim_{x\to\infty}x^2=0 极限为\infty$$
+定理: 1.无穷小 × 有界 是无穷小
+另一个例题
+分解后面的ardtanx，加上绝对值|ardtanx|，说明是有界的。
+2.无穷大 $f(x)-&amp;gt;+\infty 或-\infty$
+1)两个无穷大相乘=无穷大
+2)无穷大+有界-&amp;gt;无穷大
+定理：    f(x)无穷大 $\frac{1}{f(x)}$无穷小 (同一变化过程) f(x)无穷小 $\frac{1}{f(x)}$无穷小(同一变化过程)  极限的运算法则 定理(四则运算) 若$\lim f(x)=a , \lim g(x)=b$（前提是每个函数极限存在,项是有限个的）
+1)$\lim (f(x)+g(x))=\lim f(x) ± \lim g(x)=a ± b$
+2)$\lim f(x)g(x)=\lim f(x) · \lim g(x)$
+3)$\lim \frac{f(x)}{g(x)}=\frac {\lim f(x)}{\lim g(x)}(b≠0)$
+其实就是把极限带进去
+$\lim f(x)^n=(\lim f(x))^n$
+例如：
+$\frac{\infty}{\infty}$ 分子、分母同次，最高次的系数之比（分子分母都趋于无穷）
+分母次数高，0</description>
+    </item>
+    
+  </channel>
+</rss>

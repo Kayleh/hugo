@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" />
+  <link rel="next" href="https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           I/O model | Kayleh
+       
+  </title>
+  <meta name="title" content="I/O model | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "I\/O model",
+    "headline" : "I\/O model",
+    "description" : "I\/O模型 1. java.io下的字符流和字节流 1.1 字符流 字符流更加的方便我们使用，一般字符都是由多个字节来形成的，若我们使用字节流传输，则还需要我们自己将其转换为字符，若我们直接使用字符流的话，这样就能直接读取与输出字符。  CharArrayReader：是基础的字符输入流，能从字符数组中读取数据 StringReader：从字符串输入流中读取数据 输出流同理  1.1.1 更高级的字符流  BufferedReader：附带缓存区的字符输入流，但是我们并不能直接实例化供我们使用，而是将我们已经创建的Reader字符流，传入进来，就像对它升级一样，多了更多的功能，比如该字符流就是提供了缓存区，这样加快了io的效率，不必重复读取原始数据源 FilterReader：同样也是运用了装饰模式，它额外的功能能对字符流中的字符进行筛选等 InputStreamReader：连接字节流与字符流的一个桥梁，将字节流转化为字符流，比较常用的就是FileReader  1.2 字节流 字节流则是对一个个字节进行读取  ByteArrayInputStream：字节数组输入流，从字节数组中获取数据 FileInputStream：文件输入流，从文件中获取数据 输出流同理  1.2.1 更高级的字节流  BufferedInputStream：附带缓存区的字节输入流，它同样也是与BufferedReader一个原理，也需要传入进本的InputStream进行升级 DataInputStream与DataOutputStream：这俩就比较有意思了，相辅相成，与java内置的基本数据类型相关，能够将其中的字节，利用一些方法，比如toLong或toInt等方法直接转换为java的基本数据类型   2. 装饰器模式 我们刚刚看到的，在字符流中BufferedReader、InputStreamReader和FilterReader，字节流中的BufferedInputStream、DataInputStreamReader与DataOutputStream都运用到了装饰器模式，因为它们本身不能进行实例化，都需要传入基本的Reader或InputStream来进行升级，这里便体现的是装饰器模式。\n 3. Socket  我们可以将Socket认为是网络传输的端点，它也是一种数据源，将特定的ip地址与端口号与其进行绑定，这样它就能够实现通信的功能，如下图中，服务器中的socket绑定了对应的ip与端口号，与客户端间进行通信   3.1 通过Socket发送数据  创建Socket，绑定特定的ip地址与端口号 将Socket与网卡驱动程序绑定 通过Socket我们就能够发送数据了 网卡驱动程序对Socket数据进行读取  3.2 通过Socket读取数据  与发送数据类似，只不过是将这个过程反过来了   我们还是要先创建Socket 将Socket与网卡驱动程序进行绑定 Socket接收来自网卡驱动程序的数据 从Socket中读取数据   4. 同步异步与阻塞非阻塞的概念 它们有两两组合的四种不同的排列组合，同步与异步强调通信机制，通俗点儿说可以是关于反应者的概念；阻塞与非阻塞强调调用状态，我们可以将其理解为调用者或者请求发起者 4.1 同步（女孩） 男孩向女孩表白，女孩立即对该事件进行思考、反应，这就是同步通信机制\n4.2 异步（女孩） 异步通信机制就是，女孩不会对男孩的请求立即响应，而是女孩先去考虑考虑，有结果了呢，我发短信给你",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-12-04 01:44:24 \u002b0800 CST",
+    "dateModified" : "2020-12-04 01:44:24 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/i-o%E6%A8%A1%E5%9E%8B\/",
+    "wordCount" : "82",
+    "keywords" : [ "network", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">I/O model</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-12-04 itemprop="datePublished">December 4, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="io模型">I/O模型</h1>
+<h2 id="1-javaio下的字符流和字节流">1. java.io下的字符流和字节流</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/2020072015491941.png" alt="在这里插入图片描述"></p>
+<h3 id="11-字符流">1.1 字符流</h3>
+<p>字符流更加的方便我们使用，一般字符都是由多个字节来形成的，若我们使用字节流传输，则还需要我们自己将其转换为字符，若我们直接使用字符流的话，这样就能直接读取与输出字符。
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720154944172.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><code>CharArrayReader</code>：是基础的字符输入流，能从字符数组中读取数据</li>
+<li><code>StringReader</code>：从字符串输入流中读取数据</li>
+<li>输出流同理</li>
+</ul>
+<h4 id="111-更高级的字符流">1.1.1 更高级的字符流</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/2020072015514933.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><code>BufferedReader</code>：附带缓存区的字符输入流，但是我们并不能直接实例化供我们使用，而是将我们已经创建的Reader字符流，传入进来，就像对它<code>升级</code>一样，多了更多的功能，比如该字符流就是提供了缓存区，这样加快了io的效率，不必重复读取原始数据源</li>
+<li><code>FilterReader</code>：同样也是运用了<code>装饰模式</code>，它额外的功能能对字符流中的字符进行筛选等</li>
+<li><code>InputStreamReader</code>：连接字节流与字符流的一个桥梁，将字节流转化为字符流，比较常用的就是FileReader</li>
+</ul>
+<h3 id="12-字节流">1.2 字节流</h3>
+<p>字节流则是对一个个字节进行读取
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720155921778.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><code>ByteArrayInputStream</code>：字节数组输入流，从字节数组中获取数据</li>
+<li><code>FileInputStream</code>：文件输入流，从文件中获取数据</li>
+<li>输出流同理</li>
+</ul>
+<h4 id="121-更高级的字节流">1.2.1 更高级的字节流</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720160513951.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><code>BufferedInputStream</code>：附带缓存区的字节输入流，它同样也是与BufferedReader一个原理，也需要传入进本的InputStream进行升级</li>
+<li><code>DataInputStream与DataOutputStream</code>：这俩就比较有意思了，相辅相成，与java内置的<code>基本数据类型</code>相关，能够将其中的字节，利用一些方法，比如toLong或toInt等方法直接转换为java的基本数据类型</li>
+</ul>
+<hr>
+<h2 id="2-装饰器模式">2. 装饰器模式</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720161404658.png" alt="在这里插入图片描述">
+我们刚刚看到的，在字符流中BufferedReader、InputStreamReader和FilterReader，字节流中的BufferedInputStream、DataInputStreamReader与DataOutputStream都运用到了装饰器模式，因为它们本身不能进行实例化，都需要传入基本的Reader或InputStream来进行<code>升级</code>，这里便体现的是装饰器模式。</p>
+<hr>
+<h2 id="3-socket">3. Socket</h2>
+<ul>
+<li>我们可以将Socket认为是<code>网络传输的端点</code>，它也是一种<code>数据源</code>，将特定的ip地址与端口号与其进行绑定，这样它就能够实现通信的功能，如下图中，服务器中的socket绑定了对应的ip与端口号，与客户端间进行通信
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720162148571.png" alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="31-通过socket发送数据">3.1 通过Socket发送数据</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720162300339.png" alt="在这里插入图片描述"></p>
+<ol>
+<li>创建Socket，绑定特定的ip地址与端口号</li>
+<li>将Socket与网卡驱动程序绑定</li>
+<li>通过Socket我们就能够发送数据了</li>
+<li>网卡驱动程序对Socket数据进行读取</li>
+</ol>
+<h3 id="32-通过socket读取数据">3.2 通过Socket读取数据</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720162657547.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>与发送数据类似，只不过是将这个过程反过来了</li>
+</ul>
+<ol>
+<li>我们还是要先创建Socket</li>
+<li>将Socket与网卡驱动程序进行绑定</li>
+<li>Socket接收来自网卡驱动程序的数据</li>
+<li>从Socket中读取数据</li>
+</ol>
+<hr>
+<h2 id="4-同步异步与阻塞非阻塞的概念">4. 同步异步与阻塞非阻塞的概念</h2>
+<p>它们有两两组合的四种不同的排列组合，同步与异步强调<code>通信机制</code>，通俗点儿说可以是关于反应者的概念；阻塞与非阻塞强调<code>调用状态</code>，我们可以将其理解为调用者或者请求发起者
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720162901659.png" alt="在这里插入图片描述"></p>
+<h3 id="41-同步女孩">4.1 同步（女孩）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720163148736.png" alt="在这里插入图片描述">
+男孩向女孩表白，<code>女孩</code>立即对该事件进行思考、反应，这就是同步通信机制</p>
+<h3 id="42-异步女孩">4.2 异步（女孩）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/2020072016333178.png" alt="在这里插入图片描述">
+异步通信机制就是，女孩<code>不会</code>对男孩的请求立即响应，而是女孩先去考虑考虑，有结果了呢，我发短信给你</p>
+<h3 id="43-阻塞男孩">4.3 阻塞（男孩）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720163448654.png" alt="在这里插入图片描述">
+男孩是个瓜皮，自动对女孩表白了以后，茶不思饭不想，一直等待着女孩的回应，<code>不做其他的事情</code></p>
+<h3 id="44-非阻塞男孩">4.4 非阻塞（男孩）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/2020072016354228.png" alt="在这里插入图片描述">
+这种男生就比较厉害了，能够协调好生活和爱情，和女孩表白后，不对结果困惑，而是<code>该干啥还去干啥</code>，这就是非阻塞调用</p>
+<h3 id="45-四种排列组合">4.5 四种排列组合</h3>
+<ol>
+<li>同步阻塞
+男孩表白后，女孩立即进行思考给出反应，男孩在该过程中傻等，不干别的</li>
+<li>异步阻塞
+男孩表白后，女孩溜了，回家去想怎么回应了，不立即思考，男孩傻等，不干别的</li>
+<li>同步非阻塞
+男孩表白后，男孩干别的去了，不等你回复，而女孩立即陷入了沉思，想着反应结果</li>
+<li>异步非阻塞
+两个人都比较想得开，男孩表白完，干别的去了，女孩也不立即考虑这件事情，等啥时候考虑好了，再发消息给男孩</li>
+</ol>
+<p><a href="https://www.cnblogs.com/linkenpark/p/12376343.html">同步阻塞、同步非阻塞、异步阻塞、异步非阻塞</a></p>
+<hr>
+<h2 id="5-网络通信中的线程池">5. 网络通信中的线程池</h2>
+<p>我们在处理高并发请求的时候，若采用如下方法，将会造成很大的资源浪费
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720164448156.png" alt="在这里插入图片描述"></p>
+<p>线程池的使用是为了避免这种情况，节省系统的资源</p>
+<h3 id="51-java提供的线程池">5.1 java提供的线程池</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720164855993.png" alt="在这里插入图片描述">
+我们可以利用Runnable与Callable来创建任务，利用线程池中的线程去执行任务，最后获得结果</p>
+<h3 id="52-java创建线程池的静态方法">5.2 java创建线程池的静态方法</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/IO/I-O%E6%A8%A1%E5%9E%8B/20200720165057685.png" alt="在这里插入图片描述"></p>
+<ul>
+<li><code>newSingleThreadExecutor</code>：这个线程池中只有一个线程，我们对这一个线程进行不断的复用</li>
+<li><code>newFixedThreadPool</code>：固定线程数量的线程池，当超过线程容量的时候，要进行等待</li>
+<li><code>newCachedThreadPool</code>：这个线程池对多出的任务，还会创建出新的线程去对其进行执行</li>
+<li><code>newScheduledThreadPool</code>：能够实现定时处理任务的线程池</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/>https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/network/">
+                    #network</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="prev" rel="prev" title="Java network programming"><i class="iconfont icon-left"></i>&nbsp;Java network programming</a>
+         
+        
+        <a href="https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/" class="next" rel="next" title="BIO blocking model">BIO blocking model&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/" />
+  <link rel="next" href="https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           SpringBoot startup process | Kayleh
+       
+  </title>
+  <meta name="title" content="SpringBoot startup process | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "SpringBoot startup process",
+    "headline" : "SpringBoot startup process",
+    "description" : "SpringBoot应用启动流程 我们将各步骤总结精炼如下：\n 通过 SpringFactoriesLoader 加载 META-INF\/spring.factories 文件，获取并创建 SpringApplicationRunListener 对象 然后由 SpringApplicationRunListener 来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener 来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener 来发出 contextPrepared 消息，告知SpringBoot 应用使用的 ApplicationContext 已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener 来发出 contextLoaded 消息，告知 SpringBoot 应用使用的 ApplicationContext 已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener 来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener 来发出 running 消息，告知程序已运行起来了  至此，全流程结束！",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-01-15 20:40:54 \u002b0800 CST",
+    "dateModified" : "2021-01-15 20:40:54 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3\/",
+    "wordCount" : "62",
+    "keywords" : [ "frame", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">SpringBoot startup process</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2021-01-15 itemprop="datePublished">January 15, 2021</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="springboot应用启动流程">SpringBoot应用启动流程</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/SpringBoot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/640.jpg" alt="图片"></p>
+<p>我们将各步骤总结精炼如下：</p>
+<ol>
+<li>通过 <code>SpringFactoriesLoader</code> 加载 <code>META-INF/spring.factories</code> 文件，获取并创建 <code>SpringApplicationRunListener</code> 对象</li>
+<li>然后由 <code>SpringApplicationRunListener</code> 来发出 starting 消息</li>
+<li>创建参数，并配置当前 SpringBoot 应用将要使用的 Environment</li>
+<li>完成之后，依然由 <code>SpringApplicationRunListener</code> 来发出 environmentPrepared 消息</li>
+<li>创建 <code>ApplicationContext</code></li>
+<li>初始化 <code>ApplicationContext</code>，并设置 Environment，加载相关配置等</li>
+<li>由 <code>SpringApplicationRunListener</code> 来发出 <code>contextPrepared</code> 消息，告知SpringBoot 应用使用的 <code>ApplicationContext</code> 已准备OK</li>
+<li>将各种 beans 装载入 <code>ApplicationContext</code>，继续由 <code>SpringApplicationRunListener</code> 来发出 contextLoaded 消息，告知 SpringBoot 应用使用的 <code>ApplicationContext</code> 已装填OK</li>
+<li>refresh ApplicationContext，完成IoC容器可用的最后一步</li>
+<li>由 <code>SpringApplicationRunListener</code> 来发出 started 消息</li>
+<li>完成最终的程序的启动</li>
+<li>由 <code>SpringApplicationRunListener</code> 来发出 running 消息，告知程序已运行起来了</li>
+</ol>
+<p>至此，全流程结束！</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/>https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/frame/">
+                    #frame</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/" class="prev" rel="prev" title="the difference of BIO、NIO、AIO"><i class="iconfont icon-left"></i>&nbsp;the difference of BIO、NIO、AIO</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/" class="next" rel="next" title="Software testing process">Software testing process&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

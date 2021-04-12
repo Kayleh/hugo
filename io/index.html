@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/gc/" />
+  <link rel="next" href="https://blog.kayleh.top/spring/" />
+  <link rel="canonical" href="https://blog.kayleh.top/io/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           IO | Kayleh
+       
+  </title>
+  <meta name="title" content="IO | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "IO",
+    "headline" : "IO",
+    "description" : "\u003ch1 id=\u0022io\u0022\u003eIO\u003c\/h1\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-07-14 13:39:13 \u002b0800 CST",
+    "dateModified" : "2020-07-14 13:39:13 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/io\/",
+    "wordCount" : "83",
+    "keywords" : [ "Interview", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">IO</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-07-14 itemprop="datePublished">July 14, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="io">IO</h1>
+<h3 id="运行时异常与受检异常有什么区别">运行时异常与受检异常有什么区别？</h3>
+<p>异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误，只要程序设计得没有问题通常就不会发生。受检异常跟程序运行的上下文环境有关，即使程序设计无误，仍然可能因使用的问题而引发。Java编译器要求方法必须声明抛出可能发生的受检异常，但是并不要求必须声明抛出未被捕获的运行时异常。异常和继承一样，是面向对象程序设计中经常被滥用的东西，在Effective Java中对异常的使用给出了以下指导原则：</p>
+<blockquote>
+<p>- 不要将异常处理用于正常的控制流（设计良好的API不应该强迫它的调用者为了正常的控制流而使用异常）
+- 对可以恢复的情况使用受检异常，对编程错误使用运行时异常
+- 避免不必要的使用受检异常（可以通过一些状态检测手段来避免异常的发生）
+- 优先使用标准的异常
+- 每个方法抛出的异常都要有文档
+- 保持异常的原子性
+- 不要在catch中忽略掉捕获到的异常</p>
+</blockquote>
+<h3 id="什么是java序列化以及如何实现java序列化">什么是java序列化？以及如何实现java序列化？</h3>
+<p>序列化就是一种用来处理对象流的机制，所谓对象流也就是将对象的内容进行流化。可以对流化后的对象进行读写操作，也可将流化后的对象传输于网络之间。序列化是为了解决在对对象流进行读写操作时所引发的问题。
+序列化的实现：将需要被序列化的类实现Serializable接口，该接口没有需要实现的方法，implements Serializable只是为了标注该对象是可被序列化的，然后使用一个输出流(如：FileOutputStream)来构造一个 ObjectOutputStream(对象流)对象，接着，使用ObjectOutputStream对象的writeObject(Object obj)方法就可以将参数为obj的对象写出(即保存其状态)，要恢复的话则用输入流。</p>
+<h3 id="java中有几种类型的流jdk为每种类型的流提供了一些抽象类以供继承请说出他们分别是哪些类">java中有几种类型的流？JDK为每种类型的流提供了一些抽象类以供继承，请说出他们分别是哪些类？</h3>
+<p>字节流，字符流。字节流继承于InputStream OutputStream，字符流继承于InputStreamReader OutputStreamWriter。在java.io包中还有许多其他的流，主要是为了提高性能和使用方便。</p>
+<h3 id="说明一下java中的异常处理机制的原理以及如何应用">说明一下Java中的异常处理机制的原理以及如何应用。</h3>
+<p>当JAVA 程序违反了JAVA的语义规则时，JAVA虚拟机就会将发生的错误表示为一个异常。违反语义规则包括2种情况。一种是JAVA类库内置的语义检查。例如数组下标越界,会引发IndexOutOfBoundsException;访问null的对象时会引发NullPointerException。另一种情况就是JAVA允许程序员扩展这种语义检查，程序员可以创建自己的异常，并自由选择在何时用throw关键字引发异常。所有的异常都是 java.lang.Thowable的子类。</p>
+<h3 id="请问你平时最常见到的runtime-exception是什么">请问你平时最常见到的runtime exception是什么？</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ArithmeticException<span style="color:#f92672">,</span>
+ArrayStoreException<span style="color:#f92672">,</span>
+BufferOverflowException<span style="color:#f92672">,</span>
+BufferUnderflowException<span style="color:#f92672">,</span>
+CannotRedoException<span style="color:#f92672">,</span>
+CannotUndoException<span style="color:#f92672">,</span>
+ClassCastException<span style="color:#f92672">,</span>
+CMMException<span style="color:#f92672">,</span>
+ConcurrentModificationException<span style="color:#f92672">,</span>
+DOMException<span style="color:#f92672">,</span>
+EmptyStackException<span style="color:#f92672">,</span>
+IllegalArgumentException<span style="color:#f92672">,</span>
+IllegalMonitorStateException<span style="color:#f92672">,</span>
+IllegalPathStateException<span style="color:#f92672">,</span>
+IllegalStateException<span style="color:#f92672">,</span>
+ImagingOpException<span style="color:#f92672">,</span>
+IndexOutOfBoundsException<span style="color:#f92672">,</span>
+MissingResourceException<span style="color:#f92672">,</span>
+NegativeArraySizeException<span style="color:#f92672">,</span>
+NoSuchElementException<span style="color:#f92672">,</span>
+NullPointerException<span style="color:#f92672">,</span>
+ProfileDataException<span style="color:#f92672">,</span>
+ProviderException<span style="color:#f92672">,</span>
+RasterFormatException<span style="color:#f92672">,</span> SecurityException<span style="color:#f92672">,</span> SystemException<span style="color:#f92672">,</span> UndeclaredThrowableException<span style="color:#f92672">,</span> UnmodifiableSetException<span style="color:#f92672">,</span>
+UnsupportedOperationException
+</code></pre></div><h3 id="error和exception有什么区别">error和exception有什么区别?</h3>
+<p>error 表示恢复不是不可能但很困难的情况下的一种严重问题。比如说内存溢出。不可能指望程序能处理这样的情况。
+exception 表示一种设计或实现问题。也就是说，它表示如果程序运行正常，从不会发生的情况。</p>
+<h3 id="运行时的异常与一般情况下出现的异常有什么相同点和不同点">运行时的异常与一般情况下出现的异常有什么相同点和不同点？</h3>
+<p>异常表示程序运行过程中可能出现的非正常状态，运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误。java编译器要求方法必须声明抛出可能发生的非运行时异常，但是并不要求必须声明抛出未被捕获的运行时异常。</p>
+<h3 id="如何打印日志">如何打印日志？</h3>
+<p>cat /var/log/*.log</p>
+<p>如果日志在更新，如何实时查看tail -f /var/log/messages</p>
+<p>还可以使用watch -d -n 1 cat /var/log/messages</p>
+<p>-d表示高亮不同的地方，-n表示多少秒刷新一次。</p>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/io/>https://blog.kayleh.top/io/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/interview/">
+                    #Interview</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/gc/" class="prev" rel="prev" title="GC"><i class="iconfont icon-left"></i>&nbsp;GC</a>
+         
+        
+        <a href="https://blog.kayleh.top/spring/" class="next" rel="next" title="Spring">Spring&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

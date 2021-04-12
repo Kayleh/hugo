@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/algorithm/</link>
+    <description>Recent content in algorithm on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Feb 2021 02:54:04 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dynamic programming动态规划</title>
+      <link>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Mon, 01 Feb 2021 02:54:04 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description>动态规划
+首先，动态规划问题的一般形式就是求最值。动态规划其实是运筹学的一种最优化方法，只不过在计算机问题上应用比较多，比如说让你求最长递增子序列呀，最小编辑距离呀等等。
+既然是要求最值，核心问题是什么呢？求解动态规划的核心问题是穷举。因为要求最值，肯定要把所有可行的答案穷举出来，然后在其中找最值呗。
+动态规划这么简单，就是穷举就完事了？我看到的动态规划问题都很难啊！
+首先，动态规划的穷举有点特别，因为这类问题存在「重叠子问题」，如果暴力穷举的话效率会极其低下，所以需要「备忘录」或者「DP table」来优化穷举过程，避免不必要的计算。
+而且，动态规划问题一定会具备「最优子结构」，才能通过子问题的最值得到原问题的最值。
+另外，虽然动态规划的核心思想就是穷举求最值，但是问题可以千变万化，穷举所有可行解其实并不是一件容易的事，只有列出**正确的「状态转移方程」**才能正确地穷举。
+以上提到的重叠子问题、最优子结构、状态转移方程就是动态规划三要素。具体什么意思等会会举例详解，但是在实际的算法问题中，写出状态转移方程是最困难的，这也就是为什么很多朋友觉得动态规划问题困难的原因，我来提供我研究出来的一个思维框架，辅助你思考状态转移方程：
+明确 base case -&amp;gt; 明确「状态」-&amp;gt; 明确「选择」 -&amp;gt; 定义 dp 数组/函数的含义。
+按上面的套路走，最后的结果就可以套这个框架：
+# 初始化 base case dp[0][0][...] = base # 进行状态转移 for 状态1 in 状态1的所有取值： for 状态2 in 状态2的所有取值： for ... dp[状态1][状态2][...] = 求最值(选择1，选择2...) 下面通过斐波那契数列问题和凑零钱问题来详解动态规划的基本原理。前者主要是让你明白什么是重叠子问题（斐波那契数列没有求最值，所以严格来说不是动态规划问题），后者主要举集中于如何列出状态转移方程。
+一、斐波那契数列 请读者不要嫌弃这个例子简单，只有简单的例子才能让你把精力充分集中在算法背后的通用思想和技巧上，而不会被那些隐晦的细节问题搞的莫名其妙。想要困难的例子，历史文章里有的是。
+1、暴力递归
+斐波那契数列的数学形式就是递归的，写成代码就是这样：
+int fib(int N) { if (N == 1 || N == 2) return 1; return fib(N - 1) + fib(N - 2); } PS：但凡遇到需要递归的问题，最好都画出递归树，这对你分析算法的复杂度，寻找算法低效的原因都有巨大帮助。</description>
+    </item>
+    
+    <item>
+      <title>SnowFlake分布式ID雪花算法</title>
+      <link>https://blog.kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</link>
+      <pubDate>Fri, 28 Aug 2020 16:20:50 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>encoding-algorithm</title>
+      <link>https://blog.kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Fri, 19 Jun 2020 08:53:22 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h2 id=&#34;编码算法&#34;&gt;编码算法&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>hash algorithm</title>
+      <link>https://blog.kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 17 Jun 2020 18:03:58 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h3 id=&#34;哈希算法&#34;&gt;哈希算法&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;哈希算法（Hash）又称摘要算法（Digest），它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>interpolation-search-algorithm</title>
+      <link>https://blog.kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 17 Jun 2020 09:18:21 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h3 id=&#34;插值查找算法&#34;&gt;插值查找算法&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>binary-search-algorithm</title>
+      <link>https://blog.kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 17 Jun 2020 09:04:50 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h3 id=&#34;二分查找算法&#34;&gt;二分查找算法&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>linear-search-algorithm</title>
+      <link>https://blog.kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 17 Jun 2020 08:54:06 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h3 id=&#34;线性查找算法&#34;&gt;线性查找算法&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>binary sort tree</title>
+      <link>https://blog.kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</link>
+      <pubDate>Wed, 20 May 2020 20:42:23 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</guid>
+      <description>&lt;h3 id=&#34;二叉排序树&#34;&gt;二叉排序树&lt;/h3&gt;
+&lt;p&gt;二叉排序树：BST: (Binary Sort(Search) Tree), 对于二叉排序树的任何一个非叶子节点，要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。&lt;/p&gt;
+&lt;p&gt;如果有相同的值，可以将该节点放在左子节点或右子节点&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>heap-sort</title>
+      <link>https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Mon, 18 May 2020 20:40:11 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</guid>
+      <description>&lt;h3 id=&#34;堆排序&#34;&gt;堆排序&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>7 sorting algorithms</title>
+      <link>https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Sun, 17 May 2020 21:42:21 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;h1 id=&#34;7种排序算法&#34;&gt;7种排序算法&lt;/h1&gt;
+&lt;h2 id=&#34;冒泡排序&#34;&gt;冒泡排序&lt;/h2&gt;</description>
+    </item>
+    
+    <item>
+      <title>queue</title>
+      <link>https://blog.kayleh.top/%E9%98%9F%E5%88%97/</link>
+      <pubDate>Thu, 14 May 2020 16:52:39 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E9%98%9F%E5%88%97/</guid>
+      <description>&lt;h3 id=&#34;队列&#34;&gt;队列&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>LinkedList</title>
+      <link>https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Tue, 12 May 2020 19:21:40 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/</guid>
+      <description>&lt;p&gt;链表是有序的列表，但它在内存里是无序的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;%E9%93%BE%E8%A1%A8.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Stack</title>
+      <link>https://blog.kayleh.top/%E6%A0%88stack/</link>
+      <pubDate>Mon, 11 May 2020 15:30:11 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E6%A0%88stack/</guid>
+      <description>&lt;h2 id=&#34;栈stack&#34;&gt;栈(stack)&lt;/h2&gt;
+&lt;p&gt;1&lt;code&gt;栈&lt;/code&gt;是一个&lt;strong&gt;先入后出&lt;/strong&gt;(FILO-First In Last Out)的有序列表。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SparseArray</title>
+      <link>https://blog.kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Thu, 07 May 2020 21:28:41 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</guid>
+      <description>稀疏数组 ​	（稀疏数组）
+定义 当一个数组中大部分的值未被使用，只有少部分的值的空间使用，造成了内存的浪费，这个时候就可以用到稀疏数组，保存需要的数据，节约内存空间。 当记录一个棋盘时：
+记录棋盘的位置，只有两个内容，其他未被使用没有意义的值浪费了内存空间
+使用稀疏数组代替二维数组，第0行表示稀疏数组的总行，总列和所需内容的个数。
+实现 package com.kayleh.tmall.controller; /** * @Author: Wizard * @Date: 2020/5/7 9:16 */ public class SparseArray { public static void main(String[] args) { //创建一个二维数组  //0:表示没有棋子 1表示黑子 2表示蓝子  int chessArr[][] = new int[11][10]; chessArr[1][2] = 1; chessArr[2][3] = 2; for(int[] row:chessArr){ for(int data:row){ System.out.printf(&amp;#34;%d\t&amp;#34;,data); } System.out.println(); } int[][] array = getSparseArray(chessArr); System.out.println(&amp;#34;-------&amp;#34;); for(int i = 0 ; i&amp;lt; array.length;i++){ System.out.printf(&amp;#34;%d\t%d\t%d\t\n&amp;#34;,array[i][0],array[i][1],array[i][2]); } System.out.println(&amp;#34;--------&amp;#34;); int[][] startArr = recovery(array); for(int[] row:startArr){ for(int data:row){ System.</description>
+    </item>
+    
+    <item>
+      <title>dynamic-array</title>
+      <link>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</link>
+      <pubDate>Sun, 26 Apr 2020 09:02:37 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</guid>
+      <description>&lt;p&gt;动态数组&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>palindrome</title>
+      <link>https://blog.kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</link>
+      <pubDate>Sun, 19 Apr 2020 21:17:57 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</guid>
+      <description>什么是回文数？ 回文数指的是正序和倒序读都是一样的数，例如121从左到右，从右到左读都是121。任何一个自然数与它的倒序数相加，所得的和再与和的倒序数相加，……如此反复进行下去，经过有限次步骤后，最后必定能得到一个回文数。
+问题：判断一个数是否为回文数，是返回true，否侧抛出false。 @题目来源lettcode 利用Java的StringBuilder通过把整数转换为字符串来实现↓ import java.util.Scanner; /** * @Author: Wizard * @Date: 2020/4/12 13:14 */ public class palindrome { public static boolean ispalindrome(int i) { String str = (new StringBuilder(i + &amp;#34;&amp;#34;)).reverse().toString(); return (i + &amp;#34;&amp;#34;).equals(str); } public static void main(String[] args) { while (true) { System.out.println(&amp;#34;输入需要判断的整数&amp;#34;); Scanner scanner = new Scanner(System.in); int str1 = scanner.nextInt(); System.out.println(ispalindrome(str1)); } } } /** * 输入需要判断的整数：1 * false * 输入需要判断的整数：12121 * true */  进阶：不改变整数为字符串 通过取整和取余获取整数中的数字进行比较 /** * @Author: Wizard * @Date: 2020/4/12 13:14 */ public class palindrome { public static boolean ispalindrome(int i) { if(i&amp;lt;0||(i%10==0&amp;amp;&amp;amp;i!</description>
+    </item>
+    
+  </channel>
+</rss>

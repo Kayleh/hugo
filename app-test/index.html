@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/interface-test/" />
+  <link rel="next" href="https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/" />
+  <link rel="canonical" href="https://blog.kayleh.top/app-test/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           app test | Kayleh
+       
+  </title>
+  <meta name="title" content="app test | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "app test",
+    "headline" : "app test",
+    "description" : "移动端测试要点 安装测试、卸载测试 UI测试 功能测试 运行app 应用的前后台切换 免登陆 数据更新 离线浏览 app更新 定位、照相机服务 时间测试 PUSH测试 性能测试 交叉事件测试 例如：微信视频和来电\n兼容性测试 升级、更新测试 用户体验测试 硬件环境测试 接口测试 客户端数据库测试 安全测试 Android测试 Android系统的基本结构\n linux内核层\nAndroid函数库和Android运行的虚拟机\n应用程序框架\n应用程序\n 测试术语  系 统碎片化 屏幕尺寸 分辨率 像素 网络制式  像素 一位=8字节\n大小 1156*634 = 732904\n732904\/8=9291613=92K\n9291613\/1024=89.\n网络制式 Android四大组件  缺一不可\n  活动   服务   内容提供者   广播接受者  Android测试环境搭建 1️⃣真机测试 使用真实的手机测试\n2️⃣安卓模拟器 3️⃣Android自带的模拟器 4️⃣云真机测试 Android开发环境  安装java, jdk ADT工具包  环境配置 打开eclipse",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-03-04 00:49:54 \u002b0800 CST",
+    "dateModified" : "2021-03-04 00:49:54 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/app-test\/",
+    "wordCount" : "501",
+    "keywords" : [ "test", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">app test</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2021-03-04 itemprop="datePublished">March 4, 2021</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="移动端测试要点">移动端测试要点</h2>
+<h3 id="安装测试卸载测试">安装测试、卸载测试</h3>
+<h3 id="ui测试">UI测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h3 id="功能测试">功能测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h4 id="运行app">运行app</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615134963504.png" alt="1615134963504"></p>
+<h4 id="应用的前后台切换">应用的前后台切换</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615134979917.png" alt="1615134979917"></p>
+<h4 id="免登陆">免登陆</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135150085.png" alt="1615135150085"></p>
+<h4 id="数据更新">数据更新</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135195319.png" alt="1615135195319"></p>
+<h4 id="离线浏览">离线浏览</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135394779.png" alt="1615135394779"></p>
+<h4 id="app更新">app更新</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135456332.png" alt="1615135456332"></p>
+<h4 id="定位照相机服务">定位、照相机服务</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135477942.png" alt="1615135477942"></p>
+<h4 id="时间测试">时间测试</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135504852.png" alt="1615135504852"></p>
+<h4 id="push测试">PUSH测试</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615135520679.png" alt="1615135520679"></p>
+<h3 id="性能测试">性能测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h3 id="交叉事件测试">交叉事件测试</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615136213904.png" alt="1615136213904"></p>
+<p>例如：微信视频和来电</p>
+<h3 id="兼容性测试">兼容性测试</h3>
+<h3 id="升级更新测试">升级、更新测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h3 id="用户体验测试">用户体验测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h3 id="硬件环境测试">硬件环境测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h3 id="接口测试">接口测试</h3>
+<h3 id="客户端数据库测试">客户端数据库测试</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615137461874.png" alt="1615137461874"></p>
+<h3 id="安全测试">安全测试</h3>
+<p><!-- raw HTML omitted --></p>
+<h1 id="android测试">Android测试</h1>
+<p>Android系统的基本结构</p>
+<blockquote>
+<p>linux内核层</p>
+<p>Android函数库和Android运行的虚拟机</p>
+<p>应用程序框架</p>
+<p>应用程序</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615140074133.png" alt="1615140074133"></p>
+<h4 id="测试术语">测试术语</h4>
+<ul>
+<li>系 统碎片化</li>
+<li>屏幕尺寸</li>
+<li>分辨率</li>
+<li>像素</li>
+<li>网络制式</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<h5 id="像素">像素</h5>
+<p>一位=8字节</p>
+<p>大小 1156*634 = 732904</p>
+<p>732904/8=9291613=92K</p>
+<p>9291613/1024=89.</p>
+<h5 id="网络制式">网络制式</h5>
+<p><!-- raw HTML omitted --></p>
+<h3 id="android四大组件">Android四大组件</h3>
+<blockquote>
+<p>缺一不可</p>
+</blockquote>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>活动</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>服务</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>内容提供者</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>广播接受者</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<h2 id="android测试环境搭建">Android测试环境搭建</h2>
+<h4 id="1真机测试">1️⃣真机测试</h4>
+<p>使用真实的手机测试</p>
+<h4 id="2安卓模拟器">2️⃣安卓模拟器</h4>
+<h4 id="3android自带的模拟器">3️⃣Android自带的模拟器</h4>
+<h4 id="4云真机测试">4️⃣云真机测试</h4>
+<h3 id="android开发环境">Android开发环境</h3>
+<ul>
+<li>安装java, jdk</li>
+<li>ADT工具包<!-- raw HTML omitted --></li>
+</ul>
+<h4 id="环境配置">环境配置</h4>
+<p><!-- raw HTML omitted --></p>
+<p>打开eclipse</p>
+<p><!-- raw HTML omitted --></p>
+<h4 id="adb命令">ADB命令</h4>
+<ul>
+<li>
+<h5 id="启动和关闭服务">启动和关闭服务</h5>
+</li>
+</ul>
+<blockquote>
+<p>adb kill-server</p>
+<p>adb start server</p>
+</blockquote>
+<ul>
+<li>
+<p>adb.exe connect 127.0.0.1:62001</p>
+</li>
+<li>
+<h5 id="查看设备连接情况">查看设备连接情况</h5>
+</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>安装和卸载APK程序</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>列出当前设备上的程序包</li>
+</ul>
+<blockquote>
+<p>adb shell pm list packages</p>
+</blockquote>
+<ul>
+<li>上传和下载</li>
+</ul>
+<blockquote>
+<p><!-- raw HTML omitted --></p>
+</blockquote>
+<ul>
+<li>日志</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<blockquote>
+<p>过滤<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615396478274.png" alt="1615396478274"></p>
+</blockquote>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>其他</li>
+</ul>
+<p><!-- raw HTML omitted --></p>
+<blockquote>
+<p>adb bugreport</p>
+</blockquote>
+<h4 id="monkey命令">monkey命令</h4>
+<h5 id="是什么"><strong>是什么？</strong></h5>
+<p><!-- raw HTML omitted --></p>
+<ul>
+<li>
+<p>所有的操作事件都是随机发生的。不以让人的意志为变化。 由于事件都是随机的、无序的，所以不做功能方面的测试，只对APP进行性能、稳定性方面的测试。</p>
+</li>
+<li>
+<p>monkey测试的时候，需要长时间、大量的操作事件</p>
+</li>
+</ul>
+<h5 id="特征"><strong>特征</strong></h5>
+<p><!-- raw HTML omitted --></p>
+<h5 id="monkey的停止条件">Monkey的停止条件</h5>
+<p><!-- raw HTML omitted --></p>
+<h5 id="进入monkey">进入Monkey</h5>
+<p><!-- raw HTML omitted --></p>
+<h5 id="命令">命令</h5>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<blockquote>
+<p><!-- raw HTML omitted --></p>
+</blockquote>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615486953589.png" alt="1615486953589"></p>
+<h5 id="使用案例">使用案例</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615487083624.png" alt="1615487083624"></p>
+<blockquote>
+<p>&ndash;pct</p>
+</blockquote>
+<p>monkey命令的参数,没有特别强制性的顺序,可以按照monkey命令的帮助列表的参数顺序记忆和使用.</p>
+<h5 id="monkey异常log分析">Monkey异常log分析</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615487991940.png" alt="1615487991940"></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h1 id="appium">Appium</h1>
+<blockquote>
+<p><a href="https://github.com/appium/appium-desktop/releases/tag/v1.20.2">https://github.com/appium/appium-desktop/releases/tag/v1.20.2</a></p>
+</blockquote>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<h2 id="元素识别">元素识别</h2>
+<blockquote>
+<p>使用ADT环境中的sdk目录下,tools目录中的uiautomatorviewer.bat</p>
+</blockquote>
+<p>启动uiautomatorviewer.bat</p>
+<p>点击device Screenshot</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615560081753.png" alt="1615560081753"></p>
+<h2 id="操作">操作</h2>
+<p><!-- raw HTML omitted --></p>
+<h5 id="模拟键盘手机操作">模拟键盘手机操作</h5>
+<blockquote>
+<p>输入操作: sendkeys()</p>
+<p>点击操作: click()</p>
+</blockquote>
+<h5 id="模拟手势操作">模拟手势操作</h5>
+<blockquote>
+<p><!-- raw HTML omitted --></p>
+</blockquote>
+<h5 id="移动设备相关操作">移动设备相关操作</h5>
+<p><!-- raw HTML omitted --></p>
+<h2 id="appium脚本编写">Appium脚本编写</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestAppium</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception<span style="color:#f92672">{</span>
+        <span style="color:#75715e">//定义DesiredCapabilities对象
+</span><span style="color:#75715e"></span>        DesiredCapabilities dc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DesiredCapabilities<span style="color:#f92672">();</span>
+        <span style="color:#75715e">//设定DesiredCapabilities的属性
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;deviceName&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;127.0.0.1:56001&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//adb命令查出的设备的编号
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;automationName&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Appium&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//设置自动化测试工具名称
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;platformName&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Android&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//设置平台系统名称
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;platformVersion&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;4.4.4&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//设置Android系统版本号
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;appPackage&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;com.youba.calculate&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//设置目标app包名
+</span><span style="color:#75715e"></span>        dc<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;appActivity&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;.MainActivity&#34;</span><span style="color:#f92672">);</span><span style="color:#75715e">//设置目标app的启动界面
+</span><span style="color:#75715e"></span>        
+        <span style="color:#75715e">/**
+</span><span style="color:#75715e">        * url:指的是本地appium服务的IP地址及对应的端口号(appium的默认端口号是4723)
+</span><span style="color:#75715e">        * 通过该地址可以使appium连接Android设备
+</span><span style="color:#75715e">        *
+</span><span style="color:#75715e">        * Capabilities:就是DesiredCapabilities对象
+</span><span style="color:#75715e">        **/</span>
+        <span style="color:#75715e">//定义appium驱动对象 打开本地app驱动(appium)
+</span><span style="color:#75715e"></span>        AppiumDriver appd <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AppiumDriver<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> URL<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http://127.0.0.1/wd/hub&#34;</span><span style="color:#f92672">),</span>dc<span style="color:#f92672">);</span>
+        
+        <span style="color:#75715e">//写脚本,让计算器计算54+68
+</span><span style="color:#75715e"></span>        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_five&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_four&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_plus&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_six&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_eight&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;com.youba.calculate:id/btn_equal&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+        
+        appd<span style="color:#f92672">.</span><span style="color:#a6e22e">closeApp</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h1 id="junit">Junit</h1>
+<h5 id="一次单元测试用例设计的过程">一次单元测试用例设计的过程</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615652206629.png" alt="1615652206629"></p>
+<h4 id="junit环境">Junit环境</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615652373832.png" alt="1615652373832"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615652610537.png" alt="1615652610537"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615653557718.png" alt="1615653557718"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/app-test/1615662647821.png" alt="1615662647821"></p>
+<h2 id="编写测试">编写测试</h2>
+<p>在这里你将会看到一个应用 POJO 类，Business logic 类和在 test runner 中运行的 test 类的 JUnit 测试的例子。</p>
+<p>在 <strong>C:\ &gt; JUNIT_WORKSPACE</strong> 路径下创建一个名为 <strong>EmployeeDetails.java</strong> 的 POJO 类。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmployeeDetails</span> <span style="color:#f92672">{</span>
+
+   <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> monthlySalary<span style="color:#f92672">;</span>
+   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> age<span style="color:#f92672">;</span>
+
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @return the name
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> name<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @param name the name to set
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @return the monthlySalary
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getMonthlySalary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> monthlySalary<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @param monthlySalary the monthlySalary to set
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setMonthlySalary</span><span style="color:#f92672">(</span><span style="color:#66d9ef">double</span> monthlySalary<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">monthlySalary</span> <span style="color:#f92672">=</span> monthlySalary<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @return the age
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getAge</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> age<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+   <span style="color:#75715e">/**
+</span><span style="color:#75715e">   * @param age the age to set
+</span><span style="color:#75715e">   */</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> age<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> age<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>EmployeeDetails</strong> 类被用于</p>
+<ul>
+<li>取得或者设置雇员的姓名的值</li>
+<li>取得或者设置雇员的每月薪水的值</li>
+<li>取得或者设置雇员的年龄的值</li>
+</ul>
+<p>在 <strong>C:\ &gt; JUNIT_WORKSPACE</strong> 路径下创建一个名为 <strong>EmpBusinessLogic.java</strong> 的 business logic 类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmpBusinessLogic</span> <span style="color:#f92672">{</span>
+   <span style="color:#75715e">// Calculate the yearly salary of employee
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateYearlySalary</span><span style="color:#f92672">(</span>EmployeeDetails employeeDetails<span style="color:#f92672">){</span>
+      <span style="color:#66d9ef">double</span> yearlySalary<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+      yearlySalary <span style="color:#f92672">=</span> employeeDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">getMonthlySalary</span><span style="color:#f92672">()</span> <span style="color:#f92672">*</span> 12<span style="color:#f92672">;</span>
+      <span style="color:#66d9ef">return</span> yearlySalary<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+
+   <span style="color:#75715e">// Calculate the appraisal amount of employee
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calculateAppraisal</span><span style="color:#f92672">(</span>EmployeeDetails employeeDetails<span style="color:#f92672">){</span>
+      <span style="color:#66d9ef">double</span> appraisal<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span>
+      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>employeeDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">getMonthlySalary</span><span style="color:#f92672">()</span> <span style="color:#f92672">&lt;</span> 10000<span style="color:#f92672">){</span>
+         appraisal <span style="color:#f92672">=</span> 500<span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+         appraisal <span style="color:#f92672">=</span> 1000<span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+      <span style="color:#66d9ef">return</span> appraisal<span style="color:#f92672">;</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>EmpBusinessLogic</strong> 类被用来计算</p>
+<ul>
+<li>雇员每年的薪水</li>
+<li>雇员的评估金额</li>
+</ul>
+<p>在 <strong>C:\ &gt; JUNIT_WORKSPACE</strong> 路径下创建一个名为 <strong>TestEmployeeDetails.java</strong> 的准备被测试的测试案例类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> org.junit.Test<span style="color:#f92672">;</span>
+<span style="color:#f92672">import static</span> org.junit.Assert.assertEquals<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestEmployeeDetails</span> <span style="color:#f92672">{</span>
+   EmpBusinessLogic empBusinessLogic <span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> EmpBusinessLogic<span style="color:#f92672">();</span>
+   EmployeeDetails employee <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EmployeeDetails<span style="color:#f92672">();</span>
+
+   <span style="color:#75715e">//test to check appraisal
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">@Test</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testCalculateAppriasal</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Rajeev&#34;</span><span style="color:#f92672">);</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span>25<span style="color:#f92672">);</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setMonthlySalary</span><span style="color:#f92672">(</span>8000<span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">double</span> appraisal<span style="color:#f92672">=</span> empBusinessLogic<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateAppraisal</span><span style="color:#f92672">(</span>employee<span style="color:#f92672">);</span>
+      assertEquals<span style="color:#f92672">(</span>500<span style="color:#f92672">,</span> appraisal<span style="color:#f92672">,</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+
+   <span style="color:#75715e">// test to check yearly salary
+</span><span style="color:#75715e"></span>   <span style="color:#a6e22e">@Test</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testCalculateYearlySalary</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Rajeev&#34;</span><span style="color:#f92672">);</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setAge</span><span style="color:#f92672">(</span>25<span style="color:#f92672">);</span>
+      employee<span style="color:#f92672">.</span><span style="color:#a6e22e">setMonthlySalary</span><span style="color:#f92672">(</span>8000<span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">double</span> salary<span style="color:#f92672">=</span> empBusinessLogic<span style="color:#f92672">.</span><span style="color:#a6e22e">calculateYearlySalary</span><span style="color:#f92672">(</span>employee<span style="color:#f92672">);</span>
+      assertEquals<span style="color:#f92672">(</span>96000<span style="color:#f92672">,</span> salary<span style="color:#f92672">,</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">0</span><span style="color:#f92672">);</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>TestEmployeeDetails</strong> 是用来测试 <strong>EmpBusinessLogic</strong> 类的方法的，它</p>
+<ul>
+<li>测试雇员的每年的薪水</li>
+<li>测试雇员的评估金额</li>
+</ul>
+<p>现在让我们在 <strong>C:\ &gt; JUNIT_WORKSPACE</strong> 路径下创建一个名为 <strong>TestRunner.java</strong> 的类来执行测试案例类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> org.junit.runner.JUnitCore<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.junit.runner.Result<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.junit.runner.notification.Failure<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestRunner</span> <span style="color:#f92672">{</span>
+   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      Result result <span style="color:#f92672">=</span> JUnitCore<span style="color:#f92672">.</span><span style="color:#a6e22e">runClasses</span><span style="color:#f92672">(</span>TestEmployeeDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Failure failure <span style="color:#f92672">:</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">getFailures</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+         System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>failure<span style="color:#f92672">.</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">());</span>
+      <span style="color:#f92672">}</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>result<span style="color:#f92672">.</span><span style="color:#a6e22e">wasSuccessful</span><span style="color:#f92672">());</span>
+   <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span> 
+</code></pre></div><p>用javac编译 Test case 和 Test Runner 类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">C:<span style="color:#960050;background-color:#1e0010">\</span>JUNIT_WORKSPACE<span style="color:#f92672">&gt;</span>javac EmployeeDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> 
+EmpBusinessLogic<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> TestEmployeeDetails<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> TestRunner<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span>
+</code></pre></div><p>现在运行将会运行 Test Case 类中定义和提供的测试案例的 Test Runner</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">C:<span style="color:#960050;background-color:#1e0010">\</span>JUNIT_WORKSPACE<span style="color:#f92672">&gt;</span>java TestRunner
+</code></pre></div><p>检查运行结果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">true</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/app-test/>https://blog.kayleh.top/app-test/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/test/">
+                    #test</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/interface-test/" class="prev" rel="prev" title="interface test"><i class="iconfont icon-left"></i>&nbsp;interface test</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/" class="next" rel="next" title="What happened from entering the URL to displaying the page?">What happened from entering the URL to displaying the page?&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

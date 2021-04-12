@@ -1,0 +1,76 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kayleh on Kayleh</title>
+    <link>https://blog.kayleh.top/</link>
+    <description>Recent content in Kayleh on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://blog.kayleh.top/posts/</link>
+      <pubDate>Sun, 11 Apr 2021 02:26:29 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.kayleh.top/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.kayleh.top/readme/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;
+ ██ ▄█▀▄▄▄     ▓██   ██▓ ██▓    ▓█████  ██░ ██ 
+ ██▄█▒▒████▄    ▒██  ██▒▓██▒    ▓█   ▀ ▓██░ ██▒
+▓███▄░▒██  ▀█▄   ▒██ ██░▒██░    ▒███   ▒██▀▀██░
+▓██ █▄░██▄▄▄▄██  ░ ▐██▓░▒██░    ▒▓█  ▄ ░▓█ ░██ 
+▒██▒ █▄▓█   ▓██▒ ░ ██▒▓░░██████▒░▒████▒░▓█▒░██▓
+▒ ▒▒ ▓▒▒▒   ▓▒█░  ██▒▒▒ ░ ▒░▓  ░░░ ▒░ ░ ▒ ░░▒░▒
+░ ░▒ ▒░ ▒   ▒▒ ░▓██ ░▒░ ░ ░ ▒  ░ ░ ░  ░ ▒ ░▒░ ░
+░ ░░ ░  ░   ▒   ▒ ▒ ░░    ░ ░      ░    ░  ░░ ░
+░  ░        ░  ░░ ░         ░  ░   ░  ░ ░  ░  ░
+                ░ ░                            
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>https://blog.kayleh.top/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.kayleh.top/about/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-s&#34; data-lang=&#34;s&#34;&gt;         ,&lt;span style=&#34;color:#ae81ff&#34;&gt;-.&lt;/span&gt;                              ,&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;,                 ,&lt;span style=&#34;color:#f92672&#34;&gt;---&lt;/span&gt;,
+     ,&lt;span style=&#34;color:#f92672&#34;&gt;--/&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/|&lt;/span&gt;                            ,&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;-.&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;|               ,--.&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+   ,&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;-.&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:/&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;                            &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;               &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+   &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; /                             :  : &amp;#39;&lt;/span&gt;               &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+   &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  /       ,--.--.          .--,  |  &amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;       ,&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;-.&lt;/span&gt;   &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;-.&lt;/span&gt;
+   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  |  :      /       \       /_ ./|  &amp;#39;&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;     \  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;   |
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;   |  |   \    .--.  .-. |   , &amp;#39;&lt;/span&gt; , &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; :  |  | :     /    /  | |  |   /&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  : |. \    \__\/: . .  /___/ \: |  &amp;#39;&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;__  .    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; / | &amp;#39;&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;
+   &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; \ \   ,&amp;#34; .--.; |   .  \  &amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;   ;   /| |  |  &amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+   &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  : |--&amp;#39;&lt;/span&gt;   &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;  ,.  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;    \  ;   &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;  ;  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;    ; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;   |  / | |  :  :_:,&amp;#39;&lt;/span&gt;
+   ;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;     ;  :   .&amp;#39;&lt;/span&gt;   \    \  \  ;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  ,   &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; ,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;   &amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;       |  ,     .-./     :  \  \  ---`-&amp;#39;&lt;/span&gt;    \   \  &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;  `--&amp;#39;&amp;#39;
+               `&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;`---&amp;#39;          \  &amp;#39; ;             `&lt;span style=&#34;color:#f92672&#34;&gt;----&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&lt;/span&gt;
+                                  `--`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h1 id=&#34;dreamaker&#34;&gt;Dreamaker&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/Kayleh&#34;&gt;https://github.com/Kayleh&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Google: mailto:kaylehisdied@gmail.com&lt;/p&gt;
+&lt;p&gt;Facebook: &lt;a href=&#34;https://www.facebook.com/kayleh.yao.7&#34;&gt;https://www.facebook.com/kayleh.yao.7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Twitter: &lt;a href=&#34;https://twitter.com/y40jinqing&#34;&gt;https://twitter.com/y40jinqing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Weibo: &lt;a href=&#34;https://weibo.com/5737136689/profile?rightmod=1&amp;amp;wvr=6&amp;amp;mod=personinfo&#34;&gt;https://weibo.com/5737136689/profile?rightmod=1&amp;amp;wvr=6&amp;amp;mod=personinfo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Zhihu: &lt;a href=&#34;https://www.zhihu.com/people/ni-hui-gan-xie-wo-de&#34;&gt;https://www.zhihu.com/people/ni-hui-gan-xie-wo-de&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linkedin: &lt;a href=&#34;https://www.linkedin.com/in/jinqing-yao-97a750186/&#34;&gt;https://www.linkedin.com/in/jinqing-yao-97a750186/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

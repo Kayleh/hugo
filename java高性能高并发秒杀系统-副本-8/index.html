@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  
+  <link rel="next" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/" />
+  <link rel="canonical" href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Java高性能高并发秒杀系统(9) | Kayleh
+       
+  </title>
+  <meta name="title" content="Java高性能高并发秒杀系统(9) | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Java高性能高并发秒杀系统(9)",
+    "headline" : "Java高性能高并发秒杀系统(9)",
+    "description" : "安全优化,动态秒杀地址\u002b数字公式验证码\u002b接口限流防刷",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/blog.kayleh.top\/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8\/",
+    "wordCount" : "294",
+    "keywords" : [ "project", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Java高性能高并发秒杀系统(9)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="1-动态秒杀地址">1. 动态秒杀地址</h2>
+<h3 id="11-前端的改变">1.1 前端的改变</h3>
+<p>之前我们实现秒杀的时候是直接跳转到秒杀接口，使得我们每次的秒杀地址都是一样的，这样具有安全隐患，所以，我们将其改为动态地址，通过在前端上写一个方法进行跳转，如下所示。</p>
+<ul>
+<li>它会先跳转到<code>/miaosha/path</code>，获取秒杀地址中的<code>path值</code>，将其存储在Redis中<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717200220865.png" alt="在这里插入图片描述"></li>
+<li>然后携带<code>path值</code>去访问真正的秒杀方法，在其中将<code>path</code>值与Redis中的值进行比较，一致才能继续秒杀
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717200701223.png" alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="12-获取路径的java代码">1.2 获取路径的Java代码</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@ResponseBody</span>
+    <span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/path&#34;</span><span style="color:#f92672">,</span>method <span style="color:#f92672">=</span> RequestMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">GET</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> Result<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getMiaoshaPath</span><span style="color:#f92672">(</span>MiaoShaUser user<span style="color:#f92672">,</span><span style="color:#a6e22e">@RequestParam</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;goodsId&#34;</span><span style="color:#f92672">)</span><span style="color:#66d9ef">long</span> goodsId<span style="color:#f92672">,</span>
+                                         <span style="color:#a6e22e">@RequestParam</span><span style="color:#f92672">(</span>value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;verifyCode&#34;</span><span style="color:#f92672">,</span>defaultValue <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0&#34;</span><span style="color:#f92672">)</span><span style="color:#66d9ef">int</span> verifyCode<span style="color:#f92672">){</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">return</span> Result<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span>CodeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">SESSION_ERROR</span><span style="color:#f92672">);</span>
+
+
+        String path <span style="color:#f92672">=</span> miaoshaService<span style="color:#f92672">.</span><span style="color:#a6e22e">createMiaoshaPath</span><span style="color:#f92672">(</span>user<span style="color:#f92672">,</span>goodsId<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> Result<span style="color:#f92672">.</span><span style="color:#a6e22e">success</span><span style="color:#f92672">(</span>path<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+123456789101112
+</code></pre></div><ul>
+<li>先调用createMiaoshaPath()方法，在其中会创建一串随机值，并且存储到Redis中，具体方法如下，执行完之后将路径值返回到前端</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">createMiaoshaPath</span><span style="color:#f92672">(</span>MiaoShaUser user<span style="color:#f92672">,</span> <span style="color:#66d9ef">long</span> goodsId<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> goodsId <span style="color:#f92672">&lt;=</span> 0<span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+        String str <span style="color:#f92672">=</span> MD5Util<span style="color:#f92672">.</span><span style="color:#a6e22e">md5</span><span style="color:#f92672">(</span>UUIDUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">getUUID</span><span style="color:#f92672">());</span>
+        redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>MiaoshaKey<span style="color:#f92672">.</span><span style="color:#a6e22e">miaoshaPathPrefix</span><span style="color:#f92672">,</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">()</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;_&#34;</span> <span style="color:#f92672">+</span> goodsId<span style="color:#f92672">,</span>str<span style="color:#f92672">);</span>
+
+        <span style="color:#66d9ef">return</span> str<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+123456789
+</code></pre></div><h3 id="13-执行秒杀接口的修改">1.3 执行秒杀接口的修改</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717212754253.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>路径上，我们采用了RestFul风格，通过@PathVariable注解获取其中的路径值，并与redis服务器中的值进行比较，一致才能向下一步继续执行</li>
+</ul>
+<hr>
+<h2 id="2-添加验证码验证">2. 添加验证码验证</h2>
+<p>我们在立即秒杀按钮处添加验证码，<code>防止机器人对我们的系统进行多次秒杀</code>，也可以使秒杀能够<code>错峰访问</code>，削减并发量，我们采用的是<code>ScriptEngine</code></p>
+<h3 id="21-实现过程">2.1 实现过程</h3>
+<ol>
+<li>首先，我们在路径获取中，添加了对验证码验证的步骤
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717213516271.png" alt="在这里插入图片描述">
+在该方法中，实现的是将从前端获取的验证码与Redis存储的验证码进行验证，验证完成之后，就将它从Redis中移除，方法代码如下
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717214223598.png" alt="在这里插入图片描述"></li>
+<li>在此之前，前端验证码会和后端有一个响应，每次刷新验证码都会将其的正确结果同步到服务器的Redis上
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200717214411513.png" alt="在这里插入图片描述"></li>
+</ol>
+<hr>
+<h2 id="3-接口限流防刷">3. 接口限流防刷</h2>
+<ul>
+<li>接口限流防刷的作用是在规定的时间内访问固定的次数。我们实现的思路是，在要限制防刷的方法上添加注解，通过拦截器进行限制访问次数</li>
+</ul>
+<h3 id="31-创建出这个注解">3.1 创建出这个注解</h3>
+<p>该注解中，包含了需要访问时间内的访问次数，以及判断是否需要登录</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@Target</span><span style="color:#f92672">(</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">METHOD</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> AccessLimit <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">seconds</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxCount</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">needLogin</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+1234567
+</code></pre></div><ul>
+<li><code>@Retention(RetentionPolicy.RUNTIME)</code>：注解不仅被保存到class文件中，jvm加载class文件之后，仍然存在；</li>
+<li><code>@Target(ElementType.METHOD)</code>：表示注解修饰的是方法</li>
+</ul>
+<p>对我们想要限流的方法进行标记
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/2020071813164559.png" alt="在这里插入图片描述"></p>
+<h3 id="32-创建拦截器">3.2 创建拦截器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AccessInterceptor</span> <span style="color:#66d9ef">extends</span> HandlerInterceptorAdapter <span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Autowired</span>
+    MiaoShaUserService userService<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Autowired</span>
+    RedisService redisService<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">preHandle</span><span style="color:#f92672">(</span>HttpServletRequest request<span style="color:#f92672">,</span> HttpServletResponse response<span style="color:#f92672">,</span> Object handler<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>handler <span style="color:#66d9ef">instanceof</span> HandlerMethod<span style="color:#f92672">){</span>
+            MiaoShaUser user  <span style="color:#f92672">=</span> getUser<span style="color:#f92672">(</span>request<span style="color:#f92672">,</span>response<span style="color:#f92672">);</span>
+            UserContext<span style="color:#f92672">.</span><span style="color:#a6e22e">setUser</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+            HandlerMethod hm <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>HandlerMethod<span style="color:#f92672">)</span> handler<span style="color:#f92672">;</span>
+            <span style="color:#75715e">//处理方法的对象，获取的是方法的注解
+</span><span style="color:#75715e"></span>            AccessLimit accessLimit <span style="color:#f92672">=</span> hm<span style="color:#f92672">.</span><span style="color:#a6e22e">getMethodAnnotation</span><span style="color:#f92672">(</span>AccessLimit<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>accessLimit <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">int</span> seconds <span style="color:#f92672">=</span> accessLimit<span style="color:#f92672">.</span><span style="color:#a6e22e">seconds</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">int</span> maxCount <span style="color:#f92672">=</span> accessLimit<span style="color:#f92672">.</span><span style="color:#a6e22e">maxCount</span><span style="color:#f92672">();</span>
+            <span style="color:#66d9ef">boolean</span> needLogin <span style="color:#f92672">=</span> accessLimit<span style="color:#f92672">.</span><span style="color:#a6e22e">needLogin</span><span style="color:#f92672">();</span>
+            String key <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestURI</span><span style="color:#f92672">();</span><span style="color:#75715e">//获取请求的地址
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>needLogin<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+                    <span style="color:#75715e">//user为空，递交错误信息
+</span><span style="color:#75715e"></span>                    render<span style="color:#f92672">(</span>response<span style="color:#f92672">,</span> CodeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">SESSION_ERROR</span><span style="color:#f92672">);</span>
+                    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+                <span style="color:#f92672">}</span>
+                key <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;_&#34;</span> <span style="color:#f92672">+</span> user<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">();</span>
+            <span style="color:#f92672">}</span>
+            AccessKey accessKey <span style="color:#f92672">=</span> AccessKey<span style="color:#f92672">.</span><span style="color:#a6e22e">withExpireSecond</span><span style="color:#f92672">(</span>seconds<span style="color:#f92672">);</span>
+            Integer count <span style="color:#f92672">=</span> redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>accessKey<span style="color:#f92672">,</span> key<span style="color:#f92672">,</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>count <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">){</span>
+                redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>accessKey<span style="color:#f92672">,</span>key<span style="color:#f92672">,</span>1<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>count <span style="color:#f92672">&lt;</span> maxCount<span style="color:#f92672">){</span>
+                redisService<span style="color:#f92672">.</span><span style="color:#a6e22e">incr</span><span style="color:#f92672">(</span>accessKey<span style="color:#f92672">,</span>key<span style="color:#f92672">);</span>
+            <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span><span style="color:#f92672">{</span>
+                render<span style="color:#f92672">(</span>response<span style="color:#f92672">,</span>CodeMsg<span style="color:#f92672">.</span><span style="color:#a6e22e">ACCESS_LIMIT_REACHED</span><span style="color:#f92672">);</span>
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+	<span style="color:#f92672">......</span>
+<span style="color:#f92672">}</span>
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546
+</code></pre></div><ul>
+<li>继承<code>HandlerInterceptorAdapter</code>，重写<code>preHandle</code>方法</li>
+<li>重要的UserContext
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200718134859274.png" alt="在这里插入图片描述">
+我们看一下具体的实现</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserContext</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#75715e">//用ThreadLocal来装user信息，调用它的set和get方法，向其中存储值
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//ThreadLocal是为当前线程存储值，所以，在多线程下，各个线程的user并不冲突
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> ThreadLocal<span style="color:#f92672">&lt;</span>MiaoShaUser<span style="color:#f92672">&gt;</span> userHolder <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadLocal<span style="color:#f92672">&lt;&gt;();</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setUser</span><span style="color:#f92672">(</span>MiaoShaUser user<span style="color:#f92672">){</span>
+        userHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">set</span><span style="color:#f92672">(</span>user<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> MiaoShaUser <span style="color:#a6e22e">getUser</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> userHolder<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+1234567891011121314
+</code></pre></div><p>其中ThreadLocal()源码如下
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200718135610756.png" alt="在这里插入图片描述"></p>
+<h3 id="33-后序步骤解释">3.3 后序步骤解释</h3>
+<p><strong>方法后边比较简单啦</strong>
+<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200718144817668.png" alt="在这里插入图片描述"></p>
+<h3 id="34-切莫忘记配置不配置约等于不加拦截器">3.4 切莫忘记配置，不配置约等于不加拦截器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebConfig</span> <span style="color:#66d9ef">extends</span> WebMvcConfigurerAdapter<span style="color:#f92672">{</span>
+
+    <span style="color:#a6e22e">@Autowired</span>
+    UserArgumentResolver userArgumentResolver<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Autowired</span>
+    AccessInterceptor accessInterceptor<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addArgumentResolvers</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>HandlerMethodArgumentResolver<span style="color:#f92672">&gt;</span> argumentResolvers<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">addArgumentResolvers</span><span style="color:#f92672">(</span>argumentResolvers<span style="color:#f92672">);</span>
+        argumentResolvers<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>userArgumentResolver<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addInterceptors</span><span style="color:#f92672">(</span>InterceptorRegistry registry<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        InterceptorRegistration interceptorRegistration <span style="color:#f92672">=</span> registry<span style="color:#f92672">.</span><span style="color:#a6e22e">addInterceptor</span><span style="color:#f92672">(</span>accessInterceptor<span style="color:#f92672">);</span>
+        interceptorRegistration<span style="color:#f92672">.</span><span style="color:#a6e22e">addPathPatterns</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/miaosha/path&#34;</span><span style="color:#f92672">);</span>
+
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+123456789101112131415161718192021
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn2/Java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/20200718144110839.png" alt="在这里插入图片描述"></p>
+<p>在这个配置类中，我们重写的是addInterceptors方法，将拦截器注入进来，加到配置中，(指定要拦截的地址这一步可以省略掉了，因为我们使用的是注解标记，前边有一处写错，开始写的是没有注解的话，返回false，这样全局都被拦截了，应该写成true，这样才能放行），接下来就可以使用了！</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/project/">
+                    #project</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/" class="next" rel="next" title="Java高性能高并发秒杀系统(8)">Java高性能高并发秒杀系统(8)&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%8E%9F%E5%9E%8B/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           生成器 | Kayleh
+       
+  </title>
+  <meta name="title" content="生成器 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "生成器",
+    "headline" : "生成器",
+    "description" : "\u003ch3 id=\u0022生成器\u0022\u003e生成器\u003c\/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。\u003c\/p\u003e\n\u003c\/blockquote\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-08 09:39:43 \u002b0800 CST",
+    "dateModified" : "2020-06-08 09:39:43 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E7%94%9F%E6%88%90%E5%99%A8\/",
+    "wordCount" : "98",
+    "keywords" : [ "DesignPatterns", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">生成器</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-08 itemprop="datePublished">June 8, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://blog.kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"> 设计模式 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="生成器">生成器</h3>
+<blockquote>
+<p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+</blockquote>
+<p>**生成器模式（Builder）**是使用多个“小型”工厂来最终创建出一个完整对象。</p>
+<p>当我们使用Builder的时候，一般来说，是因为创建这个对象的步骤比较多，每个步骤都需要一个零部件，最终组合成一个完整的对象。</p>
+<h5 id="使用builder模式时适用于创建的对象比较复杂最好一步一步创建出零件最后再装配起来">使用Builder模式时，适用于创建的对象比较复杂，最好一步一步创建出“零件”，最后再装配起来。</h5>
+<p>JavaMail的<code>MimeMessage</code>就可以看作是一个Builder模式，只不过Builder和最终产品合二为一，都是<code>MimeMessage</code>：</p>
+<pre><code>Multipart multipart = new MimeMultipart();
+// 添加text:
+BodyPart textpart = new MimeBodyPart();
+textpart.setContent(body, &quot;text/html;charset=utf-8&quot;);
+multipart.addBodyPart(textpart);
+// 添加image:
+BodyPart imagepart = new MimeBodyPart();
+imagepart.setFileName(fileName);
+imagepart.setDataHandler(new DataHandler(new ByteArrayDataSource(input, &quot;application/octet-stream&quot;)));
+multipart.addBodyPart(imagepart);
+
+MimeMessage message = new MimeMessage(session);
+// 设置发送方地址:
+message.setFrom(new InternetAddress(&quot;me@example.com&quot;));
+// 设置接收方地址:
+message.setRecipient(Message.RecipientType.TO, new InternetAddress(&quot;xiaoming@somewhere.com&quot;));
+// 设置邮件主题:
+message.setSubject(&quot;Hello&quot;, &quot;UTF-8&quot;);
+// 设置邮件内容为multipart:
+message.setContent(multipart);
+</code></pre><h5 id="很多时候我们可以简化builder模式以链式调用的方式来创建对象例如我们经常编写这样的代码">很多时候，我们可以简化Builder模式，以链式调用的方式来创建对象。例如，我们经常编写这样的代码：</h5>
+<pre><code>StringBuilder builder = new StringBuilder();
+builder.append(secure ? &quot;https://&quot; : &quot;http://&quot;)
+       .append(&quot;www.liaoxuefeng.com&quot;)
+       .append(&quot;/&quot;)
+       .append(&quot;?t=0&quot;);
+String url = builder.toString();
+</code></pre><h5 id="由于我们经常需要构造url字符串可以使用builder模式编写一个urlbuilder调用方式如下">由于我们经常需要构造URL字符串，可以使用Builder模式编写一个URLBuilder，调用方式如下：</h5>
+<pre><code>String url = URLBuilder.builder() // 创建Builder
+        .setDomain(&quot;www.liaoxuefeng.com&quot;) // 设置domain
+        .setScheme(&quot;https&quot;) // 设置scheme
+        .setPath(&quot;/&quot;) // 设置路径
+        .setQuery(Map.of(&quot;a&quot;, &quot;123&quot;, &quot;q&quot;, &quot;K&amp;R&quot;)) // 设置query
+        .build(); // 完成build
+</code></pre>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/>https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/designpatterns/">
+                    #DesignPatterns</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="工厂设计模式"><i class="iconfont icon-left"></i>&nbsp;工厂设计模式</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%8E%9F%E5%9E%8B/" class="next" rel="next" title="原型">原型&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

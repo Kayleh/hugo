@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>security on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/security/</link>
+    <description>Recent content in security on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Apr 2021 09:48:59 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL injection</title>
+      <link>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
+      <pubDate>Tue, 06 Apr 2021 09:48:59 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
+      <description>SQL注入  https://www.bugbank.cn/q/article/5983ea82cbb936102d3977bb.html
+ 常见的几种SQL注入  1.数字型 2.字符型 3.文本型 4.搜索型(POST/GET) 5.cookie注入 6.SQL盲注 7.编码注入 8.宽字节注入
+ MySQL报错注入基本流程  1.判断sql注入 2.数据库权限判断 3.判断字段数 4.查询库名 5.查表名 6.查字段 7.查数据
+ 1.数字型 1.判断sql注入
+  提交单引号
+http://localhost/sqls/index.php?id=2&amp;#39;   and大法和or大法
+在参数后面加上and 1 = 1
+http://localhost/sqls/index.php?id=2 and 1 = 1 //可以查询 http://localhost/sqls/index.php?id=2 and 1 = 2	//查询错误 可以发现and 1=1 返回了数据，而and 1=2没有，这是由于1=1是一个为真的条件，前面的结果是true，true and true 所以没有任何问题，第二个 1=2 是个假条件， true and false还是false，所以并没有数据返回。
+接下来看下or、or就是或者，两个都为假，才会为假，只要一个为真就为真，把语句后面的id改成一个不存在的，后面接上or 1=1，这样的话就成了 false or true，结果为true。
+http://localhost/sqls/index.php?id=5 or 1 = 1   加法和减法</description>
+    </item>
+    
+    <item>
+      <title>Front end security</title>
+      <link>https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Sun, 04 Apr 2021 23:56:49 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</guid>
+      <description> 前端安全
+ xss 跨站脚本攻击，是WEB程序中一种常见的漏洞。其主要的攻击手段是在在利用网站上的可由用户输入信息的地方，恶意注入含有攻击性的脚本，达到攻击网站或者窃取用户cookied等隐私信息的目的。
+ XSS漏洞测设流程： 第一步：在目标站点上找到输入点，比如查询接口，留言板等； 第二步：输入一组“特殊字符+唯一识别字符”，点击提交，查看返回的源码，是否有做对应的处理； 第三步：通过搜索定位到唯一字符，结合唯一字符前后语法确认是否可以构成执行js的条件（构造闭合） 第四步：提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，如果成功执则说明存在XSS漏洞
+ Html5存储 </description>
+    </item>
+    
+  </channel>
+</rss>

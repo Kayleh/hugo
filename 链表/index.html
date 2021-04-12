@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E6%A0%88stack/" />
+  <link rel="next" href="https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           LinkedList | Kayleh
+       
+  </title>
+  <meta name="title" content="LinkedList | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "LinkedList",
+    "headline" : "LinkedList",
+    "description" : "\u003cp\u003e链表是有序的列表，但它在内存里是无序的。\u003c\/p\u003e\n\u003cp\u003e\u003cimg src=\u0022%E9%93%BE%E8%A1%A8.png\u0022 alt=\u0022img\u0022\u003e\u003c\/p\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-05-12 19:21:40 \u002b0800 CST",
+    "dateModified" : "2020-05-12 19:21:40 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E9%93%BE%E8%A1%A8\/",
+    "wordCount" : "1559",
+    "keywords" : [ "algorithm", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LinkedList</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-05-12 itemprop="datePublished">May 12, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>链表是有序的列表，但它在内存里是无序的。</p>
+<p><img src="%E9%93%BE%E8%A1%A8.png" alt="img"></p>
+<ul>
+<li>链表是以节点的方式来存储,是链式存储</li>
+<li>每个节点包含data 域， next 域：指向下一个节点</li>
+<li>各个节点不一定是连续存储.</li>
+<li>链表分带头节点的链表和没有头节点的链表，根据实际的需求来确定</li>
+</ul>
+<p>▼单链表：</p>
+<p><img src="%E5%8D%95%E9%93%BE%E8%A1%A8.png" alt="img"></p>
+<p>实现：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> linkedlist<span style="color:#f92672">;</span>
+
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * @Author
+</span><span style="color:#75715e"> * @Date: 2020/5/11 10:59
+</span><span style="color:#75715e"> */</span>
+
+<span style="color:#f92672">import</span> java.util.Stack<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SingleLinkedListDemo</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//进行测试
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//先创建节点
+</span><span style="color:#75715e"></span>        HeroNode hero1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;宋江&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;及时雨&#34;</span><span style="color:#f92672">);</span>
+        HeroNode hero2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;卢俊义&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;玉麒麟&#34;</span><span style="color:#f92672">);</span>
+        HeroNode hero3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;吴用&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;智多星&#34;</span><span style="color:#f92672">);</span>
+        HeroNode hero4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;林冲&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;豹子头&#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">//创建要给链表
+</span><span style="color:#75715e"></span>        SingleLinkedList singleLinkedList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SingleLinkedList<span style="color:#f92672">();</span>
+
+
+        <span style="color:#75715e">//加入
+</span><span style="color:#75715e"></span>        singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero1<span style="color:#f92672">);</span>
+        singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero4<span style="color:#f92672">);</span>
+        singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero2<span style="color:#f92672">);</span>
+        singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero3<span style="color:#f92672">);</span>
+
+        <span style="color:#75715e">// 测试一下单链表的反转功能
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;原来链表的情况~~&#34;</span><span style="color:#f92672">);</span>
+        singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+<span style="color:#75715e">//    System.out.println(&#34;反转单链表~~&#34;);
+</span><span style="color:#75715e">//    reversetList(singleLinkedList.getHead());
+</span><span style="color:#75715e">//    singleLinkedList.list();
+</span><span style="color:#75715e"></span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;测试逆序打印单链表, 没有改变链表的结构~~&#34;</span><span style="color:#f92672">);</span>
+        reversetList<span style="color:#f92672">(</span>singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">getHead</span><span style="color:#f92672">());</span>
+
+
+    <span style="color:#75715e">//加入按照编号的顺序
+</span><span style="color:#75715e"></span>    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">addByOrder</span><span style="color:#f92672">(</span>hero1<span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">addByOrder</span><span style="color:#f92672">(</span>hero4<span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">addByOrder</span><span style="color:#f92672">(</span>hero2<span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">addByOrder</span><span style="color:#f92672">(</span>hero3<span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">//显示一把
+</span><span style="color:#75715e"></span>    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+    <span style="color:#75715e">//测试修改节点的代码
+</span><span style="color:#75715e"></span>    HeroNode newHeroNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;小卢&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;玉麒麟~~&#34;</span><span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>newHeroNode<span style="color:#f92672">);</span>
+
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;修改后的链表情况~~&#34;</span><span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+    <span style="color:#75715e">//删除一个节点
+</span><span style="color:#75715e"></span>    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">del</span><span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">del</span><span style="color:#f92672">(</span>4<span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;删除后的链表情况~~&#34;</span><span style="color:#f92672">);</span>
+    singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+    <span style="color:#75715e">//测试一下 求单链表中有效节点的个数
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;有效的节点个数=&#34;</span> <span style="color:#f92672">+</span> getLength<span style="color:#f92672">(</span>singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">getHead</span><span style="color:#f92672">()));</span><span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">//测试一下看看是否得到了倒数第K个节点
+</span><span style="color:#75715e"></span>    HeroNode res <span style="color:#f92672">=</span> findLastIndexNode<span style="color:#f92672">(</span>singleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">getHead</span><span style="color:#f92672">(),</span> 3<span style="color:#f92672">);</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;res=&#34;</span> <span style="color:#f92672">+</span> res<span style="color:#f92672">);</span>
+
+
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//将单链表反转
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reversetList</span><span style="color:#f92672">(</span>HeroNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//如果当前链表为空，或者只有一个节点，无需反转，直接返回
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#75715e">//定义一个辅助的指针(变量)，帮助我们遍历原来的链表
+</span><span style="color:#75715e"></span>        HeroNode cur <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        HeroNode next <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span><span style="color:#75715e">// 指向当前节点[cur]的下一个节点
+</span><span style="color:#75715e"></span>        HeroNode reverseHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">//遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHead 的最前端
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//动脑筋
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            next <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span><span style="color:#75715e">//先暂时保存当前节点的下一个节点，因为后面需要使用
+</span><span style="color:#75715e"></span>            cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> reverseHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span><span style="color:#75715e">//将cur的下一个节点指向新的链表的最前端
+</span><span style="color:#75715e"></span>            reverseHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> cur<span style="color:#f92672">;</span> <span style="color:#75715e">//将cur 连接到新的链表上
+</span><span style="color:#75715e"></span>            cur <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span><span style="color:#75715e">//让cur后移
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//将head.next 指向 reverseHead.next , 实现单链表的反转
+</span><span style="color:#75715e"></span>        head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> reverseHead<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//查找单链表中的倒数第k个结点 【新浪面试题】
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//思路
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. 编写一个方法，接收head节点，同时接收一个index
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//2. index 表示是倒数第index个节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//3. 先把链表从头到尾遍历，得到链表的总的长度 getLength
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//4. 得到size 后，我们从链表的第一个开始遍历 (size-index)个，就可以得到
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//5. 如果找到了，则返回该节点，否则返回nulll
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> HeroNode <span style="color:#a6e22e">findLastIndexNode</span><span style="color:#f92672">(</span>HeroNode head<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> index<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//判断如果链表为空，返回null
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span><span style="color:#75715e">//没有找到
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//第一个遍历得到链表的长度(节点个数)
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> getLength<span style="color:#f92672">(</span>head<span style="color:#f92672">);</span>
+        <span style="color:#75715e">//第二次遍历  size-index 位置，就是我们倒数的第K个节点
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//先做一个index的校验
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>index <span style="color:#f92672">&lt;=</span>0 <span style="color:#f92672">||</span> index <span style="color:#f92672">&gt;</span> size<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//定义给辅助变量， for 循环定位到倒数的index
+</span><span style="color:#75715e"></span>        HeroNode cur <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">//3 // 3 - 1 = 2
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span> size <span style="color:#f92672">-</span> index<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> cur<span style="color:#f92672">;</span>
+
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//方法：获取到单链表的节点的个数(如果是带头结点的链表，需求不统计头节点)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * @param head 链表的头节点
+</span><span style="color:#75715e">     * @return 返回的就是有效节点的个数
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getLength</span><span style="color:#f92672">(</span>HeroNode head<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//空链表
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">int</span> length <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//定义一个辅助的变量, 这里我们没有统计头节点
+</span><span style="color:#75715e"></span>        HeroNode cur <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>cur <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            length<span style="color:#f92672">++;</span>
+            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">//遍历
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> length<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+
+<span style="color:#75715e">//定义SingleLinkedList 管理我们的英雄
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SingleLinkedList</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">//先初始化一个头节点, 头节点不要动, 不存放具体的数据
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> HeroNode head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+
+
+    <span style="color:#75715e">//返回头节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> HeroNode <span style="color:#a6e22e">getHead</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//添加节点到单向链表
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//思路，当不考虑编号顺序时
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. 找到当前链表的最后节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//2. 将最后这个节点的next 指向 新的节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>HeroNode heroNode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">//因为head节点不能动，因此我们需要一个辅助遍历 temp
+</span><span style="color:#75715e"></span>        HeroNode temp <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#75715e">//遍历链表，找到最后
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//找到链表的最后
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//如果没有找到最后, 将将temp后移
+</span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//当退出while循环时，temp就指向了链表的最后
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//将最后这个节点的next 指向 新的节点
+</span><span style="color:#75715e"></span>        temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> heroNode<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//第二种方式在添加英雄时，根据排名将英雄插入到指定位置
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//(如果有这个排名，则添加失败，并给出提示)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addByOrder</span><span style="color:#f92672">(</span>HeroNode heroNode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//因为头节点不能动，因此我们仍然通过一个辅助指针(变量)来帮助找到添加的位置
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//因为单链表，因为我们找的temp 是位于 添加位置的前一个节点，否则插入不了
+</span><span style="color:#75715e"></span>        HeroNode temp <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">// flag标志添加的编号是否存在，默认为false
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//说明temp已经在链表的最后
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span> <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">&gt;</span> heroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//位置找到，就在temp的后面插入
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">==</span> heroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//说明希望添加的heroNode的编号已然存在
+</span><span style="color:#75715e"></span>
+                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span> <span style="color:#75715e">//说明编号存在
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">//后移，遍历当前链表
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//判断flag 的值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//不能添加，说明编号存在
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;准备插入的英雄的编号 %d 已经存在了, 不能加入\n&#34;</span><span style="color:#f92672">,</span> heroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//插入到链表中, temp的后面
+</span><span style="color:#75715e"></span>            heroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> heroNode<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//修改节点的信息, 根据no编号来修改，即no编号不能改.
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//说明
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. 根据 newHeroNode 的 no 来修改即可
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>HeroNode newHeroNode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//判断是否空
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;链表为空~&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//找到需要修改的节点, 根据no编号
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//定义一个辅助变量
+</span><span style="color:#75715e"></span>        HeroNode temp <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">//表示是否找到该节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span> <span style="color:#75715e">//已经遍历完链表
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">==</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//找到
+</span><span style="color:#75715e"></span>                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//根据flag 判断是否找到要修改的节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">;</span>
+            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span> <span style="color:#f92672">=</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//没有找到
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;没有找到 编号 %d 的节点，不能修改\n&#34;</span><span style="color:#f92672">,</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//删除节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//思路
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//1. head 不能动，因此我们需要一个temp辅助节点找到待删除节点的前一个节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//2. 说明我们在比较时，是temp.next.no 和  需要删除的节点的no比较
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">del</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        HeroNode temp <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 标志是否找到待删除节点的
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//已经到链表的最后
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">==</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">//找到的待删除节点的前一个节点temp
+</span><span style="color:#75715e"></span>                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">//temp后移，遍历
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//判断flag
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//找到
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">//可以删除
+</span><span style="color:#75715e"></span>            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span><span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;要删除的 %d 节点不存在\n&#34;</span><span style="color:#f92672">,</span> no<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">//显示链表[遍历]
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">list</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">//判断链表是否为空
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;链表为空&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">//因为头节点，不能动，因此我们需要一个辅助变量来遍历
+</span><span style="color:#75715e"></span>        HeroNode temp <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">//判断是否到链表最后
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>temp <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">//输出节点的信息
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">);</span>
+            <span style="color:#75715e">//将temp后移， 一定小心
+</span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">//定义HeroNode ， 每个HeroNode 对象就是一个节点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HeroNode</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> no<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> String nickname<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> HeroNode next<span style="color:#f92672">;</span> <span style="color:#75715e">//指向下一个节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//构造器
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HeroNode</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">,</span> String name<span style="color:#f92672">,</span> String nickname<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">=</span> no<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span> <span style="color:#f92672">=</span> nickname<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//为了显示方法，我们重新toString
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;HeroNode [no=&#34;</span> <span style="color:#f92672">+</span> no <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, name=&#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, nickname=&#34;</span> <span style="color:#f92672">+</span> nickname <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+
+
+
+<span style="color:#960050;background-color:#1e0010">▼</span>双向链表<span style="color:#960050;background-color:#1e0010">：</span>
+
+单向链表<span style="color:#960050;background-color:#1e0010">，</span>查找的方向只能是一个方向<span style="color:#960050;background-color:#1e0010">，</span>而双向链表可以向前或者向后查找<span style="color:#960050;background-color:#1e0010">。</span>单向链表不能自我删除<span style="color:#960050;background-color:#1e0010">，</span>需要靠辅助节点<span style="color:#960050;background-color:#1e0010">，</span>而双向链表<span style="color:#960050;background-color:#1e0010">，</span>则可以自我删除<span style="color:#960050;background-color:#1e0010">，</span>所以前面我们单链表删除时节点<span style="color:#960050;background-color:#1e0010">，</span>总是找到temp<span style="color:#f92672">,</span>temp是待删除节点的前一个节点
+
+<span style="color:#f92672">package</span> linkedlist<span style="color:#f92672">;</span>
+
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DoubleLinkedListDemo</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 测试
+</span><span style="color:#75715e"></span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;双向链表的测试&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">// 先创建节点
+</span><span style="color:#75715e"></span>        HeroNode2 hero1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;宋江&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;及时雨&#34;</span><span style="color:#f92672">);</span>
+        HeroNode2 hero2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;卢俊义&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;玉麒麟&#34;</span><span style="color:#f92672">);</span>
+        HeroNode2 hero3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;吴用&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;智多星&#34;</span><span style="color:#f92672">);</span>
+        HeroNode2 hero4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;林冲&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;豹子头&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#75715e">// 创建一个双向链表
+</span><span style="color:#75715e"></span>        DoubleLinkedList doubleLinkedList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DoubleLinkedList<span style="color:#f92672">();</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero1<span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero2<span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero3<span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>hero4<span style="color:#f92672">);</span>
+
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">// 修改
+</span><span style="color:#75715e"></span>        HeroNode2 newHeroNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>4<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;公孙胜&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;入云龙&#34;</span><span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>newHeroNode<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;修改后的链表情况&#34;</span><span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+        <span style="color:#75715e">// 删除
+</span><span style="color:#75715e"></span>        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">del</span><span style="color:#f92672">(</span>3<span style="color:#f92672">);</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;删除后的链表情况~~&#34;</span><span style="color:#f92672">);</span>
+        doubleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">list</span><span style="color:#f92672">();</span>
+
+
+
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// 创建一个双向链表的类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DoubleLinkedList</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#75715e">// 先初始化一个头节点, 头节点不要动, 不存放具体的数据
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> HeroNode2 head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HeroNode2<span style="color:#f92672">(</span>0<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">// 返回头节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> HeroNode2 <span style="color:#a6e22e">getHead</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 遍历双向链表的方法
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 显示链表[遍历]
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">list</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 判断链表是否为空
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;链表为空&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 因为头节点，不能动，因此我们需要一个辅助变量来遍历
+</span><span style="color:#75715e"></span>        HeroNode2 temp <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 判断是否到链表最后
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">// 输出节点的信息
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>temp<span style="color:#f92672">);</span>
+            <span style="color:#75715e">// 将temp后移， 一定小心
+</span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 添加一个节点到双向链表的最后.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>HeroNode2 heroNode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 因为head节点不能动，因此我们需要一个辅助遍历 temp
+</span><span style="color:#75715e"></span>        HeroNode2 temp <span style="color:#f92672">=</span> head<span style="color:#f92672">;</span>
+        <span style="color:#75715e">// 遍历链表，找到最后
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// 找到链表的最后
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#75715e">// 如果没有找到最后, 将将temp后移
+</span><span style="color:#75715e"></span>            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 当退出while循环时，temp就指向了链表的最后
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 形成一个双向链表
+</span><span style="color:#75715e"></span>        temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> heroNode<span style="color:#f92672">;</span>
+        heroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">pre</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 修改一个节点的内容, 可以看到双向链表的节点内容修改和单向链表一样
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 只是 节点类型改成 HeroNode2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>HeroNode2 newHeroNode<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// 判断是否空
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;链表为空~&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 找到需要修改的节点, 根据no编号
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 定义一个辅助变量
+</span><span style="color:#75715e"></span>        HeroNode2 temp <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 表示是否找到该节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 已经遍历完链表
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">==</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 找到
+</span><span style="color:#75715e"></span>                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 根据flag 判断是否找到要修改的节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">;</span>
+            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span> <span style="color:#f92672">=</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 没有找到
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;没有找到 编号 %d 的节点，不能修改\n&#34;</span><span style="color:#f92672">,</span> newHeroNode<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span><span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 从双向链表中删除一个节点,
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 说明
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 1 对于双向链表，我们可以直接找到要删除的这个节点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 2 找到后，自我删除即可
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">del</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+        <span style="color:#75715e">// 判断当前链表是否为空
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 空链表
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;链表为空，无法删除&#34;</span><span style="color:#f92672">);</span>
+            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+
+        HeroNode2 temp <span style="color:#f92672">=</span> head<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 辅助变量(指针)
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">boolean</span> flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 标志是否找到待删除节点的
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 已经到链表的最后
+</span><span style="color:#75715e"></span>                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">==</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#75715e">// 找到的待删除节点的前一个节点temp
+</span><span style="color:#75715e"></span>                flag <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+            temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span> <span style="color:#75715e">// temp后移，遍历
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">}</span>
+        <span style="color:#75715e">// 判断flag
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>flag<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 找到
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// 可以删除
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// temp.next = temp.next.next;[单向链表]
+</span><span style="color:#75715e"></span>            temp<span style="color:#f92672">.</span><span style="color:#a6e22e">pre</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">;</span>
+            <span style="color:#75715e">// 这里我们的代码有问题?
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// 如果是最后一个节点，就不需要执行下面这句话，否则出现空指针
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                temp<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">pre</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">.</span><span style="color:#a6e22e">pre</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;要删除的 %d 节点不存在\n&#34;</span><span style="color:#f92672">,</span> no<span style="color:#f92672">);</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// 定义HeroNode2 ， 每个HeroNode 对象就是一个节点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HeroNode2</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> no<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> String name<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> String nickname<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">public</span> HeroNode2 next<span style="color:#f92672">;</span> <span style="color:#75715e">// 指向下一个节点, 默认为null
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> HeroNode2 pre<span style="color:#f92672">;</span> <span style="color:#75715e">// 指向前一个节点, 默认为null
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 构造器
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">HeroNode2</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">,</span> String name<span style="color:#f92672">,</span> String nickname<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">=</span> no<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nickname</span> <span style="color:#f92672">=</span> nickname<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#75715e">// 为了显示方法，我们重新toString
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;HeroNode [no=&#34;</span> <span style="color:#f92672">+</span> no <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, name=&#34;</span> <span style="color:#f92672">+</span> name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, nickname=&#34;</span> <span style="color:#f92672">+</span> nickname <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;]&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+
+
+<span style="color:#960050;background-color:#1e0010">▼</span>循环链表<span style="color:#960050;background-color:#1e0010">：</span>
+
+<span style="color:#f92672">package</span> linkedlist<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Josepfu</span> <span style="color:#f92672">{</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 测试一把看看构建环形链表，和遍历是否ok
+</span><span style="color:#75715e"></span>    CircleSingleLinkedList circleSingleLinkedList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CircleSingleLinkedList<span style="color:#f92672">();</span>
+    circleSingleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">addBoy</span><span style="color:#f92672">(</span>125<span style="color:#f92672">);</span><span style="color:#75715e">// 加入5个小孩节点
+</span><span style="color:#75715e"></span>    circleSingleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">showBoy</span><span style="color:#f92672">();</span>
+
+    <span style="color:#75715e">//测试一把小孩出圈是否正确
+</span><span style="color:#75715e"></span>    circleSingleLinkedList<span style="color:#f92672">.</span><span style="color:#a6e22e">countBoy</span><span style="color:#f92672">(</span>10<span style="color:#f92672">,</span> 20<span style="color:#f92672">,</span> 125<span style="color:#f92672">);</span> <span style="color:#75715e">// 2-&gt;4-&gt;1-&gt;5-&gt;3
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//String str = &#34;7*2*2-5+1-5+3-3&#34;;
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// 创建一个环形的单向链表
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CircleSingleLinkedList</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 创建一个first节点,当前没有编号
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> Boy first <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+
+  <span style="color:#75715e">// 添加小孩节点，构建成一个环形的链表
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addBoy</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// nums 做一个数据校验
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>nums <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;nums的值不正确&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    Boy curBoy <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 辅助指针，帮助构建环形链表
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 使用for来创建我们的环形链表
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 1<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;=</span> nums<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+      <span style="color:#75715e">// 根据编号，创建小孩节点
+</span><span style="color:#75715e"></span>      Boy boy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Boy<span style="color:#f92672">(</span>i<span style="color:#f92672">);</span>
+      <span style="color:#75715e">// 如果是第一个小孩
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>i <span style="color:#f92672">==</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        first <span style="color:#f92672">=</span> boy<span style="color:#f92672">;</span>
+        first<span style="color:#f92672">.</span><span style="color:#a6e22e">setNext</span><span style="color:#f92672">(</span>first<span style="color:#f92672">);</span> <span style="color:#75715e">// 构成环
+</span><span style="color:#75715e"></span>        curBoy <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span> <span style="color:#75715e">// 让curBoy指向第一个小孩
+</span><span style="color:#75715e"></span>      <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+        curBoy<span style="color:#f92672">.</span><span style="color:#a6e22e">setNext</span><span style="color:#f92672">(</span>boy<span style="color:#f92672">);</span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        boy<span style="color:#f92672">.</span><span style="color:#a6e22e">setNext</span><span style="color:#f92672">(</span>first<span style="color:#f92672">);</span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        curBoy <span style="color:#f92672">=</span> boy<span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 遍历当前的环形链表
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">showBoy</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 判断链表是否为空
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>first <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;没有任何小孩~~&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 因为first不能动，因此我们仍然使用一个辅助指针完成遍历
+</span><span style="color:#75715e"></span>    Boy curBoy <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;小孩的编号 %d \n&#34;</span><span style="color:#f92672">,</span> curBoy<span style="color:#f92672">.</span><span style="color:#a6e22e">getNo</span><span style="color:#f92672">());</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>curBoy<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> first<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#75715e">// 说明已经遍历完毕
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+      curBoy <span style="color:#f92672">=</span> curBoy<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span> <span style="color:#75715e">// curBoy后移
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 根据用户的输入，计算出小孩出圈的顺序
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/**
+</span><span style="color:#75715e">   *
+</span><span style="color:#75715e">   * @param startNo
+</span><span style="color:#75715e">   *            表示从第几个小孩开始数数
+</span><span style="color:#75715e">   * @param countNum
+</span><span style="color:#75715e">   *            表示数几下
+</span><span style="color:#75715e">   * @param nums
+</span><span style="color:#75715e">   *            表示最初有多少小孩在圈中
+</span><span style="color:#75715e">   */</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">countBoy</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> startNo<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> countNum<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 先对数据进行校验
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>first <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> startNo <span style="color:#f92672">&lt;</span> 1 <span style="color:#f92672">||</span> startNo <span style="color:#f92672">&gt;</span> nums<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;参数输入有误， 请重新输入&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 创建要给辅助指针,帮助完成小孩出圈
+</span><span style="color:#75715e"></span>    Boy helper <span style="color:#f92672">=</span> first<span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 需求创建一个辅助指针(变量) helper , 事先应该指向环形链表的最后这个节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>helper<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> first<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">// 说明helper指向最后小孩节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+      helper <span style="color:#f92672">=</span> helper<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//小孩报数前，先让 first 和  helper 移动 k - 1次
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> startNo <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+      first <span style="color:#f92672">=</span> first<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+      helper <span style="color:#f92672">=</span> helper<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//当小孩报数时，让first 和 helper 指针同时 的移动  m  - 1 次, 然后出圈
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//这里是一个循环操作，知道圈中只有一个节点
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>helper <span style="color:#f92672">==</span> first<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#75715e">//说明圈中只有一个节点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+      <span style="color:#75715e">//让 first 和 helper 指针同时 的移动 countNum - 1
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> j <span style="color:#f92672">&lt;</span> countNum <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> j<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+        first <span style="color:#f92672">=</span> first<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+        helper <span style="color:#f92672">=</span> helper<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+      <span style="color:#f92672">}</span>
+      <span style="color:#75715e">//这时first指向的节点，就是要出圈的小孩节点
+</span><span style="color:#75715e"></span>      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;小孩%d出圈\n&#34;</span><span style="color:#f92672">,</span> first<span style="color:#f92672">.</span><span style="color:#a6e22e">getNo</span><span style="color:#f92672">());</span>
+      <span style="color:#75715e">//这时将first指向的小孩节点出圈
+</span><span style="color:#75715e"></span>      first <span style="color:#f92672">=</span> first<span style="color:#f92672">.</span><span style="color:#a6e22e">getNext</span><span style="color:#f92672">();</span>
+      helper<span style="color:#f92672">.</span><span style="color:#a6e22e">setNext</span><span style="color:#f92672">(</span>first<span style="color:#f92672">);</span> <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>
+    <span style="color:#f92672">}</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;最后留在圈中的小孩编号%d \n&#34;</span><span style="color:#f92672">,</span> first<span style="color:#f92672">.</span><span style="color:#a6e22e">getNo</span><span style="color:#f92672">());</span>
+
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">// 创建一个Boy类，表示一个节点
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Boy</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> no<span style="color:#f92672">;</span><span style="color:#75715e">// 编号
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> Boy next<span style="color:#f92672">;</span> <span style="color:#75715e">// 指向下一个节点,默认null
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Boy</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">=</span> no<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getNo</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> no<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setNo</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> no<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">no</span> <span style="color:#f92672">=</span> no<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">public</span> Boy <span style="color:#a6e22e">getNext</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> next<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setNext</span><span style="color:#f92672">(</span>Boy next<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/>https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/algorithm/">
+                    #algorithm</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E6%A0%88stack/" class="prev" rel="prev" title="Stack"><i class="iconfont icon-left"></i>&nbsp;Stack</a>
+         
+        
+        <a href="https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" class="next" rel="next" title="Inversion of Control控制反转">Inversion of Control控制反转&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

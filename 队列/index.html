@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" />
+  <link rel="next" href="https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E9%98%9F%E5%88%97/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           queue | Kayleh
+       
+  </title>
+  <meta name="title" content="queue | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "queue",
+    "headline" : "queue",
+    "description" : "\u003ch3 id=\u0022队列\u0022\u003e队列\u003c\/h3\u003e",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-05-14 16:52:39 \u002b0800 CST",
+    "dateModified" : "2020-05-14 16:52:39 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E9%98%9F%E5%88%97\/",
+    "wordCount" : "395",
+    "keywords" : [ "algorithm", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">queue</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-05-14 itemprop="datePublished">May 14, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h3 id="队列">队列</h3>
+<h5 id="定义">定义：</h5>
+<p>遵循先进先出，就是队列。可以想象为排队，先排队的人先办理业务。</p>
+<ul>
+<li>
+<p>队列是一个有序列表。</p>
+</li>
+<li>
+<p>遵循先进先出的原则。即：先存入的数据先取出，后存入的数据后取出。</p>
+</li>
+<li>
+<p>示意：数组模拟：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E9%98%9F%E5%88%97/2.png" alt="img"></p>
+</li>
+</ul>
+<p>队列本身是有序列表，如使用数组的结构来存储队列的数据，因为队列的输出、输入是分别从前后端来处理，因此需要两个变量front及rear分别记录队列前后端的下标，front会随着数据输出而改变，而rear则是随着数据输入而改变，其中 maxSize是该队列的最大容量。如图所示。</p>
+<p>用稀疏数组代替二维数组，第0行表示稀疏数组的总行，总列和所需内容的个数。</p>
+<p>代码实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> queue<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">import</span> java.util.Scanner<span style="color:#f92672">;</span>
+
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CircleArrayQueueDemo</span> <span style="color:#f92672">{</span>
+
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#75715e">//测试
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;测试数组模拟环形队列的案例~~~&#34;</span><span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">// 创建一个环形队列
+</span><span style="color:#75715e"></span>    CircleArray queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CircleArray<span style="color:#f92672">(</span>4<span style="color:#f92672">);</span> <span style="color:#75715e">//说明设置4, 其队列的有效数据最大是3
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 接收用户输入
+</span><span style="color:#75715e"></span>    Scanner scanner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Scanner<span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">in</span><span style="color:#f92672">);</span><span style="color:#75715e">//
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span> loop <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 输出一个菜单
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>loop<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;s(show): 显示队列&#34;</span><span style="color:#f92672">);</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;e(exit): 退出程序&#34;</span><span style="color:#f92672">);</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a(add): 添加数据到队列&#34;</span><span style="color:#f92672">);</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;g(get): 从队列取出数据&#34;</span><span style="color:#f92672">);</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;h(head): 查看队列头的数据&#34;</span><span style="color:#f92672">);</span>
+      key <span style="color:#f92672">=</span> scanner<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">().</span><span style="color:#a6e22e">charAt</span><span style="color:#f92672">(</span>0<span style="color:#f92672">);</span><span style="color:#75715e">// 接收一个字符
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;s&#39;</span><span style="color:#f92672">:</span>
+          queue<span style="color:#f92672">.</span><span style="color:#a6e22e">showQueue</span><span style="color:#f92672">();</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">:</span>
+          System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;输出一个数&#34;</span><span style="color:#f92672">);</span>
+          <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> scanner<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">();</span>
+          queue<span style="color:#f92672">.</span><span style="color:#a6e22e">addQueue</span><span style="color:#f92672">(</span>value<span style="color:#f92672">);</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;g&#39;</span><span style="color:#f92672">:</span> <span style="color:#75715e">// 取出数据
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">getQueue</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;取出的数据是%d\n&#34;</span><span style="color:#f92672">,</span> res<span style="color:#f92672">);</span>
+          <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// TODO: handle exception
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+          <span style="color:#f92672">}</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;h&#39;</span><span style="color:#f92672">:</span> <span style="color:#75715e">// 查看队列头的数据
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> queue<span style="color:#f92672">.</span><span style="color:#a6e22e">headQueue</span><span style="color:#f92672">();</span>
+            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;队列头的数据是%d\n&#34;</span><span style="color:#f92672">,</span> res<span style="color:#f92672">);</span>
+          <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>Exception e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#75715e">// TODO: handle exception
+</span><span style="color:#75715e"></span>            System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+          <span style="color:#f92672">}</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;e&#39;</span><span style="color:#f92672">:</span> <span style="color:#75715e">// 退出
+</span><span style="color:#75715e"></span>          scanner<span style="color:#f92672">.</span><span style="color:#a6e22e">close</span><span style="color:#f92672">();</span>
+          loop <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+          <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;程序退出~~&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#f92672">}</span>
+
+<span style="color:#f92672">}</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CircleArray</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> maxSize<span style="color:#f92672">;</span> <span style="color:#75715e">// 表示数组的最大容量
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//front 变量的含义做一个调整：front 就指向队列的第一个元素, 也就是说 arr[front] 就是队列的第一个元素
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//front 的初始值 = 0
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> front<span style="color:#f92672">;</span>
+  <span style="color:#75715e">//rear 变量的含义做一个调整：rear 指向队列的最后一个元素的后一个位置. 因为希望空出一个空间做为约定.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//rear 的初始值 = 0
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> rear<span style="color:#f92672">;</span> <span style="color:#75715e">// 队列尾
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr<span style="color:#f92672">;</span> <span style="color:#75715e">// 该数据用于存放数据, 模拟队列
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CircleArray</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> arrMaxSize<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    maxSize <span style="color:#f92672">=</span> arrMaxSize<span style="color:#f92672">;</span>
+    arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>maxSize<span style="color:#f92672">];</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 判断队列是否满
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isFull</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>rear  <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> maxSize <span style="color:#f92672">==</span> front<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 判断队列是否为空
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEmpty</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> rear <span style="color:#f92672">==</span> front<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 添加数据到队列
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addQueue</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> n<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 判断队列是否满
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isFull<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;队列满，不能加入数据~&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">//直接将数据加入
+</span><span style="color:#75715e"></span>    arr<span style="color:#f92672">[</span>rear<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> n<span style="color:#f92672">;</span>
+    <span style="color:#75715e">//将 rear 后移, 这里必须考虑取模
+</span><span style="color:#75715e"></span>    rear <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>rear <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> maxSize<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 获取队列的数据, 出队列
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getQueue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 判断队列是否空
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isEmpty<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+      <span style="color:#75715e">// 通过抛出异常
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;队列空，不能取数据&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 这里需要分析出 front是指向队列的第一个元素
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 1. 先把 front 对应的值保留到一个临时变量
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 2. 将 front 后移, 考虑取模
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 3. 将临时保存的变量返回
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> arr<span style="color:#f92672">[</span>front<span style="color:#f92672">];</span>
+    front <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>front <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> maxSize<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">return</span> value<span style="color:#f92672">;</span>
+
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 显示队列的所有数据
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">showQueue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 遍历
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isEmpty<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;队列空的，没有数据~~&#34;</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 思路：从front开始遍历，遍历多少个元素
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 动脑筋
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> front<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> front <span style="color:#f92672">+</span> size<span style="color:#f92672">()</span> <span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+      System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">printf</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;arr[%d]=%d\n&#34;</span><span style="color:#f92672">,</span> i <span style="color:#f92672">%</span> maxSize<span style="color:#f92672">,</span> arr<span style="color:#f92672">[</span>i <span style="color:#f92672">%</span> maxSize<span style="color:#f92672">]);</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 求出当前队列有效数据的个数
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">size</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// rear = 2
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// front = 1
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// maxSize = 3
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>rear <span style="color:#f92672">+</span> maxSize <span style="color:#f92672">-</span> front<span style="color:#f92672">)</span> <span style="color:#f92672">%</span> maxSize<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// 显示队列的头数据， 注意不是取出数据
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">headQueue</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 判断
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>isEmpty<span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;队列空的，没有数据~~&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">return</span> arr<span style="color:#f92672">[</span>front<span style="color:#f92672">];</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E9%98%9F%E5%88%97/>https://blog.kayleh.top/%E9%98%9F%E5%88%97/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/algorithm/">
+                    #algorithm</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/" class="prev" rel="prev" title="Inversion of Control控制反转"><i class="iconfont icon-left"></i>&nbsp;Inversion of Control控制反转</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="next" rel="next" title="计算机组成原理">计算机组成原理&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

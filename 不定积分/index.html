@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           不定积分 | Kayleh
+       
+  </title>
+  <meta name="title" content="不定积分 | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "不定积分",
+    "headline" : "不定积分",
+    "description" : "$F\u0027(x)=f(x)$\n$F(x)$是$f(x)$的一个原函数.\n F(x)是f(x)的一个原函数，F(x)\u002bc也是f(x)的原函数\n $f(x)$是$F\u0027(x)$的导函数.\n知道$F\u0027(x)$,$f(x)$只有唯一一个\n知道$f(x)$,$F\u0027(x)$可以有无穷多个\n不定积分 $f(x)$的原函数的全体\n**$\\int_{}{}f(x) \\text{d}x$**\n $\\int_{}{}$:\tsum,积分符号\n$x$:\t积分变量\n$f(x)$:\t被积函数\n $\\int_{}{}f(x) \\text{d}x = F(x)\u002bc$\n例题  $\\int_{}{}x^2 \\text{d}x = \\frac{1}{3}x^3\u002bc$  几何意义 性质 $$\\int_{}{}kf(x)\\text{d}x=k\\int_{}{}f(x)\\text{d}x$$\nk可以朝外拿：\n①k是常数\n②k是与x无关的另变量\n 有限个可以，但无限个不能\n 基本积分公式 例题：\n积分法 第一换元积分法(凑微分法)  求原函数\n 1）把d外面的某项拿到d里面(变成原函数)\n2）凑基本积分公式\n例题： dk()=kd()\nd()里面的项可以随意加减常数\n第二换元积分  求导\n 公式 分部积分法 优先：\n $e^x,sinx,cosx,x(x^n),lnx,arctanx$\n 有理函数积分 分子的最高次数比较高：\n最高次数相等(最终使分母次数高)：\n所有方法都要化成分母次数比分子次数高。\n真分式 分母次数比分子次数高的叫做真分式\n第一类题目 1）$b^2-4ac=0$ $ax^2\u002bbx\u002bc=0$",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-09-23 17:06:12 \u002b0800 CST",
+    "dateModified" : "2020-09-23 17:06:12 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86\/",
+    "wordCount" : "80",
+    "keywords" : [ "math", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">不定积分</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-09-23 itemprop="datePublished">September 23, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>$F'(x)=f(x)$</p>
+<p>$F(x)$是$f(x)$的<strong>一个</strong>原函数.</p>
+<blockquote>
+<p>F(x)是f(x)的一个原函数，F(x)+c也是f(x)的原函数</p>
+</blockquote>
+<p>$f(x)$是$F'(x)$的导函数.</p>
+<p>知道$F'(x)$,$f(x)$只有唯一一个</p>
+<p>知道$f(x)$,$F'(x)$可以有无穷多个</p>
+<h1 id="不定积分">不定积分</h1>
+<p>$f(x)$的原函数的全体</p>
+<p>**$\int_{}{}f(x) \text{d}x$**</p>
+<blockquote>
+<p>$\int_{}{}$:	sum,积分符号</p>
+<p>$x$:	积分变量</p>
+<p>$f(x)$:	被积函数</p>
+</blockquote>
+<p>$\int_{}{}f(x) \text{d}x = F(x)+c$</p>
+<h4 id="例题">例题</h4>
+<ol>
+<li>$\int_{}{}x^2 \text{d}x = \frac{1}{3}x^3+c$</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600870737910.png" alt=""></p>
+<h2 id="几何意义">几何意义</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600871376478.png" alt=""></p>
+<h3 id="性质">性质</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600871618223.png" alt=""></p>
+<p>$$\int_{}{}kf(x)\text{d}x=k\int_{}{}f(x)\text{d}x$$</p>
+<p>k可以朝外拿：</p>
+<p>①k是常数</p>
+<p>②k是与x无关的另变量</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600874436855.png" alt="1600874436855.png"></p>
+<blockquote>
+<p>有限个可以，但无限个不能</p>
+</blockquote>
+<h2 id="基本积分公式">基本积分公式</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600875099212.png" alt="1600875099212.png"></p>
+<p>例题：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600880107488.png" alt="1600880107488.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600880350925.png" alt="1600880350925.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600880532801.png" alt="1600880532801"></p>
+<h1 id="积分法">积分法</h1>
+<h2 id="第一换元积分法凑微分法">第一换元积分法(凑微分法)</h2>
+<blockquote>
+<p>求原函数</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600959600842.png" alt="1600959600842"></p>
+<p>1）把d外面的某项拿到d里面(变成原函数)</p>
+<p>2）凑基本积分公式</p>
+<h3 id="例题-1">例题：</h3>
+<p>dk()=kd()</p>
+<p>d()里面的项可以随意<strong>加减</strong>常数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600964019281.png" alt="1600964019281"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1.png" alt="1600965342157"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600966288346.png" alt="1600966288346"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600966889415.png" alt="1600966889415"></p>
+<h2 id="第二换元积分">第二换元积分</h2>
+<blockquote>
+<p>求导</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600968183522.png" alt="1600968183522"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600968762395.png" alt="1600968762395"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600969286878.png" alt="1600969286878"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600969564112.png" alt="1600969564112"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600969724741.png" alt="1600969724741"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600969833171.png" alt="1600969833171"></p>
+<h6 id="公式">公式</h6>
+<h2 id="分部积分法">分部积分法</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600996506632.png" alt="1600996506632.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600997159717.png" alt="1600997159717.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600997865246.png" alt="1600997865246.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600998084405.png" alt="1600998084405"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600998742526.png" alt="1600998742526"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600999265802.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1600999440603.png" alt="1601020665712.png"></p>
+<p>优先：</p>
+<blockquote>
+<p>$e^x,sinx,cosx,x(x^n),lnx,arctanx$</p>
+</blockquote>
+<h1 id="有理函数积分">有理函数积分</h1>
+<p>分子的最高次数比较高：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601020665712.png" alt="1601020665712.png"></p>
+<p>最高次数相等(最终使分母次数高)：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601020930143.png" alt="1601020930143"></p>
+<p>所有方法都要化成分母次数比分子次数高。</p>
+<h3 id="真分式">真分式</h3>
+<p>分母次数比分子次数高的叫做<strong>真分式</strong></p>
+<h4 id="第一类题目">第一类题目</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601021927432.png" alt="1601021927432"></p>
+<p>1）$b^2-4ac=0$ $ax^2+bx+c=0$</p>
+<p>$a(x-x_1)^2=0$</p>
+<p>例如：<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601022001083.png" alt="1601022001083"></p>
+<p>2）$b^2-4ac&gt;0$ $ax^2+bx+c=0$有两个不等的根</p>
+<p>$a(x-x_1)(x-x_2)=0$</p>
+<p>待定系数法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601022253671.png" alt="1601022253671"></p>
+<p><!-- raw HTML omitted --></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601022327199.png" alt="1601022327199"></p>
+<p>3）$b^2-4ac&lt;0$ $ax^2+bx+c=0$没有实根</p>
+<p><!-- raw HTML omitted --></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601022751842.png" alt="1601022751842"></p>
+<h4 id="第二类题目">第二类题目</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601022980770.png" alt="1601022980770"></p>
+<p>1）$b^2-4ac=0$ $ax^2+bx+c=0$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601023694401.png" alt="1601023694401"></p>
+<p>2）$b^2-4ac&gt;0$</p>
+<p>待定系数法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601023802367.png" alt="1601023802367"></p>
+<p>3）$b^2-4ac&lt;0$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601024256435.png" alt="1601024256435"></p>
+<h4 id="第三类题目">第三类题目</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601028039597.png" alt="1601028039597"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601030780920.png" alt="1601030780920"></p>
+<p>第一类表达式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601030922466.png" alt="1601030922466"></p>
+<p>比如：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601030765738.png" alt="1601030765738"></p>
+<p>3）<img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601031708083.png" alt="1601031708083"></p>
+<p>第二类</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601030987071.png" alt="1601030987071"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601031354989.png" alt="1601031354989"></p>
+<p>解法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601032503258.png" alt="1601032503258"></p>
+<p>左右相等：</p>
+<p>$A_1+2A_2=0$平方项</p>
+<p>$A_2+2A_3=0$1次项</p>
+<p>$A_1+A_3=1$常数项</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601035938562.png" alt="1601035938562"></p>
+<p>或者：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn/img/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/1601036063786.png" alt="1601036063786"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/>https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/math/">
+                    #math</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/" class="prev" rel="prev" title="函数作图"><i class="iconfont icon-left"></i>&nbsp;函数作图</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/" class="next" rel="next" title="图床">图床&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

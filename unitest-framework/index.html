@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/katalon/" />
+  <link rel="next" href="https://blog.kayleh.top/interface-test/" />
+  <link rel="canonical" href="https://blog.kayleh.top/unitest-framework/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Unitest framework | Kayleh
+       
+  </title>
+  <meta name="title" content="Unitest framework | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "Unitest framework",
+    "headline" : "Unitest framework",
+    "description" : "多条测试用例 注解方法 五个方法 测试用例testcase 测试集合testsuite 追加单个测试对象  print(re.__dict__)\n 追加多个测试对象 TestLoder 第一个参数path：指定存放测试用例的目录（单元测试用例，用unittest框架写的测试用例）\n第二个参数pattern：指定匹配规则\nTestRunner 状态1 状态2（大于1即可）详细报告  断言 class mymath(): def jia(self,a,b): return a\u002bb; def jian(self,a,b): return a-b def changfa(self,a,b): if b==0: return \u0026#34;error\u0026#34; else: return a\/b #代码功能验证 if __name__==\u0026#34;__main__\u0026#34;: mm = mymath() actualValue = m.jia(2,3) expectValue = 5 if actualValue==expectValue: print(\u0026#34;加法功能实现正确\u0026#34;) try: actualValue==mm.jia(\u0026#34;a\u0026#34;,3) except Exception as e: print(\u0026#34;该方法功能实现正确\u0026#34;，e) ----------------------------------------------------------- #导包 import unittest from myMath import mymath #创建单元测试类(继承自unittest.testcase) class myMathTest(unittest.TestCase): #测试用例资源初始化方法 def setUp(self): self.",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-02-13 00:00:57 \u002b0800 CST",
+    "dateModified" : "2021-02-13 00:00:57 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/unitest-framework\/",
+    "wordCount" : "351",
+    "keywords" : [ "test", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Unitest framework</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2021-02-13 itemprop="datePublished">February 13, 2021</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613147342997.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613147496034.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613149415607.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613149552674.png" alt=""></p>
+<h4 id="多条测试用例">多条测试用例</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613149845499.png" alt=""></p>
+<h4 id="注解方法">注解方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613199579426.png" alt="1613199579426"></p>
+<h4 id="五个方法">五个方法</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613199693463.png" alt="1613199693463"></p>
+<h4 id="测试用例testcase">测试用例testcase</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613201703588.png" alt="1613201703588"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613202112317.png" alt="1613202112317"></p>
+<h4 id="测试集合testsuite">测试集合testsuite</h4>
+<h5 id="追加单个测试对象">追加单个测试对象</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613207825662.png" alt="1613207825662"></p>
+<blockquote>
+<p>print(re.__dict__)</p>
+</blockquote>
+<h5 id="追加多个测试对象">追加多个测试对象</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613209390861.png" alt="1613209390861"></p>
+<h4 id="testloder">TestLoder</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613231860846.png" alt="1613231860846"></p>
+<p>第一个参数path：指定存放测试用例的目录（单元测试用例，用unittest框架写的测试用例）</p>
+<p>第二个参数pattern：指定匹配规则</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613233980464.png" alt="1613233980464"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613234000816.png" alt="1613234000816"></p>
+<h4 id="testrunner">TestRunner</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613318481043.png" alt="1613318481043"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613319975732.png" alt="1613319975732"></p>
+<h5 id="状态1">状态1</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613320910898.png" alt="1613320910898"></p>
+<h5 id="状态2大于1即可详细报告">状态2（大于1即可）详细报告</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613320887518.png" alt="1613320887518"></p>
+<h5 id="1613321695363httpscdnjsdelivrnetghkaylehcdn3unitest-framework1613321695363png"><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613321695363.png" alt="1613321695363"></h5>
+<h5 id="断言">断言</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613382483121.png" alt="1613382483121"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">mymath</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jia</span>(self,a,b):
+        <span style="color:#66d9ef">return</span> a<span style="color:#f92672">+</span>b;
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">jian</span>(self,a,b):
+        <span style="color:#66d9ef">return</span> a<span style="color:#f92672">-</span>b
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">changfa</span>(self,a,b):
+        <span style="color:#66d9ef">if</span> b<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;error&#34;</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> a<span style="color:#f92672">/</span>b
+
+<span style="color:#75715e">#代码功能验证</span>
+<span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+    mm <span style="color:#f92672">=</span> mymath()
+    actualValue <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>jia(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>)
+    expectValue <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+    <span style="color:#66d9ef">if</span> actualValue<span style="color:#f92672">==</span>expectValue:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;加法功能实现正确&#34;</span>)
+
+    <span style="color:#66d9ef">try</span>:
+        actualValue<span style="color:#f92672">==</span>mm<span style="color:#f92672">.</span>jia(<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#ae81ff">3</span>)
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;该方法功能实现正确&#34;</span><span style="color:#960050;background-color:#1e0010">，</span>e)
+<span style="color:#f92672">-----------------------------------------------------------</span>
+<span style="color:#75715e">#导包</span>
+<span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">from</span> myMath <span style="color:#f92672">import</span> mymath
+
+<span style="color:#75715e">#创建单元测试类(继承自unittest.testcase)</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">myMathTest</span>(unittest<span style="color:#f92672">.</span>TestCase):
+
+    <span style="color:#75715e">#测试用例资源初始化方法</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
+        self<span style="color:#f92672">.</span>mm <span style="color:#f92672">=</span> mymath()
+
+    <span style="color:#75715e">#测试用例方法</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_add_1</span>(self):
+        actualValue <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mm<span style="color:#f92672">.</span>jia(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>)
+        expectValue <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+        <span style="color:#75715e">#断言</span>
+        self<span style="color:#f92672">.</span>assertEqual(actualValue,expectValue,<span style="color:#e6db74">&#34;预期结果不一致&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_add_2</span>(self):
+        actualValue <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mm<span style="color:#f92672">.</span>jia(<span style="color:#e6db74">&#34;abc&#34;</span>,<span style="color:#e6db74">&#34;def&#34;</span>)
+        expectValue <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdef&#34;</span>
+        self<span style="color:#f92672">.</span>assertEqual(actualValue,expectValue,<span style="color:#e6db74">&#34;预期结果不一致&#34;</span>)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_floor_1</span>(self):
+        actualValue <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mm<span style="color:#f92672">.</span>chufa(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">0</span>)
+        expectValue <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abcdef&#34;</span>
+        self<span style="color:#f92672">.</span>assertEqual(actualValue,expectValue,<span style="color:#e6db74">&#34;预期结果不一致&#34;</span>)
+
+    <span style="color:#75715e">#测试用例的资源释放</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+<span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#75715e">#unittest.main()</span>
+    <span style="color:#75715e">#直接使用discover</span>
+    discover<span style="color:#f92672">=</span>unittest<span style="color:#f92672">.</span>defaultTestLoader<span style="color:#f92672">.</span>discover(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;./20200408/&#34;</span>,pattern<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;myMathTest.py&#34;</span>)
+    <span style="color:#75715e">#使用runner运行器运行测试集  &#34;a&#34;追加模式</span>
+    <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;./20200408/re.txt&#34;</span>,<span style="color:#e6db74">&#34;a&#34;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>) <span style="color:#66d9ef">as</span> f:
+        runner<span style="color:#f92672">=</span>unittest<span style="color:#f92672">.</span>TextTestRunner(f,description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;用于测试math类的用例执行&#34;</span>,verbosity<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+        runner<span style="color:#f92672">.</span>run(discover)
+</code></pre></div><p>maintest.py</p>
+<blockquote>
+<p>主测试文件,不是用来写测试用的,而是用来组织测试用来执行的</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613396353835.png" alt="1613396353835"></p>
+<h3 id="html测试文档">HTML测试文档</h3>
+<h5 id="htmltestrunner模块">HTMLTestRunner模块</h5>
+<p>安装HTMLTestRunner.py到python的安装目录下/lib中</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">pip install html-TestRunner
+</code></pre></div><h5 id="使用">使用</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">from</span> HTMLTestRunner <span style="color:#f92672">import</span> HTMLTestRunner
+
+<span style="color:#75715e">#path=os.path.dirname(__file__)当前目录</span>
+path<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__)<span style="color:#f92672">+</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/&#34;</span>
+filename<span style="color:#f92672">=</span>time<span style="color:#f92672">.</span>strname(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%H-%M-%S&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;.html&#34;</span>
+filename <span style="color:#f92672">=</span> path <span style="color:#f92672">+</span> filename
+<span style="color:#75715e">#修改代码</span>
+<span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;./20200408/result.html&#34;</span>,<span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+	runner<span style="color:#f92672">=</span>unittest<span style="color:#f92672">.</span>HTMLTestRunner(f,verbosity<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;单元测试报告&#34;</span>,description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;第一次运行的结果&#34;</span>)
+	runner<span style="color:#f92672">.</span>run(discover)
+</code></pre></div><p>注释</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613572049278.png" alt="1613572049278"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613572027235.png" alt="1613572027235"></p>
+<h3 id="邮件自动化">邮件自动化</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613574779605.png" alt="1613574779605"></p>
+<h3 id="项目">项目</h3>
+<p>项目目录结构</p>
+<pre><code>---public(模块,例如注册,登录,退出)
+---test_cases(测试用例)
+---test_datas(测试数据,例如csv文件)
+---test_report(测试报告)
+</code></pre><p>电商系统/public/loginModule.py</p>
+<blockquote>
+<p>登录模块</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">from</span> selenium.webdriver.common.action_chains <span style="color:#f92672">import</span> ActionChains
+<span style="color:#f92672">import</span> time
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">very_login</span>():
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(self,driver):
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">=</span>driver
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>implicitly_wait(<span style="color:#ae81ff">10</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://localhost/verydows/&#34;</span>)
+        <span style="color:#75715e">#点击登录</span>
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_link_text(<span style="color:#e6db74">&#34;登录&#34;</span>)<span style="color:#f92672">.</span>click()
+        <span style="color:#75715e">#输入用户名密码</span>
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;//*[@id=&#34;username&#34;]&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#34;kayleh&#34;</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;//*[@id=&#34;password&#34;]&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#34;123456&#34;</span>)
+        <span style="color:#75715e">#点击登录按钮</span>
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;//*[@id=&#34;login-form&#34;]/div/a&#39;</span>)<span style="color:#f92672">.</span>click()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+       
+    <span style="color:#75715e">#退出登录</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logout</span>(self,driver):
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">=</span>driver
+        ele<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;//*[@id=&#34;top-userbar&#34;]/a&#39;</span>)
+        ActionChains(self<span style="color:#f92672">.</span>driver)<span style="color:#f92672">.</span>move_to_element(ele)<span style="color:#f92672">.</span>perform()
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_link_text(<span style="color:#e6db74">&#34;退出&#34;</span>)<span style="color:#f92672">.</span>click()
+    
+    <span style="color:#75715e">#退出浏览器对象</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quitB</span>(self,driver):
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">=</span>driver
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>quit()
+        
+<span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+    driver<span style="color:#f92672">=</span>webdriver<span style="color:#f92672">.</span>Chrome()
+    
+</code></pre></div><p>电商系统/testcases/verydows_user_update.py</p>
+<blockquote>
+<p>更新用户信息</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> sys
+
+<span style="color:#75715e">#os.path.dirname(os.path.dirname(__file__))是这个文件的目录的上一级目录(电商系统)</span>
+path<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__))<span style="color:#f92672">+</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/public&#34;</span>
+<span style="color:#75715e">#添加到环境变量</span>
+path1<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>path
+path1<span style="color:#f92672">.</span>append(path)
+<span style="color:#f92672">from</span> loginModule <span style="color:#f92672">import</span> very_login
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">verydows_user_update</span>(unittest<span style="color:#f92672">.</span>TestCase):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
+        self<span style="color:#f92672">.</span>ll <span style="color:#f92672">=</span> very_login()
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">=</span>webdriver<span style="color:#f92672">.</span>Chrome()
+        self<span style="color:#f92672">.</span>ll<span style="color:#f92672">.</span>login(self<span style="color:#f92672">.</span>driver)
+       
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_user_01</span>(self):
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">3</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>click()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>clear()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>send_keys(<span style="color:#e6db74">&#34;petter&#34;</span>)
+    	time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+        self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>clear()
+        time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5</span>)
+        <span style="color:#75715e">#修改完验证</span>
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self):
+        self<span style="color:#f92672">.</span>ll<span style="color:#f92672">.</span>logout(self<span style="color:#f92672">.</span>driver)
+        self<span style="color:#f92672">.</span>ll<span style="color:#f92672">.</span>quitB(self<span style="color:#f92672">.</span>driver)
+    	actualValue<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>get_attribute(<span style="color:#e6db74">&#34;value&#34;</span>)
+        expectValue<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;peter&#34;</span>
+        self<span style="color:#f92672">.</span>assertEqual(actualValue,expectValue)
+<span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+    unittest<span style="color:#f92672">.</span>main()
+</code></pre></div><p>电商系统/testcases/verydows_reg_true.py</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> csv
+<span style="color:#f92672">import</span> os
+
+filename <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__))<span style="color:#f92672">+</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/test_datas/data_csv.csv&#34;</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">verydows_reg_true</span>(unittest<span style="color:#f92672">.</span>TestCase):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setUp</span>(self):
+        <span style="color:#66d9ef">pass</span>
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_reg_01</span>(self):
+        <span style="color:#66d9ef">with</span> open(filename,<span style="color:#e6db74">&#34;r&#34;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>) <span style="color:#66d9ef">as</span> f:
+            data<span style="color:#f92672">=</span>csv<span style="color:#f92672">.</span>reader(f)
+            <span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> data:
+                driver<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://localhost/verydows/&#34;</span>)
+                driver<span style="color:#f92672">.</span>find_element_by_link_text(<span style="color:#e6db74">&#34;免费注册&#34;</span>)<span style="color:#f92672">.</span>click()
+                driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;username&#34;</span>)<span style="color:#f92672">.</span>send_keys(d[<span style="color:#ae81ff">0</span>])
+                driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;email&#34;</span>)<span style="color:#f92672">.</span>send_keys(d[<span style="color:#ae81ff">1</span>])
+                driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;password&#34;</span>)<span style="color:#f92672">.</span>send_keys(d[<span style="color:#ae81ff">2</span>])
+                driver<span style="color:#f92672">.</span>find_element_by_id(<span style="color:#e6db74">&#34;repassword&#34;</span>)<span style="color:#f92672">.</span>send_keys(d[<span style="color:#ae81ff">3</span>])
+                driver<span style="color:#f92672">.</span>find_element_by_link_text(<span style="color:#e6db74">&#34;立即注册&#34;</span>)<span style="color:#f92672">.</span>click()
+                
+                <span style="color:#75715e">#因为有一个中间页面的跳转，此处要强制等待一下，让他跳转过去</span>
+                time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">2</span>)
+                
+                <span style="color:#75715e">#断言</span>
+                <span style="color:#75715e">#expectUrl=&#34;http://localhost/verydows/index.php?c=user&amp;a=index&#34;</span>
+                <span style="color:#75715e">#actualUrl=driver.current_url</span>
+                
+                expectValue<span style="color:#f92672">=</span>d[<span style="color:#ae81ff">4</span>]
+                actualValue<span style="color:#f92672">=</span>driver<span style="color:#f92672">.</span>find_element_by_xpath(<span style="color:#e6db74">&#39;//....&#39;</span>)<span style="color:#f92672">.</span>text()
+                
+                <span style="color:#75715e">#if expectValue==actualValue:</span>
+				<span style="color:#75715e">#	print(&#34;注册username反向测试用例通过&#34;)</span>
+                <span style="color:#75715e">#else:</span>
+                <span style="color:#75715e">#    print(&#34;注册username反向用例不通过&#34;)</span>
+                self<span style="color:#f92672">.</span>assertEqual(expectValue,actualValue)
+                
+                <span style="color:#75715e">#关闭浏览器对象</span>
+                driver<span style="color:#f92672">.</span>quit()
+               
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tearDown</span>(self):
+        <span style="color:#66d9ef">pass</span>
+    
+<span style="color:#66d9ef">if</span> __name__<span style="color:#f92672">==</span><span style="color:#e6db74">&#34;__main__&#34;</span>:
+    unittest<span style="color:#f92672">.</span>main()
+                
+</code></pre></div><p>电商系统/maintest.py</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#在此文件中调度测试用例执行</span>
+<span style="color:#f92672">import</span> unittest
+<span style="color:#f92672">from</span> HTMLTestRunner <span style="color:#f92672">import</span> HTMLTestRunner
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> time 
+
+pathCase<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__)<span style="color:#f92672">+</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/test_cases/&#34;</span>
+pathReport<span style="color:#f92672">=</span>os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(__file__)<span style="color:#f92672">+</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/test_cases/&#34;</span>
+
+filename<span style="color:#f92672">=</span>time<span style="color:#f92672">.</span>strname(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">-%H-%M-%S&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;.html&#34;</span>
+filename<span style="color:#f92672">=</span>pathReport<span style="color:#f92672">+</span>filename
+discover <span style="color:#f92672">=</span> unittest<span style="color:#f92672">.</span>defaultTestLoader<span style="color:#f92672">.</span>discover(path,pattern<span style="color:#f92672">=</span><span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;verydows*.py&#34;</span>) 	
+<span style="color:#66d9ef">with</span> open(filename,<span style="color:#e6db74">&#34;wb&#34;</span>) <span style="color:#66d9ef">as</span> f:
+	runner<span style="color:#f92672">=</span>unittest<span style="color:#f92672">.</span>HTMLTestRunner(f,verbosity<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;自动化测试用例报告&#34;</span>,description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;XX&#34;</span>)
+	runner<span style="color:#f92672">.</span>run(discover)
+</code></pre></div><h2 id="unittest下的数据驱动测试">Unittest下的数据驱动测试</h2>
+<p>数据存储</p>
+<blockquote>
+<p>测试脚本与测试数据分离</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613756103321.png" alt="1613756103321"></p>
+<p>不导入ddt模块，字典只会形成一条测试用例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613756685341.png" alt="1613756685341"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613756748533.png" alt="1613756748533"></p>
+<h4 id="excel">excel</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613756844713.png" alt="1613756844713"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613756873832.png" alt="1613756873832"></p>
+<p>xldr</p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613757056609.png" alt="1613757056609"></p>
+<p>excelutil.py</p>
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn3/Unitest-framework/1613757341191.png" alt="1613757341191"></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/unitest-framework/>https://blog.kayleh.top/unitest-framework/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/test/">
+                    #test</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/katalon/" class="prev" rel="prev" title="Katalon Recorder (Selenium tests generator)"><i class="iconfont icon-left"></i>&nbsp;Katalon Recorder (Selenium tests generator)</a>
+         
+        
+        <a href="https://blog.kayleh.top/interface-test/" class="next" rel="next" title="interface test">interface test&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

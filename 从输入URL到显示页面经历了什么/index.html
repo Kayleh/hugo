@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/app-test/" />
+  <link rel="next" href="https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" />
+  <link rel="canonical" href="https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           What happened from entering the URL to displaying the page? | Kayleh
+       
+  </title>
+  <meta name="title" content="What happened from entering the URL to displaying the page? | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "What happened from entering the URL to displaying the page?",
+    "headline" : "What happened from entering the URL to displaying the page?",
+    "description" : "从输入URL到显示页面经历了什么?    这个过程可以大致分为两个部分：网络通信和页面渲染。\n一、网络通信 互联网内各网络设备间的通信都遵循TCP\/IP协议，利用TCP\/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。分层由高到低分别为：应用层、传输层、网络层、数据链路层。发送端从应用层往下走，接收端从数据链路层网上走。如图所示：\n\n1. 在浏览器中输入url 用户输入url，例如http:\/\/www.baidu.com。其中http为协议，www.baidu.com为网络地址，及指出需要的资源在那台计算机上。一般网络地址可以为域名或IP地址，此处为域名。使用域名是为了方便记忆，但是为了让计算机理解这个地址还需要把它解析为IP地址。\n2.应用层DNS解析域名 客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。\n DNS中递归查询和迭代查询的区别  1、 递归查询： 一般客户机和服务器之间属递归查询，即当客户机向DNS服务器发出请求后，若DNS服务器本身不能解析，则会向另外的DNS服务器发出查询请求，得到结果后转交客户机。\n2、 迭代查询（反复查询）： 一般DNS服务器之间属迭代查询，如：若DNS2不能响应DNS1的请求，则它会将DNS3的IP给DNS2，以便其再向DNS3发出请求。\n以一个DNS请求解析为例：\n1）用户发起域名请求到dnsA，这时dnsA有这个记录，将结果返回给用户，这个过程是递归查询。\n2）用户发起域名请求到dnsA，这时dns没有这个记录，它去向dnsB问有没有这个记录，以此类推，直到把结果返回给用户，这个过程是递归查询。\n3）用户发起域名请求到dnsA，这时dnsA没有这个记录，它告诉用户，我没有这个记录，你去问dnsB吧，这个过程是迭代查询。\n3.应用层客户端发送HTTP请求 HTTP请求包括请求报头和请求主体两个部分，其中请求报头包含了至关重要的信息，包括请求的方法（GET \/ POST）、目标url、遵循的协议（http \/ https \/ ftp…），返回的信息是否需要缓存，以及客户端是否发送cookie等。\n4.传输层TCP传输报文 位于传输层的TCP协议为传输报文提供可靠的字节流服务。它为了方便传输，将大块的数据分割成以报文段为单位的数据包进行管理，并为它们编号，方便服务器接收时能准确地还原报文信息。TCP协议通过“三次握手”等方法保证传输的安全可靠。\n“三次握手”的过程是，发送端先发送一个带有SYN（synchronize）标志的数据包给接收端，在一定的延迟时间内等待接收的回复。接收端收到数据包后，传回一个带有SYN\/ACK标志的数据包以示传达确认信息。接收方收到后再发送一个带有ACK标志的数据包给接收端以示握手成功。在这个过程中，如果发送端在规定延迟时间内没有收到回复则默认接收方没有收到请求，而再次发送，直到收到回复为止。\n\n5.网络层IP协议查询MAC地址 IP协议的作用是把TCP分割好的各种数据包传送给接收方。而要保证确实能传到接收方还需要接收方的MAC地址，也就是物理地址。IP地址和MAC地址是一一对应的关系，一个网络设备的IP地址可以更换，但是MAC地址一般是固定不变的。ARP协议可以将IP地址解析成对应的MAC地址。当通信的双方不在同一个局域网时，需要多次中转才能到达最终的目标，在中转的过程中需要通过下一个中转站的MAC地址来搜索下一个中转目标。\n6.数据到达数据链路层 在找到对方的MAC地址后，就将数据发送到数据链路层传输。这时，客户端发送请求的阶段结束\n7.服务器接收数据 接收端的服务器在链路层接收到数据包，再层层向上直到应用层。这过程中包括在运输层通过TCP协议讲分段的数据包重新组成原来的HTTP请求报文。\n8.服务器响应请求 服务接收到客户端发送的HTTP请求后，查找客户端请求的资源，并返回响应报文，响应报文中包括一个重要的信息——状态码。状态码由三位数字组成，其中比较常见的是200 OK表示请求成功。301表示永久重定向，即请求的资源已经永久转移到新的位置。在返回301状态码的同时，响应报文也会附带重定向的url，客户端接收到后将http请求的url做相应的改变再重新发送。404 not found 表示客户端请求的资源找不到。\n9. 服务器返回相应文件 请求成功后，服务器会返回相应的HTML文件。接下来就到了页面的渲染阶段了。\n二、页面渲染 现代浏览器渲染页面的过程是这样的：解析HTML以构建DOM树 –\u0026gt; 构建渲染树 –\u0026gt; 布局渲染树 –\u0026gt; 绘制渲染树。\nDOM树是由HTML文件中的标签排列组成，渲染树是在DOM树中加入CSS或HTML中的style样式而形成。渲染树只包含需要显示在页面中的DOM元素，像元素或display属性值为none的元素都不在渲染树中。\n在浏览器还没接收到完整的HTML文件时，它就开始渲染页面了，在遇到外部链入的脚本标签或样式标签或图片时，会再次发送HTTP请求重复上述的步骤。在收到CSS文件后会对已经渲染的页面重新渲染，加入它们应有的样式，图片文件加载完立刻显示在相应位置。在这一过程中可能会触发页面的重绘或重排。\n   ",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2021",
+    "datePublished": "2021-03-31 01:22:51 \u002b0800 CST",
+    "dateModified" : "2021-03-31 01:22:51 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88\/",
+    "wordCount" : "56",
+    "keywords" : [ "network", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">What happened from entering the URL to displaying the page?</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2021-03-31 itemprop="datePublished">March 31, 2021</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="从输入url到显示页面经历了什么">从输入URL到显示页面经历了什么?</h1>
+<blockquote>
+<ul>
+<li>
+<p>这个过程可以大致分为两个部分：网络通信和页面渲染。</p>
+<h3 id="一网络通信">一、网络通信</h3>
+<p>互联网内各网络设备间的通信都遵循TCP/IP协议，利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。分层由高到低分别为：应用层、传输层、网络层、数据链路层。发送端从应用层往下走，接收端从数据链路层网上走。如图所示：</p>
+<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946547655321.png"><img src="D:%5CBlog%5Csource_posts%5C%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88%5C020946553127518.png" alt="TCPIP"></a></p>
+<h4 id="1-在浏览器中输入url">1. 在浏览器中输入url</h4>
+<p>用户输入url，例如http://<a href="http://www.baidu.com/">www.baidu.com</a>。其中http为协议，<a href="http://www.baidu.com/">www.baidu.com</a>为网络地址，及指出需要的资源在那台计算机上。一般网络地址可以为域名或IP地址，此处为域名。使用域名是为了方便记忆，但是为了让计算机理解这个地址还需要把它解析为IP地址。</p>
+<h4 id="2应用层dns解析域名">2.应用层DNS解析域名</h4>
+<p>客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。</p>
+<ul>
+<li>DNS中递归查询和迭代查询的区别</li>
+</ul>
+<p>1、 递归查询： 一般客户机和服务器之间属递归查询，即当客户机向DNS服务器发出请求后，若DNS服务器本身不能解析，则会向另外的DNS服务器发出查询请求，得到结果后转交客户机。</p>
+<p>2、 迭代查询（反复查询）： 一般DNS服务器之间属迭代查询，如：若DNS2不能响应DNS1的请求，则它会将DNS3的IP给DNS2，以便其再向DNS3发出请求。</p>
+<p>以一个DNS请求解析为例：</p>
+<p>1）用户发起域名请求到dnsA，这时dnsA有这个记录，将结果返回给用户，这个过程是递归查询。</p>
+<p>2）用户发起域名请求到dnsA，这时dns没有这个记录，它去向dnsB问有没有这个记录，以此类推，直到把结果返回给用户，这个过程是递归查询。</p>
+<p>3）用户发起域名请求到dnsA，这时dnsA没有这个记录，它告诉用户，我没有这个记录，你去问dnsB吧，这个过程是迭代查询。</p>
+<h4 id="3应用层客户端发送http请求">3.应用层客户端发送HTTP请求</h4>
+<p>HTTP请求包括请求报头和请求主体两个部分，其中请求报头包含了至关重要的信息，包括请求的方法（GET / POST）、目标url、遵循的协议（http / https / ftp…），返回的信息是否需要缓存，以及客户端是否发送cookie等。</p>
+<h4 id="4传输层tcp传输报文">4.传输层TCP传输报文</h4>
+<p>位于传输层的TCP协议为传输报文提供可靠的字节流服务。它为了方便传输，将大块的数据分割成以报文段为单位的数据包进行管理，并为它们编号，方便服务器接收时能准确地还原报文信息。TCP协议通过“三次握手”等方法保证传输的安全可靠。</p>
+<p>“三次握手”的过程是，发送端先发送一个带有SYN（synchronize）标志的数据包给接收端，在一定的延迟时间内等待接收的回复。接收端收到数据包后，传回一个带有SYN/ACK标志的数据包以示传达确认信息。接收方收到后再发送一个带有ACK标志的数据包给接收端以示握手成功。在这个过程中，如果发送端在规定延迟时间内没有收到回复则默认接收方没有收到请求，而再次发送，直到收到回复为止。</p>
+<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946557039933.png"><img src="D:%5CBlog%5Csource_posts%5C%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88%5C020946560314133.png" alt="TCP"></a></p>
+<h4 id="5网络层ip协议查询mac地址">5.网络层IP协议查询MAC地址</h4>
+<p>IP协议的作用是把TCP分割好的各种数据包传送给接收方。而要保证确实能传到接收方还需要接收方的MAC地址，也就是物理地址。IP地址和MAC地址是一一对应的关系，一个网络设备的IP地址可以更换，但是MAC地址一般是固定不变的。ARP协议可以将IP地址解析成对应的MAC地址。当通信的双方不在同一个局域网时，需要多次中转才能到达最终的目标，在中转的过程中需要通过下一个中转站的MAC地址来搜索下一个中转目标。</p>
+<h4 id="6数据到达数据链路层">6.数据到达数据链路层</h4>
+<p>在找到对方的MAC地址后，就将数据发送到数据链路层传输。这时，客户端发送请求的阶段结束</p>
+<h4 id="7服务器接收数据">7.服务器接收数据</h4>
+<p>接收端的服务器在链路层接收到数据包，再层层向上直到应用层。这过程中包括在运输层通过TCP协议讲分段的数据包重新组成原来的HTTP请求报文。</p>
+<h4 id="8服务器响应请求">8.服务器响应请求</h4>
+<p>服务接收到客户端发送的HTTP请求后，查找客户端请求的资源，并返回响应报文，响应报文中包括一个重要的信息——状态码。状态码由三位数字组成，其中比较常见的是200 OK表示请求成功。301表示永久重定向，即请求的资源已经永久转移到新的位置。在返回301状态码的同时，响应报文也会附带重定向的url，客户端接收到后将http请求的url做相应的改变再重新发送。404 not found 表示客户端请求的资源找不到。</p>
+<h4 id="9-服务器返回相应文件">9. 服务器返回相应文件</h4>
+<p>请求成功后，服务器会返回相应的HTML文件。接下来就到了页面的渲染阶段了。</p>
+<h3 id="二页面渲染">二、页面渲染</h3>
+<p>现代浏览器渲染页面的过程是这样的：解析HTML以构建DOM树 –&gt; 构建渲染树 –&gt; 布局渲染树 –&gt; 绘制渲染树。</p>
+<p>DOM树是由HTML文件中的标签排列组成，渲染树是在DOM树中加入CSS或HTML中的style样式而形成。渲染树只包含需要显示在页面中的DOM元素，像<!-- raw HTML omitted -->元素或display属性值为none的元素都不在渲染树中。</p>
+<p>在浏览器还没接收到完整的HTML文件时，它就开始渲染页面了，在遇到外部链入的脚本标签或样式标签或图片时，会再次发送HTTP请求重复上述的步骤。在收到CSS文件后会对已经渲染的页面重新渲染，加入它们应有的样式，图片文件加载完立刻显示在相应位置。在这一过程中可能会触发页面的重绘或重排。</p>
+</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/>https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/network/">
+                    #network</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/app-test/" class="prev" rel="prev" title="app test"><i class="iconfont icon-left"></i>&nbsp;app test</a>
+         
+        
+        <a href="https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" class="next" rel="next" title="Front end security">Front end security&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Kayleh">
+  
+  
+  
+  <link rel="prev" href="https://blog.kayleh.top/c-algorithm/" />
+  <link rel="next" href="https://blog.kayleh.top/select-structure-programming/" />
+  <link rel="canonical" href="https://blog.kayleh.top/sequential-programming/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           sequential programming | Kayleh
+       
+  </title>
+  <meta name="title" content="sequential programming | Kayleh">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/blog.kayleh.top"
+    },
+    "articleSection" : "posts",
+    "name" : "sequential programming",
+    "headline" : "sequential programming",
+    "description" : "顺序程序设计 求摄氏度\n#include\u0026lt;stdio.h\u0026gt; int main() { float f, c; f = 64.0; c = (5.0 \/ 9) * (f - 32); printf(\u0026#34;f=%f\\nc=%f\\n\u0026#34;, f, c); return 0; } 常量   整型常量\n  实性常量(有小数点)\n 十进制小数形式 指数形式:如12.34e3(e或E之前必须有数字,e或E之后必须为整数)    字符常量\n 普通字符,用单撇号括起来的一个字符   字符常量存储在计算机存储单元中时,并不是存储字符本身,而是以其代码(一般采用ASCII码)存储的\n  转义字符    字符串常量\n   用双撇号括起来的全部字符,双撇号内可以只有一个字符\n  符号常量  用#define指令,指定用一个符号名称代表一个常量\n 在预编译后,符号变量会全部被置换,\n #define PI 3.1415 \/\/注意行末没有分号 变量 变量代表一个有名字,具有特定属性的一个存储单元,它用来存放数据,在程序运行期间,变量的值时可以改变的.",
+    "inLanguage" : "en-us",
+    "author" : "Kayleh",
+    "creator" : "Kayleh",
+    "publisher": "Kayleh",
+    "accountablePerson" : "Kayleh",
+    "copyrightHolder" : "Kayleh",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-10-26 01:16:00 \u002b0800 CST",
+    "dateModified" : "2020-10-26 01:16:00 \u002b0800 CST",
+    "url" : "https:\/\/blog.kayleh.top\/sequential-programming\/",
+    "wordCount" : "574",
+    "keywords" : [ "C", "Kayleh"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://blog.kayleh.top">Kayleh</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">sequential programming</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://blog.kayleh.top" rel="author">Kayleh</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-10-26 itemprop="datePublished">October 26, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="顺序程序设计">顺序程序设计</h1>
+<p>求摄氏度</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">float</span> f, c;
+    f <span style="color:#f92672">=</span> <span style="color:#ae81ff">64.0</span>;
+    c <span style="color:#f92672">=</span> (<span style="color:#ae81ff">5.0</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">9</span>) <span style="color:#f92672">*</span> (f <span style="color:#f92672">-</span> <span style="color:#ae81ff">32</span>);
+    printf(<span style="color:#e6db74">&#34;f=%f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">c=%f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, f, c);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h3 id="常量">常量</h3>
+<ul>
+<li>
+<p>整型常量</p>
+</li>
+<li>
+<p>实性常量(有小数点)</p>
+<ul>
+<li>十进制小数形式</li>
+<li>指数形式:如12.34e3(e或E之前必须有数字,e或E之后必须为整数)</li>
+</ul>
+</li>
+<li>
+<p>字符常量</p>
+<ul>
+<li>普通字符,用单撇号括起来的一个字符</li>
+</ul>
+<blockquote>
+<p>字符常量存储在计算机存储单元中时,并不是存储字符本身,而是以其代码(一般采用ASCII码)存储的</p>
+</blockquote>
+<ul>
+<li>转义字符</li>
+</ul>
+</li>
+<li>
+<p>字符串常量</p>
+</li>
+</ul>
+<blockquote>
+<p>用双撇号括起来的全部字符,双撇号内可以只有一个字符</p>
+</blockquote>
+<ul>
+<li>符号常量</li>
+</ul>
+<p>用#define指令,指定用一个符号名称代表一个常量</p>
+<blockquote>
+<p>在预编译后,符号变量会全部被置换,</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define PI 3.1415   </span><span style="color:#75715e">//注意行末没有分号
+</span></code></pre></div><h3 id="变量">变量</h3>
+<p><code>变量</code>代表一个有名字,具有特定属性的一个存储单元,它用来存放数据,在程序运行期间,变量的值时可以改变的.</p>
+<p>变量必须<strong>先定义,后使用</strong>. 在定义时指定该变量的名字和类型.</p>
+<p>从变量中取值,实际上时通过变量名找到相应的内存地址,从该存储单元中读取数据.</p>
+<h3 id="常变量">常变量</h3>
+<p>在定义变量时,前面加一个关键字<code>const</code></p>
+<blockquote>
+<p>常变量与处理的异同?</p>
+<p>有类型,占存储单元,不允许改变其值</p>
+<p>常变量时有名字的不变量(便于在程序中被引用),而常量时没有名字的不变量</p>
+</blockquote>
+<h3 id="标识符">标识符</h3>
+<p>一个对象的名字</p>
+<h2 id="数据类型">数据类型</h2>
+<blockquote>
+<p>基本类型</p>
+<ul>
+<li>整型类型
+<ul>
+<li>基本整型(int)</li>
+<li>短整型(short int)</li>
+<li>长整型(long int)</li>
+<li>双长整型(long long int)</li>
+<li>字符型(char)</li>
+<li>布尔型(bool)</li>
+</ul>
+</li>
+<li>浮点类型
+<ul>
+<li>单精度浮点型(float)</li>
+<li>双精度浮点型(double)</li>
+<li>复数浮点型(float_complex,double_complex,long long_complex)</li>
+</ul>
+</li>
+</ul>
+<p>枚举类型(enum)</p>
+<p>空类型(void)</p>
+<p>派生类型</p>
+<ul>
+<li>指针类型(*)</li>
+<li>数组类型(<input disabled="" type="checkbox"> )</li>
+<li>结构体类型(struct)</li>
+<li>共用体类型(union)</li>
+<li>函数类型</li>
+</ul>
+</blockquote>
+<h3 id="整型数据">整型数据</h3>
+<h4 id="整数数据存储空间和值的范围">整数数据存储空间和值的范围</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">字节数</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">- 32768 ~ 32767 （5位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">- 2147483648 ~ 2147483647 （10位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">unsignde int</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0 ~ 65535 （5位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">unsignde int</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0 ~ 4294967295 （10位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">- 32768 ~ 32767 （5位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned short</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0 ~ 65535 （5位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">- 2147483648 ~ 2147483647 （10位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">usigned long</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0 ~ 4294967295 （10位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">- 9223372036854775808 ~ 9223372036854775807（20位十进制数）</td>
+</tr>
+<tr>
+<td style="text-align:center">unsigned long long</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0 ~ 18446744073709551615 （20位十进制数）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符型数据">字符型数据</h3>
+<h3 id="浮点型数据">浮点型数据</h3>
+<blockquote>
+<p>c编译系统把浮点型常量都按双精度处理,分配8个字节</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">float</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159f</span>;   <span style="color:#75715e">//把此3.14159按单精度浮点常量处理,编译时不出现&#34;警告&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">long</span> <span style="color:#66d9ef">double</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.23</span>L;  <span style="color:#75715e">//把此,1.23作为long double型处理
+</span></code></pre></div></blockquote>
+<h2 id="运算符和表达式">运算符和表达式</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">算术运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">把两个操作数相加</td>
+<td style="text-align:left">A + B 将得到 30</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">从第一个操作数中减去第二个操作数</td>
+<td style="text-align:left">A - B 将得到 -10</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">把两个操作数相乘</td>
+<td style="text-align:left">A * B 将得到 200</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">分子除以分母</td>
+<td style="text-align:left">B / A 将得到 2</td>
+</tr>
+<tr>
+<td style="text-align:left">%</td>
+<td style="text-align:left">取模运算符，整除后的余数</td>
+<td style="text-align:left">B % A 将得到 0</td>
+</tr>
+<tr>
+<td style="text-align:left">++</td>
+<td style="text-align:left">自增运算符，整数值增加 1</td>
+<td style="text-align:left">A++ 将得到 11</td>
+</tr>
+<tr>
+<td style="text-align:left">&ndash;</td>
+<td style="text-align:left">自减运算符，整数值减少 1</td>
+<td style="text-align:left">A&ndash; 将得到 9</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">关系运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">==</td>
+<td style="text-align:left">检查两个操作数的值是否相等，如果相等则条件为真。</td>
+<td style="text-align:left">(A == B) 为假。</td>
+</tr>
+<tr>
+<td style="text-align:left">!=</td>
+<td style="text-align:left">检查两个操作数的值是否相等，如果不相等则条件为真。</td>
+<td style="text-align:left">(A != B) 为真。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">检查左操作数的值是否大于右操作数的值，如果是则条件为真。</td>
+<td style="text-align:left">(A &gt; B) 为假。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">检查左操作数的值是否小于右操作数的值，如果是则条件为真。</td>
+<td style="text-align:left">(A &lt; B) 为真。</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=</td>
+<td style="text-align:left">检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。</td>
+<td style="text-align:left">(A &gt;= B) 为假。</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。</td>
+<td style="text-align:left">(A &lt;= B) 为真。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">逻辑运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&amp;&amp;</td>
+<td style="text-align:left">称为逻辑与运算符。如果两个操作数都非零，则条件为真。</td>
+<td style="text-align:left">(A &amp;&amp; B) 为假。</td>
+</tr>
+<tr>
+<td style="text-align:left">||</td>
+<td style="text-align:left">称为逻辑或运算符。如果两个操作数中有任意一个非零，则条件为真。</td>
+<td style="text-align:left">(A || B) 为真。</td>
+</tr>
+<tr>
+<td style="text-align:left">!</td>
+<td style="text-align:left">称为逻辑非运算符。用来逆转操作数的逻辑状态。如果条件为真则逻辑非运算符将使其为假。</td>
+<td style="text-align:left">!(A &amp;&amp; B) 为真。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>位运算符</strong></p>
+<p>位运算符作用于位，并逐位执行操作。&amp;、 | 和 ^ 的真值表如下所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">p</th>
+<th style="text-align:left">q</th>
+<th style="text-align:left">p &amp; q</th>
+<th style="text-align:left">p | q</th>
+<th style="text-align:left">p ^ q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">位运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&amp;</td>
+<td style="text-align:left">按位与操作，按二进制位进行&quot;与&quot;运算。运算规则：<code>0&amp;0=0;    0&amp;1=0;     1&amp;0=0;      1&amp;1=1;</code></td>
+<td style="text-align:left">(A &amp; B) 将得到 12，即为 0000 1100</td>
+</tr>
+<tr>
+<td style="text-align:left">|</td>
+<td style="text-align:left">按位或运算符，按二进制位进行&quot;或&quot;运算。运算规则：<code>0|0=0;    0|1=1;    1|0=1;     1|1=1;</code></td>
+<td style="text-align:left">(A | B) 将得到 61，即为 0011 1101</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td style="text-align:left">异或运算符，按二进制位进行&quot;异或&quot;运算。运算规则：<code>0^0=0;    0^1=1;    1^0=1;   1^1=0;</code></td>
+<td style="text-align:left">(A ^ B) 将得到 49，即为 0011 0001</td>
+</tr>
+<tr>
+<td style="text-align:left">~</td>
+<td style="text-align:left">取反运算符，按二进制位进行&quot;取反&quot;运算。运算规则：<code>~1=0;    ~0=1;</code></td>
+<td style="text-align:left">(~A ) 将得到 -61，即为 1100 0011，一个有符号二进制数的补码形式。</td>
+</tr>
+<tr>
+<td style="text-align:left">&laquo;</td>
+<td style="text-align:left">二进制左移运算符。将一个运算对象的各二进制位全部左移若干位（左边的二进制位丢弃，右边补0）。</td>
+<td style="text-align:left">A &laquo; 2 将得到 240，即为 1111 0000</td>
+</tr>
+<tr>
+<td style="text-align:left">&raquo;</td>
+<td style="text-align:left">二进制右移运算符。将一个数的各二进制位全部右移若干位，正数左补0，负数左补1，右边丢弃。</td>
+<td style="text-align:left">A &raquo; 2 将得到 15，即为 0000 1111</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">赋值运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">简单的赋值运算符，把右边操作数的值赋给左边操作数</td>
+<td style="text-align:left">C = A + B 将把 A + B 的值赋给 C</td>
+</tr>
+<tr>
+<td style="text-align:left">+=</td>
+<td style="text-align:left">加且赋值运算符，把右边操作数加上左边操作数的结果赋值给左边操作数</td>
+<td style="text-align:left">C += A 相当于 C = C + A</td>
+</tr>
+<tr>
+<td style="text-align:left">-=</td>
+<td style="text-align:left">减且赋值运算符，把左边操作数减去右边操作数的结果赋值给左边操作数</td>
+<td style="text-align:left">C -= A 相当于 C = C - A</td>
+</tr>
+<tr>
+<td style="text-align:left">*=</td>
+<td style="text-align:left">乘且赋值运算符，把右边操作数乘以左边操作数的结果赋值给左边操作数</td>
+<td style="text-align:left">C *= A 相当于 C = C * A</td>
+</tr>
+<tr>
+<td style="text-align:left">/=</td>
+<td style="text-align:left">除且赋值运算符，把左边操作数除以右边操作数的结果赋值给左边操作数</td>
+<td style="text-align:left">C /= A 相当于 C = C / A</td>
+</tr>
+<tr>
+<td style="text-align:left">%=</td>
+<td style="text-align:left">求模且赋值运算符，求两个操作数的模赋值给左边操作数</td>
+<td style="text-align:left">C %= A 相当于 C = C % A</td>
+</tr>
+<tr>
+<td style="text-align:left">&laquo;=</td>
+<td style="text-align:left">左移且赋值运算符</td>
+<td style="text-align:left">C &laquo;= 2 等同于 C = C &laquo; 2</td>
+</tr>
+<tr>
+<td style="text-align:left">&raquo;=</td>
+<td style="text-align:left">右移且赋值运算符</td>
+<td style="text-align:left">C &raquo;= 2 等同于 C = C &raquo; 2</td>
+</tr>
+<tr>
+<td style="text-align:left">&amp;=</td>
+<td style="text-align:left">按位与且赋值运算符</td>
+<td style="text-align:left">C &amp;= 2 等同于 C = C &amp; 2</td>
+</tr>
+<tr>
+<td style="text-align:left">^=</td>
+<td style="text-align:left">按位异或且赋值运算符</td>
+<td style="text-align:left">C ^= 2 等同于 C = C ^ 2</td>
+</tr>
+<tr>
+<td style="text-align:left">|=</td>
+<td style="text-align:left">按位或且赋值运算符</td>
+<td style="text-align:left">C |= 2 等同于 C = C | 2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">杂项运算符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">sizeof()</td>
+<td style="text-align:left">返回变量的大小。</td>
+<td style="text-align:left">sizeof(a) 将返回 4，其中 a 是整数。</td>
+</tr>
+<tr>
+<td style="text-align:left">&amp;</td>
+<td style="text-align:left">返回变量的地址。</td>
+<td style="text-align:left">&amp;a; 将给出变量的实际地址。</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">指向一个变量。</td>
+<td style="text-align:left">*a; 将指向一个变量。</td>
+</tr>
+<tr>
+<td style="text-align:left">? :</td>
+<td style="text-align:left">条件表达式</td>
+<td style="text-align:left">如果条件为真 ? 则值为 X : 否则值为 Y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="语句">语句</h2>
+<h3 id="赋值语句">赋值语句</h3>
+<p>赋值运算符</p>
+<blockquote>
+<pre><code>=
+</code></pre></blockquote>
+<p>复合的赋值运算符</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">a<span style="color:#f92672">+=</span><span style="color:#ae81ff">3</span>	<span style="color:#960050;background-color:#1e0010">等价于</span>a<span style="color:#f92672">=</span>a<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>;
+x<span style="color:#f92672">*=</span>y<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>	<span style="color:#960050;background-color:#1e0010">等价于</span>x<span style="color:#f92672">=</span>x<span style="color:#f92672">*</span>(y<span style="color:#f92672">+</span><span style="color:#ae81ff">8</span>);
+x<span style="color:#f92672">%=</span><span style="color:#ae81ff">3</span>	<span style="color:#960050;background-color:#1e0010">等价于</span>x<span style="color:#f92672">=</span>x<span style="color:#f92672">%</span><span style="color:#ae81ff">3</span>;
+</code></pre></div><p>赋值表达式</p>
+<pre><code>变量	赋值运算符	表达式
+</code></pre><p>赋值过程中的类型转换</p>
+<pre><code>1将浮点型数据(包括单,双精度)赋给整型变量时,先对浮点数取整,即舍弃小数部分,然后赋予整型变量;
+2将整型数据赋值给单,双精度变量时,数值不变,但以浮点数形式存储到变量中.
+3将一个double型赋给一float变量时,先将双精度数转换为单精度,即只取6~7位有效数字,存储到float型变量的4个字节中.
+4字符型数据赋给整型变量时,将字符的ASCII代码赋给整型变量
+5将一个占字节多的整型数据赋给一个占字节少的整型变量或字符变量(例如把占4个字节的int型数据赋给占2个字节的short变量或占1个字节的char变量)时,只将其低字节原封不动地送到被赋值的变量(即发生&quot;截断&quot;),如:
+int i=289;
+char c ='a';
+c=i;
+</code></pre><h2 id="数据的输入输出">数据的输入输出</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">printf();
+scanf();
+putchar();
+getchar();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Kayleh </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://blog.kayleh.top/sequential-programming/>https://blog.kayleh.top/sequential-programming/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://blog.kayleh.top/tags/c/">
+                    #C</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://blog.kayleh.top">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://blog.kayleh.top/c-algorithm/" class="prev" rel="prev" title="C algorithm"><i class="iconfont icon-left"></i>&nbsp;C algorithm</a>
+         
+        
+        <a href="https://blog.kayleh.top/select-structure-programming/" class="next" rel="next" title="select structure programming">select structure programming&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <script async="" src="https://widget.daovoice.io/widget/38b1c911.js" charset="utf-8"></script>
+    <script data-ad-client="ca-pub-7457165067653912" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?2cd1dc193190f18fed292accb735c684";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:inline-block;width:728px;height:90px"data-ad-client="ca-pub-7457165067653912"data-ad-slot="9837525717"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2021</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://blog.kayleh.top">Kayleh</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

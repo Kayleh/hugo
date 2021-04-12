@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Concurrency on Kayleh</title>
+    <link>https://blog.kayleh.top/tags/concurrency/</link>
+    <description>Recent content in Concurrency on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jun 2020 09:13:04 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>多线程</title>
+      <link>https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Mon, 15 Jun 2020 09:13:04 +0800</pubDate>
+      
+      <guid>https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <description>&lt;h2 id=&#34;多线程&#34;&gt;多线程&lt;/h2&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
