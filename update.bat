@@ -1,1 +1,0 @@
-git add . && git commit -m "blog updated~" && git push
