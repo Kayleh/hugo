@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SpringMVC on Kayleh</title>
-    <link>https://blog.kayleh.top/categories/springmvc/</link>
+    <link>https://kayleh.top/categories/springmvc/</link>
     <description>Recent content in SpringMVC on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Apr 2020 21:04:07 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/categories/springmvc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Apr 2020 21:04:07 +0800</lastBuildDate><atom:link href="https://kayleh.top/categories/springmvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SpringMVC@ModelAttribute的使用</title>
-      <link>https://blog.kayleh.top/springmvc-modelattribute/</link>
+      <link>https://kayleh.top/springmvc-modelattribute/</link>
       <pubDate>Sun, 19 Apr 2020 21:04:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springmvc-modelattribute/</guid>
+      <guid>https://kayleh.top/springmvc-modelattribute/</guid>
       <description>@ModelAttribute？ @ModelAttribute的原理比较复杂，需要对源码有一定的理解。它可以使被
 @ModelAttribute修饰的方法在控制器的处理方法之前调用。 但如果@ModelAttribute标注在方法的入参前，它可以从隐含对象中获取隐含的模型数据中获取对象，再将请求参数绑定到对象中，再传入入参。
  实际场景： Spring在进行数据库update全字段更新操作提交表单的时候，从页面获取的数据会封装成一个new的pojo对象，没有带的值为null；所以我们只能更新我们提交的数据。ModelAttribute暂时保存表单pojo对象，覆盖数据库保存的pojo对象的数据即可。
@@ -21,10 +21,10 @@ ModelAttribute提前与目标方法运行 /** * @author Kayleh */ @Controller pu
     
     <item>
       <title>SpringMVC环境搭建</title>
-      <link>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <link>https://kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sun, 14 Jul 2019 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <guid>https://kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
       <description>&lt;h2 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h2&gt;</description>
     </item>
     

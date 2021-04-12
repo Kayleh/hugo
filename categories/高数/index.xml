@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>高数 on Kayleh</title>
-    <link>https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/</link>
+    <link>https://kayleh.top/categories/%E9%AB%98%E6%95%B0/</link>
     <description>Recent content in 高数 on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Sep 2020 13:41:02 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Sep 2020 13:41:02 +0800</lastBuildDate><atom:link href="https://kayleh.top/categories/%E9%AB%98%E6%95%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>函数作图</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
       <pubDate>Wed, 23 Sep 2020 13:41:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
       <description>渐近线  水平、垂直、斜
  水平渐近线 例题：
 垂直渐近线 斜渐近线 例题：
@@ -23,10 +23,10 @@
     
     <item>
       <title>无穷小与无穷大</title>
-      <link>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
+      <link>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
       <pubDate>Sat, 12 Sep 2020 16:33:41 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
+      <guid>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
       <description>无穷小量 定义： 极限为0的变量称为无穷小量，简称无穷小.
 f(x)→0
 常用希腊字母 $\alpha$ ,$\beta$ ,$\gamma$

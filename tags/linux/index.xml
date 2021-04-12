@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/linux/</link>
+    <link>https://kayleh.top/tags/linux/</link>
     <description>Recent content in linux on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Nov 2020 23:23:35 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Nov 2020 23:23:35 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ubuntu fixed IP setting method</title>
-      <link>https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</link>
+      <link>https://kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 13 Nov 2020 23:23:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</guid>
       <description>ubuntu固定IP设置方法 确认你要修改的网卡号 先确认你要修改的网卡号，假设你的服务器有多张网卡：
 `ubuntu1804:~$ ip addr` 我的服务器配置如下：
 `1: lo: mtu 65536 qdisc noqueue state UNKNOWN ``group` `default` `qlen 1000``link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00``inet 127.0.0.1/8 scope host lo``valid_lft forever preferred_lft forever``inet6 ::1/128 scope host``valid_lft forever preferred_lft forever``2: ens33: mtu 1500 qdisc fq_codel state UP ``group` `default` `qlen 1000``link/ether 00:0c:29:f1:b5:e1 brd ff:ff:ff:ff:ff:ff``inet 172.16.87.140/24 brd 172.16.87.255 scope global dynamic ens33``valid_lft 1500sec preferred_lft 1500sec``inet6 fe80::20c:29ff:fef1:b5e1/64 scope link``valid_lft forever preferred_lft forever` 3. 默认的网卡配置文件 默认情况下，网络使用DHCP
@@ -21,20 +21,20 @@
     
     <item>
       <title>ubuntu.deb安装包</title>
-      <link>https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</link>
+      <link>https://kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</link>
       <pubDate>Tue, 06 Oct 2020 21:16:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</guid>
+      <guid>https://kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</guid>
       <description>dkpg -i xxxx.deb 需要超级用户权限
 sudo dkpg -i xxxx.deb </description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://blog.kayleh.top/linux/</link>
+      <link>https://kayleh.top/linux/</link>
       <pubDate>Thu, 02 Jul 2020 21:26:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/linux/</guid>
+      <guid>https://kayleh.top/linux/</guid>
       <description>&lt;h2 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h2&gt;</description>
     </item>
     

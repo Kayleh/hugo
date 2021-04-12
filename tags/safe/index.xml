@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>safe on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/safe/</link>
+    <link>https://kayleh.top/tags/safe/</link>
     <description>Recent content in safe on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 May 2020 20:58:53 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/safe/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 May 2020 20:58:53 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/safe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>XSS跨站脚本攻击</title>
-      <link>https://blog.kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</link>
+      <link>https://kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</link>
       <pubDate>Sun, 31 May 2020 20:58:53 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</guid>
+      <guid>https://kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</guid>
       <description>&lt;h3 id=&#34;xss跨站脚本攻击&#34;&gt;XSS跨站脚本攻击&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>SQL注入式攻击</title>
-      <link>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</link>
+      <link>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</link>
       <pubDate>Sat, 30 May 2020 21:13:52 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</guid>
+      <guid>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</guid>
       <description>&lt;h3 id=&#34;sql注入式攻击&#34;&gt;SQL注入式攻击&lt;/h3&gt;</description>
     </item>
     

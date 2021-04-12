@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>about on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/about/</link>
+    <link>https://kayleh.top/tags/about/</link>
     <description>Recent content in about on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Jul 2020 21:57:44 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Jul 2020 21:57:44 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>contract</title>
-      <link>https://blog.kayleh.top/contract/</link>
+      <link>https://kayleh.top/contract/</link>
       <pubDate>Wed, 15 Jul 2020 21:57:44 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/contract/</guid>
+      <guid>https://kayleh.top/contract/</guid>
       <description></description>
     </item>
     

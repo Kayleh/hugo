@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Kayleh</title>
-    <link>https://blog.kayleh.top/posts/</link>
+    <link>https://kayleh.top/posts/</link>
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reflected XSS Vulnerability in Font Download Website</title>
-      <link>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
+      <link>https://kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
       <pubDate>Sun, 11 Apr 2021 02:26:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</guid>
+      <guid>https://kayleh.top/reflected-xss-vulnerability-in-font-download-website/</guid>
       <description>字体下载网站的反射XSS漏洞  URL:http://www.ztxz.org
  搜索框输入：
 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 会出现弹窗，证明反射XSS的存在。
@@ -25,10 +25,10 @@ http://blog.csdn.net/binyao02123202/article/details/9041113</description>
     
     <item>
       <title>SQL injection</title>
-      <link>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
+      <link>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Tue, 06 Apr 2021 09:48:59 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</guid>
       <description>SQL注入  https://www.bugbank.cn/q/article/5983ea82cbb936102d3977bb.html
  常见的几种SQL注入  1.数字型 2.字符型 3.文本型 4.搜索型(POST/GET) 5.cookie注入 6.SQL盲注 7.编码注入 8.宽字节注入
  MySQL报错注入基本流程  1.判断sql注入 2.数据库权限判断 3.判断字段数 4.查询库名 5.查表名 6.查字段 7.查数据
@@ -43,10 +43,10 @@ http://localhost/sqls/index.php?id=5 or 1 = 1   加法和减法</description>
     
     <item>
       <title>Front end security</title>
-      <link>https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</link>
+      <link>https://kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</link>
       <pubDate>Sun, 04 Apr 2021 23:56:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</guid>
+      <guid>https://kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/</guid>
       <description> 前端安全
  xss 跨站脚本攻击，是WEB程序中一种常见的漏洞。其主要的攻击手段是在在利用网站上的可由用户输入信息的地方，恶意注入含有攻击性的脚本，达到攻击网站或者窃取用户cookied等隐私信息的目的。
  XSS漏洞测设流程： 第一步：在目标站点上找到输入点，比如查询接口，留言板等； 第二步：输入一组“特殊字符+唯一识别字符”，点击提交，查看返回的源码，是否有做对应的处理； 第三步：通过搜索定位到唯一字符，结合唯一字符前后语法确认是否可以构成执行js的条件（构造闭合） 第四步：提交构造的脚本代码（以及各种绕过姿势），看是否可以成功执行，如果成功执则说明存在XSS漏洞
@@ -55,10 +55,10 @@ http://localhost/sqls/index.php?id=5 or 1 = 1   加法和减法</description>
     
     <item>
       <title>What happened from entering the URL to displaying the page?</title>
-      <link>https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <link>https://kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</link>
       <pubDate>Wed, 31 Mar 2021 01:22:51 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
       <description>从输入URL到显示页面经历了什么?    这个过程可以大致分为两个部分：网络通信和页面渲染。
 一、网络通信 互联网内各网络设备间的通信都遵循TCP/IP协议，利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。分层由高到低分别为：应用层、传输层、网络层、数据链路层。发送端从应用层往下走，接收端从数据链路层网上走。如图所示：
 
@@ -87,10 +87,10 @@ DOM树是由HTML文件中的标签排列组成，渲染树是在DOM树中加入C
     
     <item>
       <title>app test</title>
-      <link>https://blog.kayleh.top/app-test/</link>
+      <link>https://kayleh.top/app-test/</link>
       <pubDate>Thu, 04 Mar 2021 00:49:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/app-test/</guid>
+      <guid>https://kayleh.top/app-test/</guid>
       <description>移动端测试要点 安装测试、卸载测试 UI测试 功能测试 运行app 应用的前后台切换 免登陆 数据更新 离线浏览 app更新 定位、照相机服务 时间测试 PUSH测试 性能测试 交叉事件测试 例如：微信视频和来电
 兼容性测试 升级、更新测试 用户体验测试 硬件环境测试 接口测试 客户端数据库测试 安全测试 Android测试 Android系统的基本结构
  linux内核层
@@ -108,10 +108,10 @@ Android函数库和Android运行的虚拟机
     
     <item>
       <title>interface test</title>
-      <link>https://blog.kayleh.top/interface-test/</link>
+      <link>https://kayleh.top/interface-test/</link>
       <pubDate>Sun, 21 Feb 2021 01:49:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/interface-test/</guid>
+      <guid>https://kayleh.top/interface-test/</guid>
       <description>接口测试  测试系统内部各个组件间接口,以及系统与外部系统之间的交互点
  接口的必要条件 接口用例设计 HTTP协议 HTTP响应状态码分类 POSTMAN 发送不带参数的GET请求 发送带参数的GET请求 参数化运行 csv文件
 JSON Postman中的断言 450</description>
@@ -119,10 +119,10 @@ JSON Postman中的断言 450</description>
     
     <item>
       <title>Unitest framework</title>
-      <link>https://blog.kayleh.top/unitest-framework/</link>
+      <link>https://kayleh.top/unitest-framework/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/unitest-framework/</guid>
+      <guid>https://kayleh.top/unitest-framework/</guid>
       <description>多条测试用例 注解方法 五个方法 测试用例testcase 测试集合testsuite 追加单个测试对象  print(re.__dict__)
  追加多个测试对象 TestLoder 第一个参数path：指定存放测试用例的目录（单元测试用例，用unittest框架写的测试用例）
 第二个参数pattern：指定匹配规则
@@ -131,20 +131,20 @@ TestRunner 状态1 状态2（大于1即可）详细报告  断言 class mymath()
     
     <item>
       <title>Katalon Recorder (Selenium tests generator)</title>
-      <link>https://blog.kayleh.top/katalon/</link>
+      <link>https://kayleh.top/katalon/</link>
       <pubDate>Tue, 02 Feb 2021 02:42:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/katalon/</guid>
+      <guid>https://kayleh.top/katalon/</guid>
       <description>和Selenium IDE类似的工具
 Katalon Recorder (Selenium tests generator) </description>
     </item>
     
     <item>
       <title>Dynamic programming动态规划</title>
-      <link>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <link>https://kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
       <pubDate>Mon, 01 Feb 2021 02:54:04 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <guid>https://kayleh.top/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
       <description>动态规划
 首先，动态规划问题的一般形式就是求最值。动态规划其实是运筹学的一种最优化方法，只不过在计算机问题上应用比较多，比如说让你求最长递增子序列呀，最小编辑距离呀等等。
 既然是要求最值，核心问题是什么呢？求解动态规划的核心问题是穷举。因为要求最值，肯定要把所有可行的答案穷举出来，然后在其中找最值呗。
@@ -164,10 +164,10 @@ int fib(int N) { if (N == 1 || N == 2) return 1; return fib(N - 1) + fib(N - 2);
     
     <item>
       <title>automated test：selenium</title>
-      <link>https://blog.kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
+      <link>https://kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Mon, 01 Feb 2021 02:52:47 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</guid>
       <description>Selenium  浏览器插件Selenium IDE
   Selenium 3.0没有RC
  使用：
@@ -185,20 +185,20 @@ webdriver API 键盘事件 key包提供按键方法 使用必须先引用key包�
     
     <item>
       <title>Test case</title>
-      <link>https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</link>
+      <link>https://kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</link>
       <pubDate>Mon, 25 Jan 2021 01:51:10 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</guid>
+      <guid>https://kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</guid>
       <description>测试用例 什么是测试用例 测试用例(Test Case)是指对一项特定的软件产品进行测试任务的描述，体现测试方案、方法、技术和策略。其内容包括测试目标、测试环境、输入数据、测试步骤、预期结果、测试脚本等，最终形成文档。简单地认为，测试用例是为某个特殊目标而编制的一组测试输入、执行条件以及预期结果，用于核实是否满足某个特定软件需求。
 回归测试 模板：（excel）    测试用例编号 测试项 依赖用例 测试步骤 输入数据 预期结果 测试结果 测试人 备注        1、2、        标识符(用例编号)，一般编号规则：TestCase_____项目名称_____模块名称_____功能名称_____0001 测试用例的测试目的。一般情况下，用一句话表明目的。（用谷歌浏览器打开百度首页） 一般功能流程上，下游的功能测试依赖于上游的功能测试的用例 用最朴实的语言，写出来软件的操作步骤，要尽量详细（在文本框输入xxx） 测试数据 准确，在重要的步骤之后，设定预期结果，一般和测试目的密切相关 只有两个，通过/失败（和预期结果）      测试用例编写注意事项 黑盒测试用例设计方法 </description>
     </item>
     
     <item>
       <title>Software testing process</title>
-      <link>https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</link>
+      <link>https://kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Sat, 16 Jan 2021 01:17:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</guid>
       <description>软件测试流程 过程模型 ★V模型 ★W模型 H模型 X模型 测试过程理念 软件测试的分类 测试需求分析 1.列出待测需求
 2.设定需求优先级
 3.详细描述测试需求内容
@@ -209,20 +209,20 @@ webdriver API 键盘事件 key包提供按键方法 使用必须先引用key包�
     
     <item>
       <title>SpringBoot startup process</title>
-      <link>https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</link>
+      <link>https://kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Fri, 15 Jan 2021 20:40:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</guid>
+      <guid>https://kayleh.top/springboot%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E6%B3%A8%E8%A7%A3/</guid>
       <description>SpringBoot应用启动流程 我们将各步骤总结精炼如下：
  通过 SpringFactoriesLoader 加载 META-INF/spring.factories 文件，获取并创建 SpringApplicationRunListener 对象 然后由 SpringApplicationRunListener 来发出 starting 消息 创建参数，并配置当前 SpringBoot 应用将要使用的 Environment 完成之后，依然由 SpringApplicationRunListener 来发出 environmentPrepared 消息 创建 ApplicationContext 初始化 ApplicationContext，并设置 Environment，加载相关配置等 由 SpringApplicationRunListener 来发出 contextPrepared 消息，告知SpringBoot 应用使用的 ApplicationContext 已准备OK 将各种 beans 装载入 ApplicationContext，继续由 SpringApplicationRunListener 来发出 contextLoaded 消息，告知 SpringBoot 应用使用的 ApplicationContext 已装填OK refresh ApplicationContext，完成IoC容器可用的最后一步 由 SpringApplicationRunListener 来发出 started 消息 完成最终的程序的启动 由 SpringApplicationRunListener 来发出 running 消息，告知程序已运行起来了  至此，全流程结束！</description>
     </item>
     
     <item>
       <title>the difference of BIO、NIO、AIO</title>
-      <link>https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</link>
+      <link>https://kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Mon, 21 Dec 2020 00:15:14 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</guid>
       <description>BIO、NIO、AIO区别 一、BIO
 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在客户端启动Socket来对服务端进行通信，默认情况下服务端需要对每个请求建立一堆线程等待请求，而客户端发送请求后，先咨询服务端是否有线程相应，如果没有则会一直等待或者遭到拒绝请求，如果有的话，客户端会线程会等待请求结束后才继续执行。
 二、NIO
@@ -251,10 +251,10 @@ AIO是一个有效请求一个线程。
     
     <item>
       <title>Talk about:IO</title>
-      <link>https://blog.kayleh.top/%E6%B5%85%E8%B0%88io/</link>
+      <link>https://kayleh.top/%E6%B5%85%E8%B0%88io/</link>
       <pubDate>Sun, 20 Dec 2020 22:45:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B5%85%E8%B0%88io/</guid>
+      <guid>https://kayleh.top/%E6%B5%85%E8%B0%88io/</guid>
       <description>File对象 在计算机系统中，文件是非常重要的存储方式。Java的标准库java.io提供了File对象来操作文件和目录。
 要构造一个File对象，需要传入文件路径：
 public class Main { public static void main(String[] args) { File f = new File(&amp;#34;C:\\Windows\\notepad.exe&amp;#34;); System.out.println(f); } } 构造File对象时，既可以传入绝对路径，也可以传入相对路径。绝对路径是以根目录开头的完整路径，例如：
@@ -268,19 +268,19 @@ public class Main { public static void main(String[] args) throws IOException { 
     
     <item>
       <title>off-heap</title>
-      <link>https://blog.kayleh.top/%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98/</link>
+      <link>https://kayleh.top/%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98/</link>
       <pubDate>Sun, 20 Dec 2020 21:21:38 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98/</guid>
+      <guid>https://kayleh.top/%E5%A0%86%E5%A4%96%E5%86%85%E5%AD%98/</guid>
       <description>堆外内存 off-heap叫做堆外内存，将你的对象从堆中脱离出来序列化，然后存储在一大块内存中，这就像它存储到磁盘上一样，但它仍然在RAM中。对象在这种状态下不能直接使用，它们必须首先反序列化，也不受垃圾收集。序列化和反序列化将会影响部分性能（所以可以考虑使用FST-serialization）使用堆外内存能够降低GC导致的暂停。堆外内存不受垃圾收集器管理，也不属于老年代，新生代。</description>
     </item>
     
     <item>
       <title>Single point login</title>
-      <link>https://blog.kayleh.top/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://kayleh.top/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 17 Dec 2020 14:58:05 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://kayleh.top/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E5%AE%9E%E7%8E%B0/</guid>
       <description>单点登录实现 分布式Session即Session共享 如果我们是同一个网站，在多台服务器上部署，并且访问同一个域名，这种类似于分布式session，目前比较简单的解决方案用nginx做代理就可以实现。
 在单服务器web应用中，登录用户信息只需存在该服务的session中，这是我们几年前最长见的办法。而在当今分布式系统的流行中，微服务已成为主流，用户登录由某一个单点服务完成并存储session后，在高并发量的请求（需要验证登录信息）到达服务端的时候通过负载均衡的方式分发到集群中的某个服务器，这样就有可能导致同一个用户的多次请求被分发到集群的不同服务器上，就会出现取不到session数据的情况，于是session的共享就成了一个问题。目前实现session共享的解决方案：
 1）Session复制与共享 多个server之间相互同步session，这样每个server上都包含全部Service的session。
@@ -301,10 +301,10 @@ public class Main { public static void main(String[] args) throws IOException { 
     
     <item>
       <title>JMM memory model</title>
-      <link>https://blog.kayleh.top/java-memory-model%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/java-memory-model%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Thu, 17 Dec 2020 02:40:45 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/java-memory-model%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/java-memory-model%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
       <description>所有的Java开发人员可能会遇到这样的困惑？我该为堆内存设置多大空间呢？OutOfMemoryError的异常到底涉及到运行时数据的哪块区域？该怎么解决呢？其实如果你经常解决服务器性能问题，那么这些问题就会变的非常常见，了解JVM内存也是为了服务器出现性能问题的时候可以快速的了解那块的内存区域出现问题，以便于快速的解决生产故障。
 先看一张图，这张图能很清晰的说明JVM内存结构布局。
 Java的内存结构****：****
@@ -343,10 +343,10 @@ JVM栈（JVM Stacks） 与程序计数器一样，Java虚拟机栈（Java Virtua
     
     <item>
       <title>JVM垃圾回收机制</title>
-      <link>https://blog.kayleh.top/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</link>
+      <link>https://kayleh.top/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Thu, 17 Dec 2020 01:46:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://kayleh.top/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</guid>
       <description>GC是什么 分代收集算法
  次数上频繁收集Young区 Minor GC
 次数上较少收集Old区 Full GC
@@ -373,10 +373,10 @@ JVM栈（JVM Stacks） 与程序计数器一样，Java虚拟机栈（Java Virtua
     
     <item>
       <title>SpringMVC work stream</title>
-      <link>https://blog.kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
+      <link>https://kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Wed, 16 Dec 2020 23:13:22 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/springmvc%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</guid>
       <description>SpringMVC工作流程   处理模型数据方式一:将方法的返回值设置为ModelAndView
   处理模型数据方式二:方法的返回值仍是String类型,在方法的入参中传入Map,Model或者ModelMap,
 不管将处理器方法的返回值设置为ModelAndView还是在方法的入参传入Map,Model或者ModelMap,SpringMVC都会转换为一个ModelAndView对象.
@@ -385,10 +385,10 @@ JVM栈（JVM Stacks） 与程序计数器一样，Java虚拟机栈（Java Virtua
     
     <item>
       <title>Transaction isolation level</title>
-      <link>https://blog.kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</link>
+      <link>https://kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</link>
       <pubDate>Wed, 16 Dec 2020 22:14:51 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</guid>
+      <guid>https://kayleh.top/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</guid>
       <description>事务的隔离级别 事务是必须满足4个条件（ACID）：：原子性（Atomicity，或称不可分割性）、一致性（Consistency）、隔离性（Isolation，又称独立性）、持久性（Durability）。
  **原子性：**一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。 **一致性：**在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。 **隔离性：**数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。 **持久性：**事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。  数据库事务并发问题 假设选择有两个事务:Transaction01和Transaction02并发执行.
 1)脏读
@@ -418,10 +418,10 @@ JVM栈（JVM Stacks） 与程序计数器一样，Java虚拟机栈（Java Virtua
     
     <item>
       <title>Spring Related</title>
-      <link>https://blog.kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
+      <link>https://kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</link>
       <pubDate>Wed, 16 Dec 2020 21:44:11 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
+      <guid>https://kayleh.top/spring%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/</guid>
       <description>Spring相关 什么是IOC IOC： Inversion of control 反转控制。 比如以前创建一个对象，需要自己主动new 一个对象，通过IOC，对象的创建交由Spring框架 创建，开发人员直接使用已经创建好的对象。
 什么是DI DI： Dependency Injection 依赖注入。 通过IOC创建对象的时候，可以注入字符串甚至其他对象。 比如DAO就会注入session factory.
 通常IOC和DI是紧密结合，一起使用的
@@ -435,10 +435,10 @@ bean的作用域  可以通过配置文件的scope属性来指定bean的作用�
     
     <item>
       <title>Native method?</title>
-      <link>https://blog.kayleh.top/native%E6%96%B9%E6%B3%95/</link>
+      <link>https://kayleh.top/native%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 16 Dec 2020 00:58:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/native%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kayleh.top/native%E6%96%B9%E6%B3%95/</guid>
       <description>Native 方法? 翻看Thread.start()源码,竟然出现了无方法体的方法??
 private native void start0(); 这里其实用到了关键字native
 native关键字  说明java的作用范围达不到了,回去调用底层C语言的库.
@@ -453,10 +453,10 @@ JNI的作用: 扩展Java的使用,融合不同的编程语言为Java所用
     
     <item>
       <title>沙箱安全机制</title>
-      <link>https://blog.kayleh.top/%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/</link>
+      <link>https://kayleh.top/%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Wed, 16 Dec 2020 00:58:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://kayleh.top/%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6/</guid>
       <description>什么是沙箱？  Java安全模型的核心就是Java沙箱（sandbox），什么是沙箱？沙箱是一个限制程序运行的环境。沙箱机制就是将 Java 代码限定在虚拟机(JVM)特定的运行范围中，并且严格限制代码对本地系统资源访问，通过这样的措施来保证对代码的有效隔离，防止对本地系统造成破坏。沙箱主要限制系统资源访问，那系统资源包括什么？——CPU、内存、文件系统、网络。不同级别的沙箱对这些资源访问的限制也可以不一样。
  所有的Java程序运行都可以指定沙箱，可以定制安全策略。
 java中的安全模型：  在Java中将执行程序分成本地代码和远程代码两种，本地代码默认视为可信任的，而远程代码则被看作是不受信的。对于授信的本地代码，可以访问一切本地资源。而对于非授信的远程代码在早期的Java实现中，安全依赖于沙箱 (Sandbox) 机制。如下图所示
@@ -471,10 +471,10 @@ java中的安全模型：  在Java中将执行程序分成本地代码和远�
     
     <item>
       <title>JVM classloader and parent delegation-mechanism</title>
-      <link>https://blog.kayleh.top/jvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/</link>
+      <link>https://kayleh.top/jvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Mon, 14 Dec 2020 21:28:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://kayleh.top/jvm-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/</guid>
       <description>JVM-类加载器和双亲委派机制 JVM java的六种存储地址及解释 1） 寄存器(register)：这是最快的存储区，因为它位于不同于其他存储区的地方——处理器内部。但是寄存器的数量极其有限，所以寄存器由编译器根据需求进行分配。你不能直接控制，也不能在程序中感觉到寄存器存在的任何迹象。
 2） 堆栈(stack)：位于通用RAM中，但通过它的“堆栈指针”可以从处理器哪里获得支持。堆栈指针若向下移动，则分配新的内存；若向上移动，则释放那些内存。这是一种快速有效的分配存储方法，仅次于寄存器。创建程序时候，JAVA编译器必须知道存储在堆栈内所有数据的确切大小和生命周期，因为它必须生成相应的代码，以便上下移动堆栈指针。这一约束限制了程序的灵活性，所以虽然某些JAVA数据存储在堆栈中——特别是对象引用，但是JAVA对象不存储其中。
 3）堆(heap)：一种通用性的内存池（也存在于RAM中），用于存放所有的JAVA对象。堆不同于堆栈的好处是：编译器不需要知道要从堆里分配多少存储区域，也不必知道存储的数据在堆里存活多长时间。因此，在堆里分配存储有很大的灵活性。当你需要创建一个对象的时候，只需要new写一行简单的代码，当执行这行代码时，会自动在堆里进行存储分配。当然，为这种灵活性必须要付出相应的代码。用堆进行存储分配比用堆栈进行存储存储需要更多的时间。
@@ -505,40 +505,40 @@ Class文件中的“类”从加载到JVM内存中，到卸载出内存过程有
     
     <item>
       <title>AIO blocking model</title>
-      <link>https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/aio%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sat, 05 Dec 2020 11:57:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/aio%E6%A8%A1%E5%9E%8B/</guid>
       <description>AIO模型 1. 在系统层面分析IO模型 当我们从网络中或者其他进程中接收到数据时，这个数据会先被拷贝到系统内核的缓冲区，然后从内核的缓冲区中再复制到我们应用程序对应的缓冲区中，这样我们才能实现从应用程序中取得这个数据。
 1.1 BIO模型  我们的应用程序会首先调用特定的函数，这样才能去访问我们的操作系统。拿我们的BIO聊天室来说，我们在服务器上，想看一下客户端从网络上传递过来的数据有没有准备好，那么它会去询问操作系统有没有收到新的数据，如果没有收到，它会一直阻塞在这里，直到收到消息，并且已经从系统内核缓冲区中拷贝到应用程序的缓冲区中，这样这个调用才能够成功返回。这就是阻塞式IO，我们在等待的过程中，什么都做不了。  1.2 NIO模型  当我们的应用程序进行系统调用，询问数据有没有准备好，没有准备好的话，因为它是非阻塞的，所以直接返回；直到系统已经将内核缓冲区中的数据复制到应用程序的缓冲区中，这时我们再去询问数据有没有准备好的话，就能够获取到我们想要的数据了。但是它并不包括Selector监听模式，仅仅是NIO中的非阻塞式模型。  1.2.1 IO多路复用  这个模式对应的就是我们NIO聊天室中采用的模式，使用了Selector监听 首先我们的应用程序发起新的询问，是不是有可用的数据进行操作了，如果数据这时没有准备好，并不会如上NIO直接返回，而是说，我们要求内核监听我们这个IO通道，直到它有了数据可以供我们的程序进行操作了，再来通知我们，这个监听的过程，就像我们聊天室中的select()方法，它是阻塞的。直到数据已经在系统内核缓存区中准备好了，它会通知你一下，告诉你可以执行系统调用，将缓存区中的数据复制到应用程序缓存区中，这时我们才真正获取到了我们想要的数据 在这个时候，系统内核能够监听多个IO通道，跟我们的聊天室一样，它也监听了多个通道，只要其中任何一个IO通道有了新的状态更新，那么这个监听都会返回给我们应用程序说，其中的IO通道有一个或者多个出现了状态的变化，你要不要对其进行处理一下，我们便可以根据它返回的条件，进行特定的处理。（Selector可以翻译成为IO多路复用器）  1.3 AIO模型（异步IO）  BIO和NIO都是同步IO模型，这里我们说说AIO（异步）模型 同步IO模型是当我们访问的这个数据无论有没有准备好，都会返回给你结果；当数据没有准备好的时候，我们没有能够获取数据，如果我们再也不发起获取数据的请求，那么我们永远都不会再获取到这个数据。异步IO就不同了，当你请求这个数据没有请求到，而之后这个数据准备好了，它就会回去通知你，可以来取这个数据了 我们来看一下这个流程：我们去请求数据，数据没有准备好，我们没有被阻塞，而是直接返回了。在应用程序层面，虽然我们没有再发起新的请求，但是在系统后台，会监听这个我们请求数据的状态，当我们需要的数据已经准备好了，并且已经存在于系统内核缓存区中了，系统后台还会将这个数据拷贝到我们的应用程序缓存区中，到这里，系统内核会递交给我们一个信号，告诉你，你之前想要的这个数据，已经准备好给你了，你可以进行使用了。 它的异步体现在：我们程序只对数据发起了一次请求，没有请求到，就直接返回了，而之后，当这个数据已经准备好的时候，系统回来通知我们，而不需要我们再次发起请求，就能获取到这个数据，这就体现了异步的特点。A就是asynchronous，也就是异步的意思   2. 异步调用机制 2.1 AIO中的异步操作  客户端对应AsynchronousSocketChannel 服务端对应AsynchronousServerSocketChannel 建立连接为connect/accept 读操作为read 写操作为write  2.2 通过Future进行异步调用  注意其中Future的get()方法是阻塞式的  2.3 通过CompletionHandler（多用）  在执行操作的时候，传入CompletionHandler参数   3. 实战（回音服务器） 3.1 服务器端 3.1.1 字段 3.1.2 主方法 3.1.3 AcceptHandler的实现 3.1.4 ClientHandler的实现 3.2 客户端 3.2.1 字段 3.2.2 主方法  4.</description>
     </item>
     
     <item>
       <title>NIO blocking model</title>
-      <link>https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/nio%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sat, 05 Dec 2020 11:33:46 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/nio%E6%A8%A1%E5%9E%8B/</guid>
       <description>NIO模型 1. 概述 1.1 翻译翻译？什么叫NIO？ NIO：我认为翻译成Non-Blocking，更加的通俗直白，相比于BIO，也有一个对比，叫他非阻塞IO最好不过了
  它和BIO有以下的区别  Channel是双向的，即可以读又可以写，相比于Stream，它并不区分出输入流和输出流，而且Channel可以完成非阻塞的读写，也可以完成阻塞的读写  1.2 Buffer简介  Channel的读写是离不开Buffer的，Buffer实际上内存上一块用来读写的区域。  1.2.1 写模式  其中三个指针我们要了解一下，position为当前指针位置，limit用于读模式，用它来标记可读的最大范围，capacity是最大的可写范围阈值  当我们写数据写了四个格子时，我们执行flip()方法，即可转变为读模式，limit指针就直接变到了我们刚刚写数据的极限位置，position指针回到初始位置，这样我们就可以将数据读出来了 1.2.2 读模式到写模式的两种切换  当我们将数据全部读完时，切换到写模式 调用clear()方法，它会使position指针回到初始位置，limit回到最远端，这样就可以重新开始数据了，虽然clear意为清除，但是其实它只是将指针的位置移动了，并没有将数据清除，而是会覆盖原来的位置  只读了部分数据，我想将未读的部分保留，而现在我又要开始先进行写模式的操作了，这样可以执行compact()方法 这个方法会将没有读到的数据保存到初始位置，而position指针的位置将会移动到这些数据的后面位置，从未读的数据后开始进行写数据 之后再读数据的时候，我们就能将上次没有读到的数据读出来了  1.3 Channel简介 Channel间的数据交换，都需要依赖Buffer 1.3.1 几个重要的Channel  FileChannel：用于文件传输 ServerSocketChannel和SocketChannel：用于网络编程的传输  2. 文件拷贝实战  一个字节一个字节的拷贝实在是慢的不行。  import java.io.*; import java.nio.ByteBuffer; import java.nio.channels.FileChannel; interface FileCopyRunner{ void copyFile(File source,File target); } public class FileCopyDemo { private static void close(Closeable closeable){ if(closeable != null) { try { closeable.</description>
     </item>
     
     <item>
       <title>BIO blocking model</title>
-      <link>https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:46:43 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</guid>
       <description>BIO阻塞模型 1. BIO阻塞模型 简述BIO模型中服务端与客户端的响应过程
  服务器serverSocket先要和端口进行绑定 绑定完成后，执行accept方法，等待客户端的连接，这个方法是阻塞式调用，也就是说，要一直等待客户端的连接响应，不做其他事情，一直等，（被阻塞的还有InputStream.read()、OutputStream.write()，这两个也会一直等待客户端的响应） 客户端创建Socket对象，绑定服务器的ip地址与端口号，与服务器进行连接 服务器接收到客户端的连接请求，accept方法获取到客户端的socket信息，连接成功 服务器与客户端创建各自的io流，实现全双工通信 之后便可以随时结束连接   2. 简单实战演示 2.1 服务器 import java.io.*; import java.net.ServerSocket; import java.net.Socket; public class Server { public static void main(String[] args) { final int DEFAULT_PORT = 8888; final String QUIT = &amp;#34;quit&amp;#34;; ServerSocket serverSocket = null; try { //绑定端口号  serverSocket = new ServerSocket(DEFAULT_PORT); System.out.println(&amp;#34;服务器已经启动，绑定端口号：&amp;#34; + DEFAULT_PORT); while (true){ //等待客户端的连接  Socket socket = serverSocket.accept(); System.out.println(&amp;#34;客户端&amp;#34; + socket.getPort() + &amp;#34;:&amp;#34; + &amp;#34;已经连接&amp;#34;); //获取io流  BufferedReader reader = new BufferedReader( new InputStreamReader(socket.</description>
     </item>
     
     <item>
       <title>I/O model</title>
-      <link>https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:44:24 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</guid>
       <description>I/O模型 1. java.io下的字符流和字节流 1.1 字符流 字符流更加的方便我们使用，一般字符都是由多个字节来形成的，若我们使用字节流传输，则还需要我们自己将其转换为字符，若我们直接使用字符流的话，这样就能直接读取与输出字符。  CharArrayReader：是基础的字符输入流，能从字符数组中读取数据 StringReader：从字符串输入流中读取数据 输出流同理  1.1.1 更高级的字符流  BufferedReader：附带缓存区的字符输入流，但是我们并不能直接实例化供我们使用，而是将我们已经创建的Reader字符流，传入进来，就像对它升级一样，多了更多的功能，比如该字符流就是提供了缓存区，这样加快了io的效率，不必重复读取原始数据源 FilterReader：同样也是运用了装饰模式，它额外的功能能对字符流中的字符进行筛选等 InputStreamReader：连接字节流与字符流的一个桥梁，将字节流转化为字符流，比较常用的就是FileReader  1.2 字节流 字节流则是对一个个字节进行读取  ByteArrayInputStream：字节数组输入流，从字节数组中获取数据 FileInputStream：文件输入流，从文件中获取数据 输出流同理  1.2.1 更高级的字节流  BufferedInputStream：附带缓存区的字节输入流，它同样也是与BufferedReader一个原理，也需要传入进本的InputStream进行升级 DataInputStream与DataOutputStream：这俩就比较有意思了，相辅相成，与java内置的基本数据类型相关，能够将其中的字节，利用一些方法，比如toLong或toInt等方法直接转换为java的基本数据类型   2. 装饰器模式 我们刚刚看到的，在字符流中BufferedReader、InputStreamReader和FilterReader，字节流中的BufferedInputStream、DataInputStreamReader与DataOutputStream都运用到了装饰器模式，因为它们本身不能进行实例化，都需要传入基本的Reader或InputStream来进行升级，这里便体现的是装饰器模式。
  3. Socket  我们可以将Socket认为是网络传输的端点，它也是一种数据源，将特定的ip地址与端口号与其进行绑定，这样它就能够实现通信的功能，如下图中，服务器中的socket绑定了对应的ip与端口号，与客户端间进行通信   3.1 通过Socket发送数据  创建Socket，绑定特定的ip地址与端口号 将Socket与网卡驱动程序绑定 通过Socket我们就能够发送数据了 网卡驱动程序对Socket数据进行读取  3.2 通过Socket读取数据  与发送数据类似，只不过是将这个过程反过来了   我们还是要先创建Socket 将Socket与网卡驱动程序进行绑定 Socket接收来自网卡驱动程序的数据 从Socket中读取数据   4. 同步异步与阻塞非阻塞的概念 它们有两两组合的四种不同的排列组合，同步与异步强调通信机制，通俗点儿说可以是关于反应者的概念；阻塞与非阻塞强调调用状态，我们可以将其理解为调用者或者请求发起者 4.1 同步（女孩） 男孩向女孩表白，女孩立即对该事件进行思考、反应，这就是同步通信机制
 4.2 异步（女孩） 异步通信机制就是，女孩不会对男孩的请求立即响应，而是女孩先去考虑考虑，有结果了呢，我发短信给你</description>
@@ -546,10 +546,10 @@ Class文件中的“类”从加载到JVM内存中，到卸载出内存过程有
     
     <item>
       <title>Java network programming</title>
-      <link>https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+      <link>https://kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:35:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
       <description>@来源CSDN：方圆 1. URL地址的构造和解析 我们看如上地址，一般情况下.root根域名的部分会被省略。而URL的解析过程就是从右向左进行解析，将地址转换为IP地址，进行访问。
 1.1 域名的层级 1.2 域名DNS查询的两种方式 1.2.1 递归查询  如图上所示，浏览器将请求发送给DNS客户端，客户端请求根域名服务器对域名进行解析，解析完成后，随后再访问顶级域名服务器，请求它对域名进行解析，以此类推，直至全部解析完毕，重新从三级域名服务器一层一层传递给DNS客户端，再发送给浏览器。  1.2.2 迭代查询  迭代查询是访问DNS客户端后，先访问根域名服务器，将根域名服务器中存储的该域名的内容全部发送给DNS客户端，如果无法实现域名解析的话，DNS客户端会再次请求顶级域名服务器，过程也同上，最终完成解析后，再将请求结果传递给浏览器。   Tip: 在对域名进行解析过一次后，就会产生它的缓存，存在DNS客户端中，当再次访问该域名时，就不会再去请求各个域名服务器了。对于根域名服务器，在全球是限量的，它已经被内置在DNS客户端中了，不必担心不知道根域名服务器地址的问题。
   2. 网络协议的基础知识 2.1 分层及协议  应用层：规定应用程序的数据格式 传输层：端口之间的连接 网络层：主机之间的连接，能够实现具体的定位 链路层：网卡之间的连接，每个网卡都有自己的MAC地址，在网卡生产出来的时候就已经确定了；假如通过MAC地址传递数据，那么它会给所有子网络主机都发送一份数据，并在接收时将MAC地址进行核对，一致时才进行接受，不能实现准确的定位 实体层：解决的是计算机之间的连接，一般通过光缆进行连接  2.2 各层的数据包格式 从应用层向下，每经过一层都会被添加上该层的标头，对于Ethernet标头，它的大小为18个字节，其余数据部分为1500字节，它的大小最大为1518字节，即每个帧的字节，当发送较大的文件时，就会发送多个帧的数据包，通过标头信息，在接收时能够将其组合，实现数据的正确发送。</description>
@@ -557,10 +557,10 @@ Class文件中的“类”从加载到JVM内存中，到卸载出内存过程有
     
     <item>
       <title>ubuntu fixed IP setting method</title>
-      <link>https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</link>
+      <link>https://kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 13 Nov 2020 23:23:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kayleh.top/ubuntu%E5%9B%BA%E5%AE%9Aip%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95/</guid>
       <description>ubuntu固定IP设置方法 确认你要修改的网卡号 先确认你要修改的网卡号，假设你的服务器有多张网卡：
 `ubuntu1804:~$ ip addr` 我的服务器配置如下：
 `1: lo: mtu 65536 qdisc noqueue state UNKNOWN ``group` `default` `qlen 1000``link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00``inet 127.0.0.1/8 scope host lo``valid_lft forever preferred_lft forever``inet6 ::1/128 scope host``valid_lft forever preferred_lft forever``2: ens33: mtu 1500 qdisc fq_codel state UP ``group` `default` `qlen 1000``link/ether 00:0c:29:f1:b5:e1 brd ff:ff:ff:ff:ff:ff``inet 172.16.87.140/24 brd 172.16.87.255 scope global dynamic ens33``valid_lft 1500sec preferred_lft 1500sec``inet6 fe80::20c:29ff:fef1:b5e1/64 scope link``valid_lft forever preferred_lft forever` 3. 默认的网卡配置文件 默认情况下，网络使用DHCP
@@ -569,10 +569,10 @@ Class文件中的“类”从加载到JVM内存中，到卸载出内存过程有
     
     <item>
       <title>Java高性能高并发秒杀系统(10)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/</link>
       <pubDate>Wed, 11 Nov 2020 20:15:45 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-10/</guid>
       <description>1. 库存预加载到Redis中是怎么实现的？ 我是通过实现InitializingBean接口，重写其中afterPropertiesSet()方法，实现的预加载
 1.1 之后主动添加秒杀商品的话，怎么添加？ 通过后台管理进行添加，修改redis缓存和数据库中的值
  2. 在Redis中扣减库存的时候，是怎么保证线程安全，防止超卖的？ redis中有一个decr()方法，它实现的是递减操作，而且能够保证原子性
@@ -591,10 +591,10 @@ Class文件中的“类”从加载到JVM内存中，到卸载出内存过程有
     
     <item>
       <title>file input and output</title>
-      <link>https://blog.kayleh.top/10.file-input-and-output/</link>
+      <link>https://kayleh.top/10.file-input-and-output/</link>
       <pubDate>Wed, 04 Nov 2020 02:24:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/10.file-input-and-output/</guid>
+      <guid>https://kayleh.top/10.file-input-and-output/</guid>
       <description>对文件的输入输出 文件  程序文件。包括源程序文件，这种文件的内容是程序代码 数据文件。供程序运行时读写的数据  操作系统把各种设备都统一作为文件来处理。
 文件一般指存储在外部介质上数据的集合。
 流(数据流) 数据的输入输出.流表示了信息从源到目的地的流动.
@@ -610,10 +610,10 @@ Typedef struct { short level; //缓冲区”满”或”空”的程度//  unsig
     
     <item>
       <title>Good use of pointers</title>
-      <link>https://blog.kayleh.top/good-use-of-pointers/</link>
+      <link>https://kayleh.top/good-use-of-pointers/</link>
       <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/good-use-of-pointers/</guid>
+      <guid>https://kayleh.top/good-use-of-pointers/</guid>
       <description>善于利用指针  Good use of pointers
  指针 如果在程序中定义了一个变量，在对程序进行编译时，系统就会给这个变量分配内存单元。编译系统根据程序中定义的变量类型，分配一定长度的空间。
 每一个字节都有一个编号，就是“地址”。
@@ -636,10 +636,10 @@ i_pointer指向i
     
     <item>
       <title>users create data types themselves</title>
-      <link>https://blog.kayleh.top/9.users-create-data-types-themselves/</link>
+      <link>https://kayleh.top/9.users-create-data-types-themselves/</link>
       <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/9.users-create-data-types-themselves/</guid>
+      <guid>https://kayleh.top/9.users-create-data-types-themselves/</guid>
       <description>用户自己建立数据类型 定义和使用结构体变量 由不同类型数据组成的组合型的数据结构，它称为结构体.
 struct Student { int num; char name[20]; char sex; int age; float score; char addr[30]; }; 声明结构体类型的一般形式
 struct 结构体名 {成员表列}; 结构体成员: 类型名 成员名; 成员可以属于另一个结构体类型
@@ -648,10 +648,10 @@ struct Date{ int month; int day; int year; } struct Student { struct Date birthd
     
     <item>
       <title>realize modular programming with functions</title>
-      <link>https://blog.kayleh.top/realize-modular-programming-with-functions/</link>
+      <link>https://kayleh.top/realize-modular-programming-with-functions/</link>
       <pubDate>Mon, 26 Oct 2020 01:17:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/realize-modular-programming-with-functions/</guid>
+      <guid>https://kayleh.top/realize-modular-programming-with-functions/</guid>
       <description>用函数实现模块化程序设计  Realize modular programming with functions
  用函数输出以下结果：
 ***************** How do you do! ***************** #include&amp;lt;stdio.h&amp;gt; int main() { void print_star();//函数的声明  void print_message();//函数的声明  print_star(); print_message(); print_star(); return 0; } void print_star() { printf(&amp;#34;*****************\n&amp;#34;); } void print_message() { printf(&amp;#34;How do you do!\n&amp;#34;); }  函数声明的作用是把有关函数的信息(函数名,函数类型,函数参数的个数与类型)通知编译系统,以便在编译系统对程序进行编译时,在进行到main函数调用print_star()和print_message()时知道它们是函数而不是变量或其他对象,还对调用函数的正确性进行检查.
@@ -664,10 +664,10 @@ struct Date{ int month; int day; int year; } struct Student { struct Date birthd
     
     <item>
       <title>use-arrays-to-process-batch-data</title>
-      <link>https://blog.kayleh.top/use-arrays-to-process-batch-data/</link>
+      <link>https://kayleh.top/use-arrays-to-process-batch-data/</link>
       <pubDate>Mon, 26 Oct 2020 01:17:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/use-arrays-to-process-batch-data/</guid>
+      <guid>https://kayleh.top/use-arrays-to-process-batch-data/</guid>
       <description>利用数组处理批量数据  use-arrays-to-process-batch-data
  1.数组使一组有序数据的集合.
 2.用一个数组名和下标来唯一地确定数组中的元素
@@ -684,10 +684,10 @@ int a[10]={0}; 4)在对全部元素赋值时,如果数据的个数已经确定,�
     
     <item>
       <title>cycle structure programming</title>
-      <link>https://blog.kayleh.top/cycle-structure-programming/</link>
+      <link>https://kayleh.top/cycle-structure-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/cycle-structure-programming/</guid>
+      <guid>https://kayleh.top/cycle-structure-programming/</guid>
       <description>循环结构体程序设计 用while语句实现循环  while (表达式) 语句
  求1+2+3+&amp;hellip;.+100; #include&amp;lt;stdio.h&amp;gt; int main() { int i = 1; int sum = 0; while (i &amp;lt;= 100) { sum += i; i++; } printf(&amp;#34;%d&amp;#34;, sum); return 0; } 用do&amp;hellip;while语句实现循环  do
 ​	语句
@@ -698,20 +698,20 @@ while (表达式);
     
     <item>
       <title>select structure programming</title>
-      <link>https://blog.kayleh.top/select-structure-programming/</link>
+      <link>https://kayleh.top/select-structure-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/select-structure-programming/</guid>
+      <guid>https://kayleh.top/select-structure-programming/</guid>
       <description>选择结构程序设计 选择结构和条件判断 用if语句实现选择结构  if
  关系运算符和关系表达式    关系运算符 描述 实例     == 检查两个操作数的值是否相等，如果相等则条件为真。 (A == B) 为假。   != 检查两个操作数的值是否相等，如果不相等则条件为真。 (A != B) 为真。   &amp;gt; 检查左操作数的值是否大于右操作数的值，如果是则条件为真。 (A &amp;gt; B) 为假。   &amp;lt; 检查左操作数的值是否小于右操作数的值，如果是则条件为真。 (A &amp;lt; B) 为真。   &amp;gt;= 检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。 (A &amp;gt;= B) 为假。   &amp;lt;= 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 (A &amp;lt;= B) 为真。    输入两个实数,按由小到大的顺序输出这两个数 #include&amp;lt;stdio.h&amp;gt; int main() { float a, b, t; scanf(&amp;#34;%f,%f&amp;#34;, &amp;amp;a, &amp;amp;b); if (a &amp;gt; b) { //将a和b的值互换  t = a; a = b; b = t; } printf(&amp;#34;%5.</description>
     </item>
     
     <item>
       <title>sequential programming</title>
-      <link>https://blog.kayleh.top/sequential-programming/</link>
+      <link>https://kayleh.top/sequential-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:00 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sequential-programming/</guid>
+      <guid>https://kayleh.top/sequential-programming/</guid>
       <description>顺序程序设计 求摄氏度
 #include&amp;lt;stdio.h&amp;gt; int main() { float f, c; f = 64.0; c = (5.0 / 9) * (f - 32); printf(&amp;#34;f=%f\nc=%f\n&amp;#34;, f, c); return 0; } 常量   整型常量
   实性常量(有小数点)
@@ -726,10 +726,10 @@ while (表达式);
     
     <item>
       <title>C algorithm</title>
-      <link>https://blog.kayleh.top/c-algorithm/</link>
+      <link>https://kayleh.top/c-algorithm/</link>
       <pubDate>Mon, 26 Oct 2020 01:15:22 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-algorithm/</guid>
+      <guid>https://kayleh.top/c-algorithm/</guid>
       <description>算法 1.什么是算法? 算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。
 2.什么叫结构化算法?为什么要提倡结构化算法? 结构化算法是由一些基本结构顺序组成的，就是把一个大的功能的实现分隔为许多个小功能的实现。
 自顶向下,逐步细化,模块化设计,结构化编码</description>
@@ -737,10 +737,10 @@ while (表达式);
     
     <item>
       <title>C programming</title>
-      <link>https://blog.kayleh.top/c-programming/</link>
+      <link>https://kayleh.top/c-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:14:40 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-programming/</guid>
+      <guid>https://kayleh.top/c-programming/</guid>
       <description>程序 1.什么是程序?什么是程序设计? 程序是一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具。 程序设计（programming），是给出解决特定问题程序的过程，软件开发过程中的重要步骤。程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。
 2.为什么需要计算机语言?高级语言有哪些特点? 人和计算机交流信息需要解决语言问题,需要创造一种计算机和人都能识别的语言.
 高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。
@@ -771,20 +771,20 @@ while (表达式);
     
     <item>
       <title>ubuntu.deb安装包</title>
-      <link>https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</link>
+      <link>https://kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</link>
       <pubDate>Tue, 06 Oct 2020 21:16:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</guid>
+      <guid>https://kayleh.top/ubuntu-deb%E5%AE%89%E8%A3%85%E5%8C%85/</guid>
       <description>dkpg -i xxxx.deb 需要超级用户权限
 sudo dkpg -i xxxx.deb </description>
     </item>
     
     <item>
       <title>微分方程</title>
-      <link>https://blog.kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</link>
+      <link>https://kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</link>
       <pubDate>Mon, 05 Oct 2020 22:55:36 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</guid>
       <description>微分方程 定义： 微分方程的阶： 导数的最高阶数
 二阶：
 通解 独立常数的个数=阶数，比如二阶的最终的解里有c1，c2两个独立的常数
@@ -800,10 +800,10 @@ sudo dkpg -i xxxx.deb </description>
     
     <item>
       <title>级数</title>
-      <link>https://blog.kayleh.top/%E7%BA%A7%E6%95%B0/</link>
+      <link>https://kayleh.top/%E7%BA%A7%E6%95%B0/</link>
       <pubDate>Sun, 04 Oct 2020 13:24:36 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BA%A7%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E7%BA%A7%E6%95%B0/</guid>
       <description>无穷级数 等比数列
 例题
 调和级数  调和级数是发散的
@@ -833,10 +833,10 @@ sudo dkpg -i xxxx.deb </description>
     
     <item>
       <title>二重积分</title>
-      <link>https://blog.kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</link>
       <pubDate>Fri, 02 Oct 2020 14:43:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</guid>
       <description>概念 体积
 几何含义 性质 直角坐标系的计算 例题：  x型是从左到右走
 上边的函数写成上限，下边的函数写成下限
@@ -851,10 +851,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>偏导数</title>
-      <link>https://blog.kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</link>
       <pubDate>Wed, 30 Sep 2020 13:38:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</guid>
       <description>在某点偏导的定义  对y求导时，是把x看作常数，对y求导
 对x求导时，是把y看作常数，对x求导
  多元函数可导不连续 例题：
@@ -872,10 +872,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>多元函数</title>
-      <link>https://blog.kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</link>
       <pubDate>Tue, 29 Sep 2020 01:10:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</guid>
       <description>空间解析几何 两点之间距离
 平面方程 球面方程 z是正的表示求的上半部分，负的表示下半部分。
 旋转抛物面：
@@ -892,10 +892,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>广义积分和瑕积分</title>
-      <link>https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</link>
       <pubDate>Mon, 28 Sep 2020 21:58:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</guid>
       <description>广义积分 无穷限积分 ①上限是无穷的，就对b求导
 如果极限存在，就是收敛的，如果不存在，就是发散的。
 ②下限是无穷的，就对a求导
@@ -914,10 +914,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>定积分</title>
-      <link>https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
       <pubDate>Sat, 26 Sep 2020 20:38:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
       <description>定积分 性质  插入分点，区间内取任意值，求任意值的函数值，$△x_n$小区间的长度
 拉姆达是最大的区间
  定义 $f(x)$在$[a,b]$有界，在$[a,b]$任意插入分点
@@ -957,10 +957,10 @@ $$p&#39;(x)=f(x)$$
     
     <item>
       <title>图床</title>
-      <link>https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/</link>
+      <link>https://kayleh.top/%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Fri, 25 Sep 2020 20:45:24 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://kayleh.top/%E5%9B%BE%E5%BA%8A/</guid>
       <description>原地址https://www.jianshu.com/u/e68ebf1b004c
 Github repo图床 Github的repo也可以储存东西，最直接的就是程序的版本控制，当然也可以用来当作备份储存，用来储存图片（github官方回复是：该行为不构成abuse，如果把github当图床算滥用，那么那么多人把微博当图床怎么就理所应当捏）。其实github对于国内的响应速度并不快，而且时不时被block，所以用github当图床完全是出于储存个人用途的自创图片，并不能当CDN使用。github自从被微软收购后，我对github的信心大增，代码以前只敢用git管理保存在本地，现在可以放心大胆上传到github了（很多是private，所以不可见），github图床主要就是图个稳定，也并不是想恶意刷github服务器的流量，恶意影响大家的体验。
   新建repo，名称任意
@@ -979,10 +979,10 @@ image
     
     <item>
       <title>不定积分</title>
-      <link>https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
       <pubDate>Wed, 23 Sep 2020 17:06:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
       <description>$F&#39;(x)=f(x)$
 $F(x)$是$f(x)$的一个原函数.
  F(x)是f(x)的一个原函数，F(x)+c也是f(x)的原函数
@@ -1018,10 +1018,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>函数作图</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
       <pubDate>Wed, 23 Sep 2020 13:41:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
       <description>渐近线  水平、垂直、斜
  水平渐近线 例题：
 垂直渐近线 斜渐近线 例题：
@@ -1032,10 +1032,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>极值和最值</title>
-      <link>https://blog.kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</link>
+      <link>https://kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</link>
       <pubDate>Sun, 20 Sep 2020 23:04:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</guid>
+      <guid>https://kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</guid>
       <description>极值和最值 定理： f(x)在$x_0$可导，且在$x_0$取极值。$f&#39;(x_0)=0$
 证明：
 求极值 例题：
@@ -1048,10 +1048,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>函数的单调性和凸凹性</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</link>
       <pubDate>Sun, 20 Sep 2020 13:00:16 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</guid>
       <description>单调性 增f&#39;(x)&amp;gt;0减f&#39;(x)&amp;lt;0
 f&#39;(x)≥0，等号在个别点上成立，仍然也是增函数
 f&#39;(0)不存在,左右导数
@@ -1064,10 +1064,10 @@ f‘’不存在：</description>
     
     <item>
       <title>洛必达法则</title>
-      <link>https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</link>
+      <link>https://kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</link>
       <pubDate>Sat, 19 Sep 2020 22:31:17 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</guid>
       <description>洛必达法则 两种形式： $$\frac{0}{0}$$
 $$\frac{\infty}{\infty}$$
 $$\frac{0}{0}$$ 例题：
@@ -1084,10 +1084,10 @@ $$\frac{0}{0}$$ 例题：
     
     <item>
       <title>微分</title>
-      <link>https://blog.kayleh.top/%E5%BE%AE%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%BE%AE%E5%88%86/</link>
       <pubDate>Thu, 17 Sep 2020 23:39:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%BE%AE%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%BE%AE%E5%88%86/</guid>
       <description>微分 微分的定义： 充要条件
 可微就可导，可导就可微
 A就是$x_0$上的导数
@@ -1111,10 +1111,10 @@ $△x=dx$是精确值，$△y≈dy$是近似值
     
     <item>
       <title>导数</title>
-      <link>https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%AF%BC%E6%95%B0/</link>
       <pubDate>Wed, 16 Sep 2020 00:20:05 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%AF%BC%E6%95%B0/</guid>
       <description>变化率 $x_0 \to x_0+△x$.
 $f(x_0) \to f(x_0+△x)$
 $\frac{f(x_0+△x)-f(x_0)}{△x}$
@@ -1142,10 +1142,10 @@ $y&#39;|_{x=2}$
     
     <item>
       <title>连续</title>
-      <link>https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/</link>
+      <link>https://kayleh.top/%E8%BF%9E%E7%BB%AD/</link>
       <pubDate>Mon, 14 Sep 2020 23:53:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/</guid>
+      <guid>https://kayleh.top/%E8%BF%9E%E7%BB%AD/</guid>
       <description>增量(改变量) △x是自变量的增量，△y是因变量的增量
 定义：
 f(x)在$x_0$的邻域内有定义，$△x\to 0$,$△y\to 0$
@@ -1180,10 +1180,10 @@ $f(x)= e^{lnf(x)}$、两个重要极限
     
     <item>
       <title>无穷小与无穷大</title>
-      <link>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
+      <link>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
       <pubDate>Sat, 12 Sep 2020 16:33:41 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
+      <guid>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
       <description>无穷小量 定义： 极限为0的变量称为无穷小量，简称无穷小.
 f(x)→0
 常用希腊字母 $\alpha$ ,$\beta$ ,$\gamma$
@@ -1209,10 +1209,10 @@ $\frac{\infty}{\infty}$ 分子、分母同次，最高次的系数之比（分�
     
     <item>
       <title>极限</title>
-      <link>https://blog.kayleh.top/%E6%9E%81%E9%99%90/</link>
+      <link>https://kayleh.top/%E6%9E%81%E9%99%90/</link>
       <pubDate>Sat, 12 Sep 2020 10:30:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%9E%81%E9%99%90/</guid>
+      <guid>https://kayleh.top/%E6%9E%81%E9%99%90/</guid>
       <description>极限  [“极限”是数学中的分支——微积分的基础概念，广义的“极限”是指“无限靠近而永远不能到达”的意思。数学中的“极限”指：某一个函数中的某一个变量，此变量在变大（或者变小）的永远变化的过程中，逐渐向某一个确定的数值A不断地逼近而“永远不能够重合到A”（“永远不能够等于A，但是取等于A‘已经足够取得高精度计算结果）的过程中，此变量的变化，被人为规定为“永远靠近而不停止”、其有一个“不断地极为靠近A点的趋势”。极限是一种“变化状态”的描述。此变量永远趋近的值A叫做“极限值”（当然也可以用其他符号表示）。
  证明：1=0.9999·····？
 比如
@@ -1240,74 +1240,74 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>值传递</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Thu, 10 Sep 2020 13:01:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</guid>
       <description>传值调用 向函数传递参数的传值调用方法，把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数不会影响实际参数。默认情况下，C++ 使用传值调用方法来传递参数。一般来说，这意味着函数内的代码不会改变用于调用函数的实际参数。
 #include &amp;lt;iostream&amp;gt;using namespace std; // 函数声明 void swap(int x, int y); // 函数定义 void swap(int x, int y) { int temp; temp = x; /* 保存 x 的值 */ x = y; /* 把 y 赋值给 x */ y = temp; /* 把 x 赋值给 y */ return; } int main() { // 局部变量声明  int a = 100; int b = 200; cout &amp;lt;&amp;lt; &amp;#34;before swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;before swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; // 调用函数来交换值  swap(a, b); cout &amp;lt;&amp;lt; &amp;#34;After swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;After swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; return 0; }  指针调用 向函数传递参数的指针调用方法，把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</description>
     </item>
     
     <item>
       <title>docker虚拟化容器</title>
-      <link>https://blog.kayleh.top/docker%E8%99%9A%E6%8B%9F%E5%8C%96%E5%AE%B9%E5%99%A8ing/</link>
+      <link>https://kayleh.top/docker%E8%99%9A%E6%8B%9F%E5%8C%96%E5%AE%B9%E5%99%A8ing/</link>
       <pubDate>Fri, 28 Aug 2020 16:36:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/docker%E8%99%9A%E6%8B%9F%E5%8C%96%E5%AE%B9%E5%99%A8ing/</guid>
+      <guid>https://kayleh.top/docker%E8%99%9A%E6%8B%9F%E5%8C%96%E5%AE%B9%E5%99%A8ing/</guid>
       <description>&lt;p&gt;docker&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SnowFlake分布式ID雪花算法</title>
-      <link>https://blog.kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</link>
+      <link>https://kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</link>
       <pubDate>Fri, 28 Aug 2020 16:20:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</guid>
+      <guid>https://kayleh.top/snowflake%E5%88%86%E5%B8%83%E5%BC%8Fid%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95ing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Seata处理分布式事务</title>
-      <link>https://blog.kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
+      <link>https://kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</link>
       <pubDate>Wed, 26 Aug 2020 12:25:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
+      <guid>https://kayleh.top/seata%E5%A4%84%E7%90%86%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</guid>
       <description>&lt;p&gt;Seata&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Sentinel实现熔断与限流</title>
-      <link>https://blog.kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/</link>
+      <link>https://kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/</link>
       <pubDate>Mon, 24 Aug 2020 21:18:27 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/</guid>
+      <guid>https://kayleh.top/sentinel%E5%AE%9E%E7%8E%B0%E7%86%94%E6%96%AD%E4%B8%8E%E9%99%90%E6%B5%81/</guid>
       <description>&lt;p&gt;Sentinel&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>gulp压缩静态资源</title>
-      <link>https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</link>
+      <link>https://kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</link>
       <pubDate>Mon, 24 Aug 2020 11:28:18 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</guid>
+      <guid>https://kayleh.top/gulp%E5%8E%8B%E7%BC%A9%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</guid>
       <description>&lt;p&gt;hexo&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Nacos服务注册和配置中心</title>
-      <link>https://blog.kayleh.top/nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
+      <link>https://kayleh.top/nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</link>
       <pubDate>Fri, 21 Aug 2020 17:44:55 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
+      <guid>https://kayleh.top/nacos%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</guid>
       <description>&lt;p&gt;Nacos&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Traffic monetization:Access to Google Adsense</title>
-      <link>https://blog.kayleh.top/%E6%8E%A5%E5%85%A5%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A%E8%81%94%E7%9B%9Fadsense/</link>
+      <link>https://kayleh.top/%E6%8E%A5%E5%85%A5%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A%E8%81%94%E7%9B%9Fadsense/</link>
       <pubDate>Fri, 21 Aug 2020 15:23:22 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%8E%A5%E5%85%A5%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A%E8%81%94%E7%9B%9Fadsense/</guid>
+      <guid>https://kayleh.top/%E6%8E%A5%E5%85%A5%E8%B0%B7%E6%AD%8C%E5%B9%BF%E5%91%8A%E8%81%94%E7%9B%9Fadsense/</guid>
       <description>&lt;p&gt;流量变现: 接入谷歌广告联盟&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://kayleh.top&#34;&gt;https://kayleh.top&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;</description>
@@ -1315,380 +1315,380 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>中英文切换</title>
-      <link>https://blog.kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</link>
+      <link>https://kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</link>
       <pubDate>Fri, 21 Aug 2020 11:28:18 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</guid>
+      <guid>https://kayleh.top/%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%87%E6%8D%A2/</guid>
       <description>&lt;p&gt;hexo&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>jsdelivr的CDN加速缓存不刷新问题</title>
-      <link>https://blog.kayleh.top/%E5%85%B3%E4%BA%8Ecdn%E5%8A%A0%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8D%E5%88%B7%E6%96%B0%E7%9A%84%E8%A7%A3%E5%86%B3/</link>
+      <link>https://kayleh.top/%E5%85%B3%E4%BA%8Ecdn%E5%8A%A0%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8D%E5%88%B7%E6%96%B0%E7%9A%84%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Thu, 20 Aug 2020 14:20:58 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%85%B3%E4%BA%8Ecdn%E5%8A%A0%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8D%E5%88%B7%E6%96%B0%E7%9A%84%E8%A7%A3%E5%86%B3/</guid>
+      <guid>https://kayleh.top/%E5%85%B3%E4%BA%8Ecdn%E5%8A%A0%E9%80%9F%E7%BC%93%E5%AD%98%E4%B8%8D%E5%88%B7%E6%96%B0%E7%9A%84%E8%A7%A3%E5%86%B3/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud Alibaba</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%849/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%849/</link>
       <pubDate>Wed, 19 Aug 2020 20:25:56 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%849/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%849/</guid>
       <description>&lt;p&gt;SpringCloud Alibaba&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>维护3</title>
-      <link>https://blog.kayleh.top/maintain3/</link>
+      <link>https://kayleh.top/maintain3/</link>
       <pubDate>Wed, 19 Aug 2020 19:24:00 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/maintain3/</guid>
+      <guid>https://kayleh.top/maintain3/</guid>
       <description>&lt;p&gt;优化网站，DNS均衡负载&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud Sleuth分布式请求链路追踪</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%848/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%848/</link>
       <pubDate>Wed, 19 Aug 2020 17:52:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%848/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%848/</guid>
       <description>&lt;p&gt;SpringCloud Sleuth分布式请求链路追踪&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud Stream消息驱动</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/</link>
       <pubDate>Fri, 14 Aug 2020 23:33:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%847/</guid>
       <description>&lt;p&gt;SpringCloud Stream消息驱动&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud Bus消息总线</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/</link>
       <pubDate>Fri, 14 Aug 2020 23:29:28 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%846/</guid>
       <description>&lt;p&gt;SpringCloud Bus 消息总线&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud config分布式配置中心</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/</link>
       <pubDate>Fri, 14 Aug 2020 23:26:05 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%845/</guid>
       <description>&lt;p&gt;SpringCloud config分布式配置中心&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>GateWay服务限流</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%844/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%844/</link>
       <pubDate>Fri, 14 Aug 2020 23:21:47 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%844/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%844/</guid>
       <description>&lt;p&gt;GateWay服务限流&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Ribbon负载均衡服务调用、服务降级</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%843/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%843/</link>
       <pubDate>Fri, 14 Aug 2020 23:14:13 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%843/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%843/</guid>
       <description>&lt;p&gt;Ribbon负载均衡服务调用、服务降级&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Eureka服务注册与发现</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%842/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%842/</link>
       <pubDate>Fri, 14 Aug 2020 23:03:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%842/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%842/</guid>
       <description>&lt;p&gt;Eureka服务注册与发现&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringCloud</title>
-      <link>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%841/</link>
+      <link>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%841/</link>
       <pubDate>Mon, 03 Aug 2020 14:07:44 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%841/</guid>
+      <guid>https://kayleh.top/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%841/</guid>
       <description>&lt;p&gt;SpringCloud——基于分布式的微服务架构&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MYSQL</title>
-      <link>https://blog.kayleh.top/mysql/</link>
+      <link>https://kayleh.top/mysql/</link>
       <pubDate>Sun, 02 Aug 2020 22:54:25 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/mysql/</guid>
+      <guid>https://kayleh.top/mysql/</guid>
       <description>&lt;h1 id=&#34;mysql索引&#34;&gt;MYSQL索引&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>HTTP</title>
-      <link>https://blog.kayleh.top/http/</link>
+      <link>https://kayleh.top/http/</link>
       <pubDate>Mon, 27 Jul 2020 10:58:34 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/http/</guid>
+      <guid>https://kayleh.top/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TCP/IP</title>
-      <link>https://blog.kayleh.top/tcp-ip/</link>
+      <link>https://kayleh.top/tcp-ip/</link>
       <pubDate>Mon, 27 Jul 2020 10:58:27 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/tcp-ip/</guid>
+      <guid>https://kayleh.top/tcp-ip/</guid>
       <description>&lt;h1 id=&#34;tcpip协议&#34;&gt;TCP/IP协议&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>计算机网络概论</title>
-      <link>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</link>
+      <link>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</link>
       <pubDate>Sat, 25 Jul 2020 13:28:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</guid>
+      <guid>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</guid>
       <description>&lt;h1 id=&#34;计算机网络&#34;&gt;计算机网络&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>设计模式</title>
-      <link>https://blog.kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 24 Jul 2020 17:48:28 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h1 id=&#34;设计模式&#34;&gt;设计模式&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>数据结构与算法</title>
-      <link>https://blog.kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
       <pubDate>Fri, 24 Jul 2020 17:19:17 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h1 id=&#34;数据结构与算法&#34;&gt;数据结构与算法&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>introduction to operating system</title>
-      <link>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</link>
+      <link>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</link>
       <pubDate>Fri, 24 Jul 2020 14:46:46 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</guid>
+      <guid>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</guid>
       <description>&lt;h1 id=&#34;操作系统概论&#34;&gt;操作系统概论&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>计算机网络</title>
-      <link>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <link>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Fri, 24 Jul 2020 14:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <guid>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
       <description>&lt;h1 id=&#34;计算机网络&#34;&gt;计算机网络&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>XML</title>
-      <link>https://blog.kayleh.top/xml/</link>
+      <link>https://kayleh.top/xml/</link>
       <pubDate>Fri, 24 Jul 2020 14:24:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/xml/</guid>
+      <guid>https://kayleh.top/xml/</guid>
       <description>&lt;h1 id=&#34;xml&#34;&gt;XML&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JDBC</title>
-      <link>https://blog.kayleh.top/jdbc/</link>
+      <link>https://kayleh.top/jdbc/</link>
       <pubDate>Thu, 16 Jul 2020 15:06:43 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jdbc/</guid>
+      <guid>https://kayleh.top/jdbc/</guid>
       <description>&lt;h1 id=&#34;jdbc&#34;&gt;JDBC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>contract</title>
-      <link>https://blog.kayleh.top/contract/</link>
+      <link>https://kayleh.top/contract/</link>
       <pubDate>Wed, 15 Jul 2020 21:57:44 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/contract/</guid>
+      <guid>https://kayleh.top/contract/</guid>
       <description></description>
     </item>
     
     <item>
       <title>J2EE</title>
-      <link>https://blog.kayleh.top/j2ee/</link>
+      <link>https://kayleh.top/j2ee/</link>
       <pubDate>Tue, 14 Jul 2020 13:44:34 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/j2ee/</guid>
+      <guid>https://kayleh.top/j2ee/</guid>
       <description>&lt;h1 id=&#34;java-web&#34;&gt;Java Web&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>MVC</title>
-      <link>https://blog.kayleh.top/mvc/</link>
+      <link>https://kayleh.top/mvc/</link>
       <pubDate>Tue, 14 Jul 2020 13:43:03 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/mvc/</guid>
+      <guid>https://kayleh.top/mvc/</guid>
       <description>&lt;h1 id=&#34;mvc&#34;&gt;MVC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Mybatis</title>
-      <link>https://blog.kayleh.top/mybatis/</link>
+      <link>https://kayleh.top/mybatis/</link>
       <pubDate>Tue, 14 Jul 2020 13:41:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/mybatis/</guid>
+      <guid>https://kayleh.top/mybatis/</guid>
       <description>&lt;h1 id=&#34;mybatis&#34;&gt;MYBATIS&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Spring</title>
-      <link>https://blog.kayleh.top/spring/</link>
+      <link>https://kayleh.top/spring/</link>
       <pubDate>Tue, 14 Jul 2020 13:40:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/spring/</guid>
+      <guid>https://kayleh.top/spring/</guid>
       <description>&lt;h1 id=&#34;spring&#34;&gt;SPRING&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>IO</title>
-      <link>https://blog.kayleh.top/io/</link>
+      <link>https://kayleh.top/io/</link>
       <pubDate>Tue, 14 Jul 2020 13:39:13 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/io/</guid>
+      <guid>https://kayleh.top/io/</guid>
       <description>&lt;h1 id=&#34;io&#34;&gt;IO&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>GC</title>
-      <link>https://blog.kayleh.top/gc/</link>
+      <link>https://kayleh.top/gc/</link>
       <pubDate>Tue, 14 Jul 2020 13:38:14 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/gc/</guid>
+      <guid>https://kayleh.top/gc/</guid>
       <description>&lt;h1 id=&#34;gc&#34;&gt;GC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JVM</title>
-      <link>https://blog.kayleh.top/jvm/</link>
+      <link>https://kayleh.top/jvm/</link>
       <pubDate>Tue, 14 Jul 2020 13:35:08 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jvm/</guid>
+      <guid>https://kayleh.top/jvm/</guid>
       <description>&lt;h1 id=&#34;jvm&#34;&gt;JVM&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Reflection</title>
-      <link>https://blog.kayleh.top/reflection/</link>
+      <link>https://kayleh.top/reflection/</link>
       <pubDate>Tue, 14 Jul 2020 13:33:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/reflection/</guid>
+      <guid>https://kayleh.top/reflection/</guid>
       <description>&lt;h1 id=&#34;reflection&#34;&gt;Reflection&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JDK</title>
-      <link>https://blog.kayleh.top/jdk/</link>
+      <link>https://kayleh.top/jdk/</link>
       <pubDate>Tue, 14 Jul 2020 13:32:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jdk/</guid>
+      <guid>https://kayleh.top/jdk/</guid>
       <description>&lt;h1 id=&#34;jdk&#34;&gt;JDK&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Lock</title>
-      <link>https://blog.kayleh.top/lock/</link>
+      <link>https://kayleh.top/lock/</link>
       <pubDate>Tue, 14 Jul 2020 13:31:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/lock/</guid>
+      <guid>https://kayleh.top/lock/</guid>
       <description>&lt;h1 id=&#34;lock&#34;&gt;LOCK&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Thread</title>
-      <link>https://blog.kayleh.top/thread/</link>
+      <link>https://kayleh.top/thread/</link>
       <pubDate>Tue, 14 Jul 2020 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/thread/</guid>
+      <guid>https://kayleh.top/thread/</guid>
       <description>&lt;h1 id=&#34;thread&#34;&gt;THREAD&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Array</title>
-      <link>https://blog.kayleh.top/array/</link>
+      <link>https://kayleh.top/array/</link>
       <pubDate>Tue, 14 Jul 2020 13:29:08 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/array/</guid>
+      <guid>https://kayleh.top/array/</guid>
       <description>&lt;h1 id=&#34;array&#34;&gt;Array&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>J2SE</title>
-      <link>https://blog.kayleh.top/j2se/</link>
+      <link>https://kayleh.top/j2se/</link>
       <pubDate>Tue, 14 Jul 2020 13:27:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/j2se/</guid>
+      <guid>https://kayleh.top/j2se/</guid>
       <description>&lt;h1 id=&#34;object-oriented&#34;&gt;Object-oriented&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://blog.kayleh.top/linux/</link>
+      <link>https://kayleh.top/linux/</link>
       <pubDate>Thu, 02 Jul 2020 21:26:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/linux/</guid>
+      <guid>https://kayleh.top/linux/</guid>
       <description>&lt;h2 id=&#34;虚拟机&#34;&gt;虚拟机&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>C pointer</title>
-      <link>https://blog.kayleh.top/c-prime-plus/</link>
+      <link>https://kayleh.top/c-prime-plus/</link>
       <pubDate>Sun, 28 Jun 2020 17:33:01 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-prime-plus/</guid>
+      <guid>https://kayleh.top/c-prime-plus/</guid>
       <description>&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>https://blog.kayleh.top/redis/</link>
+      <link>https://kayleh.top/redis/</link>
       <pubDate>Sat, 27 Jun 2020 17:30:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/redis/</guid>
+      <guid>https://kayleh.top/redis/</guid>
       <description>&lt;h1 id=&#34;redis&#34;&gt;Redis&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Operating Systems</title>
-      <link>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 20 Jun 2020 21:14:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description>&lt;h1 id=&#34;操作系统&#34;&gt;操作系统&lt;/h1&gt;
 &lt;h3 id=&#34;os-kernel的特征&#34;&gt;OS Kernel的特征&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>encoding-algorithm</title>
-      <link>https://blog.kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</link>
       <pubDate>Fri, 19 Jun 2020 08:53:22 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h2 id=&#34;编码算法&#34;&gt;编码算法&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>hash algorithm</title>
-      <link>https://blog.kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 17 Jun 2020 18:03:58 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h3 id=&#34;哈希算法&#34;&gt;哈希算法&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;哈希算法（Hash）又称摘要算法（Digest），它的作用是：对任意一组输入数据进行计算，得到一个固定长度的输出摘要。&lt;/p&gt;
@@ -1697,46 +1697,46 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>interpolation-search-algorithm</title>
-      <link>https://blog.kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 17 Jun 2020 09:18:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h3 id=&#34;插值查找算法&#34;&gt;插值查找算法&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>binary-search-algorithm</title>
-      <link>https://blog.kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 17 Jun 2020 09:04:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h3 id=&#34;二分查找算法&#34;&gt;二分查找算法&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>linear-search-algorithm</title>
-      <link>https://blog.kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 17 Jun 2020 08:54:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E7%BA%BF%E6%80%A7%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h3 id=&#34;线性查找算法&#34;&gt;线性查找算法&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>多线程</title>
-      <link>https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <link>https://kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
       <pubDate>Mon, 15 Jun 2020 09:13:04 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
       <description>&lt;h2 id=&#34;多线程&#34;&gt;多线程&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>模板方法</title>
-      <link>https://blog.kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link>
+      <link>https://kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sat, 13 Jun 2020 17:22:53 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid>
       <description>&lt;h4 id=&#34;模板方法&#34;&gt;模板方法&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1746,10 +1746,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>访问者模式</title>
-      <link>https://blog.kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 17:22:33 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h4 id=&#34;访问者&#34;&gt;访问者&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1759,10 +1759,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>策略模式</title>
-      <link>https://blog.kayleh.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 17:17:47 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h4 id=&#34;策略&#34;&gt;策略&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1772,10 +1772,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>状态模式</title>
-      <link>https://blog.kayleh.top/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 16:14:10 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h4 id=&#34;状态&#34;&gt;状态&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1785,10 +1785,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>观察者模式</title>
-      <link>https://blog.kayleh.top/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 16:07:09 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h4 id=&#34;观察者&#34;&gt;观察者&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1798,10 +1798,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>memo-mode</title>
-      <link>https://blog.kayleh.top/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 15:20:47 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h4 id=&#34;备忘录模式&#34;&gt;备忘录模式&lt;/h4&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1811,10 +1811,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>中介者模式</title>
-      <link>https://blog.kayleh.top/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 14:46:55 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h1 id=&#34;中介者模式&#34;&gt;中介者模式&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;中介者模式（Mediator Pattern）是用来降低多个对象和类之间的通信复杂性。这种模式提供了一个中介类，该类通常处理不同类之间的通信，并支持松耦合，使代码易于维护。中介者模式属于行为型模式。&lt;/p&gt;
@@ -1823,10 +1823,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>迭代器模式</title>
-      <link>https://blog.kayleh.top/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 13:26:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;迭代器&#34;&gt;迭代器&lt;/h3&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -1836,10 +1836,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>解释器模式</title>
-      <link>https://blog.kayleh.top/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 12 Jun 2020 21:31:18 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h1 id=&#34;解释器模式&#34;&gt;解释器模式&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;解释器模式（Interpreter Pattern）提供了评估语言的语法或表达式的方式，它属于行为型模式。这种模式实现了一个表达式接口，该接口解释一个特定的上下文。这种模式被用在 SQL 解析、符号处理引擎等。&lt;/p&gt;
@@ -1848,10 +1848,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>命令模式</title>
-      <link>https://blog.kayleh.top/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 12 Jun 2020 18:12:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h2 id=&#34;命令模式&#34;&gt;命令模式&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;**命令模式（Command Pattern）**是一种数据驱动的设计模式，它属于行为型模式。请求以命令的形式包裹在对象中，并传给调用对象。调用对象寻找可以处理该命令的合适的对象，并把该命令传给相应的对象，该对象执行命令。&lt;/p&gt;
@@ -1860,10 +1860,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>责任链模式</title>
-      <link>https://blog.kayleh.top/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Thu, 11 Jun 2020 19:48:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;责任链模式&#34;&gt;责任链模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;**责任链模式（Chain of Responsibility Pattern）**为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。&lt;/p&gt;
@@ -1872,19 +1872,19 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>RESUME</title>
-      <link>https://blog.kayleh.top/resume/</link>
+      <link>https://kayleh.top/resume/</link>
       <pubDate>Thu, 11 Jun 2020 09:48:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/resume/</guid>
+      <guid>https://kayleh.top/resume/</guid>
       <description>&lt;h1 id=&#34;resume&#34;&gt;RESUME&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>代理模式</title>
-      <link>https://blog.kayleh.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 20:46:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;代理模式&#34;&gt;代理模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;为其他对象提供一种代理以控制对这个对象的访问。&lt;/em&gt;&lt;/p&gt;
@@ -1893,10 +1893,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>享元模式</title>
-      <link>https://blog.kayleh.top/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 18:05:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;享元&#34;&gt;享元&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;运用共享技术有效地支持大量细粒度的对象。&lt;/em&gt;&lt;/p&gt;
@@ -1905,10 +1905,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>外观模式</title>
-      <link>https://blog.kayleh.top/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 15:37:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;外观模式&#34;&gt;外观模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;为子系统中的一组接口提供一个一致的界面。Facade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。&lt;/p&gt;
@@ -1917,10 +1917,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>装饰器模式</title>
-      <link>https://blog.kayleh.top/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 15:10:41 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;装饰器模式&#34;&gt;装饰器模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;动态地给一个对象添加一些额外的职责。就增加功能来说，相比生成子类更为灵活。&lt;/p&gt;
@@ -1929,10 +1929,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>组合模式</title>
-      <link>https://blog.kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 14:39:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;组合模式&#34;&gt;组合模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;将对象组合成树形结构以表示“部分-整体”的层次结构，使得用户对单个对象和组合对象的使用具有一致性。&lt;/p&gt;
@@ -1941,10 +1941,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>桥接模式</title>
-      <link>https://blog.kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Tue, 09 Jun 2020 14:04:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;桥接模式&#34;&gt;桥接模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;将抽象部分与它的实现部分分离，使它们都可以独立地变化。&lt;/em&gt;&lt;/p&gt;
@@ -1953,10 +1953,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>适配器模式</title>
-      <link>https://blog.kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Mon, 08 Jun 2020 14:28:13 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h3 id=&#34;适配器模式&#34;&gt;适配器模式&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。&lt;/em&gt;&lt;/p&gt;
@@ -1965,10 +1965,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>原型</title>
-      <link>https://blog.kayleh.top/%E5%8E%9F%E5%9E%8B/</link>
+      <link>https://kayleh.top/%E5%8E%9F%E5%9E%8B/</link>
       <pubDate>Mon, 08 Jun 2020 09:43:14 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8E%9F%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/%E5%8E%9F%E5%9E%8B/</guid>
       <description>&lt;h3 id=&#34;原型&#34;&gt;原型&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。&lt;/p&gt;
@@ -1977,10 +1977,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>生成器</title>
-      <link>https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/</link>
+      <link>https://kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/</link>
       <pubDate>Mon, 08 Jun 2020 09:39:43 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/</guid>
+      <guid>https://kayleh.top/%E7%94%9F%E6%88%90%E5%99%A8/</guid>
       <description>&lt;h3 id=&#34;生成器&#34;&gt;生成器&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。&lt;/p&gt;
@@ -1989,10 +1989,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>工厂设计模式</title>
-      <link>https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 06 Jun 2020 20:42:10 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h2 id=&#34;工厂设计模式&#34;&gt;工厂设计模式&lt;/h2&gt;
 &lt;h3 id=&#34;工厂方法&#34;&gt;工厂方法&lt;/h3&gt;
 &lt;p&gt;工厂方法即Factory Method，是一种对象创建型模式。&lt;/p&gt;</description>
@@ -2000,19 +2000,19 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>单例模式</title>
-      <link>https://blog.kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 06 Jun 2020 14:05:04 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h2 id=&#34;单例设计模式&#34;&gt;单例设计模式&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>合成复用原则</title>
-      <link>https://blog.kayleh.top/%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99/</link>
       <pubDate>Fri, 05 Jun 2020 15:42:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;合成复用原则&#34;&gt;合成复用原则&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Composite Resue Principle&lt;/p&gt;
@@ -2021,10 +2021,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>迪米特法则</title>
-      <link>https://blog.kayleh.top/%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99/</link>
+      <link>https://kayleh.top/%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99/</link>
       <pubDate>Fri, 05 Jun 2020 11:09:31 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;基本介绍&#34;&gt;基本介绍&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Demeter Principle&lt;/p&gt;
@@ -2033,10 +2033,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>开闭原则</title>
-      <link>https://blog.kayleh.top/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</link>
       <pubDate>Fri, 05 Jun 2020 09:07:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;开闭原则&#34;&gt;开闭原则&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Open Closed Principle&lt;/p&gt;
@@ -2046,10 +2046,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>里氏替换原则</title>
-      <link>https://blog.kayleh.top/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</link>
       <pubDate>Thu, 04 Jun 2020 18:13:11 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;里氏替换原则&#34;&gt;里氏替换原则&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Liskov Substitution Principle&lt;/p&gt;
@@ -2061,10 +2061,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>依赖倒转原则</title>
-      <link>https://blog.kayleh.top/%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99/</link>
       <pubDate>Wed, 03 Jun 2020 20:29:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;依赖倒转原则&#34;&gt;依赖倒转原则&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Dependence Inversion Priciple&lt;/p&gt;
@@ -2073,10 +2073,10 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>接口隔离原则</title>
-      <link>https://blog.kayleh.top/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</link>
       <pubDate>Wed, 03 Jun 2020 17:56:04 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;接口隔离原则&#34;&gt;接口隔离原则&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Interface Segregation Principle&lt;/p&gt;
@@ -2085,47 +2085,47 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>单一职责原则</title>
-      <link>https://blog.kayleh.top/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</link>
+      <link>https://kayleh.top/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</link>
       <pubDate>Wed, 03 Jun 2020 16:57:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</guid>
       <description>&lt;h3 id=&#34;单一职责原则&#34;&gt;单一职责原则&lt;/h3&gt;
 &lt;hr&gt;</description>
     </item>
     
     <item>
       <title>XSS跨站脚本攻击</title>
-      <link>https://blog.kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</link>
+      <link>https://kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</link>
       <pubDate>Sun, 31 May 2020 20:58:53 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</guid>
+      <guid>https://kayleh.top/xss%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/</guid>
       <description>&lt;h3 id=&#34;xss跨站脚本攻击&#34;&gt;XSS跨站脚本攻击&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>SQL注入式攻击</title>
-      <link>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</link>
+      <link>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</link>
       <pubDate>Sat, 30 May 2020 21:13:52 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</guid>
+      <guid>https://kayleh.top/sql%E6%B3%A8%E5%85%A5%E5%BC%8F%E6%94%BB%E5%87%BB/</guid>
       <description>&lt;h3 id=&#34;sql注入式攻击&#34;&gt;SQL注入式攻击&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>维护2</title>
-      <link>https://blog.kayleh.top/%E7%BB%B4%E6%8A%A42/</link>
+      <link>https://kayleh.top/%E7%BB%B4%E6%8A%A42/</link>
       <pubDate>Thu, 21 May 2020 19:12:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BB%B4%E6%8A%A42/</guid>
+      <guid>https://kayleh.top/%E7%BB%B4%E6%8A%A42/</guid>
       <description></description>
     </item>
     
     <item>
       <title>binary sort tree</title>
-      <link>https://blog.kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</link>
+      <link>https://kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</link>
       <pubDate>Wed, 20 May 2020 20:42:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</guid>
+      <guid>https://kayleh.top/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/</guid>
       <description>&lt;h3 id=&#34;二叉排序树&#34;&gt;二叉排序树&lt;/h3&gt;
 &lt;p&gt;二叉排序树：BST: (Binary Sort(Search) Tree), 对于二叉排序树的任何一个非叶子节点，要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。&lt;/p&gt;
 &lt;p&gt;如果有相同的值，可以将该节点放在左子节点或右子节点&lt;/p&gt;</description>
@@ -2133,29 +2133,29 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>heap-sort</title>
-      <link>https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</link>
+      <link>https://kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Mon, 18 May 2020 20:40:11 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</guid>
+      <guid>https://kayleh.top/%E5%A0%86%E6%8E%92%E5%BA%8F/</guid>
       <description>&lt;h3 id=&#34;堆排序&#34;&gt;堆排序&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>7 sorting algorithms</title>
-      <link>https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sun, 17 May 2020 21:42:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/7%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h1 id=&#34;7种排序算法&#34;&gt;7种排序算法&lt;/h1&gt;
 &lt;h2 id=&#34;冒泡排序&#34;&gt;冒泡排序&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>计算机组成原理</title>
-      <link>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
+      <link>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 14 May 2020 22:04:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</guid>
       <description>&lt;h1 id=&#34;计算机组成原理&#34;&gt;计算机组成原理&lt;/h1&gt;
 &lt;h4 id=&#34;1第一台电子计算机何时何地诞生英文全称&#34;&gt;1.第一台电子计算机何时何地诞生？英文全称？&lt;/h4&gt;
 &lt;p&gt;1946年2月14日 美国宾夕法尼亚大学&lt;/p&gt;</description>
@@ -2163,48 +2163,48 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>queue</title>
-      <link>https://blog.kayleh.top/%E9%98%9F%E5%88%97/</link>
+      <link>https://kayleh.top/%E9%98%9F%E5%88%97/</link>
       <pubDate>Thu, 14 May 2020 16:52:39 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%98%9F%E5%88%97/</guid>
+      <guid>https://kayleh.top/%E9%98%9F%E5%88%97/</guid>
       <description>&lt;h3 id=&#34;队列&#34;&gt;队列&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>Inversion of Control控制反转</title>
-      <link>https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</link>
+      <link>https://kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</link>
       <pubDate>Wed, 13 May 2020 16:42:55 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</guid>
+      <guid>https://kayleh.top/inversion-of-control%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/</guid>
       <description>&lt;h3 id=&#34;控制反转的定义&#34;&gt;控制反转的定义&lt;/h3&gt;</description>
     </item>
     
     <item>
       <title>LinkedList</title>
-      <link>https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/</link>
+      <link>https://kayleh.top/%E9%93%BE%E8%A1%A8/</link>
       <pubDate>Tue, 12 May 2020 19:21:40 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%93%BE%E8%A1%A8/</guid>
+      <guid>https://kayleh.top/%E9%93%BE%E8%A1%A8/</guid>
       <description>&lt;p&gt;链表是有序的列表，但它在内存里是无序的。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;%E9%93%BE%E8%A1%A8.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Stack</title>
-      <link>https://blog.kayleh.top/%E6%A0%88stack/</link>
+      <link>https://kayleh.top/%E6%A0%88stack/</link>
       <pubDate>Mon, 11 May 2020 15:30:11 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%A0%88stack/</guid>
+      <guid>https://kayleh.top/%E6%A0%88stack/</guid>
       <description>&lt;h2 id=&#34;栈stack&#34;&gt;栈(stack)&lt;/h2&gt;
 &lt;p&gt;1&lt;code&gt;栈&lt;/code&gt;是一个&lt;strong&gt;先入后出&lt;/strong&gt;(FILO-First In Last Out)的有序列表。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SparseArray</title>
-      <link>https://blog.kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</link>
+      <link>https://kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</link>
       <pubDate>Thu, 07 May 2020 21:28:41 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</guid>
+      <guid>https://kayleh.top/sparsearray%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/</guid>
       <description>稀疏数组 ​	（稀疏数组）
 定义 当一个数组中大部分的值未被使用，只有少部分的值的空间使用，造成了内存的浪费，这个时候就可以用到稀疏数组，保存需要的数据，节约内存空间。 当记录一个棋盘时：
 记录棋盘的位置，只有两个内容，其他未被使用没有意义的值浪费了内存空间
@@ -2214,19 +2214,19 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>维护1</title>
-      <link>https://blog.kayleh.top/%E7%BB%B4%E6%8A%A41/</link>
+      <link>https://kayleh.top/%E7%BB%B4%E6%8A%A41/</link>
       <pubDate>Fri, 01 May 2020 18:21:32 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BB%B4%E6%8A%A41/</guid>
+      <guid>https://kayleh.top/%E7%BB%B4%E6%8A%A41/</guid>
       <description></description>
     </item>
     
     <item>
       <title>面向对象</title>
-      <link>https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</link>
+      <link>https://kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</link>
       <pubDate>Wed, 29 Apr 2020 21:33:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</guid>
+      <guid>https://kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</guid>
       <description>&lt;h2 id=&#34;面向对象的特征有哪些方面&#34;&gt;面向对象的特征有哪些方面&lt;/h2&gt;
 &lt;h3 id=&#34;封装&#34;&gt;封装&lt;/h3&gt;
 &lt;p&gt;最常见的是把属性私有化封装在一个类里面，只能通过方法去访问&lt;/p&gt;</description>
@@ -2234,19 +2234,19 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>dynamic-array</title>
-      <link>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</link>
+      <link>https://kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</link>
       <pubDate>Sun, 26 Apr 2020 09:02:37 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</guid>
+      <guid>https://kayleh.top/%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84/</guid>
       <description>&lt;p&gt;动态数组&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spring、SpringMVC、Mybatis整合</title>
-      <link>https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</link>
+      <link>https://kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</link>
       <pubDate>Mon, 20 Apr 2020 21:05:31 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</guid>
+      <guid>https://kayleh.top/springspringmvcmybatis%E6%95%B4%E5%90%88/</guid>
       <description>SSM整合
 整合说明 服务器开发分为三层,表现层、业务层、持久层 表现层使用SpringMVC实现,业务程使用Spring实现,持久层使用Mybatis实现 使用Spring框架来整合 SpringMVC和Mybatis框架 这里使用xml配置文件+注解的方式进行搭建
 最终目标 最终实现通过前端页面对数据库进行查询和插入,实现用户的登录注册功能 准备 创建Maven工程 选择webapp 数据库准备 create database ssm; use ssm; create table account( id int primary key auto_increment, name varchar(20), money double ); ####创建目录 ####导入依赖 &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;project xmlns=&amp;#34;http://maven.apache.org/POM/4.0.0&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xsi:schemaLocation=&amp;#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;#34;&amp;gt; &amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt; &amp;lt;groupId&amp;gt;com.kayleh&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;SSM&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt; &amp;lt;packaging&amp;gt;war&amp;lt;/packaging&amp;gt; &amp;lt;name&amp;gt;SSM Maven Webapp&amp;lt;/name&amp;gt; &amp;lt;!-- FIXME change it to the project&amp;#39;s website --&amp;gt; &amp;lt;url&amp;gt;http://www.example.com&amp;lt;/url&amp;gt; &amp;lt;!--版本锁定--&amp;gt; &amp;lt;properties&amp;gt; &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt; &amp;lt;maven.compiler.source&amp;gt;1.7&amp;lt;/maven.compiler.source&amp;gt; &amp;lt;maven.compiler.target&amp;gt;1.7&amp;lt;/maven.compiler.target&amp;gt; &amp;lt;spring.version&amp;gt;5.0.2.RELEASE&amp;lt;/spring.version&amp;gt; &amp;lt;slf4j.version&amp;gt;1.6.6&amp;lt;/slf4j.version&amp;gt; &amp;lt;log4j.version&amp;gt;1.2.12&amp;lt;/log4j.version&amp;gt; &amp;lt;mysql.version&amp;gt;5.1.6&amp;lt;/mysql.version&amp;gt; &amp;lt;mybatis.version&amp;gt;3.4.5&amp;lt;/mybatis.version&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;4.</description>
@@ -2254,20 +2254,20 @@ $$\lim_{n\to \infty} x_n = a或x_n→a(n→\infty)$$
     
     <item>
       <title>palindrome</title>
-      <link>https://blog.kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</link>
       <pubDate>Sun, 19 Apr 2020 21:17:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%9B%9E%E6%96%87%E6%95%B0/</guid>
       <description>什么是回文数？ 回文数指的是正序和倒序读都是一样的数，例如121从左到右，从右到左读都是121。任何一个自然数与它的倒序数相加，所得的和再与和的倒序数相加，……如此反复进行下去，经过有限次步骤后，最后必定能得到一个回文数。
 问题：判断一个数是否为回文数，是返回true，否侧抛出false。 @题目来源lettcode 利用Java的StringBuilder通过把整数转换为字符串来实现↓ import java.util.Scanner; /** * @Author: Wizard * @Date: 2020/4/12 13:14 */ public class palindrome { public static boolean ispalindrome(int i) { String str = (new StringBuilder(i + &amp;#34;&amp;#34;)).reverse().toString(); return (i + &amp;#34;&amp;#34;).equals(str); } public static void main(String[] args) { while (true) { System.out.println(&amp;#34;输入需要判断的整数&amp;#34;); Scanner scanner = new Scanner(System.in); int str1 = scanner.nextInt(); System.out.println(ispalindrome(str1)); } } } /** * 输入需要判断的整数：1 * false * 输入需要判断的整数：12121 * true */  进阶：不改变整数为字符串 通过取整和取余获取整数中的数字进行比较 /** * @Author: Wizard * @Date: 2020/4/12 13:14 */ public class palindrome { public static boolean ispalindrome(int i) { if(i&amp;lt;0||(i%10==0&amp;amp;&amp;amp;i!</description>
     </item>
     
     <item>
       <title>SpringMVC@ModelAttribute的使用</title>
-      <link>https://blog.kayleh.top/springmvc-modelattribute/</link>
+      <link>https://kayleh.top/springmvc-modelattribute/</link>
       <pubDate>Sun, 19 Apr 2020 21:04:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springmvc-modelattribute/</guid>
+      <guid>https://kayleh.top/springmvc-modelattribute/</guid>
       <description>@ModelAttribute？ @ModelAttribute的原理比较复杂，需要对源码有一定的理解。它可以使被
 @ModelAttribute修饰的方法在控制器的处理方法之前调用。 但如果@ModelAttribute标注在方法的入参前，它可以从隐含对象中获取隐含的模型数据中获取对象，再将请求参数绑定到对象中，再传入入参。
  实际场景： Spring在进行数据库update全字段更新操作提交表单的时候，从页面获取的数据会封装成一个new的pojo对象，没有带的值为null；所以我们只能更新我们提交的数据。ModelAttribute暂时保存表单pojo对象，覆盖数据库保存的pojo对象的数据即可。
@@ -2276,37 +2276,37 @@ ModelAttribute提前与目标方法运行 /** * @author Kayleh */ @Controller pu
     
     <item>
       <title>Spring架构</title>
-      <link>https://blog.kayleh.top/spring%E6%9E%B6%E6%9E%84/</link>
+      <link>https://kayleh.top/spring%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Sun, 19 Apr 2020 20:40:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/spring%E6%9E%B6%E6%9E%84/</guid>
+      <guid>https://kayleh.top/spring%E6%9E%B6%E6%9E%84/</guid>
       <description>架构图</description>
     </item>
     
     <item>
       <title>unix的常用指令</title>
-      <link>https://blog.kayleh.top/unix/</link>
+      <link>https://kayleh.top/unix/</link>
       <pubDate>Sat, 14 Dec 2019 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/unix/</guid>
+      <guid>https://kayleh.top/unix/</guid>
       <description>unix的常用指令 ls 显示指定目录下的文件目录清单相当于dos下的dir命令。 pwd 显示当前目录。 mkdir 在当前目录下创建目录。 rm 删除文件或目录。 cp 复制文件。 mv 移动文件。 cd 切换工作目录。 ps 查看进程。 ftp 传送文件。 telnet 远程登录命令。 ping 用来测试本机与目标主机是否联通。 env 查看当前系统中的环境变量。 more 分屏显示指定文件的内容。 echo在终端上显示你要显示的内容，向C语言中的printf函数。 微信公众号:每日学习干货</description>
     </item>
     
     <item>
       <title>SpringMVC环境搭建</title>
-      <link>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <link>https://kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sun, 14 Jul 2019 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <guid>https://kayleh.top/springmvc%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
       <description>&lt;h2 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>concurrency-principle</title>
-      <link>https://blog.kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/</link>
+      <link>https://kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Jan 2019 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://kayleh.top/%E5%B9%B6%E5%8F%91%E5%8E%9F%E7%90%86/</guid>
       <description>多线程 为什么要创建线程池 如果系统要运行多个线程,大量反复的启动创建和回收线程会非常占用系统资源,导致性能下降. 创建线程池,可以: 1.降低资源消耗 2.提升响应速度 3.提高
 线程池原理  线程池一般由两种角色构成：多个工作线程 和 一个阻塞队列。
   工作线程 : 工作线程是一组已经处在运行中的线程，它们不断地向阻塞队列中领取任务执行。
@@ -2321,10 +2321,10 @@ newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯�
     
     <item>
       <title>Download</title>
-      <link>https://blog.kayleh.top/download/</link>
+      <link>https://kayleh.top/download/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/download/</guid>
+      <guid>https://kayleh.top/download/</guid>
       <description>Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。
 为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。
 用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。
@@ -2343,30 +2343,30 @@ HTTP/1.1 206 Partial Content Server: nginx Date: Wed, 25 Apr 2018 02:57:56 GMT C
     
     <item>
       <title>Java高性能高并发秒杀系统</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</guid>
       <description>@CSDN方 圆 1. 集成Mybatis  我觉得在集成Mybatis时问题并不大
  1.1 新接触的不用xml文件写Mapper文件 @Mapper @Component public interface UserMapper { @Select(&amp;#34;select * from user where id = #{id}&amp;#34;) User selectById(@Param(&amp;#34;id&amp;#34;) int id); @Insert(&amp;#34;insert into user (id,name) values (#{id},#{name})&amp;#34;) int insertUser(User user); }  注解@Mapper，标记该类是一个Mapper 通常之前做练习写数据库的CRUD都是在xml文件中进行的，这次采用的是在对应的方法上标注注解的形式，@Select @Insert  1.2 事务的测试 @Service public class UserService { ... @Transactional public boolean tx(){ User user1 = new User(2,&amp;#34;222&amp;#34;); userMapper.insertUser(user1); User user2 = new User(3,&amp;#34;333&amp;#34;); userMapper.insertUser(user2); return true; } }  在UserService中，创建了一个方法，用来测试事务，用@Transactional标记  1.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(2)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</guid>
       <description>1. 登录过程中，密码两次MD5加密 1.1 为啥用两次MD5哇？  第一次MD5，是针对传输安全做的MD5加密，因为http是明文传递，如果不进行加密的话，密码就直接被劫持了。 (Password1 = MD5(inputPassword,固定的salt值)，salt为字符串) 第二次MD5，是针对数据库安全做的MD5加密，保证数据库的防盗安全。若不进行二次加密，MD5值经数据库获取，可直接被MD5转换器直接转换为用户密码，不安全。 (Password2 = MD5(Password1,随机的salt值))   2. 构建数据库表 2.1 几个需要注意的点  字符集采用的是utf8mb4(most bytes 4)。简单来说，utf8mb4是utf8的超集，能够用4个字节存储更多的字符。标准UTF-8字符集编码可以用1~4个字节取编码21位字符，但是在MySQL中，utf8最多使用3个字节，像一些表情emoji和不常用的字符如“墅”需要用4个字节才能表示出来。用utf8mb4能解决以上问题。 数据库中存储了&amp;quot;动态&amp;quot;salt值   3. 针对MD5加密功能，封装了专用工具类 以下MD5包的Maven依赖了解以下
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;commons-codec&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-codec&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-lang3&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;3.6&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 123456789 3.1 工具类代码 public class MD5Util { //静态的salt，用于第一次MD5  private static final String salt = &amp;#34;1a2b3c4d&amp;#34;; private static String md5(String src){ //调用DigestUtils，实现md5处理  return DigestUtils.md5Hex(src); } /** * 第一次MD5处理 * @param inputPass * @return */ public static String inputPassToFormPass(String inputPass){ //这里没加“”出现了问题？？？  String pass =&amp;#34;&amp;#34; + salt.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(3)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</guid>
       <description>1. 实现分布式Session 1.1 原理图解  作用：用Redis存储Session值，在Redis中通过token值来获取用户信息  1.2 每次登陆，将Session的过期时间进行修正  怎么说呢？我们的Session值固定过期时间为30min，要在每次登陆的时候，以当前时间继续顺延30分钟 我们的解决方法就是，每次登陆时，重新再添加一次Cookie，则能够完成时间延长  以下是封装addCookie()的方法
 private void addCookie(HttpServletResponse response, MiaoShaUser user, String token) { //首次登陆的时候，需要将Cookie存入Redis  redisService.set(MiaoShaUserKey.getTokenPrefix,token,user); Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token); cookie.setMaxAge(MiaoShaUserKey.getTokenPrefix.expireSeconds()); //设置为根目录，则可以在整个应用范围内使用cookie  cookie.setPath(&amp;#34;/&amp;#34;); response.addCookie(cookie); } 123456789 1.3 Cookie有什么用？ 在我们这个项目中，Cookie中存储的是token值。而这个token值是和用户信息是一一绑定的，将会存储在Redis中。我们从Cookie中获取到token，从而就可以获取到用户，下面简化代码的过程，便是对这一过程的演示。
 1.4 分布式Session的理解 服务器中的原生session是无法满足需求的，因为用户的请求有可能随机落入到不同的服务器中，这样的结果将会导致用户的session丢失，传统做法中有解决方案，是进行session同步，将一个服务器上的session进行同步到另一个服务器上，在一个集群中无论你访问哪个服务器都可以共享，但是这种方法有个明显缺陷，就是性能问题，传输有时延问题，其次这样每台服务器的session重复拥有，这样其内存必然受到影响，如果只有几台服务器还好，如果是十台，二十台服务器呢？这种恐怖的场景会是什么样的体验呢，我就无法得知了。
@@ -2377,10 +2377,10 @@ private void addCookie(HttpServletResponse response, MiaoShaUser user, String to
     
     <item>
       <title>Java高性能高并发秒杀系统(4)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</guid>
       <description>1. 实现联表查询的一个小技巧 商品表和秒杀商品表是两个互相独立的表，其中的关联为goods_id，但是我要返回的对象，既想要商品表中的字段，又想要秒杀商品表中的字段，用下面这个方法，有点儿亮眼
 @Data public class GoodsVo extends Goods { private Double miaoshaPrice; private Integer stockCount; private Date startDate; private Date endDate; } 1234567 创建一个GoodsVo类，继承Goods类，再将秒杀商品表中特有的字段，添加进去即可
 1.1 左联表查询SQL语句  查询所有的商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id&amp;#34;) public List&amp;lt;GoodsVo&amp;gt; listGoodsVo(); 12  根据id获取商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id where mg.goods_id = #{goodId}&amp;#34;) public GoodsVo getGoodsVoByGoodsId(@Param(&amp;#34;goodId&amp;#34;)long goodId); 12 1.</description>
@@ -2388,37 +2388,37 @@ private void addCookie(HttpServletResponse response, MiaoShaUser user, String to
     
     <item>
       <title>Java高性能高并发秒杀系统(5)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</guid>
       <description>1. JMeter压力测试 1.1 测试过程  打开jmeter.bat  设置HTTP默认请求 编写协议和端口号  编写测试HTTP请求 因为我们已经写过默认设置，我们就可以不用编写协议和地址了，如下，只需编写请求类型和地址即可  添加聚合报告  我们即可在报告中查看压测信息 1.2 Linux top命令  top：相当于Windows下的任务管理器，可以动态显示当前进程的状况   2. 自定义配置文件JMeter压测 2.1 测试过程 与上方基本一致，不过，要在测试的请求上，添加CSV数据文件设置 读取我们自己编写的配置文件，并且标注变量名称，如此，即可开始压测。 其中配置文件信息，用英文逗号隔开  3. Redis压测 #100个并发连接，100000个请求 redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000 #存取大小为100字节的数据包 redis-benchmark -h 127.0.0.1 -p 6379 -q -d 100 #测试set和lpush命令的QPS，其中-q为简化输出 redis-benchmark -t set,lpush -q -n 1000000 #测试单条命令的QPS redis-benchmark -n 100000 -q script load &amp;#34;redis.call(&amp;#39;set&amp;#39;,&amp;#39;foo&amp;#39;,&amp;#39;bar&amp;#39;)&amp;#34; 1234567891011  4. Linux环境下，命令行压测  在Windows目录下写好jmx文件 命令行：sh jmeter.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(6)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</guid>
       <description>1. 页面缓存优化 1.1 未经优化之前的代码 @RequestMapping(&amp;#34;/to_list&amp;#34;) public String toList(Model model,MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); return &amp;#34;goods_list&amp;#34;; } 1234567 1.2 优化产生的改变 @RequestMapping(value = &amp;#34;/to_list&amp;#34;,produces = &amp;#34;text/html&amp;#34;) @ResponseBody public String toList(HttpServletRequest request, HttpServletResponse response, Model model, MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); //在有缓存的情况下，取出缓存  String html = redisService.get(GoodsKey.goodsKeyPrefix, &amp;#34;&amp;#34;, String.class); if(! StringUtils.isEmpty(html)) return html; //在没有缓存的时候，手动渲染，添加缓存  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); IWebContext ctx = new WebContext(request,response,request.getServletContext(),request.getLocale(),model.asMap()); html = thymeleafViewResolver.getTemplateEngine().process(&amp;#34;goods_list&amp;#34;,ctx);//这里需要注入IContext  if(!StringUtils.isEmpty(html)){ redisService.set(GoodsKey.goodsKeyPrefix,&amp;#34;&amp;#34;,html); } return html; //return &amp;#34;goods_list&amp;#34;;  }  首先，我们应用缓存，一定要引入RedisService   @RequestMapping(value = “/to_list”,produces = &amp;quot;text/html&amp;quot;)produces标注了返回值的类型，必须与@ResponseBody搭配使用 手动渲染过程中，我们要注入ThymeleafViewResolver，这个是框架给我们准备好的Bean，利用它来渲染页面，其中第二个参数，需要注入IContext 在Spring5版本中，SpringWebContext已经没有了，我们需要使用WebContext来代替。它剔除了之前对ApplicationContext 过多的依赖，现在thymeleaf渲染不再过多依赖spring容器 再者，我们对Redis缓存的时间设置了60秒的限制，超过60秒过期，这个时间不宜过长。在60秒内我们看到的网页一直一样是暂且可以接受的   2.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(7)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</guid>
       <description>1. 集成RabbitMQ 1.1 添加依赖 1.2 添加配置信息  2. 进行简单测试（Direct Exchange）  任何发送到Direct Exchange的消息都会被转发到RouteKey中指定的Queue  2.1 创建一个配置类 @Configuration public class MQConfig { public static final String QUEUE_NAME = &amp;#34;queue&amp;#34;; @Bean public Queue queue(){ return new Queue(QUEUE_NAME,true); } } 12345678910 2.1.1 @Bean注解  @Bean注解就是要告诉方法，产生一个Bean对象，并将这个Bean由Spring容器管理。产生这个Bean对象的方法Spring只会调用一次，随后这个Bean将放在IOC容器中。 SpringIOC容器管理一个或者多个Bean，这些Bean都需要在@Configuration注解下进行创建  2.2 创建消息的接受器 @Service @Slf4j public class MQReceiver { @RabbitListener(queues = MQConfig.QUEUE_NAME) public void receive(String message){ log.info(&amp;#34;receive message:&amp;#34; + message); } } 123456789 2.2.1 @RabbitListener注解  @RabbitListener，其中queues属性通过识别队列的名字来接受消息进行消费  2.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(8)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</guid>
       <description>1. 秒杀接口优化思路  重点我们是要减少对数据库的访问
   系统初始化时，将秒杀商品库存加载到Redis中 收到请求，在Redis中预减库存，库存不足时，直接返回秒杀失败 秒杀成功，将订单压入消息队列，返回前端消息“排队中”（像12306的买票） 消息出队，生成订单，减少库存 客户端在以上过程执行过程中，将一直轮询是否秒杀成功   2. 清晰框图解析  3. 代码中我们如何实现 3.1 库存预加载到Redis中 这里我们是通过实现InitialzingBean接口，重写其中afterProperties方法达成的
 public class MiaoshaController implements InitializingBean { @Override public void afterPropertiesSet() throws Exception { //系统启动的时候，就将数据存入Redis  //加载所有秒杀商品  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); if(goodsVos == null) return; //存入Redis中，各秒杀商品的数量  for (GoodsVo good : goodsVos){ redisService.set(GoodsKey.miaoshaGoodsStockPrefix,&amp;#34;&amp;#34;+good.getId(),good.getStockCount()); map.put(good.getId(),false); } } ...... } 12345678910111213141516171819  我们先从数据库中将秒杀商品的信息读取出来，再一个一个加载到缓存中 注意一下其中有一个map，它添加了对应Id-false的键值对，它表示的是该商品没有被秒杀完，用于下文中，当商品秒杀完，阻止其对redis服务的访问（后文还会提到）  3.2 开始秒杀，预减库存 //user不能为空，空了去登陆  if(user == null){ return Result.</description>
@@ -2426,10 +2426,10 @@ public class MiaoshaController implements InitializingBean { @Override public vo
     
     <item>
       <title>Java高性能高并发秒杀系统(9)</title>
-      <link>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</link>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</guid>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</guid>
       <description>1. 动态秒杀地址 1.1 前端的改变 之前我们实现秒杀的时候是直接跳转到秒杀接口，使得我们每次的秒杀地址都是一样的，这样具有安全隐患，所以，我们将其改为动态地址，通过在前端上写一个方法进行跳转，如下所示。
  它会先跳转到/miaosha/path，获取秒杀地址中的path值，将其存储在Redis中 然后携带path值去访问真正的秒杀方法，在其中将path值与Redis中的值进行比较，一致才能继续秒杀   1.2 获取路径的Java代码 @ResponseBody @RequestMapping(value = &amp;#34;/path&amp;#34;,method = RequestMethod.GET) public Result&amp;lt;String&amp;gt; getMiaoshaPath(MiaoShaUser user,@RequestParam(&amp;#34;goodsId&amp;#34;)long goodsId, @RequestParam(value = &amp;#34;verifyCode&amp;#34;,defaultValue = &amp;#34;0&amp;#34;)int verifyCode){ if(user == null) return Result.error(CodeMsg.SESSION_ERROR); String path = miaoshaService.createMiaoshaPath(user,goodsId); return Result.success(path); } 123456789101112  先调用createMiaoshaPath()方法，在其中会创建一串随机值，并且存储到Redis中，具体方法如下，执行完之后将路径值返回到前端  public String createMiaoshaPath(MiaoShaUser user, long goodsId) { if(user == null || goodsId &amp;lt;= 0) return null; String str = MD5Util.md5(UUIDUtil.getUUID()); redisService.set(MiaoshaKey.miaoshaPathPrefix,user.getId() + &amp;#34;_&amp;#34; + goodsId,str); return str; } 123456789 1.</description>
     </item>

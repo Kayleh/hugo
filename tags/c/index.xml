@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/c/</link>
+    <link>https://kayleh.top/tags/c/</link>
     <description>Recent content in C on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2020 02:24:07 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 Nov 2020 02:24:07 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>file input and output</title>
-      <link>https://blog.kayleh.top/10.file-input-and-output/</link>
+      <link>https://kayleh.top/10.file-input-and-output/</link>
       <pubDate>Wed, 04 Nov 2020 02:24:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/10.file-input-and-output/</guid>
+      <guid>https://kayleh.top/10.file-input-and-output/</guid>
       <description>对文件的输入输出 文件  程序文件。包括源程序文件，这种文件的内容是程序代码 数据文件。供程序运行时读写的数据  操作系统把各种设备都统一作为文件来处理。
 文件一般指存储在外部介质上数据的集合。
 流(数据流) 数据的输入输出.流表示了信息从源到目的地的流动.
@@ -28,10 +28,10 @@ Typedef struct { short level; //缓冲区”满”或”空”的程度//  unsig
     
     <item>
       <title>Good use of pointers</title>
-      <link>https://blog.kayleh.top/good-use-of-pointers/</link>
+      <link>https://kayleh.top/good-use-of-pointers/</link>
       <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/good-use-of-pointers/</guid>
+      <guid>https://kayleh.top/good-use-of-pointers/</guid>
       <description>善于利用指针  Good use of pointers
  指针 如果在程序中定义了一个变量，在对程序进行编译时，系统就会给这个变量分配内存单元。编译系统根据程序中定义的变量类型，分配一定长度的空间。
 每一个字节都有一个编号，就是“地址”。
@@ -54,10 +54,10 @@ i_pointer指向i
     
     <item>
       <title>users create data types themselves</title>
-      <link>https://blog.kayleh.top/9.users-create-data-types-themselves/</link>
+      <link>https://kayleh.top/9.users-create-data-types-themselves/</link>
       <pubDate>Mon, 26 Oct 2020 01:18:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/9.users-create-data-types-themselves/</guid>
+      <guid>https://kayleh.top/9.users-create-data-types-themselves/</guid>
       <description>用户自己建立数据类型 定义和使用结构体变量 由不同类型数据组成的组合型的数据结构，它称为结构体.
 struct Student { int num; char name[20]; char sex; int age; float score; char addr[30]; }; 声明结构体类型的一般形式
 struct 结构体名 {成员表列}; 结构体成员: 类型名 成员名; 成员可以属于另一个结构体类型
@@ -66,10 +66,10 @@ struct Date{ int month; int day; int year; } struct Student { struct Date birthd
     
     <item>
       <title>realize modular programming with functions</title>
-      <link>https://blog.kayleh.top/realize-modular-programming-with-functions/</link>
+      <link>https://kayleh.top/realize-modular-programming-with-functions/</link>
       <pubDate>Mon, 26 Oct 2020 01:17:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/realize-modular-programming-with-functions/</guid>
+      <guid>https://kayleh.top/realize-modular-programming-with-functions/</guid>
       <description>用函数实现模块化程序设计  Realize modular programming with functions
  用函数输出以下结果：
 ***************** How do you do! ***************** #include&amp;lt;stdio.h&amp;gt; int main() { void print_star();//函数的声明  void print_message();//函数的声明  print_star(); print_message(); print_star(); return 0; } void print_star() { printf(&amp;#34;*****************\n&amp;#34;); } void print_message() { printf(&amp;#34;How do you do!\n&amp;#34;); }  函数声明的作用是把有关函数的信息(函数名,函数类型,函数参数的个数与类型)通知编译系统,以便在编译系统对程序进行编译时,在进行到main函数调用print_star()和print_message()时知道它们是函数而不是变量或其他对象,还对调用函数的正确性进行检查.
@@ -82,10 +82,10 @@ struct Date{ int month; int day; int year; } struct Student { struct Date birthd
     
     <item>
       <title>use-arrays-to-process-batch-data</title>
-      <link>https://blog.kayleh.top/use-arrays-to-process-batch-data/</link>
+      <link>https://kayleh.top/use-arrays-to-process-batch-data/</link>
       <pubDate>Mon, 26 Oct 2020 01:17:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/use-arrays-to-process-batch-data/</guid>
+      <guid>https://kayleh.top/use-arrays-to-process-batch-data/</guid>
       <description>利用数组处理批量数据  use-arrays-to-process-batch-data
  1.数组使一组有序数据的集合.
 2.用一个数组名和下标来唯一地确定数组中的元素
@@ -102,10 +102,10 @@ int a[10]={0}; 4)在对全部元素赋值时,如果数据的个数已经确定,�
     
     <item>
       <title>cycle structure programming</title>
-      <link>https://blog.kayleh.top/cycle-structure-programming/</link>
+      <link>https://kayleh.top/cycle-structure-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/cycle-structure-programming/</guid>
+      <guid>https://kayleh.top/cycle-structure-programming/</guid>
       <description>循环结构体程序设计 用while语句实现循环  while (表达式) 语句
  求1+2+3+&amp;hellip;.+100; #include&amp;lt;stdio.h&amp;gt; int main() { int i = 1; int sum = 0; while (i &amp;lt;= 100) { sum += i; i++; } printf(&amp;#34;%d&amp;#34;, sum); return 0; } 用do&amp;hellip;while语句实现循环  do
 ​	语句
@@ -116,20 +116,20 @@ while (表达式);
     
     <item>
       <title>select structure programming</title>
-      <link>https://blog.kayleh.top/select-structure-programming/</link>
+      <link>https://kayleh.top/select-structure-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/select-structure-programming/</guid>
+      <guid>https://kayleh.top/select-structure-programming/</guid>
       <description>选择结构程序设计 选择结构和条件判断 用if语句实现选择结构  if
  关系运算符和关系表达式    关系运算符 描述 实例     == 检查两个操作数的值是否相等，如果相等则条件为真。 (A == B) 为假。   != 检查两个操作数的值是否相等，如果不相等则条件为真。 (A != B) 为真。   &amp;gt; 检查左操作数的值是否大于右操作数的值，如果是则条件为真。 (A &amp;gt; B) 为假。   &amp;lt; 检查左操作数的值是否小于右操作数的值，如果是则条件为真。 (A &amp;lt; B) 为真。   &amp;gt;= 检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。 (A &amp;gt;= B) 为假。   &amp;lt;= 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 (A &amp;lt;= B) 为真。    输入两个实数,按由小到大的顺序输出这两个数 #include&amp;lt;stdio.h&amp;gt; int main() { float a, b, t; scanf(&amp;#34;%f,%f&amp;#34;, &amp;amp;a, &amp;amp;b); if (a &amp;gt; b) { //将a和b的值互换  t = a; a = b; b = t; } printf(&amp;#34;%5.</description>
     </item>
     
     <item>
       <title>sequential programming</title>
-      <link>https://blog.kayleh.top/sequential-programming/</link>
+      <link>https://kayleh.top/sequential-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:16:00 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/sequential-programming/</guid>
+      <guid>https://kayleh.top/sequential-programming/</guid>
       <description>顺序程序设计 求摄氏度
 #include&amp;lt;stdio.h&amp;gt; int main() { float f, c; f = 64.0; c = (5.0 / 9) * (f - 32); printf(&amp;#34;f=%f\nc=%f\n&amp;#34;, f, c); return 0; } 常量   整型常量
   实性常量(有小数点)
@@ -144,10 +144,10 @@ while (表达式);
     
     <item>
       <title>C algorithm</title>
-      <link>https://blog.kayleh.top/c-algorithm/</link>
+      <link>https://kayleh.top/c-algorithm/</link>
       <pubDate>Mon, 26 Oct 2020 01:15:22 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-algorithm/</guid>
+      <guid>https://kayleh.top/c-algorithm/</guid>
       <description>算法 1.什么是算法? 算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。也就是说，能够对一定规范的输入，在有限时间内获得所要求的输出。
 2.什么叫结构化算法?为什么要提倡结构化算法? 结构化算法是由一些基本结构顺序组成的，就是把一个大的功能的实现分隔为许多个小功能的实现。
 自顶向下,逐步细化,模块化设计,结构化编码</description>
@@ -155,10 +155,10 @@ while (表达式);
     
     <item>
       <title>C programming</title>
-      <link>https://blog.kayleh.top/c-programming/</link>
+      <link>https://kayleh.top/c-programming/</link>
       <pubDate>Mon, 26 Oct 2020 01:14:40 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-programming/</guid>
+      <guid>https://kayleh.top/c-programming/</guid>
       <description>程序 1.什么是程序?什么是程序设计? 程序是一组计算机能识别和执行的指令，运行于电子计算机上，满足人们某种需求的信息化工具。 程序设计（programming），是给出解决特定问题程序的过程，软件开发过程中的重要步骤。程序设计往往以某种程序设计语言为工具，给出这种语言下的程序。程序设计过程一般包括分析、设计、编码、测试、调试等不同阶段。
 2.为什么需要计算机语言?高级语言有哪些特点? 人和计算机交流信息需要解决语言问题,需要创造一种计算机和人都能识别的语言.
 高级语言是从人类的逻辑思维角度出发的计算机语言，抽象程度大大提高，需要经过编译成特定机器上的目标代码才能执行，一条高级语言的语句往往需要若干条机器指令来完成。高级语言独立于机器的特性是靠编译器为不同机器生成不同的目标代码(或机器指令)来实现的。
@@ -189,29 +189,29 @@ while (表达式);
     
     <item>
       <title>值传递</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</link>
       <pubDate>Thu, 10 Sep 2020 13:01:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E5%92%8C%E6%8C%87%E9%92%88/</guid>
       <description>传值调用 向函数传递参数的传值调用方法，把参数的实际值复制给函数的形式参数。在这种情况下，修改函数内的形式参数不会影响实际参数。默认情况下，C++ 使用传值调用方法来传递参数。一般来说，这意味着函数内的代码不会改变用于调用函数的实际参数。
 #include &amp;lt;iostream&amp;gt;using namespace std; // 函数声明 void swap(int x, int y); // 函数定义 void swap(int x, int y) { int temp; temp = x; /* 保存 x 的值 */ x = y; /* 把 y 赋值给 x */ y = temp; /* 把 x 赋值给 y */ return; } int main() { // 局部变量声明  int a = 100; int b = 200; cout &amp;lt;&amp;lt; &amp;#34;before swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;before swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; // 调用函数来交换值  swap(a, b); cout &amp;lt;&amp;lt; &amp;#34;After swap,a:&amp;#34; &amp;lt;&amp;lt; a &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;After swap,b:&amp;#34; &amp;lt;&amp;lt; b &amp;lt;&amp;lt; endl; return 0; }  指针调用 向函数传递参数的指针调用方法，把参数的地址复制给形式参数。在函数内，该地址用于访问调用中要用到的实际参数。这意味着，修改形式参数会影响实际参数。</description>
     </item>
     
     <item>
       <title>C pointer</title>
-      <link>https://blog.kayleh.top/c-prime-plus/</link>
+      <link>https://kayleh.top/c-prime-plus/</link>
       <pubDate>Sun, 28 Jun 2020 17:33:01 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/c-prime-plus/</guid>
+      <guid>https://kayleh.top/c-prime-plus/</guid>
       <description>&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;</description>
     </item>
     
     <item>
       <title>Download</title>
-      <link>https://blog.kayleh.top/download/</link>
+      <link>https://kayleh.top/download/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.kayleh.top/download/</guid>
+      <guid>https://kayleh.top/download/</guid>
       <description>Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。
 为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。
 用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。

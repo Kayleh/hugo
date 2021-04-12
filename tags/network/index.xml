@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>network on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/network/</link>
+    <link>https://kayleh.top/tags/network/</link>
     <description>Recent content in network on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Mar 2021 01:22:51 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Mar 2021 01:22:51 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What happened from entering the URL to displaying the page?</title>
-      <link>https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <link>https://kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</link>
       <pubDate>Wed, 31 Mar 2021 01:22:51 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
       <description>从输入URL到显示页面经历了什么?    这个过程可以大致分为两个部分：网络通信和页面渲染。
 一、网络通信 互联网内各网络设备间的通信都遵循TCP/IP协议，利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。分层由高到低分别为：应用层、传输层、网络层、数据链路层。发送端从应用层往下走，接收端从数据链路层网上走。如图所示：
 
@@ -41,10 +41,10 @@ DOM树是由HTML文件中的标签排列组成，渲染树是在DOM树中加入C
     
     <item>
       <title>the difference of BIO、NIO、AIO</title>
-      <link>https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</link>
+      <link>https://kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Mon, 21 Dec 2020 00:15:14 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://kayleh.top/bionioaio%E5%8C%BA%E5%88%AB/</guid>
       <description>BIO、NIO、AIO区别 一、BIO
 在JDK1.4出来之前，我们建立网络连接的时候采用BIO模式，需要先在服务端启动一个ServerSocket，然后在客户端启动Socket来对服务端进行通信，默认情况下服务端需要对每个请求建立一堆线程等待请求，而客户端发送请求后，先咨询服务端是否有线程相应，如果没有则会一直等待或者遭到拒绝请求，如果有的话，客户端会线程会等待请求结束后才继续执行。
 二、NIO
@@ -73,40 +73,40 @@ AIO是一个有效请求一个线程。
     
     <item>
       <title>AIO blocking model</title>
-      <link>https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/aio%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sat, 05 Dec 2020 11:57:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/aio%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/aio%E6%A8%A1%E5%9E%8B/</guid>
       <description>AIO模型 1. 在系统层面分析IO模型 当我们从网络中或者其他进程中接收到数据时，这个数据会先被拷贝到系统内核的缓冲区，然后从内核的缓冲区中再复制到我们应用程序对应的缓冲区中，这样我们才能实现从应用程序中取得这个数据。
 1.1 BIO模型  我们的应用程序会首先调用特定的函数，这样才能去访问我们的操作系统。拿我们的BIO聊天室来说，我们在服务器上，想看一下客户端从网络上传递过来的数据有没有准备好，那么它会去询问操作系统有没有收到新的数据，如果没有收到，它会一直阻塞在这里，直到收到消息，并且已经从系统内核缓冲区中拷贝到应用程序的缓冲区中，这样这个调用才能够成功返回。这就是阻塞式IO，我们在等待的过程中，什么都做不了。  1.2 NIO模型  当我们的应用程序进行系统调用，询问数据有没有准备好，没有准备好的话，因为它是非阻塞的，所以直接返回；直到系统已经将内核缓冲区中的数据复制到应用程序的缓冲区中，这时我们再去询问数据有没有准备好的话，就能够获取到我们想要的数据了。但是它并不包括Selector监听模式，仅仅是NIO中的非阻塞式模型。  1.2.1 IO多路复用  这个模式对应的就是我们NIO聊天室中采用的模式，使用了Selector监听 首先我们的应用程序发起新的询问，是不是有可用的数据进行操作了，如果数据这时没有准备好，并不会如上NIO直接返回，而是说，我们要求内核监听我们这个IO通道，直到它有了数据可以供我们的程序进行操作了，再来通知我们，这个监听的过程，就像我们聊天室中的select()方法，它是阻塞的。直到数据已经在系统内核缓存区中准备好了，它会通知你一下，告诉你可以执行系统调用，将缓存区中的数据复制到应用程序缓存区中，这时我们才真正获取到了我们想要的数据 在这个时候，系统内核能够监听多个IO通道，跟我们的聊天室一样，它也监听了多个通道，只要其中任何一个IO通道有了新的状态更新，那么这个监听都会返回给我们应用程序说，其中的IO通道有一个或者多个出现了状态的变化，你要不要对其进行处理一下，我们便可以根据它返回的条件，进行特定的处理。（Selector可以翻译成为IO多路复用器）  1.3 AIO模型（异步IO）  BIO和NIO都是同步IO模型，这里我们说说AIO（异步）模型 同步IO模型是当我们访问的这个数据无论有没有准备好，都会返回给你结果；当数据没有准备好的时候，我们没有能够获取数据，如果我们再也不发起获取数据的请求，那么我们永远都不会再获取到这个数据。异步IO就不同了，当你请求这个数据没有请求到，而之后这个数据准备好了，它就会回去通知你，可以来取这个数据了 我们来看一下这个流程：我们去请求数据，数据没有准备好，我们没有被阻塞，而是直接返回了。在应用程序层面，虽然我们没有再发起新的请求，但是在系统后台，会监听这个我们请求数据的状态，当我们需要的数据已经准备好了，并且已经存在于系统内核缓存区中了，系统后台还会将这个数据拷贝到我们的应用程序缓存区中，到这里，系统内核会递交给我们一个信号，告诉你，你之前想要的这个数据，已经准备好给你了，你可以进行使用了。 它的异步体现在：我们程序只对数据发起了一次请求，没有请求到，就直接返回了，而之后，当这个数据已经准备好的时候，系统回来通知我们，而不需要我们再次发起请求，就能获取到这个数据，这就体现了异步的特点。A就是asynchronous，也就是异步的意思   2. 异步调用机制 2.1 AIO中的异步操作  客户端对应AsynchronousSocketChannel 服务端对应AsynchronousServerSocketChannel 建立连接为connect/accept 读操作为read 写操作为write  2.2 通过Future进行异步调用  注意其中Future的get()方法是阻塞式的  2.3 通过CompletionHandler（多用）  在执行操作的时候，传入CompletionHandler参数   3. 实战（回音服务器） 3.1 服务器端 3.1.1 字段 3.1.2 主方法 3.1.3 AcceptHandler的实现 3.1.4 ClientHandler的实现 3.2 客户端 3.2.1 字段 3.2.2 主方法  4.</description>
     </item>
     
     <item>
       <title>NIO blocking model</title>
-      <link>https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/nio%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sat, 05 Dec 2020 11:33:46 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/nio%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/nio%E6%A8%A1%E5%9E%8B/</guid>
       <description>NIO模型 1. 概述 1.1 翻译翻译？什么叫NIO？ NIO：我认为翻译成Non-Blocking，更加的通俗直白，相比于BIO，也有一个对比，叫他非阻塞IO最好不过了
  它和BIO有以下的区别  Channel是双向的，即可以读又可以写，相比于Stream，它并不区分出输入流和输出流，而且Channel可以完成非阻塞的读写，也可以完成阻塞的读写  1.2 Buffer简介  Channel的读写是离不开Buffer的，Buffer实际上内存上一块用来读写的区域。  1.2.1 写模式  其中三个指针我们要了解一下，position为当前指针位置，limit用于读模式，用它来标记可读的最大范围，capacity是最大的可写范围阈值  当我们写数据写了四个格子时，我们执行flip()方法，即可转变为读模式，limit指针就直接变到了我们刚刚写数据的极限位置，position指针回到初始位置，这样我们就可以将数据读出来了 1.2.2 读模式到写模式的两种切换  当我们将数据全部读完时，切换到写模式 调用clear()方法，它会使position指针回到初始位置，limit回到最远端，这样就可以重新开始数据了，虽然clear意为清除，但是其实它只是将指针的位置移动了，并没有将数据清除，而是会覆盖原来的位置  只读了部分数据，我想将未读的部分保留，而现在我又要开始先进行写模式的操作了，这样可以执行compact()方法 这个方法会将没有读到的数据保存到初始位置，而position指针的位置将会移动到这些数据的后面位置，从未读的数据后开始进行写数据 之后再读数据的时候，我们就能将上次没有读到的数据读出来了  1.3 Channel简介 Channel间的数据交换，都需要依赖Buffer 1.3.1 几个重要的Channel  FileChannel：用于文件传输 ServerSocketChannel和SocketChannel：用于网络编程的传输  2. 文件拷贝实战  一个字节一个字节的拷贝实在是慢的不行。  import java.io.*; import java.nio.ByteBuffer; import java.nio.channels.FileChannel; interface FileCopyRunner{ void copyFile(File source,File target); } public class FileCopyDemo { private static void close(Closeable closeable){ if(closeable != null) { try { closeable.</description>
     </item>
     
     <item>
       <title>BIO blocking model</title>
-      <link>https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:46:43 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/bio%E9%98%BB%E5%A1%9E%E6%A8%A1%E5%9E%8B/</guid>
       <description>BIO阻塞模型 1. BIO阻塞模型 简述BIO模型中服务端与客户端的响应过程
  服务器serverSocket先要和端口进行绑定 绑定完成后，执行accept方法，等待客户端的连接，这个方法是阻塞式调用，也就是说，要一直等待客户端的连接响应，不做其他事情，一直等，（被阻塞的还有InputStream.read()、OutputStream.write()，这两个也会一直等待客户端的响应） 客户端创建Socket对象，绑定服务器的ip地址与端口号，与服务器进行连接 服务器接收到客户端的连接请求，accept方法获取到客户端的socket信息，连接成功 服务器与客户端创建各自的io流，实现全双工通信 之后便可以随时结束连接   2. 简单实战演示 2.1 服务器 import java.io.*; import java.net.ServerSocket; import java.net.Socket; public class Server { public static void main(String[] args) { final int DEFAULT_PORT = 8888; final String QUIT = &amp;#34;quit&amp;#34;; ServerSocket serverSocket = null; try { //绑定端口号  serverSocket = new ServerSocket(DEFAULT_PORT); System.out.println(&amp;#34;服务器已经启动，绑定端口号：&amp;#34; + DEFAULT_PORT); while (true){ //等待客户端的连接  Socket socket = serverSocket.accept(); System.out.println(&amp;#34;客户端&amp;#34; + socket.getPort() + &amp;#34;:&amp;#34; + &amp;#34;已经连接&amp;#34;); //获取io流  BufferedReader reader = new BufferedReader( new InputStreamReader(socket.</description>
     </item>
     
     <item>
       <title>I/O model</title>
-      <link>https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</link>
+      <link>https://kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:44:24 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://kayleh.top/i-o%E6%A8%A1%E5%9E%8B/</guid>
       <description>I/O模型 1. java.io下的字符流和字节流 1.1 字符流 字符流更加的方便我们使用，一般字符都是由多个字节来形成的，若我们使用字节流传输，则还需要我们自己将其转换为字符，若我们直接使用字符流的话，这样就能直接读取与输出字符。  CharArrayReader：是基础的字符输入流，能从字符数组中读取数据 StringReader：从字符串输入流中读取数据 输出流同理  1.1.1 更高级的字符流  BufferedReader：附带缓存区的字符输入流，但是我们并不能直接实例化供我们使用，而是将我们已经创建的Reader字符流，传入进来，就像对它升级一样，多了更多的功能，比如该字符流就是提供了缓存区，这样加快了io的效率，不必重复读取原始数据源 FilterReader：同样也是运用了装饰模式，它额外的功能能对字符流中的字符进行筛选等 InputStreamReader：连接字节流与字符流的一个桥梁，将字节流转化为字符流，比较常用的就是FileReader  1.2 字节流 字节流则是对一个个字节进行读取  ByteArrayInputStream：字节数组输入流，从字节数组中获取数据 FileInputStream：文件输入流，从文件中获取数据 输出流同理  1.2.1 更高级的字节流  BufferedInputStream：附带缓存区的字节输入流，它同样也是与BufferedReader一个原理，也需要传入进本的InputStream进行升级 DataInputStream与DataOutputStream：这俩就比较有意思了，相辅相成，与java内置的基本数据类型相关，能够将其中的字节，利用一些方法，比如toLong或toInt等方法直接转换为java的基本数据类型   2. 装饰器模式 我们刚刚看到的，在字符流中BufferedReader、InputStreamReader和FilterReader，字节流中的BufferedInputStream、DataInputStreamReader与DataOutputStream都运用到了装饰器模式，因为它们本身不能进行实例化，都需要传入基本的Reader或InputStream来进行升级，这里便体现的是装饰器模式。
  3. Socket  我们可以将Socket认为是网络传输的端点，它也是一种数据源，将特定的ip地址与端口号与其进行绑定，这样它就能够实现通信的功能，如下图中，服务器中的socket绑定了对应的ip与端口号，与客户端间进行通信   3.1 通过Socket发送数据  创建Socket，绑定特定的ip地址与端口号 将Socket与网卡驱动程序绑定 通过Socket我们就能够发送数据了 网卡驱动程序对Socket数据进行读取  3.2 通过Socket读取数据  与发送数据类似，只不过是将这个过程反过来了   我们还是要先创建Socket 将Socket与网卡驱动程序进行绑定 Socket接收来自网卡驱动程序的数据 从Socket中读取数据   4. 同步异步与阻塞非阻塞的概念 它们有两两组合的四种不同的排列组合，同步与异步强调通信机制，通俗点儿说可以是关于反应者的概念；阻塞与非阻塞强调调用状态，我们可以将其理解为调用者或者请求发起者 4.1 同步（女孩） 男孩向女孩表白，女孩立即对该事件进行思考、反应，这就是同步通信机制
 4.2 异步（女孩） 异步通信机制就是，女孩不会对男孩的请求立即响应，而是女孩先去考虑考虑，有结果了呢，我发短信给你</description>
@@ -114,10 +114,10 @@ AIO是一个有效请求一个线程。
     
     <item>
       <title>Java network programming</title>
-      <link>https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+      <link>https://kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Fri, 04 Dec 2020 01:35:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
       <description>@来源CSDN：方圆 1. URL地址的构造和解析 我们看如上地址，一般情况下.root根域名的部分会被省略。而URL的解析过程就是从右向左进行解析，将地址转换为IP地址，进行访问。
 1.1 域名的层级 1.2 域名DNS查询的两种方式 1.2.1 递归查询  如图上所示，浏览器将请求发送给DNS客户端，客户端请求根域名服务器对域名进行解析，解析完成后，随后再访问顶级域名服务器，请求它对域名进行解析，以此类推，直至全部解析完毕，重新从三级域名服务器一层一层传递给DNS客户端，再发送给浏览器。  1.2.2 迭代查询  迭代查询是访问DNS客户端后，先访问根域名服务器，将根域名服务器中存储的该域名的内容全部发送给DNS客户端，如果无法实现域名解析的话，DNS客户端会再次请求顶级域名服务器，过程也同上，最终完成解析后，再将请求结果传递给浏览器。   Tip: 在对域名进行解析过一次后，就会产生它的缓存，存在DNS客户端中，当再次访问该域名时，就不会再去请求各个域名服务器了。对于根域名服务器，在全球是限量的，它已经被内置在DNS客户端中了，不必担心不知道根域名服务器地址的问题。
   2. 网络协议的基础知识 2.1 分层及协议  应用层：规定应用程序的数据格式 传输层：端口之间的连接 网络层：主机之间的连接，能够实现具体的定位 链路层：网卡之间的连接，每个网卡都有自己的MAC地址，在网卡生产出来的时候就已经确定了；假如通过MAC地址传递数据，那么它会给所有子网络主机都发送一份数据，并在接收时将MAC地址进行核对，一致时才进行接受，不能实现准确的定位 实体层：解决的是计算机之间的连接，一般通过光缆进行连接  2.2 各层的数据包格式 从应用层向下，每经过一层都会被添加上该层的标头，对于Ethernet标头，它的大小为18个字节，其余数据部分为1500字节，它的大小最大为1518字节，即每个帧的字节，当发送较大的文件时，就会发送多个帧的数据包，通过标头信息，在接收时能够将其组合，实现数据的正确发送。</description>
@@ -125,19 +125,19 @@ AIO是一个有效请求一个线程。
     
     <item>
       <title>TCP/IP</title>
-      <link>https://blog.kayleh.top/tcp-ip/</link>
+      <link>https://kayleh.top/tcp-ip/</link>
       <pubDate>Mon, 27 Jul 2020 10:58:27 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/tcp-ip/</guid>
+      <guid>https://kayleh.top/tcp-ip/</guid>
       <description>&lt;h1 id=&#34;tcpip协议&#34;&gt;TCP/IP协议&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>计算机网络概论</title>
-      <link>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</link>
+      <link>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</link>
       <pubDate>Sat, 25 Jul 2020 13:28:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</guid>
+      <guid>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/</guid>
       <description>&lt;h1 id=&#34;计算机网络&#34;&gt;计算机网络&lt;/h1&gt;</description>
     </item>
     

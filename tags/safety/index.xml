@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>safety on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/safety/</link>
+    <link>https://kayleh.top/tags/safety/</link>
     <description>Recent content in safety on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/safety/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/safety/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reflected XSS Vulnerability in Font Download Website</title>
-      <link>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
+      <link>https://kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
       <pubDate>Sun, 11 Apr 2021 02:26:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/reflected-xss-vulnerability-in-font-download-website/</guid>
+      <guid>https://kayleh.top/reflected-xss-vulnerability-in-font-download-website/</guid>
       <description>字体下载网站的反射XSS漏洞  URL:http://www.ztxz.org
  搜索框输入：
 &amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 会出现弹窗，证明反射XSS的存在。

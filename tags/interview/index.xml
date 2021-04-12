@@ -2,188 +2,188 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Interview on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/interview/</link>
+    <link>https://kayleh.top/tags/interview/</link>
     <description>Recent content in Interview on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Jul 2020 17:48:28 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/interview/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jul 2020 17:48:28 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/interview/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>设计模式</title>
-      <link>https://blog.kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 24 Jul 2020 17:48:28 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description>&lt;h1 id=&#34;设计模式&#34;&gt;设计模式&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>数据结构与算法</title>
-      <link>https://blog.kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+      <link>https://kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
       <pubDate>Fri, 24 Jul 2020 17:19:17 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://kayleh.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
       <description>&lt;h1 id=&#34;数据结构与算法&#34;&gt;数据结构与算法&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>introduction to operating system</title>
-      <link>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</link>
+      <link>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</link>
       <pubDate>Fri, 24 Jul 2020 14:46:46 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</guid>
+      <guid>https://kayleh.top/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</guid>
       <description>&lt;h1 id=&#34;操作系统概论&#34;&gt;操作系统概论&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>计算机网络</title>
-      <link>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+      <link>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Fri, 24 Jul 2020 14:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
+      <guid>https://kayleh.top/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
       <description>&lt;h1 id=&#34;计算机网络&#34;&gt;计算机网络&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>XML</title>
-      <link>https://blog.kayleh.top/xml/</link>
+      <link>https://kayleh.top/xml/</link>
       <pubDate>Fri, 24 Jul 2020 14:24:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/xml/</guid>
+      <guid>https://kayleh.top/xml/</guid>
       <description>&lt;h1 id=&#34;xml&#34;&gt;XML&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JDBC</title>
-      <link>https://blog.kayleh.top/jdbc/</link>
+      <link>https://kayleh.top/jdbc/</link>
       <pubDate>Thu, 16 Jul 2020 15:06:43 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jdbc/</guid>
+      <guid>https://kayleh.top/jdbc/</guid>
       <description>&lt;h1 id=&#34;jdbc&#34;&gt;JDBC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>J2EE</title>
-      <link>https://blog.kayleh.top/j2ee/</link>
+      <link>https://kayleh.top/j2ee/</link>
       <pubDate>Tue, 14 Jul 2020 13:44:34 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/j2ee/</guid>
+      <guid>https://kayleh.top/j2ee/</guid>
       <description>&lt;h1 id=&#34;java-web&#34;&gt;Java Web&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>MVC</title>
-      <link>https://blog.kayleh.top/mvc/</link>
+      <link>https://kayleh.top/mvc/</link>
       <pubDate>Tue, 14 Jul 2020 13:43:03 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/mvc/</guid>
+      <guid>https://kayleh.top/mvc/</guid>
       <description>&lt;h1 id=&#34;mvc&#34;&gt;MVC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Mybatis</title>
-      <link>https://blog.kayleh.top/mybatis/</link>
+      <link>https://kayleh.top/mybatis/</link>
       <pubDate>Tue, 14 Jul 2020 13:41:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/mybatis/</guid>
+      <guid>https://kayleh.top/mybatis/</guid>
       <description>&lt;h1 id=&#34;mybatis&#34;&gt;MYBATIS&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Spring</title>
-      <link>https://blog.kayleh.top/spring/</link>
+      <link>https://kayleh.top/spring/</link>
       <pubDate>Tue, 14 Jul 2020 13:40:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/spring/</guid>
+      <guid>https://kayleh.top/spring/</guid>
       <description>&lt;h1 id=&#34;spring&#34;&gt;SPRING&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>IO</title>
-      <link>https://blog.kayleh.top/io/</link>
+      <link>https://kayleh.top/io/</link>
       <pubDate>Tue, 14 Jul 2020 13:39:13 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/io/</guid>
+      <guid>https://kayleh.top/io/</guid>
       <description>&lt;h1 id=&#34;io&#34;&gt;IO&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>GC</title>
-      <link>https://blog.kayleh.top/gc/</link>
+      <link>https://kayleh.top/gc/</link>
       <pubDate>Tue, 14 Jul 2020 13:38:14 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/gc/</guid>
+      <guid>https://kayleh.top/gc/</guid>
       <description>&lt;h1 id=&#34;gc&#34;&gt;GC&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JVM</title>
-      <link>https://blog.kayleh.top/jvm/</link>
+      <link>https://kayleh.top/jvm/</link>
       <pubDate>Tue, 14 Jul 2020 13:35:08 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jvm/</guid>
+      <guid>https://kayleh.top/jvm/</guid>
       <description>&lt;h1 id=&#34;jvm&#34;&gt;JVM&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Reflection</title>
-      <link>https://blog.kayleh.top/reflection/</link>
+      <link>https://kayleh.top/reflection/</link>
       <pubDate>Tue, 14 Jul 2020 13:33:21 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/reflection/</guid>
+      <guid>https://kayleh.top/reflection/</guid>
       <description>&lt;h1 id=&#34;reflection&#34;&gt;Reflection&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>JDK</title>
-      <link>https://blog.kayleh.top/jdk/</link>
+      <link>https://kayleh.top/jdk/</link>
       <pubDate>Tue, 14 Jul 2020 13:32:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/jdk/</guid>
+      <guid>https://kayleh.top/jdk/</guid>
       <description>&lt;h1 id=&#34;jdk&#34;&gt;JDK&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Lock</title>
-      <link>https://blog.kayleh.top/lock/</link>
+      <link>https://kayleh.top/lock/</link>
       <pubDate>Tue, 14 Jul 2020 13:31:29 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/lock/</guid>
+      <guid>https://kayleh.top/lock/</guid>
       <description>&lt;h1 id=&#34;lock&#34;&gt;LOCK&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Thread</title>
-      <link>https://blog.kayleh.top/thread/</link>
+      <link>https://kayleh.top/thread/</link>
       <pubDate>Tue, 14 Jul 2020 13:30:23 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/thread/</guid>
+      <guid>https://kayleh.top/thread/</guid>
       <description>&lt;h1 id=&#34;thread&#34;&gt;THREAD&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>Array</title>
-      <link>https://blog.kayleh.top/array/</link>
+      <link>https://kayleh.top/array/</link>
       <pubDate>Tue, 14 Jul 2020 13:29:08 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/array/</guid>
+      <guid>https://kayleh.top/array/</guid>
       <description>&lt;h1 id=&#34;array&#34;&gt;Array&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>J2SE</title>
-      <link>https://blog.kayleh.top/j2se/</link>
+      <link>https://kayleh.top/j2se/</link>
       <pubDate>Tue, 14 Jul 2020 13:27:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/j2se/</guid>
+      <guid>https://kayleh.top/j2se/</guid>
       <description>&lt;h1 id=&#34;object-oriented&#34;&gt;Object-oriented&lt;/h1&gt;</description>
     </item>
     
     <item>
       <title>面向对象</title>
-      <link>https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</link>
+      <link>https://kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</link>
       <pubDate>Wed, 29 Apr 2020 21:33:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</guid>
+      <guid>https://kayleh.top/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81/</guid>
       <description>&lt;h2 id=&#34;面向对象的特征有哪些方面&#34;&gt;面向对象的特征有哪些方面&lt;/h2&gt;
 &lt;h3 id=&#34;封装&#34;&gt;封装&lt;/h3&gt;
 &lt;p&gt;最常见的是把属性私有化封装在一个类里面，只能通过方法去访问&lt;/p&gt;</description>

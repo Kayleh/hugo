@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>io on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/io/</link>
+    <link>https://kayleh.top/tags/io/</link>
     <description>Recent content in io on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Dec 2020 22:45:19 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Dec 2020 22:45:19 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Talk about:IO</title>
-      <link>https://blog.kayleh.top/%E6%B5%85%E8%B0%88io/</link>
+      <link>https://kayleh.top/%E6%B5%85%E8%B0%88io/</link>
       <pubDate>Sun, 20 Dec 2020 22:45:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B5%85%E8%B0%88io/</guid>
+      <guid>https://kayleh.top/%E6%B5%85%E8%B0%88io/</guid>
       <description>File对象 在计算机系统中，文件是非常重要的存储方式。Java的标准库java.io提供了File对象来操作文件和目录。
 要构造一个File对象，需要传入文件路径：
 public class Main { public static void main(String[] args) { File f = new File(&amp;#34;C:\\Windows\\notepad.exe&amp;#34;); System.out.println(f); } } 构造File对象时，既可以传入绝对路径，也可以传入相对路径。绝对路径是以根目录开头的完整路径，例如：

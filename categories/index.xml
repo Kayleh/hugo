@@ -2,62 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Kayleh</title>
-    <link>https://blog.kayleh.top/categories/</link>
+    <link>https://kayleh.top/categories/</link>
     <description>Recent content in Categories on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Sep 2020 13:41:02 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Sep 2020 13:41:02 +0800</lastBuildDate><atom:link href="https://kayleh.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>高数</title>
-      <link>https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/</link>
+      <link>https://kayleh.top/categories/%E9%AB%98%E6%95%B0/</link>
       <pubDate>Wed, 23 Sep 2020 13:41:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/%E9%AB%98%E6%95%B0/</guid>
+      <guid>https://kayleh.top/categories/%E9%AB%98%E6%95%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C</title>
-      <link>https://blog.kayleh.top/categories/c/</link>
+      <link>https://kayleh.top/categories/c/</link>
       <pubDate>Thu, 10 Sep 2020 13:01:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/c/</guid>
+      <guid>https://kayleh.top/categories/c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://blog.kayleh.top/categories/linux/</link>
+      <link>https://kayleh.top/categories/linux/</link>
       <pubDate>Fri, 28 Aug 2020 16:36:20 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/linux/</guid>
+      <guid>https://kayleh.top/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>分布式</title>
-      <link>https://blog.kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/</link>
+      <link>https://kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/</link>
       <pubDate>Wed, 26 Aug 2020 12:25:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/categories/%E5%88%86%E5%B8%83%E5%BC%8F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>设计模式</title>
-      <link>https://blog.kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sat, 13 Jun 2020 17:22:53 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://kayleh.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SpringMVC</title>
-      <link>https://blog.kayleh.top/categories/springmvc/</link>
+      <link>https://kayleh.top/categories/springmvc/</link>
       <pubDate>Sun, 19 Apr 2020 21:04:07 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/categories/springmvc/</guid>
+      <guid>https://kayleh.top/categories/springmvc/</guid>
       <description></description>
     </item>
     

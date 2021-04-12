@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>test on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/test/</link>
+    <link>https://kayleh.top/tags/test/</link>
     <description>Recent content in test on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Mar 2021 00:49:54 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Mar 2021 00:49:54 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>app test</title>
-      <link>https://blog.kayleh.top/app-test/</link>
+      <link>https://kayleh.top/app-test/</link>
       <pubDate>Thu, 04 Mar 2021 00:49:54 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/app-test/</guid>
+      <guid>https://kayleh.top/app-test/</guid>
       <description>移动端测试要点 安装测试、卸载测试 UI测试 功能测试 运行app 应用的前后台切换 免登陆 数据更新 离线浏览 app更新 定位、照相机服务 时间测试 PUSH测试 性能测试 交叉事件测试 例如：微信视频和来电
 兼容性测试 升级、更新测试 用户体验测试 硬件环境测试 接口测试 客户端数据库测试 安全测试 Android测试 Android系统的基本结构
  linux内核层
@@ -30,10 +30,10 @@ Android函数库和Android运行的虚拟机
     
     <item>
       <title>interface test</title>
-      <link>https://blog.kayleh.top/interface-test/</link>
+      <link>https://kayleh.top/interface-test/</link>
       <pubDate>Sun, 21 Feb 2021 01:49:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/interface-test/</guid>
+      <guid>https://kayleh.top/interface-test/</guid>
       <description>接口测试  测试系统内部各个组件间接口,以及系统与外部系统之间的交互点
  接口的必要条件 接口用例设计 HTTP协议 HTTP响应状态码分类 POSTMAN 发送不带参数的GET请求 发送带参数的GET请求 参数化运行 csv文件
 JSON Postman中的断言 450</description>
@@ -41,10 +41,10 @@ JSON Postman中的断言 450</description>
     
     <item>
       <title>Unitest framework</title>
-      <link>https://blog.kayleh.top/unitest-framework/</link>
+      <link>https://kayleh.top/unitest-framework/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/unitest-framework/</guid>
+      <guid>https://kayleh.top/unitest-framework/</guid>
       <description>多条测试用例 注解方法 五个方法 测试用例testcase 测试集合testsuite 追加单个测试对象  print(re.__dict__)
  追加多个测试对象 TestLoder 第一个参数path：指定存放测试用例的目录（单元测试用例，用unittest框架写的测试用例）
 第二个参数pattern：指定匹配规则
@@ -53,20 +53,20 @@ TestRunner 状态1 状态2（大于1即可）详细报告  断言 class mymath()
     
     <item>
       <title>Katalon Recorder (Selenium tests generator)</title>
-      <link>https://blog.kayleh.top/katalon/</link>
+      <link>https://kayleh.top/katalon/</link>
       <pubDate>Tue, 02 Feb 2021 02:42:57 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/katalon/</guid>
+      <guid>https://kayleh.top/katalon/</guid>
       <description>和Selenium IDE类似的工具
 Katalon Recorder (Selenium tests generator) </description>
     </item>
     
     <item>
       <title>automated test：selenium</title>
-      <link>https://blog.kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
+      <link>https://kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Mon, 01 Feb 2021 02:52:47 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://kayleh.top/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</guid>
       <description>Selenium  浏览器插件Selenium IDE
   Selenium 3.0没有RC
  使用：
@@ -84,20 +84,20 @@ webdriver API 键盘事件 key包提供按键方法 使用必须先引用key包�
     
     <item>
       <title>Test case</title>
-      <link>https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</link>
+      <link>https://kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</link>
       <pubDate>Mon, 25 Jan 2021 01:51:10 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</guid>
+      <guid>https://kayleh.top/%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B/</guid>
       <description>测试用例 什么是测试用例 测试用例(Test Case)是指对一项特定的软件产品进行测试任务的描述，体现测试方案、方法、技术和策略。其内容包括测试目标、测试环境、输入数据、测试步骤、预期结果、测试脚本等，最终形成文档。简单地认为，测试用例是为某个特殊目标而编制的一组测试输入、执行条件以及预期结果，用于核实是否满足某个特定软件需求。
 回归测试 模板：（excel）    测试用例编号 测试项 依赖用例 测试步骤 输入数据 预期结果 测试结果 测试人 备注        1、2、        标识符(用例编号)，一般编号规则：TestCase_____项目名称_____模块名称_____功能名称_____0001 测试用例的测试目的。一般情况下，用一句话表明目的。（用谷歌浏览器打开百度首页） 一般功能流程上，下游的功能测试依赖于上游的功能测试的用例 用最朴实的语言，写出来软件的操作步骤，要尽量详细（在文本框输入xxx） 测试数据 准确，在重要的步骤之后，设定预期结果，一般和测试目的密切相关 只有两个，通过/失败（和预期结果）      测试用例编写注意事项 黑盒测试用例设计方法 </description>
     </item>
     
     <item>
       <title>Software testing process</title>
-      <link>https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</link>
+      <link>https://kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Sat, 16 Jan 2021 01:17:42 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</guid>
       <description>软件测试流程 过程模型 ★V模型 ★W模型 H模型 X模型 测试过程理念 软件测试的分类 测试需求分析 1.列出待测需求
 2.设定需求优先级
 3.详细描述测试需求内容

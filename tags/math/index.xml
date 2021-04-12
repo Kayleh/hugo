@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>math on Kayleh</title>
-    <link>https://blog.kayleh.top/tags/math/</link>
+    <link>https://kayleh.top/tags/math/</link>
     <description>Recent content in math on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Oct 2020 22:55:36 +0800</lastBuildDate><atom:link href="https://blog.kayleh.top/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Oct 2020 22:55:36 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微分方程</title>
-      <link>https://blog.kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</link>
+      <link>https://kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</link>
       <pubDate>Mon, 05 Oct 2020 22:55:36 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</guid>
+      <guid>https://kayleh.top/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/</guid>
       <description>微分方程 定义： 微分方程的阶： 导数的最高阶数
 二阶：
 通解 独立常数的个数=阶数，比如二阶的最终的解里有c1，c2两个独立的常数
@@ -28,10 +28,10 @@
     
     <item>
       <title>级数</title>
-      <link>https://blog.kayleh.top/%E7%BA%A7%E6%95%B0/</link>
+      <link>https://kayleh.top/%E7%BA%A7%E6%95%B0/</link>
       <pubDate>Sun, 04 Oct 2020 13:24:36 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E7%BA%A7%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E7%BA%A7%E6%95%B0/</guid>
       <description>无穷级数 等比数列
 例题
 调和级数  调和级数是发散的
@@ -61,10 +61,10 @@
     
     <item>
       <title>二重积分</title>
-      <link>https://blog.kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</link>
       <pubDate>Fri, 02 Oct 2020 14:43:15 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86/</guid>
       <description>概念 体积
 几何含义 性质 直角坐标系的计算 例题：  x型是从左到右走
 上边的函数写成上限，下边的函数写成下限
@@ -79,10 +79,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>偏导数</title>
-      <link>https://blog.kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</link>
       <pubDate>Wed, 30 Sep 2020 13:38:35 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%81%8F%E5%AF%BC%E6%95%B0/</guid>
       <description>在某点偏导的定义  对y求导时，是把x看作常数，对y求导
 对x求导时，是把y看作常数，对x求导
  多元函数可导不连续 例题：
@@ -100,10 +100,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>多元函数</title>
-      <link>https://blog.kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</link>
       <pubDate>Tue, 29 Sep 2020 01:10:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0/</guid>
       <description>空间解析几何 两点之间距离
 平面方程 球面方程 z是正的表示求的上半部分，负的表示下半部分。
 旋转抛物面：
@@ -120,10 +120,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>广义积分和瑕积分</title>
-      <link>https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</link>
       <pubDate>Mon, 28 Sep 2020 21:58:19 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%B9%BF%E4%B9%89%E7%A7%AF%E5%88%86/</guid>
       <description>广义积分 无穷限积分 ①上限是无穷的，就对b求导
 如果极限存在，就是收敛的，如果不存在，就是发散的。
 ②下限是无穷的，就对a求导
@@ -142,10 +142,10 @@ $-e^{-x}$求导是$e^{-x}$</description>
     
     <item>
       <title>定积分</title>
-      <link>https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
       <pubDate>Sat, 26 Sep 2020 20:38:49 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
       <description>定积分 性质  插入分点，区间内取任意值，求任意值的函数值，$△x_n$小区间的长度
 拉姆达是最大的区间
  定义 $f(x)$在$[a,b]$有界，在$[a,b]$任意插入分点
@@ -185,10 +185,10 @@ $$p&#39;(x)=f(x)$$
     
     <item>
       <title>不定积分</title>
-      <link>https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
+      <link>https://kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</link>
       <pubDate>Wed, 23 Sep 2020 17:06:12 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/</guid>
       <description>$F&#39;(x)=f(x)$
 $F(x)$是$f(x)$的一个原函数.
  F(x)是f(x)的一个原函数，F(x)+c也是f(x)的原函数
@@ -224,10 +224,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>函数作图</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</link>
       <pubDate>Wed, 23 Sep 2020 13:41:02 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E4%BD%9C%E5%9B%BE/</guid>
       <description>渐近线  水平、垂直、斜
  水平渐近线 例题：
 垂直渐近线 斜渐近线 例题：
@@ -238,10 +238,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>极值和最值</title>
-      <link>https://blog.kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</link>
+      <link>https://kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</link>
       <pubDate>Sun, 20 Sep 2020 23:04:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</guid>
+      <guid>https://kayleh.top/%E6%9E%81%E5%80%BC%E5%92%8C%E6%9C%80%E5%80%BC/</guid>
       <description>极值和最值 定理： f(x)在$x_0$可导，且在$x_0$取极值。$f&#39;(x_0)=0$
 证明：
 求极值 例题：
@@ -254,10 +254,10 @@ d()里面的项可以随意加减常数
     
     <item>
       <title>函数的单调性和凸凹性</title>
-      <link>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</link>
+      <link>https://kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</link>
       <pubDate>Sun, 20 Sep 2020 13:00:16 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</guid>
+      <guid>https://kayleh.top/%E5%87%BD%E6%95%B0%E7%9A%84%E5%8D%95%E8%B0%83%E6%80%A7%E5%92%8C%E5%87%B8%E5%87%B9%E6%80%A7/</guid>
       <description>单调性 增f&#39;(x)&amp;gt;0减f&#39;(x)&amp;lt;0
 f&#39;(x)≥0，等号在个别点上成立，仍然也是增函数
 f&#39;(0)不存在,左右导数
@@ -270,10 +270,10 @@ f‘’不存在：</description>
     
     <item>
       <title>洛必达法则</title>
-      <link>https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</link>
+      <link>https://kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</link>
       <pubDate>Sat, 19 Sep 2020 22:31:17 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</guid>
+      <guid>https://kayleh.top/%E6%B4%9B%E5%BF%85%E8%BE%BE%E6%B3%95%E5%88%99/</guid>
       <description>洛必达法则 两种形式： $$\frac{0}{0}$$
 $$\frac{\infty}{\infty}$$
 $$\frac{0}{0}$$ 例题：
@@ -290,10 +290,10 @@ $$\frac{0}{0}$$ 例题：
     
     <item>
       <title>微分</title>
-      <link>https://blog.kayleh.top/%E5%BE%AE%E5%88%86/</link>
+      <link>https://kayleh.top/%E5%BE%AE%E5%88%86/</link>
       <pubDate>Thu, 17 Sep 2020 23:39:06 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%BE%AE%E5%88%86/</guid>
+      <guid>https://kayleh.top/%E5%BE%AE%E5%88%86/</guid>
       <description>微分 微分的定义： 充要条件
 可微就可导，可导就可微
 A就是$x_0$上的导数
@@ -317,10 +317,10 @@ $△x=dx$是精确值，$△y≈dy$是近似值
     
     <item>
       <title>导数</title>
-      <link>https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/</link>
+      <link>https://kayleh.top/%E5%AF%BC%E6%95%B0/</link>
       <pubDate>Wed, 16 Sep 2020 00:20:05 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E5%AF%BC%E6%95%B0/</guid>
+      <guid>https://kayleh.top/%E5%AF%BC%E6%95%B0/</guid>
       <description>变化率 $x_0 \to x_0+△x$.
 $f(x_0) \to f(x_0+△x)$
 $\frac{f(x_0+△x)-f(x_0)}{△x}$
@@ -348,10 +348,10 @@ $y&#39;|_{x=2}$
     
     <item>
       <title>连续</title>
-      <link>https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/</link>
+      <link>https://kayleh.top/%E8%BF%9E%E7%BB%AD/</link>
       <pubDate>Mon, 14 Sep 2020 23:53:48 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E8%BF%9E%E7%BB%AD/</guid>
+      <guid>https://kayleh.top/%E8%BF%9E%E7%BB%AD/</guid>
       <description>增量(改变量) △x是自变量的增量，△y是因变量的增量
 定义：
 f(x)在$x_0$的邻域内有定义，$△x\to 0$,$△y\to 0$
@@ -386,10 +386,10 @@ $f(x)= e^{lnf(x)}$、两个重要极限
     
     <item>
       <title>无穷小与无穷大</title>
-      <link>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
+      <link>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</link>
       <pubDate>Sat, 12 Sep 2020 16:33:41 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
+      <guid>https://kayleh.top/%E6%97%A0%E7%A9%B7%E5%B0%8F%E4%B8%8E%E6%97%A0%E7%A9%B7%E5%A4%A7/</guid>
       <description>无穷小量 定义： 极限为0的变量称为无穷小量，简称无穷小.
 f(x)→0
 常用希腊字母 $\alpha$ ,$\beta$ ,$\gamma$
@@ -415,10 +415,10 @@ $\frac{\infty}{\infty}$ 分子、分母同次，最高次的系数之比（分�
     
     <item>
       <title>极限</title>
-      <link>https://blog.kayleh.top/%E6%9E%81%E9%99%90/</link>
+      <link>https://kayleh.top/%E6%9E%81%E9%99%90/</link>
       <pubDate>Sat, 12 Sep 2020 10:30:50 +0800</pubDate>
       
-      <guid>https://blog.kayleh.top/%E6%9E%81%E9%99%90/</guid>
+      <guid>https://kayleh.top/%E6%9E%81%E9%99%90/</guid>
       <description>极限  [“极限”是数学中的分支——微积分的基础概念，广义的“极限”是指“无限靠近而永远不能到达”的意思。数学中的“极限”指：某一个函数中的某一个变量，此变量在变大（或者变小）的永远变化的过程中，逐渐向某一个确定的数值A不断地逼近而“永远不能够重合到A”（“永远不能够等于A，但是取等于A‘已经足够取得高精度计算结果）的过程中，此变量的变化，被人为规定为“永远靠近而不停止”、其有一个“不断地极为靠近A点的趋势”。极限是一种“变化状态”的描述。此变量永远趋近的值A叫做“极限值”（当然也可以用其他符号表示）。
  证明：1=0.9999·····？
 比如
