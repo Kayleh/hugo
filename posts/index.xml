@@ -6,7 +6,35 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Apr 2021 02:26:29 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 00:50:01 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Test Combat</title>
+      <link>https://kayleh.top/web-test-combat/</link>
+      <pubDate>Wed, 14 Apr 2021 00:50:01 +0800</pubDate>
+      
+      <guid>https://kayleh.top/web-test-combat/</guid>
+      <description>Web测试要点   功能测试 -(最基本)
+  链接测试
+1.所有链接是否链接到该链接的页面
+2.页面是否存在
+3.不存在孤立页面
+  表单测试
+1提交数据&amp;mdash;-&amp;gt;注册(数据库 新增), 修改订单(数据库 改)
+常用控件:输入框,下拉框,上传文件(图片,Excel,txt等),提交按钮,单选多选  输入框:长度,数据类型,必填,重复 空格和业务约束 下拉框:默认信息,数据完整性/正确性,第一条最后一条 上传文件(图片,Excel,txt等):大小,格式,尺寸,数量等. 文件本身的内容规则验证 提交按钮:支持回车/单击;弱网测试 ,快速点击是否重复提交,提交内容是否涉及加密    搜索测试
+  输入框(按时间搜索),下拉框
+  假设:搜索条件A,B,C,D
+  任单个条件查询:下拉框,输入框(模糊搜索,超长搜索,不存在条件,为空)
+  时间搜索
+开始时间,结束时间
+开始时间=结束时间 ( 同一天数据)
+开始时间&amp;lt;结束时间(造跨年 跨天 跨月的数据)
+开始时间&amp;gt;结束时间(异常)
+手动输入,格式
+    删除测试
+ 没有数据,删除 选择一条数据/批量选择/全选,删除. 删除二次确认.且删除后合理提示 删除数据关联性 数据库角度,删,确认数据库是否及时更新    cookie,session测试
+ 存储用户信息的,记录用户身份给予后续操作通行证 确认浏览器存储cookie目录有无cookie相关信息 保存时间之外,cookie是否正常 删除浏览器所有的cookie文件,再次登录,会怎么处理 鉴权    数据库测试</description>
+    </item>
+    
     <item>
       <title>Reflected XSS Vulnerability in Font Download Website</title>
       <link>https://kayleh.top/reflected-xss-vulnerability-in-font-download-website/</link>
