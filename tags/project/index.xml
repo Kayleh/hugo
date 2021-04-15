@@ -30,29 +30,68 @@
     </item>
     
     <item>
-      <title>Java高性能高并发秒杀系统</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Java高性能高并发秒杀系统(9)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</link>
+      <pubDate>Mon, 09 Nov 2020 20:14:45 +0800</pubDate>
       
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</guid>
-      <description>@CSDN方 圆 1. 集成Mybatis  我觉得在集成Mybatis时问题并不大
- 1.1 新接触的不用xml文件写Mapper文件 @Mapper @Component public interface UserMapper { @Select(&amp;#34;select * from user where id = #{id}&amp;#34;) User selectById(@Param(&amp;#34;id&amp;#34;) int id); @Insert(&amp;#34;insert into user (id,name) values (#{id},#{name})&amp;#34;) int insertUser(User user); }  注解@Mapper，标记该类是一个Mapper 通常之前做练习写数据库的CRUD都是在xml文件中进行的，这次采用的是在对应的方法上标注注解的形式，@Select @Insert  1.2 事务的测试 @Service public class UserService { ... @Transactional public boolean tx(){ User user1 = new User(2,&amp;#34;222&amp;#34;); userMapper.insertUser(user1); User user2 = new User(3,&amp;#34;333&amp;#34;); userMapper.insertUser(user2); return true; } }  在UserService中，创建了一个方法，用来测试事务，用@Transactional标记  1.</description>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</guid>
+      <description>1. 动态秒杀地址 1.1 前端的改变 之前我们实现秒杀的时候是直接跳转到秒杀接口，使得我们每次的秒杀地址都是一样的，这样具有安全隐患，所以，我们将其改为动态地址，通过在前端上写一个方法进行跳转，如下所示。
+ 它会先跳转到/miaosha/path，获取秒杀地址中的path值，将其存储在Redis中 然后携带path值去访问真正的秒杀方法，在其中将path值与Redis中的值进行比较，一致才能继续秒杀   1.2 获取路径的Java代码 @ResponseBody @RequestMapping(value = &amp;#34;/path&amp;#34;,method = RequestMethod.GET) public Result&amp;lt;String&amp;gt; getMiaoshaPath(MiaoShaUser user,@RequestParam(&amp;#34;goodsId&amp;#34;)long goodsId, @RequestParam(value = &amp;#34;verifyCode&amp;#34;,defaultValue = &amp;#34;0&amp;#34;)int verifyCode){ if(user == null) return Result.error(CodeMsg.SESSION_ERROR); String path = miaoshaService.createMiaoshaPath(user,goodsId); return Result.success(path); } 123456789101112  先调用createMiaoshaPath()方法，在其中会创建一串随机值，并且存储到Redis中，具体方法如下，执行完之后将路径值返回到前端  public String createMiaoshaPath(MiaoShaUser user, long goodsId) { if(user == null || goodsId &amp;lt;= 0) return null; String str = MD5Util.md5(UUIDUtil.getUUID()); redisService.set(MiaoshaKey.miaoshaPathPrefix,user.getId() + &amp;#34;_&amp;#34; + goodsId,str); return str; } 123456789 1.</description>
     </item>
     
     <item>
-      <title>Java高性能高并发秒杀系统(2)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Java高性能高并发秒杀系统(8)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</link>
+      <pubDate>Mon, 09 Nov 2020 20:12:45 +0800</pubDate>
       
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</guid>
-      <description>1. 登录过程中，密码两次MD5加密 1.1 为啥用两次MD5哇？  第一次MD5，是针对传输安全做的MD5加密，因为http是明文传递，如果不进行加密的话，密码就直接被劫持了。 (Password1 = MD5(inputPassword,固定的salt值)，salt为字符串) 第二次MD5，是针对数据库安全做的MD5加密，保证数据库的防盗安全。若不进行二次加密，MD5值经数据库获取，可直接被MD5转换器直接转换为用户密码，不安全。 (Password2 = MD5(Password1,随机的salt值))   2. 构建数据库表 2.1 几个需要注意的点  字符集采用的是utf8mb4(most bytes 4)。简单来说，utf8mb4是utf8的超集，能够用4个字节存储更多的字符。标准UTF-8字符集编码可以用1~4个字节取编码21位字符，但是在MySQL中，utf8最多使用3个字节，像一些表情emoji和不常用的字符如“墅”需要用4个字节才能表示出来。用utf8mb4能解决以上问题。 数据库中存储了&amp;quot;动态&amp;quot;salt值   3. 针对MD5加密功能，封装了专用工具类 以下MD5包的Maven依赖了解以下
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;commons-codec&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-codec&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-lang3&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;3.6&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 123456789 3.1 工具类代码 public class MD5Util { //静态的salt，用于第一次MD5  private static final String salt = &amp;#34;1a2b3c4d&amp;#34;; private static String md5(String src){ //调用DigestUtils，实现md5处理  return DigestUtils.md5Hex(src); } /** * 第一次MD5处理 * @param inputPass * @return */ public static String inputPassToFormPass(String inputPass){ //这里没加“”出现了问题？？？  String pass =&amp;#34;&amp;#34; + salt.</description>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</guid>
+      <description>1. 秒杀接口优化思路  重点我们是要减少对数据库的访问
+  系统初始化时，将秒杀商品库存加载到Redis中 收到请求，在Redis中预减库存，库存不足时，直接返回秒杀失败 秒杀成功，将订单压入消息队列，返回前端消息“排队中”（像12306的买票） 消息出队，生成订单，减少库存 客户端在以上过程执行过程中，将一直轮询是否秒杀成功   2. 清晰框图解析  3. 代码中我们如何实现 3.1 库存预加载到Redis中 这里我们是通过实现InitialzingBean接口，重写其中afterProperties方法达成的
+public class MiaoshaController implements InitializingBean { @Override public void afterPropertiesSet() throws Exception { //系统启动的时候，就将数据存入Redis  //加载所有秒杀商品  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); if(goodsVos == null) return; //存入Redis中，各秒杀商品的数量  for (GoodsVo good : goodsVos){ redisService.set(GoodsKey.miaoshaGoodsStockPrefix,&amp;#34;&amp;#34;+good.getId(),good.getStockCount()); map.put(good.getId(),false); } } ...... } 12345678910111213141516171819  我们先从数据库中将秒杀商品的信息读取出来，再一个一个加载到缓存中 注意一下其中有一个map，它添加了对应Id-false的键值对，它表示的是该商品没有被秒杀完，用于下文中，当商品秒杀完，阻止其对redis服务的访问（后文还会提到）  3.2 开始秒杀，预减库存 //user不能为空，空了去登陆  if(user == null){ return Result.</description>
+    </item>
+    
+    <item>
+      <title>Java高性能高并发秒杀系统(7)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</link>
+      <pubDate>Sun, 08 Nov 2020 20:17:45 +0800</pubDate>
+      
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</guid>
+      <description>1. 集成RabbitMQ 1.1 添加依赖 1.2 添加配置信息  2. 进行简单测试（Direct Exchange）  任何发送到Direct Exchange的消息都会被转发到RouteKey中指定的Queue  2.1 创建一个配置类 @Configuration public class MQConfig { public static final String QUEUE_NAME = &amp;#34;queue&amp;#34;; @Bean public Queue queue(){ return new Queue(QUEUE_NAME,true); } } 12345678910 2.1.1 @Bean注解  @Bean注解就是要告诉方法，产生一个Bean对象，并将这个Bean由Spring容器管理。产生这个Bean对象的方法Spring只会调用一次，随后这个Bean将放在IOC容器中。 SpringIOC容器管理一个或者多个Bean，这些Bean都需要在@Configuration注解下进行创建  2.2 创建消息的接受器 @Service @Slf4j public class MQReceiver { @RabbitListener(queues = MQConfig.QUEUE_NAME) public void receive(String message){ log.info(&amp;#34;receive message:&amp;#34; + message); } } 123456789 2.2.1 @RabbitListener注解  @RabbitListener，其中queues属性通过识别队列的名字来接受消息进行消费  2.</description>
+    </item>
+    
+    <item>
+      <title>Java高性能高并发秒杀系统(6)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</link>
+      <pubDate>Sun, 08 Nov 2020 20:14:45 +0800</pubDate>
+      
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</guid>
+      <description>1. 页面缓存优化 1.1 未经优化之前的代码 @RequestMapping(&amp;#34;/to_list&amp;#34;) public String toList(Model model,MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); return &amp;#34;goods_list&amp;#34;; } 1234567 1.2 优化产生的改变 @RequestMapping(value = &amp;#34;/to_list&amp;#34;,produces = &amp;#34;text/html&amp;#34;) @ResponseBody public String toList(HttpServletRequest request, HttpServletResponse response, Model model, MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); //在有缓存的情况下，取出缓存  String html = redisService.get(GoodsKey.goodsKeyPrefix, &amp;#34;&amp;#34;, String.class); if(! StringUtils.isEmpty(html)) return html; //在没有缓存的时候，手动渲染，添加缓存  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); IWebContext ctx = new WebContext(request,response,request.getServletContext(),request.getLocale(),model.asMap()); html = thymeleafViewResolver.getTemplateEngine().process(&amp;#34;goods_list&amp;#34;,ctx);//这里需要注入IContext  if(!StringUtils.isEmpty(html)){ redisService.set(GoodsKey.goodsKeyPrefix,&amp;#34;&amp;#34;,html); } return html; //return &amp;#34;goods_list&amp;#34;;  }  首先，我们应用缓存，一定要引入RedisService   @RequestMapping(value = “/to_list”,produces = &amp;quot;text/html&amp;quot;)produces标注了返回值的类型，必须与@ResponseBody搭配使用 手动渲染过程中，我们要注入ThymeleafViewResolver，这个是框架给我们准备好的Bean，利用它来渲染页面，其中第二个参数，需要注入IContext 在Spring5版本中，SpringWebContext已经没有了，我们需要使用WebContext来代替。它剔除了之前对ApplicationContext 过多的依赖，现在thymeleaf渲染不再过多依赖spring容器 再者，我们对Redis缓存的时间设置了60秒的限制，超过60秒过期，这个时间不宜过长。在60秒内我们看到的网页一直一样是暂且可以接受的   2.</description>
+    </item>
+    
+    <item>
+      <title>Java高性能高并发秒杀系统(5)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</link>
+      <pubDate>Sun, 08 Nov 2020 20:12:45 +0800</pubDate>
+      
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</guid>
+      <description>1. JMeter压力测试 1.1 测试过程  打开jmeter.bat  设置HTTP默认请求 编写协议和端口号  编写测试HTTP请求 因为我们已经写过默认设置，我们就可以不用编写协议和地址了，如下，只需编写请求类型和地址即可  添加聚合报告  我们即可在报告中查看压测信息 1.2 Linux top命令  top：相当于Windows下的任务管理器，可以动态显示当前进程的状况   2. 自定义配置文件JMeter压测 2.1 测试过程 与上方基本一致，不过，要在测试的请求上，添加CSV数据文件设置 读取我们自己编写的配置文件，并且标注变量名称，如此，即可开始压测。 其中配置文件信息，用英文逗号隔开  3. Redis压测 #100个并发连接，100000个请求 redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000 #存取大小为100字节的数据包 redis-benchmark -h 127.0.0.1 -p 6379 -q -d 100 #测试set和lpush命令的QPS，其中-q为简化输出 redis-benchmark -t set,lpush -q -n 1000000 #测试单条命令的QPS redis-benchmark -n 100000 -q script load &amp;#34;redis.call(&amp;#39;set&amp;#39;,&amp;#39;foo&amp;#39;,&amp;#39;bar&amp;#39;)&amp;#34; 1234567891011  4. Linux环境下，命令行压测  在Windows目录下写好jmx文件 命令行：sh jmeter.</description>
+    </item>
+    
+    <item>
+      <title>Java高性能高并发秒杀系统(4)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</link>
+      <pubDate>Sat, 07 Nov 2020 20:13:45 +0800</pubDate>
+      
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</guid>
+      <description>1. 实现联表查询的一个小技巧 商品表和秒杀商品表是两个互相独立的表，其中的关联为goods_id，但是我要返回的对象，既想要商品表中的字段，又想要秒杀商品表中的字段，用下面这个方法，有点儿亮眼
+@Data public class GoodsVo extends Goods { private Double miaoshaPrice; private Integer stockCount; private Date startDate; private Date endDate; } 1234567 创建一个GoodsVo类，继承Goods类，再将秒杀商品表中特有的字段，添加进去即可
+1.1 左联表查询SQL语句  查询所有的商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id&amp;#34;) public List&amp;lt;GoodsVo&amp;gt; listGoodsVo(); 12  根据id获取商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id where mg.goods_id = #{goodId}&amp;#34;) public GoodsVo getGoodsVoByGoodsId(@Param(&amp;#34;goodId&amp;#34;)long goodId); 12 1.</description>
     </item>
     
     <item>
       <title>Java高性能高并发秒杀系统(3)</title>
       <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2020 20:12:45 +0800</pubDate>
       
       <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-2/</guid>
       <description>1. 实现分布式Session 1.1 原理图解  作用：用Redis存储Session值，在Redis中通过token值来获取用户信息  1.2 每次登陆，将Session的过期时间进行修正  怎么说呢？我们的Session值固定过期时间为30min，要在每次登陆的时候，以当前时间继续顺延30分钟 我们的解决方法就是，每次登陆时，重新再添加一次Cookie，则能够完成时间延长  以下是封装addCookie()的方法
@@ -64,62 +103,23 @@ private void addCookie(HttpServletResponse response, MiaoShaUser user, String to
     </item>
     
     <item>
-      <title>Java高性能高并发秒杀系统(4)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Java高性能高并发秒杀系统(2)</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</link>
+      <pubDate>Fri, 06 Nov 2020 20:13:45 +0800</pubDate>
       
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-3/</guid>
-      <description>1. 实现联表查询的一个小技巧 商品表和秒杀商品表是两个互相独立的表，其中的关联为goods_id，但是我要返回的对象，既想要商品表中的字段，又想要秒杀商品表中的字段，用下面这个方法，有点儿亮眼
-@Data public class GoodsVo extends Goods { private Double miaoshaPrice; private Integer stockCount; private Date startDate; private Date endDate; } 1234567 创建一个GoodsVo类，继承Goods类，再将秒杀商品表中特有的字段，添加进去即可
-1.1 左联表查询SQL语句  查询所有的商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id&amp;#34;) public List&amp;lt;GoodsVo&amp;gt; listGoodsVo(); 12  根据id获取商品  @Select(&amp;#34;select g.*,mg.stock_count,mg.miaosha_price,mg.start_date,mg.end_date from miaosha_goods mg left join goods g on mg.goods_id = g.id where mg.goods_id = #{goodId}&amp;#34;) public GoodsVo getGoodsVoByGoodsId(@Param(&amp;#34;goodId&amp;#34;)long goodId); 12 1.</description>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC/</guid>
+      <description>1. 登录过程中，密码两次MD5加密 1.1 为啥用两次MD5哇？  第一次MD5，是针对传输安全做的MD5加密，因为http是明文传递，如果不进行加密的话，密码就直接被劫持了。 (Password1 = MD5(inputPassword,固定的salt值)，salt为字符串) 第二次MD5，是针对数据库安全做的MD5加密，保证数据库的防盗安全。若不进行二次加密，MD5值经数据库获取，可直接被MD5转换器直接转换为用户密码，不安全。 (Password2 = MD5(Password1,随机的salt值))   2. 构建数据库表 2.1 几个需要注意的点  字符集采用的是utf8mb4(most bytes 4)。简单来说，utf8mb4是utf8的超集，能够用4个字节存储更多的字符。标准UTF-8字符集编码可以用1~4个字节取编码21位字符，但是在MySQL中，utf8最多使用3个字节，像一些表情emoji和不常用的字符如“墅”需要用4个字节才能表示出来。用utf8mb4能解决以上问题。 数据库中存储了&amp;quot;动态&amp;quot;salt值   3. 针对MD5加密功能，封装了专用工具类 以下MD5包的Maven依赖了解以下
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;commons-codec&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-codec&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.commons&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;commons-lang3&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;3.6&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 123456789 3.1 工具类代码 public class MD5Util { //静态的salt，用于第一次MD5  private static final String salt = &amp;#34;1a2b3c4d&amp;#34;; private static String md5(String src){ //调用DigestUtils，实现md5处理  return DigestUtils.md5Hex(src); } /** * 第一次MD5处理 * @param inputPass * @return */ public static String inputPassToFormPass(String inputPass){ //这里没加“”出现了问题？？？  String pass =&amp;#34;&amp;#34; + salt.</description>
     </item>
     
     <item>
-      <title>Java高性能高并发秒杀系统(5)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Java高性能高并发秒杀系统</title>
+      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 06 Nov 2020 20:12:45 +0800</pubDate>
       
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-4/</guid>
-      <description>1. JMeter压力测试 1.1 测试过程  打开jmeter.bat  设置HTTP默认请求 编写协议和端口号  编写测试HTTP请求 因为我们已经写过默认设置，我们就可以不用编写协议和地址了，如下，只需编写请求类型和地址即可  添加聚合报告  我们即可在报告中查看压测信息 1.2 Linux top命令  top：相当于Windows下的任务管理器，可以动态显示当前进程的状况   2. 自定义配置文件JMeter压测 2.1 测试过程 与上方基本一致，不过，要在测试的请求上，添加CSV数据文件设置 读取我们自己编写的配置文件，并且标注变量名称，如此，即可开始压测。 其中配置文件信息，用英文逗号隔开  3. Redis压测 #100个并发连接，100000个请求 redis-benchmark -h 127.0.0.1 -p 6379 -c 100 -n 100000 #存取大小为100字节的数据包 redis-benchmark -h 127.0.0.1 -p 6379 -q -d 100 #测试set和lpush命令的QPS，其中-q为简化输出 redis-benchmark -t set,lpush -q -n 1000000 #测试单条命令的QPS redis-benchmark -n 100000 -q script load &amp;#34;redis.call(&amp;#39;set&amp;#39;,&amp;#39;foo&amp;#39;,&amp;#39;bar&amp;#39;)&amp;#34; 1234567891011  4. Linux环境下，命令行压测  在Windows目录下写好jmx文件 命令行：sh jmeter.</description>
-    </item>
-    
-    <item>
-      <title>Java高性能高并发秒杀系统(6)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-5/</guid>
-      <description>1. 页面缓存优化 1.1 未经优化之前的代码 @RequestMapping(&amp;#34;/to_list&amp;#34;) public String toList(Model model,MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); return &amp;#34;goods_list&amp;#34;; } 1234567 1.2 优化产生的改变 @RequestMapping(value = &amp;#34;/to_list&amp;#34;,produces = &amp;#34;text/html&amp;#34;) @ResponseBody public String toList(HttpServletRequest request, HttpServletResponse response, Model model, MiaoShaUser user){ model.addAttribute(&amp;#34;user&amp;#34;,user); //在有缓存的情况下，取出缓存  String html = redisService.get(GoodsKey.goodsKeyPrefix, &amp;#34;&amp;#34;, String.class); if(! StringUtils.isEmpty(html)) return html; //在没有缓存的时候，手动渲染，添加缓存  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); model.addAttribute(&amp;#34;goodsList&amp;#34;,goodsVos); IWebContext ctx = new WebContext(request,response,request.getServletContext(),request.getLocale(),model.asMap()); html = thymeleafViewResolver.getTemplateEngine().process(&amp;#34;goods_list&amp;#34;,ctx);//这里需要注入IContext  if(!StringUtils.isEmpty(html)){ redisService.set(GoodsKey.goodsKeyPrefix,&amp;#34;&amp;#34;,html); } return html; //return &amp;#34;goods_list&amp;#34;;  }  首先，我们应用缓存，一定要引入RedisService   @RequestMapping(value = “/to_list”,produces = &amp;quot;text/html&amp;quot;)produces标注了返回值的类型，必须与@ResponseBody搭配使用 手动渲染过程中，我们要注入ThymeleafViewResolver，这个是框架给我们准备好的Bean，利用它来渲染页面，其中第二个参数，需要注入IContext 在Spring5版本中，SpringWebContext已经没有了，我们需要使用WebContext来代替。它剔除了之前对ApplicationContext 过多的依赖，现在thymeleaf渲染不再过多依赖spring容器 再者，我们对Redis缓存的时间设置了60秒的限制，超过60秒过期，这个时间不宜过长。在60秒内我们看到的网页一直一样是暂且可以接受的   2.</description>
-    </item>
-    
-    <item>
-      <title>Java高性能高并发秒杀系统(7)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-6/</guid>
-      <description>1. 集成RabbitMQ 1.1 添加依赖 1.2 添加配置信息  2. 进行简单测试（Direct Exchange）  任何发送到Direct Exchange的消息都会被转发到RouteKey中指定的Queue  2.1 创建一个配置类 @Configuration public class MQConfig { public static final String QUEUE_NAME = &amp;#34;queue&amp;#34;; @Bean public Queue queue(){ return new Queue(QUEUE_NAME,true); } } 12345678910 2.1.1 @Bean注解  @Bean注解就是要告诉方法，产生一个Bean对象，并将这个Bean由Spring容器管理。产生这个Bean对象的方法Spring只会调用一次，随后这个Bean将放在IOC容器中。 SpringIOC容器管理一个或者多个Bean，这些Bean都需要在@Configuration注解下进行创建  2.2 创建消息的接受器 @Service @Slf4j public class MQReceiver { @RabbitListener(queues = MQConfig.QUEUE_NAME) public void receive(String message){ log.info(&amp;#34;receive message:&amp;#34; + message); } } 123456789 2.2.1 @RabbitListener注解  @RabbitListener，其中queues属性通过识别队列的名字来接受消息进行消费  2.</description>
-    </item>
-    
-    <item>
-      <title>Java高性能高并发秒杀系统(8)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-7/</guid>
-      <description>1. 秒杀接口优化思路  重点我们是要减少对数据库的访问
-  系统初始化时，将秒杀商品库存加载到Redis中 收到请求，在Redis中预减库存，库存不足时，直接返回秒杀失败 秒杀成功，将订单压入消息队列，返回前端消息“排队中”（像12306的买票） 消息出队，生成订单，减少库存 客户端在以上过程执行过程中，将一直轮询是否秒杀成功   2. 清晰框图解析  3. 代码中我们如何实现 3.1 库存预加载到Redis中 这里我们是通过实现InitialzingBean接口，重写其中afterProperties方法达成的
-public class MiaoshaController implements InitializingBean { @Override public void afterPropertiesSet() throws Exception { //系统启动的时候，就将数据存入Redis  //加载所有秒杀商品  List&amp;lt;GoodsVo&amp;gt; goodsVos = goodsService.listGoodsVo(); if(goodsVos == null) return; //存入Redis中，各秒杀商品的数量  for (GoodsVo good : goodsVos){ redisService.set(GoodsKey.miaoshaGoodsStockPrefix,&amp;#34;&amp;#34;+good.getId(),good.getStockCount()); map.put(good.getId(),false); } } ...... } 12345678910111213141516171819  我们先从数据库中将秒杀商品的信息读取出来，再一个一个加载到缓存中 注意一下其中有一个map，它添加了对应Id-false的键值对，它表示的是该商品没有被秒杀完，用于下文中，当商品秒杀完，阻止其对redis服务的访问（后文还会提到）  3.2 开始秒杀，预减库存 //user不能为空，空了去登陆  if(user == null){ return Result.</description>
-    </item>
-    
-    <item>
-      <title>Java高性能高并发秒杀系统(9)</title>
-      <link>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-%E5%89%AF%E6%9C%AC-8/</guid>
-      <description>1. 动态秒杀地址 1.1 前端的改变 之前我们实现秒杀的时候是直接跳转到秒杀接口，使得我们每次的秒杀地址都是一样的，这样具有安全隐患，所以，我们将其改为动态地址，通过在前端上写一个方法进行跳转，如下所示。
- 它会先跳转到/miaosha/path，获取秒杀地址中的path值，将其存储在Redis中 然后携带path值去访问真正的秒杀方法，在其中将path值与Redis中的值进行比较，一致才能继续秒杀   1.2 获取路径的Java代码 @ResponseBody @RequestMapping(value = &amp;#34;/path&amp;#34;,method = RequestMethod.GET) public Result&amp;lt;String&amp;gt; getMiaoshaPath(MiaoShaUser user,@RequestParam(&amp;#34;goodsId&amp;#34;)long goodsId, @RequestParam(value = &amp;#34;verifyCode&amp;#34;,defaultValue = &amp;#34;0&amp;#34;)int verifyCode){ if(user == null) return Result.error(CodeMsg.SESSION_ERROR); String path = miaoshaService.createMiaoshaPath(user,goodsId); return Result.success(path); } 123456789101112  先调用createMiaoshaPath()方法，在其中会创建一串随机值，并且存储到Redis中，具体方法如下，执行完之后将路径值返回到前端  public String createMiaoshaPath(MiaoShaUser user, long goodsId) { if(user == null || goodsId &amp;lt;= 0) return null; String str = MD5Util.md5(UUIDUtil.getUUID()); redisService.set(MiaoshaKey.miaoshaPathPrefix,user.getId() + &amp;#34;_&amp;#34; + goodsId,str); return str; } 123456789 1.</description>
+      <guid>https://kayleh.top/java%E9%AB%98%E6%80%A7%E8%83%BD%E9%AB%98%E5%B9%B6%E5%8F%91%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/</guid>
+      <description>@CSDN方 圆 1. 集成Mybatis  我觉得在集成Mybatis时问题并不大
+ 1.1 新接触的不用xml文件写Mapper文件 @Mapper @Component public interface UserMapper { @Select(&amp;#34;select * from user where id = #{id}&amp;#34;) User selectById(@Param(&amp;#34;id&amp;#34;) int id); @Insert(&amp;#34;insert into user (id,name) values (#{id},#{name})&amp;#34;) int insertUser(User user); }  注解@Mapper，标记该类是一个Mapper 通常之前做练习写数据库的CRUD都是在xml文件中进行的，这次采用的是在对应的方法上标注注解的形式，@Select @Insert  1.2 事务的测试 @Service public class UserService { ... @Transactional public boolean tx(){ User user1 = new User(2,&amp;#34;222&amp;#34;); userMapper.insertUser(user1); User user2 = new User(3,&amp;#34;333&amp;#34;); userMapper.insertUser(user2); return true; } }  在UserService中，创建了一个方法，用来测试事务，用@Transactional标记  1.</description>
     </item>
     
   </channel>

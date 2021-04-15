@@ -6,7 +6,29 @@
     <description>Recent content in C on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2020 02:24:07 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 01:18:07 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Download</title>
+      <link>https://kayleh.top/download/</link>
+      <pubDate>Tue, 16 Mar 2021 01:18:07 +0800</pubDate>
+      
+      <guid>https://kayleh.top/download/</guid>
+      <description>Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。
+为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。
+用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。
+每当有一个线程完成下载任务时，就不断从剩余的部分中划分出一段给它下载，直到整个文件的所有部分都下载完毕。
+当然，文件并不能被无限地分段，IDM 会设定一个段的阈值，当剩余的最大段小于这个阈值的时候，就不再分段了给空闲的线程了，只等待活动中的所有线程下载完毕。
+说完 IDM 的下载策略，我们大致有了思路。不过优秀的软件不是一蹴而就的，虽然我们想写出像 IDM 的下载器，但还需要从简单的实现开始，不断迭代优化。
+所以我们一开始采用的策略是：固定 N 个线程，并将文件划分为 N 段，每个线程负责下载一段数据。
+实现步骤 判断服务器是否支持断点续传
+首先要明确的是，多线程下载文件利用的是每个线程下载文件的一部分，那么就需要 HTTP 服务器支持请求部分数据，或者说断点续传，因此第一步需要判断目标文件是否支持断点续传。
+HTTP 请求头中有一个 Range 字段，可以用来指定要请求的数据范围，例如我们要请求从第 10 字节到第 20 字节的数据，可以将该字段写为 Range:bytes=10-20。
+相应的，如果 HTTP 服务器支持断点续传，那么对于指定了 Range 字段的请求，会返回 206 状态码。
+我们用 Curl 来测试一下：
+curl -I --header &amp;#34;Range: bytes=0-&amp;#34; http://mirrors.163.com/debian/ls-lR.gz 得到的响应：
+HTTP/1.1 206 Partial Content Server: nginx Date: Wed, 25 Apr 2018 02:57:56 GMT Content-Type: application/octet-stream Content-Length: 15316619 Connection: keep-alive Last-Modified: Mon, 23 Apr 2018 14:38:44 GMT ETag: &amp;quot;5addeff4-e9b68b&amp;quot; Content-Range: bytes 0-15316618/15316619 我们设置 Range: bytes=0- ，表示请求从第 0 字节到最后一字节的数据，那为什么还要指定该字段呢？这是出于两方面的原因：一是判断响应的状态码是否为 206，二是得到文件的大小。</description>
+    </item>
+    
     <item>
       <title>file input and output</title>
       <link>https://kayleh.top/10.file-input-and-output/</link>
@@ -204,28 +226,6 @@ while (表达式);
       
       <guid>https://kayleh.top/c-prime-plus/</guid>
       <description>&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;</description>
-    </item>
-    
-    <item>
-      <title>Download</title>
-      <link>https://kayleh.top/download/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kayleh.top/download/</guid>
-      <description>Java 多线程下载器的设计与实现 应用并发的场景有很多，下载文件就是一个很常见的并发场景。
-为什么会想写多线程下载器呢？不知道你用过 IDM（Internet Download Manager）没，我刚使用 IDM 时，就被它的下载方式吸引了。
-用 IDM 下载文件时，能够直观地看到它的下载过程：固定用 N 个线程下载文件，一开始先将文件分为 N 段，每段用一个线程下载，当某一段下载完成之后，对应的线程就空闲了，此时怎么做呢？从剩余的 N - 1 段中取出最大的一段，一分为二，这样就又有了 N 段的数据，让空闲的线程去下载新划分出来的这一段。
-每当有一个线程完成下载任务时，就不断从剩余的部分中划分出一段给它下载，直到整个文件的所有部分都下载完毕。
-当然，文件并不能被无限地分段，IDM 会设定一个段的阈值，当剩余的最大段小于这个阈值的时候，就不再分段了给空闲的线程了，只等待活动中的所有线程下载完毕。
-说完 IDM 的下载策略，我们大致有了思路。不过优秀的软件不是一蹴而就的，虽然我们想写出像 IDM 的下载器，但还需要从简单的实现开始，不断迭代优化。
-所以我们一开始采用的策略是：固定 N 个线程，并将文件划分为 N 段，每个线程负责下载一段数据。
-实现步骤 判断服务器是否支持断点续传
-首先要明确的是，多线程下载文件利用的是每个线程下载文件的一部分，那么就需要 HTTP 服务器支持请求部分数据，或者说断点续传，因此第一步需要判断目标文件是否支持断点续传。
-HTTP 请求头中有一个 Range 字段，可以用来指定要请求的数据范围，例如我们要请求从第 10 字节到第 20 字节的数据，可以将该字段写为 Range:bytes=10-20。
-相应的，如果 HTTP 服务器支持断点续传，那么对于指定了 Range 字段的请求，会返回 206 状态码。
-我们用 Curl 来测试一下：
-curl -I --header &amp;#34;Range: bytes=0-&amp;#34; http://mirrors.163.com/debian/ls-lR.gz 得到的响应：
-HTTP/1.1 206 Partial Content Server: nginx Date: Wed, 25 Apr 2018 02:57:56 GMT Content-Type: application/octet-stream Content-Length: 15316619 Connection: keep-alive Last-Modified: Mon, 23 Apr 2018 14:38:44 GMT ETag: &amp;quot;5addeff4-e9b68b&amp;quot; Content-Range: bytes 0-15316618/15316619 我们设置 Range: bytes=0- ，表示请求从第 0 字节到最后一字节的数据，那为什么还要指定该字段呢？这是出于两方面的原因：一是判断响应的状态码是否为 206，二是得到文件的大小。</description>
     </item>
     
   </channel>

@@ -9,7 +9,7 @@
   
   
   
-  <link rel="prev" href="https://kayleh.top/app-test/" />
+  <link rel="prev" href="https://kayleh.top/download/" />
   <link rel="next" href="https://kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" />
   <link rel="canonical" href="https://kayleh.top/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -97,7 +97,7 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
-                <a class="menu-item" href="shell.kayleh.top" title="">Terminal</a>
+                <a class="menu-item" href="https://shell.kayleh.top" title="">Terminal</a>
                 
         </div>
     </div>
@@ -120,7 +120,7 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
-                <a class="menu-item" href="shell.kayleh.top" title="">Terminal</a>
+                <a class="menu-item" href="https://shell.kayleh.top" title="">Terminal</a>
                 
         </div>
     </div>
@@ -135,8 +135,12 @@
                 Written by <a itemprop="name" href="https://kayleh.top" rel="author">Kayleh</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2021-03-31 itemprop="datePublished">March 31, 2021</time>
-                </span>
-                in
+                </span>.
+                Total words:
+                56
+                ,ReadingTime:
+                1 minutes
+                
                 
         </div>
     </header>
@@ -165,7 +169,7 @@
 <p>这个过程可以大致分为两个部分：网络通信和页面渲染。</p>
 <h3 id="一网络通信">一、网络通信</h3>
 <p>互联网内各网络设备间的通信都遵循TCP/IP协议，利用TCP/IP协议族进行网络通信时，会通过分层顺序与对方进行通信。分层由高到低分别为：应用层、传输层、网络层、数据链路层。发送端从应用层往下走，接收端从数据链路层网上走。如图所示：</p>
-<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946547655321.png"><img src="D:%5CBlog%5Csource_posts%5C%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88%5C020946553127518.png" alt="TCPIP"></a></p>
+<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946547655321.png"><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/020946553127518.png" alt="TCPIP"></a></p>
 <h4 id="1-在浏览器中输入url">1. 在浏览器中输入url</h4>
 <p>用户输入url，例如http://<a href="http://www.baidu.com/">www.baidu.com</a>。其中http为协议，<a href="http://www.baidu.com/">www.baidu.com</a>为网络地址，及指出需要的资源在那台计算机上。一般网络地址可以为域名或IP地址，此处为域名。使用域名是为了方便记忆，但是为了让计算机理解这个地址还需要把它解析为IP地址。</p>
 <h4 id="2应用层dns解析域名">2.应用层DNS解析域名</h4>
@@ -184,7 +188,7 @@
 <h4 id="4传输层tcp传输报文">4.传输层TCP传输报文</h4>
 <p>位于传输层的TCP协议为传输报文提供可靠的字节流服务。它为了方便传输，将大块的数据分割成以报文段为单位的数据包进行管理，并为它们编号，方便服务器接收时能准确地还原报文信息。TCP协议通过“三次握手”等方法保证传输的安全可靠。</p>
 <p>“三次握手”的过程是，发送端先发送一个带有SYN（synchronize）标志的数据包给接收端，在一定的延迟时间内等待接收的回复。接收端收到数据包后，传回一个带有SYN/ACK标志的数据包以示传达确认信息。接收方收到后再发送一个带有ACK标志的数据包给接收端以示握手成功。在这个过程中，如果发送端在规定延迟时间内没有收到回复则默认接收方没有收到请求，而再次发送，直到收到回复为止。</p>
-<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946557039933.png"><img src="D:%5CBlog%5Csource_posts%5C%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88%5C020946560314133.png" alt="TCP"></a></p>
+<p><a href="http://images0.cnblogs.com/blog/622045/201507/020946557039933.png"><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E4%BA%86%E4%BB%80%E4%B9%88/020946560314133.png" alt="TCP"></a></p>
 <h4 id="5网络层ip协议查询mac地址">5.网络层IP协议查询MAC地址</h4>
 <p>IP协议的作用是把TCP分割好的各种数据包传送给接收方。而要保证确实能传到接收方还需要接收方的MAC地址，也就是物理地址。IP地址和MAC地址是一一对应的关系，一个网络设备的IP地址可以更换，但是MAC地址一般是固定不变的。ARP协议可以将IP地址解析成对应的MAC地址。当通信的双方不在同一个局域网时，需要多次中转才能到达最终的目标，在中转的过程中需要通过下一个中转站的MAC地址来搜索下一个中转目标。</p>
 <h4 id="6数据到达数据链路层">6.数据到达数据链路层</h4>
@@ -245,7 +249,7 @@
 
     <div class="post-nav">
         
-        <a href="https://kayleh.top/app-test/" class="prev" rel="prev" title="app test"><i class="iconfont icon-left"></i>&nbsp;app test</a>
+        <a href="https://kayleh.top/download/" class="prev" rel="prev" title="Download"><i class="iconfont icon-left"></i>&nbsp;Download</a>
          
         
         <a href="https://kayleh.top/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8/" class="next" rel="next" title="Front end security">Front end security&nbsp;<i class="iconfont icon-right"></i></a>

