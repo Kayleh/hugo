@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Apr 2021 01:31:12 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Apr 2021 01:43:22 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CAS and AQS</title>
+      <link>https://kayleh.top/cas-and-aqs/</link>
+      <pubDate>Mon, 19 Apr 2021 01:43:22 +0800</pubDate>
+      
+      <guid>https://kayleh.top/cas-and-aqs/</guid>
+      <description>CAS（Compare And Swap）原理分析 字面意思是比较和交换，先看看下面场景（A 和 B 线程同时执行下面的代码）：
+int i = 10;	//代码1 i = 10;	//代码2 场景 1：A 线程执行代码 1 和代码 2，然后 B 线程执行代码 1 和代码 2，CAS 成功。
+场景 2：A 线程执行代码 1，此时 B 线程执行代码 1 和代码 2，A 线程执行代码 2，CAS 不成功，为什么呢？
+因为 A 线程执行代码 1 时候会旧值（i 的内存地址的值 10）保存起来，执行代码 2 的时候先判断 i 的最新值（可能被其他线程修改了）跟旧值比较，如果相等则把 i 赋值为 20，如果不是则 CAS 不成功。CAS 是一个原子性操作，要么成功要么失败，CAS 操作用得比较多的是 sun.misc 包的 Unsafe 类，而 Java 并发包大量使用 Unsafe 类的 CAS 操作，比如：AtomicInteger 整数原子类（本质是自旋锁 + CAS），CAS 不需加锁，提高代码运行效率。也是一种乐观锁方式，我们通常认为在大多数场景下不会出现竞争资源的情况，如果 CAS 操作失败，会不断重试直到成功。</description>
+    </item>
+    
     <item>
       <title>Head First Map</title>
       <link>https://kayleh.top/head-first-hashmap/</link>
