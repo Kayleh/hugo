@@ -6,9 +6,18 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Apr 2021 01:43:22 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 00:59:25 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CAS and AQS</title>
+      <title>a Lock Based on ReentrantLock</title>
+      <link>https://kayleh.top/implement-a-lock-based-on-reentrantlock/</link>
+      <pubDate>Tue, 20 Apr 2021 00:59:25 +0800</pubDate>
+      
+      <guid>https://kayleh.top/implement-a-lock-based-on-reentrantlock/</guid>
+      <description>基于 ReentrantLock实现一个锁 package aqsLock; import java.util.concurrent.locks.AbstractQueuedSynchronizer; /** * @Author: Kayleh * @Date: 2021/4/20 0:57 */ public class aqsLock { public void lock() { sync.acquire(1); } public void unlock() { sync.release(1); } private final Sync sync = new Sync(); public static class Sync extends AbstractQueuedSynchronizer { @Override protected boolean tryAcquire(int arg) { // CAS 方式尝试获取锁，成功返回true，失败返回false  if (compareAndSetState(0, 1)) return true; return false; } @Override protected boolean tryRelease(int arg) { // 释放锁  setState(0); return true; } } } 基本功能实现，测试：</description>
+    </item>
+    
+    <item>
+      <title>CAS &amp; AQS</title>
       <link>https://kayleh.top/cas-and-aqs/</link>
       <pubDate>Mon, 19 Apr 2021 01:43:22 +0800</pubDate>
       

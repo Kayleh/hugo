@@ -10,7 +10,7 @@
   
   
   <link rel="prev" href="https://kayleh.top/head-first-hashmap/" />
-  
+  <link rel="next" href="https://kayleh.top/implement-a-lock-based-on-reentrantlock/" />
   <link rel="canonical" href="https://kayleh.top/cas-and-aqs/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -36,10 +36,10 @@
   <title>
        
        
-           CAS and AQS | Kayleh
+           CAS &amp; AQS | Kayleh
        
   </title>
-  <meta name="title" content="CAS and AQS | Kayleh">
+  <meta name="title" content="CAS &amp; AQS | Kayleh">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,8 +58,8 @@
          "@id": "https:\/\/kayleh.top"
     },
     "articleSection" : "posts",
-    "name" : "CAS and AQS",
-    "headline" : "CAS and AQS",
+    "name" : "CAS \u0026 AQS",
+    "headline" : "CAS \u0026 AQS",
     "description" : "CAS（Compare And Swap）原理分析 字面意思是比较和交换，先看看下面场景（A 和 B 线程同时执行下面的代码）：\nint i = 10;\t\/\/代码1 i = 10;\t\/\/代码2 场景 1：A 线程执行代码 1 和代码 2，然后 B 线程执行代码 1 和代码 2，CAS 成功。\n场景 2：A 线程执行代码 1，此时 B 线程执行代码 1 和代码 2，A 线程执行代码 2，CAS 不成功，为什么呢？\n因为 A 线程执行代码 1 时候会旧值（i 的内存地址的值 10）保存起来，执行代码 2 的时候先判断 i 的最新值（可能被其他线程修改了）跟旧值比较，如果相等则把 i 赋值为 20，如果不是则 CAS 不成功。CAS 是一个原子性操作，要么成功要么失败，CAS 操作用得比较多的是 sun.misc 包的 Unsafe 类，而 Java 并发包大量使用 Unsafe 类的 CAS 操作，比如：AtomicInteger 整数原子类（本质是自旋锁 \u002b CAS），CAS 不需加锁，提高代码运行效率。也是一种乐观锁方式，我们通常认为在大多数场景下不会出现竞争资源的情况，如果 CAS 操作失败，会不断重试直到成功。",
     "inLanguage" : "en-us",
     "author" : "Kayleh",
@@ -72,7 +72,7 @@
     "dateModified" : "2021-04-19 01:43:22 \u002b0800 CST",
     "url" : "https:\/\/kayleh.top\/cas-and-aqs\/",
     "wordCount" : "274",
-    "keywords" : [  "Kayleh"]
+    "keywords" : [ "Concurrency", "Kayleh"]
 }
 </script>
 
@@ -130,7 +130,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">CAS and AQS</h1>
+        <h1 class="post-title" itemprop="name headline">CAS &amp; AQS</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kayleh.top" rel="author">Kayleh</a> with ♥ 
                 <span class="post-time">
@@ -232,6 +232,14 @@
   
     <div class="post-tags">
         
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://kayleh.top/tags/concurrency/">
+                    #Concurrency</a></span>
+            
+            </section>
+        
         <section>
                 <a href="javascript:window.history.back();">back</a></span> · 
                 <span><a href="https://kayleh.top">home</a></span>
@@ -242,6 +250,8 @@
         
         <a href="https://kayleh.top/head-first-hashmap/" class="prev" rel="prev" title="Head First Map"><i class="iconfont icon-left"></i>&nbsp;Head First Map</a>
          
+        
+        <a href="https://kayleh.top/implement-a-lock-based-on-reentrantlock/" class="next" rel="next" title="a Lock Based on ReentrantLock">a Lock Based on ReentrantLock&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
