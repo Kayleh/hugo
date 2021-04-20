@@ -6,7 +6,27 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Apr 2021 00:59:25 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Apr 2021 00:37:35 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thread Pool</title>
+      <link>https://kayleh.top/thread-pool/</link>
+      <pubDate>Wed, 21 Apr 2021 00:37:35 +0800</pubDate>
+      
+      <guid>https://kayleh.top/thread-pool/</guid>
+      <description>异步执行的代码
+new Thread(r).start(); 统一的工具类，定一个接口来实现。
+public interface Executor { public void execute(Runnable r); } // 新线程：直接创建一个新线程运行 class FlashExecutor implements Executor { public void execute(Runnable r) { new Thread(r).start(); } }  假如有 10000 个人都调用这个工具类提交任务，那就会创建 10000 个线程来执行，这肯定不合适吧！能不能控制一下线程的数量呢？
+ 可以把这个任务 r 丢到一个 tasks 队列中，然后只启动一个线程，就叫它 Worker 线程吧，不断从 tasks 队列中取任务，执行任务。这样无论调用者调用多少次，永远就只有一个 Worker 线程在运行，像这样。
+这个设计有了三个重大的意义：
+\1. 控制了线程数量。
+\2. 队列不但起到了缓冲的作用，还将任务的提交与执行解耦了。
+\3. 最重要的一点是，解决了每次重复创建和销毁线程带来的系统开销。
+ 不过只有一个后台的工作线程 Worker 会不会少了点？还有如果这个 tasks 队列满了怎么办呢？
+ Worker 线程的数量要增加，但是具体数量要让使用者决定，调用时传入，就叫核心线程数 corePoolSize 吧。
+这样设计。
+\1. 初始化线程池时，直接启动 corePoolSize 个工作线程 Worker 先跑着。</description>
+    </item>
+    
     <item>
       <title>a Lock Based on ReentrantLock</title>
       <link>https://kayleh.top/implement-a-lock-based-on-reentrantlock/</link>
