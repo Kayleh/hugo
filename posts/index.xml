@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Apr 2021 00:37:35 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Apr 2021 23:53:25 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Base</title>
+      <link>https://kayleh.top/base/</link>
+      <pubDate>Fri, 23 Apr 2021 23:53:25 +0800</pubDate>
+      
+      <guid>https://kayleh.top/base/</guid>
+      <description>1.getConstructor和getDeclaredConstructor
+Class类的getConstructor()方法,无论是否设置setAccessible(),都不可获取到类的私有构造器. Class类的getDeclaredConstructor()方法,可获取到类的私有构造器(包括带有其他修饰符的构造器），但在使用private的构造器时，必须设置setAccessible()为true,才可以获取并操作该Constructor对象。</description>
+    </item>
+    
     <item>
       <title>Thread Pool</title>
       <link>https://kayleh.top/thread-pool/</link>
