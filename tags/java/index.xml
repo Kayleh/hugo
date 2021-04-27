@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Kayleh</title>
+    <link>https://kayleh.top/tags/java/</link>
+    <description>Recent content in java on Kayleh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Apr 2021 21:37:43 +0800</lastBuildDate><atom:link href="https://kayleh.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Proxy</title>
+      <link>https://kayleh.top/proxy/</link>
+      <pubDate>Sun, 25 Apr 2021 21:37:43 +0800</pubDate>
+      
+      <guid>https://kayleh.top/proxy/</guid>
+      <description>代理模式是一种经典的设计模式，代理的意义在于生成代理对象，在服务提供方和使用方之间充当一个媒介，控制真实对象的访问。
+代理分为静态代理和动态代理两种。
+静态代理需要通过手动或工具生成代理类并编译，代理类和委托类的关系在编译期就已经确定。动态代理允许开发人员在运行时动态的创建出代理类及其对象。
+Spring AOP 的主要技术基础就是 Java 的动态代理机制。
+静态代理 静态代理的实现需要一个接口(表示要完成的功能)，一个真实对象和一个代理对象(两者都需实现这个接口)。
+示例如下：
+interface Shopping { void buy(); } class Client implements Shopping { public void buy() { System.out.println(&amp;#34;我想买这件商品&amp;#34;); } } class StaticProxy implements Shopping { private Shopping shopping; public StaticProxy(Shopping shopping) { this.shopping = shopping; } public void buy() { System.out.println(&amp;#34;降价促销，疯狂大甩卖了！&amp;#34;); shopping.buy(); } } public class StaticProxyTest { public static void main(String[] args) { Client client = new Client(); StaticProxy service = new StaticProxy(client); service.</description>
+    </item>
+    
+  </channel>
+</rss>
