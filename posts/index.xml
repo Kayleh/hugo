@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 25 Apr 2021 21:37:43 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>note</title>
+      <title>todoList</title>
       <link>https://kayleh.top/note/</link>
       <pubDate>Fri, 23 Apr 2021 23:53:25 +0800</pubDate>
       
@@ -16,9 +16,15 @@
       <description>笔记 开发记   序列化版本号？
   @EnableScheduling
   判空(null == ?)
-  1.getConstructor和getDeclaredConstructor
+  spring security（JWT、OAUTH2、）
+  https://www.cnblogs.com/lenve/p/11242055.html
+     @EqualsAndHashCode(callSuper = true)   mybatis-plus
+   https://mp.baomidou.com/guide/
+ 基础
+  String.join(&amp;#34;,&amp;#34;, List); 拼接字符串
+  getConstructor和getDeclaredConstructor
 Class类的getConstructor()方法,无论是否设置setAccessible(),都不可获取到类的私有构造器. Class类的getDeclaredConstructor()方法,可获取到类的私有构造器(包括带有其他修饰符的构造器），但在使用private的构造器时，必须设置setAccessible()为true,才可以获取并操作该Constructor对象。
-多线程 2.wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。“直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法”，当前线程被唤醒(进入“就绪状态”)</description>
+  多线程 2.wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。“直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法”，当前线程被唤醒(进入“就绪状态”)</description>
     </item>
     
     <item>
