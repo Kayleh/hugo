@@ -60,7 +60,7 @@
     "articleSection" : "posts",
     "name" : "todoList",
     "headline" : "todoList",
-    "description" : "笔记 开发记   序列化版本号？\n  @EnableScheduling\n  判空(null == ?)\n  spring security（JWT、OAUTH2、）\n  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html\n   @EqualsAndHashCode(callSuper = true)   1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  数据库\n bit类型数据是 int类型(1\u0026amp;0)  小程序\n  module.exports = {} \/\/暴露？全局变量？   query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值   mybatis-plus\n   https:\/\/mp.",
+    "description" : "笔记 开发记   序列化版本号？\n  @EnableScheduling\n  判空(null == ?)\n  spring security（JWT、OAUTH2、）\n  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html\n   @EqualsAndHashCode(callSuper = true)   1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  数据库\n bit类型数据是 int类型(1\u0026amp;0)  小程序\n  module.exports = {} \/\/暴露？全局变量？   query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值   框架\n mybatis-plus   https:\/\/mp.",
     "inLanguage" : "en-us",
     "author" : "Kayleh",
     "creator" : "Kayleh",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-23 23:53:25 \u002b0800 CST",
     "dateModified" : "2021-04-23 23:53:25 \u002b0800 CST",
     "url" : "https:\/\/kayleh.top\/note\/",
-    "wordCount" : "56",
+    "wordCount" : "85",
     "keywords" : [  "Kayleh"]
 }
 </script>
@@ -137,7 +137,7 @@
                 on <time datetime=2021-04-23 itemprop="datePublished">April 23, 2021</time>
                 </span>.
                 Total words:
-                56
+                85
                 ,ReadingTime:
                 1 minutes
                 
@@ -203,14 +203,27 @@
 <span style="color:#f92672">-</span>小程序打开的地址链接是可以带请求参数的<span style="color:#960050;background-color:#1e0010">，</span>跟url的很类似<span style="color:#960050;background-color:#1e0010">，</span>例如<span style="color:#960050;background-color:#1e0010">：</span>sdfasdf<span style="color:#f92672">?</span>abc<span style="color:#f92672">=</span>123<span style="color:#f92672">&amp;</span>bcd<span style="color:#f92672">=</span>234<span style="color:#f92672">&amp;</span>cde<span style="color:#f92672">=</span>345<span style="color:#960050;background-color:#1e0010">。</span>
 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值
 </code></pre></div></li>
-<li>
-<p>mybatis-plus</p>
-</li>
+</ul>
+<p><strong>框架</strong></p>
+<ul>
+<li>mybatis-plus</li>
 </ul>
 <blockquote>
 <p><a href="https://mp.baomidou.com/guide/">https://mp.baomidou.com/guide/</a></p>
 </blockquote>
-<p><strong>基础</strong></p>
+<ul>
+<li>
+<h5 id="field-basemapper-in-comxxx-required-a-single-beanbut-100-were-found---------mybatis-plus">Field baseMapper in com.xxx required a single bean,but 100 were found &mdash;&mdash;&ndash;Mybatis-Plus</h5>
+</li>
+</ul>
+<p>报错发生时间：项目启动时。</p>
+<p>报错英文描述：Field baseMapper in com.xxx required a single bean,but 100 were found</p>
+<p>报错信息中文描述：文件baseMapper只需要一个bean服务，但是到了多个，所以它不知道选哪个
+解决：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">情况一<span style="color:#960050;background-color:#1e0010">：</span>你的这个类其实不需要操作到数据库<span style="color:#960050;background-color:#1e0010">，</span>所以这个时候直接把继承IService给去掉就好<span style="color:#960050;background-color:#1e0010">。</span>
+
+情况二<span style="color:#960050;background-color:#1e0010">：</span>你的这个类需要操作到数据库<span style="color:#960050;background-color:#1e0010">，</span>那么就把相应的泛型给加上<span style="color:#960050;background-color:#1e0010">，</span>这样它就知道你到底要找的是哪个mapper<span style="color:#960050;background-color:#1e0010">。</span>
+</code></pre></div><p><strong>基础</strong></p>
 <ul>
 <li>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;,&#34;</span><span style="color:#f92672">,</span> List<span style="color:#f92672">);</span>

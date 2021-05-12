@@ -21,8 +21,8 @@
    @EqualsAndHashCode(callSuper = true)   1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus
   数据库
  bit类型数据是 int类型(1&amp;amp;0)  小程序
-  module.exports = {} //暴露？全局变量？   query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123&amp;amp;bcd=234&amp;amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值   mybatis-plus
-   https://mp.</description>
+  module.exports = {} //暴露？全局变量？   query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123&amp;amp;bcd=234&amp;amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值   框架
+ mybatis-plus   https://mp.</description>
     </item>
     
     <item>
