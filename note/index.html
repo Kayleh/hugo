@@ -60,7 +60,7 @@
     "articleSection" : "posts",
     "name" : "todoList",
     "headline" : "todoList",
-    "description" : "笔记 开发记   序列化版本号？\n  @EnableScheduling\n  判空(null == ?)\n  spring security（JWT、OAUTH2、）\n  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html\n     @EqualsAndHashCode(callSuper = true)   mybatis-plus\n   https:\/\/mp.baomidou.com\/guide\/\n 基础\n  String.join(\u0026#34;,\u0026#34;, List); 拼接字符串\n  getConstructor和getDeclaredConstructor\nClass类的getConstructor()方法,无论是否设置setAccessible(),都不可获取到类的私有构造器. Class类的getDeclaredConstructor()方法,可获取到类的私有构造器(包括带有其他修饰符的构造器），但在使用private的构造器时，必须设置setAccessible()为true,才可以获取并操作该Constructor对象。\n  多线程 2.wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。“直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法”，当前线程被唤醒(进入“就绪状态”)",
+    "description" : "笔记 开发记   序列化版本号？\n  @EnableScheduling\n  判空(null == ?)\n  spring security（JWT、OAUTH2、）\n  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html\n   @EqualsAndHashCode(callSuper = true)   1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  数据库\n bit类型数据是 int类型(1\u0026amp;0)  小程序\n  module.exports = {} \/\/暴露？全局变量？   query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值   mybatis-plus\n   https:\/\/mp.",
     "inLanguage" : "en-us",
     "author" : "Kayleh",
     "creator" : "Kayleh",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-23 23:53:25 \u002b0800 CST",
     "dateModified" : "2021-04-23 23:53:25 \u002b0800 CST",
     "url" : "https:\/\/kayleh.top\/note\/",
-    "wordCount" : "28",
+    "wordCount" : "56",
     "keywords" : [  "Kayleh"]
 }
 </script>
@@ -137,7 +137,7 @@
                 on <time datetime=2021-04-23 itemprop="datePublished">April 23, 2021</time>
                 </span>.
                 Total words:
-                28
+                56
                 ,ReadingTime:
                 1 minutes
                 
@@ -178,12 +178,31 @@
 <li>
 <p><a href="https://www.cnblogs.com/lenve/p/11242055.html">https://www.cnblogs.com/lenve/p/11242055.html</a></p>
 </li>
-<li>
-<pre><code>  
-</code></pre></li>
+<li></li>
 <li>
 <pre><code>@EqualsAndHashCode(callSuper = true)
 </code></pre></li>
+<li>
+<p>1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus</p>
+</li>
+</ul>
+<p><strong>数据库</strong></p>
+<ul>
+<li>bit类型数据是 int类型(1&amp;0)</li>
+</ul>
+<p><strong>小程序</strong></p>
+<ul>
+<li>
+<pre><code>module.exports = {}  
+//暴露？全局变量？
+</code></pre></li>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">query
+<span style="color:#f92672">-</span>query是传参数用的<span style="color:#960050;background-color:#1e0010">。</span>
+<span style="color:#f92672">-</span>上个页面或者那个页面跳转传过来的
+<span style="color:#f92672">-</span>小程序打开的地址链接是可以带请求参数的<span style="color:#960050;background-color:#1e0010">，</span>跟url的很类似<span style="color:#960050;background-color:#1e0010">，</span>例如<span style="color:#960050;background-color:#1e0010">：</span>sdfasdf<span style="color:#f92672">?</span>abc<span style="color:#f92672">=</span>123<span style="color:#f92672">&amp;</span>bcd<span style="color:#f92672">=</span>234<span style="color:#f92672">&amp;</span>cde<span style="color:#f92672">=</span>345<span style="color:#960050;background-color:#1e0010">。</span>
+这个意思是在小程序启动时获取mpid并向全局变量里进行赋值
+</code></pre></div></li>
 <li>
 <p>mybatis-plus</p>
 </li>
