@@ -60,7 +60,7 @@
     "articleSection" : "posts",
     "name" : "todoList",
     "headline" : "todoList",
-    "description" : "笔记 TodoList  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html  数据库\n bit类型数据是 int类型(1\u0026amp;0)  小程序、前端\nmodule.exports = {} \/\/暴露？全局变量？ query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值 网络\n  ResponseEntity\n1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 3.总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  框架\n  @EqualsAndHashCode(callSuper = true) \/\/lombok的一个方法\n  @EnableScheduling\n  spring security（JWT、OAUTH2、）鉴权\nhttps:\/\/kayleh.top\/head-first-security\n  mybatis-plus\n   https:\/\/mp.baomidou.com\/guide\/\n   Field baseMapper in com.xxx required a single bean,but 100 were found \u0026mdash;\u0026mdash;\u0026ndash;Mybatis-Plus   报错发生时间：项目启动时。",
+    "description" : "笔记 TodoList  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html  数据库\n  bit类型数据是 int类型(1\u0026amp;0)\n  SQLException：TimeZone\n  解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:\nurl=jdbc:mysql:\/\/localhost:3306\/spring_cache?useUnicode=true\u0026amp;characterEncoding=UTF8\u0026amp;serverTimezone=UTC     小程序、前端\nmodule.exports = {} \/\/暴露？全局变量？ query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值 网络\n  ResponseEntity\n1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 3.总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  框架\n  @EqualsAndHashCode(callSuper = true) \/\/lombok的一个方法\n  @EnableScheduling\n  spring security（JWT、OAUTH2、）鉴权\nhttps:\/\/kayleh.top\/head-first-security\n  mybatis-plus",
     "inLanguage" : "en-us",
     "author" : "Kayleh",
     "creator" : "Kayleh",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-23 23:53:25 \u002b0800 CST",
     "dateModified" : "2021-04-23 23:53:25 \u002b0800 CST",
     "url" : "https:\/\/kayleh.top\/note\/",
-    "wordCount" : "89",
+    "wordCount" : "92",
     "keywords" : [  "Kayleh"]
 }
 </script>
@@ -137,7 +137,7 @@
                 on <time datetime=2021-04-23 itemprop="datePublished">April 23, 2021</time>
                 </span>.
                 Total words:
-                89
+                92
                 ,ReadingTime:
                 1 minutes
                 
@@ -167,7 +167,18 @@
 </ul>
 <p><strong>数据库</strong></p>
 <ul>
-<li>bit类型数据是 int类型(1&amp;0)</li>
+<li>
+<p>bit类型数据是 int类型(1&amp;0)</p>
+</li>
+<li>
+<p>SQLException：TimeZone</p>
+<ul>
+<li>
+<p>解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">url=jdbc:mysql://localhost:3306/spring_cache?useUnicode=true<span style="color:#960050;background-color:#1e0010">&amp;</span>characterEncoding=UTF8<span style="color:#960050;background-color:#1e0010">&amp;</span>serverTimezone=UTC
+</code></pre></div></li>
+</ul>
+</li>
 </ul>
 <p><strong>小程序、前端</strong></p>
 <pre><code>module.exports = {}  
