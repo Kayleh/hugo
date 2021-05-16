@@ -14,6 +14,7 @@
       
       <guid>https://kayleh.top/note/</guid>
       <description>笔记 TodoList  https://www.cnblogs.com/lenve/p/11242055.html  数据库
+  数据库查询不能整表查询，应创建实体类接收返回给前端
   bit类型数据是 int类型(1&amp;amp;0)
   SQLException：TimeZone
   解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:
@@ -25,8 +26,7 @@ module.exports = {} //暴露？全局变量？ query -query是传参数用的。
   @EqualsAndHashCode(callSuper = true) //lombok的一个方法
   @EnableScheduling
   spring security（JWT、OAUTH2、）鉴权
-https://kayleh.top/head-first-security
-  mybatis-plus</description>
+https://kayleh.top/head-first-security</description>
     </item>
     
     <item>
