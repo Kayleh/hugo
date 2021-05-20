@@ -60,7 +60,7 @@
     "articleSection" : "posts",
     "name" : "todoList",
     "headline" : "todoList",
-    "description" : "笔记 TodoList  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html  数据库\n  数据库查询不能整表查询，应创建实体类接收返回给前端\n  bit类型数据是 int类型(1\u0026amp;0)\n  SQLException：TimeZone\n  解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:\nurl=jdbc:mysql:\/\/localhost:3306\/spring_cache?useUnicode=true\u0026amp;characterEncoding=UTF8\u0026amp;serverTimezone=UTC     小程序、前端\nmodule.exports = {} \/\/暴露？全局变量？ query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123\u0026amp;bcd=234\u0026amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值 网络\n  ResponseEntity\n1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 3.总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus\n  框架\n  @EqualsAndHashCode(callSuper = true) \/\/lombok的一个方法\n  @EnableScheduling\n  spring security（JWT、OAUTH2、）鉴权\nhttps:\/\/kayleh.top\/head-first-security",
+    "description" : "笔记 TodoList  https:\/\/www.cnblogs.com\/lenve\/p\/11242055.html  数据库\n  数据库查询不能整表查询，应创建实体类接收返回给前端\n  bit类型数据是 int类型(1\u0026amp;0)\n  SQLException：TimeZone\n  解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:\nurl=jdbc:mysql:\/\/localhost:3306\/spring_cache?useUnicode=true\u0026amp;characterEncoding=UTF8\u0026amp;serverTimezone=UTC     mysqldump 设置字符集\n  mysqldump -u root -p --default-character-set=utf8mb4 dev \u0026gt; D:\/dev.sql     mybatis-plus：SQL脚本固定字段\nCREATE TABLE `table` ( `_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT \u0026#39;??定义表\u0026#39;, `id` varchar(50) NOT NULL DEFAULT \u0026#39;\u0026#39; COMMENT \u0026#39;主键Id\u0026#39;, `deleted` bit(1) NOT NULL DEFAULT b\u0026#39;0\u0026#39; COMMENT \u0026#39;是否删除\u0026#39;, `version` int(11) NOT NULL DEFAULT \u0026#39;0\u0026#39; COMMENT \u0026#39;乐观锁\u0026#39;, `create_userid` varchar(255) NOT NULL DEFAULT \u0026#39;\u0026#39; COMMENT \u0026#39;创建用户Id\u0026#39;, `create_username` varchar(255) NOT NULL DEFAULT \u0026#39;\u0026#39; COMMENT \u0026#39;创建用户名称\u0026#39;, `create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT \u0026#39;创建时间\u0026#39;, `update_userid` varchar(255) NOT NULL DEFAULT \u0026#39;\u0026#39; COMMENT \u0026#39;更新用户Id\u0026#39;, `update_username` varchar(255) NOT NULL DEFAULT \u0026#39;\u0026#39; COMMENT \u0026#39;更新用户名称\u0026#39;, `update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT \u0026#39;更新时间\u0026#39;, PRIMARY KEY (`_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT=\u0026#39;?",
     "inLanguage" : "en-us",
     "author" : "Kayleh",
     "creator" : "Kayleh",
@@ -71,7 +71,7 @@
     "datePublished": "2021-04-23 23:53:25 \u002b0800 CST",
     "dateModified" : "2021-04-23 23:53:25 \u002b0800 CST",
     "url" : "https:\/\/kayleh.top\/note\/",
-    "wordCount" : "96",
+    "wordCount" : "201",
     "keywords" : [  "Kayleh"]
 }
 </script>
@@ -137,7 +137,7 @@
                 on <time datetime=2021-04-23 itemprop="datePublished">April 23, 2021</time>
                 </span>.
                 Total words:
-                96
+                201
                 ,ReadingTime:
                 1 minutes
                 
@@ -182,6 +182,30 @@
 </code></pre></div></li>
 </ul>
 </li>
+<li>
+<p>mysqldump 设置字符集</p>
+<ul>
+<li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">mysqldump -u root -p --default-character-set=utf8mb4 dev &gt; D:/dev.sql
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>mybatis-plus：SQL脚本固定字段</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">table</span><span style="color:#f92672">`</span> (
+  <span style="color:#f92672">`</span>_id<span style="color:#f92672">`</span> <span style="color:#66d9ef">bigint</span>(<span style="color:#ae81ff">20</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">AUTO_INCREMENT</span> COMMENT <span style="color:#e6db74">&#39;??定义表&#39;</span>,
+  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> COMMENT <span style="color:#e6db74">&#39;主键Id&#39;</span>,
+  <span style="color:#f92672">`</span>deleted<span style="color:#f92672">`</span> <span style="color:#66d9ef">bit</span>(<span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> b<span style="color:#e6db74">&#39;0&#39;</span> COMMENT <span style="color:#e6db74">&#39;是否删除&#39;</span>,
+  <span style="color:#f92672">`</span>version<span style="color:#f92672">`</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">11</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;0&#39;</span> COMMENT <span style="color:#e6db74">&#39;乐观锁&#39;</span>,
+  <span style="color:#f92672">`</span>create_userid<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> COMMENT <span style="color:#e6db74">&#39;创建用户Id&#39;</span>,
+  <span style="color:#f92672">`</span>create_username<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> COMMENT <span style="color:#e6db74">&#39;创建用户名称&#39;</span>,
+  <span style="color:#f92672">`</span>create_time<span style="color:#f92672">`</span> <span style="color:#66d9ef">timestamp</span>(<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>(<span style="color:#ae81ff">3</span>) COMMENT <span style="color:#e6db74">&#39;创建时间&#39;</span>,
+  <span style="color:#f92672">`</span>update_userid<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> COMMENT <span style="color:#e6db74">&#39;更新用户Id&#39;</span>,
+  <span style="color:#f92672">`</span>update_username<span style="color:#f92672">`</span> <span style="color:#66d9ef">varchar</span>(<span style="color:#ae81ff">255</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;&#39;</span> COMMENT <span style="color:#e6db74">&#39;更新用户名称&#39;</span>,
+  <span style="color:#f92672">`</span>update_time<span style="color:#f92672">`</span> <span style="color:#66d9ef">timestamp</span>(<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>(<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>(<span style="color:#ae81ff">3</span>) COMMENT <span style="color:#e6db74">&#39;更新时间&#39;</span>,
+  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>_id<span style="color:#f92672">`</span>)
+) <span style="color:#66d9ef">ENGINE</span><span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CHARSET</span><span style="color:#f92672">=</span>utf8mb4 COMMENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;??定义表&#39;</span>;
+</code></pre></div></li>
 </ul>
 <p><strong>小程序、前端</strong></p>
 <pre><code>module.exports = {}  
@@ -259,7 +283,7 @@
 Class类的getDeclaredConstructor()方法,可获取到类的私有构造器(包括带有其他修饰符的构造器），但在使用private的构造器时，必须设置setAccessible()为true,才可以获取并操作该Constructor对象。</p>
 </li>
 </ul>
-<h5 id="多线程"><strong>多线程</strong></h5>
+<p><strong>多线程</strong></p>
 <ul>
 <li>wait()的作用是让当前线程进入等待状态，同时，wait()也会让当前线程释放它所持有的锁。“直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法”，当前线程被唤醒(进入“就绪状态”)</li>
 </ul>

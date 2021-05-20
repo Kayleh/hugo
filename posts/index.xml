@@ -18,15 +18,9 @@
   bit类型数据是 int类型(1&amp;amp;0)
   SQLException：TimeZone
   解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:
-url=jdbc:mysql://localhost:3306/spring_cache?useUnicode=true&amp;amp;characterEncoding=UTF8&amp;amp;serverTimezone=UTC     小程序、前端
-module.exports = {} //暴露？全局变量？ query -query是传参数用的。 -上个页面或者那个页面跳转传过来的 -小程序打开的地址链接是可以带请求参数的，跟url的很类似，例如：sdfasdf?abc=123&amp;amp;bcd=234&amp;amp;cde=345。 这个意思是在小程序启动时获取mpid并向全局变量里进行赋值 网络
-  ResponseEntity
-1.ResponseEntity的优先级高于@ResponseBody。在不是ResponseEntity的情况下才去检查有没有@ResponseBody注解。如果响应类型是ResponseEntity可以不写@ResponseBody注解，写了也没有关系。 2.ResponseEntity 是在 org.springframework.http.HttpEntity 的基础上添加了http status code(http状态码)，用于RestTemplate以及@Controller的HandlerMethod。它在Controoler中或者用于服务端响应时，作用是和@ResponseStatus与@ResponseBody结合起来的功能一样的。用于RestTemplate时，它是接收服务端返回的http status code 和 reason的。 3.总结： 简单粗暴的讲 @ResponseBody可以直接返回Json结果， @ResponseEntity不仅可以返回json结果，还可以定义返回的HttpHeaders和HttpStatus
-  框架
-  @EqualsAndHashCode(callSuper = true) //lombok的一个方法
-  @EnableScheduling
-  spring security（JWT、OAUTH2、）鉴权
-https://kayleh.top/head-first-security</description>
+url=jdbc:mysql://localhost:3306/spring_cache?useUnicode=true&amp;amp;characterEncoding=UTF8&amp;amp;serverTimezone=UTC     mysqldump 设置字符集
+  mysqldump -u root -p --default-character-set=utf8mb4 dev &amp;gt; D:/dev.sql     mybatis-plus：SQL脚本固定字段
+CREATE TABLE `table` ( `_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &amp;#39;??定义表&amp;#39;, `id` varchar(50) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;主键Id&amp;#39;, `deleted` bit(1) NOT NULL DEFAULT b&amp;#39;0&amp;#39; COMMENT &amp;#39;是否删除&amp;#39;, `version` int(11) NOT NULL DEFAULT &amp;#39;0&amp;#39; COMMENT &amp;#39;乐观锁&amp;#39;, `create_userid` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;创建用户Id&amp;#39;, `create_username` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;创建用户名称&amp;#39;, `create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT &amp;#39;创建时间&amp;#39;, `update_userid` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;更新用户Id&amp;#39;, `update_username` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;更新用户名称&amp;#39;, `update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT &amp;#39;更新时间&amp;#39;, PRIMARY KEY (`_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT=&amp;#39;?</description>
     </item>
     
     <item>
