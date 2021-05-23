@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://kayleh.top/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://kayleh.top/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://kayleh.top/css/github.min.css' />
+    <link rel="stylesheet" href='https://kayleh.top/css/github-style.css' />
+    <link rel="stylesheet" href='https://kayleh.top/css/light.css' />
+    <link rel="stylesheet" href='https://kayleh.top/css/dark.css' />
+    <link rel="stylesheet" href='https://kayleh.top/css/syntax.css' />
+    <title>SpringSecurity - Kayleh</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://kayleh.top/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="SpringBoot整合SpringSecurity  https://www.kuangstudy.com/bbs/1369251751735095298
+ Spring Security课程介绍 1. 框架概述 📕 Spring Security是基于Spring框架,提供了一套Web应用安全性的完整解决方案。正如你可能知道的关于安全方面的两个主要区域是”认证”和”授权”(或者访问控制),一般来说，Web应用的安全性主要包括用户认证和用户授权两个部分,这两点也是Spring Security的重要核心功能。
+ 用户认证指的是 : 验证某个用户是否为系统中的合法主体,也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。==通俗点说就是系统认为用户是否能登录。== 用户授权指的是 : 验证某个用户是否有权限执行某个操作。在同一系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色对应一系列的权限。==通俗点就是系统判断用户是否有权限去做某些事情。==  📕 Spring Security 特点 :
+ 和Spring无缝整合。 全面的权限控制 专门为Web开发而设计  旧版本不能脱离Web环境使用 新版本对整个框架进行了分层抽取，分成了核心模块和Web模块,单独引入核心模块就可以脱离Web环境。   重量级。  2. 入门案例   创建SpringBoot工程,引入相关依赖
+&amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!--Web 依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Spring Security的相关依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt;   编写Controller进行测试
+@RestController public class TestController { @GetMapping(&amp;#34;/add&amp;#34;) public String add() { return &amp;#34;hello Security&amp;#34;; } }   3." />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://kayleh.top/springsecurity/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SpringSecurity - Kayleh" />
+<meta name="twitter:description"
+  content="SpringBoot整合SpringSecurity  https://www.kuangstudy.com/bbs/1369251751735095298
+ Spring Security课程介绍 1. 框架概述 📕 Spring Security是基于Spring框架,提供了一套Web应用安全性的完整解决方案。正如你可能知道的关于安全方面的两个主要区域是”认证”和”授权”(或者访问控制),一般来说，Web应用的安全性主要包括用户认证和用户授权两个部分,这两点也是Spring Security的重要核心功能。
+ 用户认证指的是 : 验证某个用户是否为系统中的合法主体,也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。==通俗点说就是系统认为用户是否能登录。== 用户授权指的是 : 验证某个用户是否有权限执行某个操作。在同一系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色对应一系列的权限。==通俗点就是系统判断用户是否有权限去做某些事情。==  📕 Spring Security 特点 :
+ 和Spring无缝整合。 全面的权限控制 专门为Web开发而设计  旧版本不能脱离Web环境使用 新版本对整个框架进行了分层抽取，分成了核心模块和Web模块,单独引入核心模块就可以脱离Web环境。   重量级。  2. 入门案例   创建SpringBoot工程,引入相关依赖
+&amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!--Web 依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Spring Security的相关依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt;   编写Controller进行测试
+@RestController public class TestController { @GetMapping(&amp;#34;/add&amp;#34;) public String add() { return &amp;#34;hello Security&amp;#34;; } }   3." />
+<meta name="twitter:site" content="https://kayleh.top" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://kayleh.top">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="SpringSecurity - Kayleh">
+<meta property="og:description"
+  content="SpringBoot整合SpringSecurity  https://www.kuangstudy.com/bbs/1369251751735095298
+ Spring Security课程介绍 1. 框架概述 📕 Spring Security是基于Spring框架,提供了一套Web应用安全性的完整解决方案。正如你可能知道的关于安全方面的两个主要区域是”认证”和”授权”(或者访问控制),一般来说，Web应用的安全性主要包括用户认证和用户授权两个部分,这两点也是Spring Security的重要核心功能。
+ 用户认证指的是 : 验证某个用户是否为系统中的合法主体,也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。==通俗点说就是系统认为用户是否能登录。== 用户授权指的是 : 验证某个用户是否有权限执行某个操作。在同一系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色对应一系列的权限。==通俗点就是系统判断用户是否有权限去做某些事情。==  📕 Spring Security 特点 :
+ 和Spring无缝整合。 全面的权限控制 专门为Web开发而设计  旧版本不能脱离Web环境使用 新版本对整个框架进行了分层抽取，分成了核心模块和Web模块,单独引入核心模块就可以脱离Web环境。   重量级。  2. 入门案例   创建SpringBoot工程,引入相关依赖
+&amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!--Web 依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Spring Security的相关依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt;   编写Controller进行测试
+@RestController public class TestController { @GetMapping(&amp;#34;/add&amp;#34;) public String add() { return &amp;#34;hello Security&amp;#34;; } }   3." />
+<meta property="og:url" content="https://kayleh.top/springsecurity/" />
+<meta property="og:site_name" content="SpringSecurity" />
+<meta property="og:image"
+  content="https://kayleh.top">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-05-21 11:56:08 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://kayleh.top">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://kayleh.top">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://kayleh.top">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://kayleh.top">
+                  <img class=" avatar-user"
+                    src="http://cdn.jsdelivr.net/gh/kayleh/cdn/img/2.jpg"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://kayleh.top">Kayleh</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://kayleh.top/springsecurity/">SpringSecurity</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 21 May 2021 11:56:08 &#43;0800"
+                    class="no-wrap">
+                    Fri, 21 May 2021 11:56:08 &#43;0800</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div class="file-header d-flex flex-md-items-center flex-items-start">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    3816 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5">
+                <article class="markdown-body entry-content container-lg"><h1 id="springboot整合springsecurity">SpringBoot整合SpringSecurity</h1>
+<blockquote>
+<p><a href="https://www.kuangstudy.com/bbs/1369251751735095298">https://www.kuangstudy.com/bbs/1369251751735095298</a></p>
+</blockquote>
+<h2 id="spring-security课程介绍">Spring Security课程介绍</h2>
+<h3 id="1-框架概述">1. 框架概述</h3>
+<p>📕 Spring Security是基于Spring框架,提供了一套Web应用安全性的完整解决方案。正如你可能知道的关于安全方面的两个主要区域是”认证”和”授权”(或者访问控制),一般来说，Web应用的安全性主要包括用户认证和用户授权两个部分,这两点也是Spring Security的重要核心功能。</p>
+<ol>
+<li>用户认证指的是 : 验证某个用户是否为系统中的合法主体,也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。<strong>==通俗点说就是系统认为用户是否能登录。==</strong></li>
+<li>用户授权指的是 : 验证某个用户是否有权限执行某个操作。在同一系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色对应一系列的权限。<strong>==通俗点就是系统判断用户是否有权限去做某些事情。==</strong></li>
+</ol>
+<p>📕 Spring Security 特点 :</p>
+<ul>
+<li>和Spring无缝整合。</li>
+<li>全面的权限控制</li>
+<li>专门为Web开发而设计
+<ul>
+<li>旧版本不能脱离Web环境使用</li>
+<li>新版本对整个框架进行了分层抽取，分成了核心模块和Web模块,单独引入核心模块就可以脱离Web环境。</li>
+</ul>
+</li>
+<li>重量级。</li>
+</ul>
+<h3 id="2-入门案例">2. 入门案例</h3>
+<ol>
+<li>
+<p>创建SpringBoot工程,引入相关依赖</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;parent&gt;</span>
+        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-parent<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;version&gt;</span>2.2.1.RELEASE<span style="color:#f92672">&lt;/version&gt;</span>
+        <span style="color:#f92672">&lt;relativePath/&gt;</span>
+    <span style="color:#f92672">&lt;/parent&gt;</span>
+    <span style="color:#f92672">&lt;dependencies&gt;</span>
+        <span style="color:#75715e">&lt;!--Web 依赖--&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+        <span style="color:#75715e">&lt;!--Spring Security的相关依赖--&gt;</span>
+        <span style="color:#f92672">&lt;dependency&gt;</span>
+            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-security<span style="color:#f92672">&lt;/artifactId&gt;</span>
+        <span style="color:#f92672">&lt;/dependency&gt;</span>
+    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</code></pre></div></li>
+<li>
+<p>编写Controller进行测试</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RestController</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TestController</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/add&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">add</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;hello Security&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+</ol>
+<h3 id="3-springsecurity基本原理">3. SpringSecurity基本原理</h3>
+<p>🌳 <strong>Spring Security 本质上是一个过滤器链</strong></p>
+<ul>
+<li>FilterSecurityInterceptor : 是一个方法级的权限过滤器,基本位于过滤链的最底部</li>
+<li>ExceptionTranslationFilter : 是一个异常过滤器,用来处理在认证授权过程中抛出的异常</li>
+<li>UsernamePassowrdAuthenticationFilter : 对/login的post请求做拦截,校验表单中用户名和密码。</li>
+</ul>
+<p>🌳 过滤器是如何进行加载的？</p>
+<p><img src="D:%5CHugo%5Chugo_0.75.1_Windows-64bit%5Cblog%5Ccontent%5Cposts%5CSpringSecurity%5CrikcLoverikcLoveimage-20210206021008467.png" alt="image-20210206021008467"></p>
+<p>🌳 两个重要的接口</p>
+<p>⚪ UserDetailsService接口详解</p>
+<p>当什么也没有配置的时候,账号和密码是由SpringSecurity定义生成的。而在实际项目中账号和密码都是从数据库中查出来的,所以我们要通过自定义逻辑控制认证逻辑。<strong>==通俗点来说就是查询用户名和密码的过程==</strong> 如需要自定义逻辑时,只需要实现UserDetailsService接口即可，接口定义如下 :</p>
+<p><!-- raw HTML omitted --></p>
+<p>返回值 UserDetails</p>
+<p>这个类是系统默认的用户主体</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 表示获取登录用户的所有权限
+</span><span style="color:#75715e"></span>Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> GrantedAuthority<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getAuthorities</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 表示获取密码
+</span><span style="color:#75715e"></span>String <span style="color:#a6e22e">getPassword</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 表示获取用户名
+</span><span style="color:#75715e"></span>String <span style="color:#a6e22e">getUsername</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 表示判断用户是否被锁定
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isAccountNonLocked</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 表示凭证{密码}是否过期
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isCredentialsNonExpired</span><span style="color:#f92672">();</span>
+<span style="color:#75715e">// 表示当前用户名是否可用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEnabled</span><span style="color:#f92672">();</span>
+</code></pre></div><p><img src="D:%5CHugo%5Chugo_0.75.1_Windows-64bit%5Cblog%5Ccontent%5Cposts%5CSpringSecurity%5CrikcLoverikcLoveimage-20210206023136065.png" alt="image-20210206023135919"></p>
+<p>⚪ PasswordEncoder 接口讲解</p>
+<p>数据加密的接口,用于返回User对象里面密码加密</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 表示把参数按照特定的解析规则进行解析
+</span><span style="color:#75715e"></span>String <span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span>CharSequence rawPassword<span style="color:#f92672">);</span>
+<span style="color:#75715e">// 表示验证从存储中获取的编码密码与编码后提交的原始密码是否匹配。如果密码匹配,则返回true;如果不匹配,则返回false。第一个参数表示需要被解析的密码。第二个参数表示存储的密码。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span>CharSequence rawPassowrd<span style="color:#f92672">,</span>String encodePassword<span style="color:#f92672">);</span>
+<span style="color:#75715e">// 表示如果解析的密码能够再次进行解析且达到更安全的结果则返回true,否则返回false。默认返回false
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">default</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">upgradeEncoding</span><span style="color:#f92672">(</span>String encodePassowrd<span style="color:#f92672">);</span>
+</code></pre></div><p>⚪ BCryptPasswordEncoder</p>
+<p>BCryptPasswordEncoder是Spring Security官方推荐的密码解析器,平时多使用这个解析器</p>
+<p>BCryptPasswordEncoder是对bcrypt强散列方法的具体实现。是基于Hash算法实现的单向加密。可以通过strength控制加密强度,默认为10。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test01</span><span style="color:#f92672">(){</span>
+    <span style="color:#75715e">//创建密码解析器
+</span><span style="color:#75715e"></span>    BCryptPasswordEncoder bCryptPasswordEncoder<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> BCryptPasswrodEncoder<span style="color:#f92672">();</span>
+    <span style="color:#75715e">//对密码进行加密
+</span><span style="color:#75715e"></span>    String password<span style="color:#f92672">=</span>bCryptPasswordEncoder<span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">//打印加密后的数据
+</span><span style="color:#75715e"></span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;加密之后的数据:&#34;</span><span style="color:#f92672">+</span>password<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//判断原字符加密后和加密之前是否匹配
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">boolean</span> result<span style="color:#f92672">=</span>bCryptPasswordEncoder<span style="color:#f92672">.</span><span style="color:#a6e22e">matches</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">,</span>password<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="4-用户认证">4. 用户认证</h3>
+<ol>
+<li>
+<p>设置登录的用户名和密码</p>
+<ul>
+<li>
+<p>第一种方式 : 通过配置文件配置</p>
+<pre><code class="language-properties" data-lang="properties">spring.security.user.name=rikc
+spring.security.user.password=123456
+</code></pre></li>
+<li>
+<p>第二种方式 :通过配置类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> com.wisedu.securitydemo1.config<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Bean<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.context.annotation.Configuration<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> org.springframework.security.crypto.password.PasswordEncoder<span style="color:#f92672">;</span>
+     
+<span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecurityConfig</span> <span style="color:#66d9ef">extends</span> WebSecurityConfigurerAdapter <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>AuthenticationManagerBuilder auth<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        BCryptPasswordEncoder bCryptPasswordEncoder<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">();</span>
+        String password<span style="color:#f92672">=</span>bCryptPasswordEncoder<span style="color:#f92672">.</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">);</span>
+        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">inMemoryAuthentication</span><span style="color:#f92672">().</span><span style="color:#a6e22e">withUser</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;rikc&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">password</span><span style="color:#f92672">(</span>password<span style="color:#f92672">).</span><span style="color:#a6e22e">roles</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">password</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>第三种方式 : 自定义编写实现类</p>
+<p>· 第一步 创建配置类,设置使用哪个userDetailsService实现类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecurityConfig1</span> <span style="color:#66d9ef">extends</span> WebSecurityConfigurerAdapter <span style="color:#f92672">{</span>
+  <span style="color:#a6e22e">@Autowired</span>
+    <span style="color:#66d9ef">private</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
+  <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>AuthenticationManagerBuilder auth<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsService</span><span style="color:#f92672">(</span>userDetailsService<span style="color:#f92672">).</span><span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">(</span>password<span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">password</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>· 第二步 编写实现类,返回User对象,User对象有用户名密码和操作权限</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Service</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;userDetailsService&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyUserDetailsServie</span> <span style="color:#66d9ef">implements</span> UserDetailsService <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> UserDetails <span style="color:#a6e22e">loadUserByUsername</span><span style="color:#f92672">(</span>String s<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> UsernameNotFoundException <span style="color:#f92672">{</span>
+        List<span style="color:#f92672">&lt;</span>GrantedAuthority<span style="color:#f92672">&gt;</span> auths<span style="color:#f92672">=</span> AuthorityUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">commaSeparatedStringToAuthorityList</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;role&#34;</span><span style="color:#f92672">);</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;rikc&#34;</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">().</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;123&#34;</span><span style="color:#f92672">),</span>auths<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>查询数据库完成认证</p>
+<p>这是基于(1)里面的第三种自定义编写实现类通过查询数据库完成认证操作</p>
+<p>📕 导入相关依赖</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>com.baomidou<span style="color:#f92672">&lt;/groupId&gt;</span>
+ <span style="color:#f92672">&lt;artifactId&gt;</span>mybatis-plus-boot-starter<span style="color:#f92672">&lt;/artifactId&gt;</span>
+    <span style="color:#f92672">&lt;version&gt;</span>3.0.5<span style="color:#f92672">&lt;/version&gt;</span>
+</code></pre></div></li>
+</ol>
+<!-- raw HTML omitted -->
+<p>📕 制作实体类</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Data</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">private</span> Integer id<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String username<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">private</span> String password
+<span style="color:#f92672">}</span>
+</code></pre></div><p>📕 整合mapper,创建接口，操作数据库查询</p>
+<h3 id="5-自定义用户登录界面">5. 自定义用户登录界面</h3>
+<ol>
+<li>
+<p>配置类中实现相关的配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Configuration</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SecurityConfig1</span> <span style="color:#66d9ef">extends</span> WebSecurityConfigurerAdapter <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Autowired</span>
+    <span style="color:#66d9ef">private</span> UserDetailsService userDetailsService<span style="color:#f92672">;</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>AuthenticationManagerBuilder auth<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        auth<span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsService</span><span style="color:#f92672">(</span>userDetailsService<span style="color:#f92672">).</span><span style="color:#a6e22e">passwordEncoder</span><span style="color:#f92672">(</span>password<span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Bean</span>
+    <span style="color:#66d9ef">public</span> PasswordEncoder <span style="color:#a6e22e">password</span><span style="color:#f92672">(){</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">    *自定义登录页面    
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">configure</span><span style="color:#f92672">(</span>HttpSecurity http<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+        http<span style="color:#f92672">.</span><span style="color:#a6e22e">formLogin</span><span style="color:#f92672">()</span>    <span style="color:#75715e">//自定义编写登录页面
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">loginPage</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/login.html&#34;</span><span style="color:#f92672">)</span>   <span style="color:#75715e">//登录页面设置
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">loginProcessingUrl</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/user/login&#34;</span><span style="color:#f92672">)</span>     <span style="color:#75715e">//登录访问Controller路径
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">defaultSuccessUrl</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/test/index&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">permitAll</span><span style="color:#f92672">()</span>   <span style="color:#75715e">//登陆成功以后,跳转路径
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authorizeRequests</span><span style="color:#f92672">()</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">antMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;/test/hello&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;/user/login&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">permitAll</span><span style="color:#f92672">()</span><span style="color:#75715e">//设置哪些路径可以直接访问不需要登录认证
+</span><span style="color:#75715e"></span>            <span style="color:#f92672">.</span><span style="color:#a6e22e">anyRequest</span><span style="color:#f92672">().</span><span style="color:#a6e22e">authenticated</span><span style="color:#f92672">()</span>
+                <span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">().</span><span style="color:#a6e22e">csrf</span><span style="color:#f92672">().</span><span style="color:#a6e22e">disable</span><span style="color:#f92672">();</span><span style="color:#75715e">//关闭csrf防护
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+</ol>
+<h3 id="6-用户授权基于角色或权限进行访问控制">6. 用户授权(基于角色或权限进行访问控制)</h3>
+<h4 id="61-hasauthority-方法">6.1 hasAuthority 方法</h4>
+<p>如果当前的主体具有指定的权限,则返回true,否则返回false</p>
+<ul>
+<li>
+<p>在配置类中设置当前访问地址有哪些权限</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//当前登录用户只有具有admins权限才可以访问这个路径
+</span><span style="color:#75715e"></span><span style="color:#f92672">.</span><span style="color:#a6e22e">antMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/test/index&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">hasAuthority</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div></li>
+<li>
+<p>在UserDetailsService,把返回的User对象设置权限</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Users users<span style="color:#f92672">=</span>userMapper<span style="color:#f92672">.</span><span style="color:#a6e22e">selectOne</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">);</span>
+<span style="color:#75715e">//设置用户权限为管理员权限
+</span><span style="color:#75715e"></span>List<span style="color:#f92672">&lt;</span>GrantedAuthority<span style="color:#f92672">&gt;</span> auths<span style="color:#f92672">=</span>AuthorityUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">commaSeparatedStringToAuthorityList</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">);</span>
+UserDetailsSerivce userDetail<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>users<span style="color:#f92672">.</span><span style="color:#a6e22e">getUserName</span><span style="color:#f92672">,</span><span style="color:#66d9ef">new</span> BCryptPasswordEncoder<span style="color:#f92672">().</span><span style="color:#a6e22e">encode</span><span style="color:#f92672">(</span>users<span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">()),</span>auths<span style="color:#f92672">);</span>
+</code></pre></div></li>
+</ul>
+<h4 id="62-hasanyauthority-方法">6.2 hasAnyAuthority 方法</h4>
+<p>如果当前的主体有任何提供的角色(给定的作为一个逗号分隔的字符串列表)的话,返回true</p>
+<pre><code>.anyMatchers(&quot;/test/index&quot;).hasAnyAuthority(&quot;admin,manager&quot;)
+</code></pre><h4 id="63-hasrole-方法">6.3 hasRole 方法</h4>
+<p>如果用户具备给定角色就允许访问,否则出现403</p>
+<p>如果当前主体具有指定的角色,则返回true</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">.</span><span style="color:#a6e22e">antMatchers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/test/index&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">hasRole</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;role&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#75715e">//源码中进行了封装, 需要添加ROLE_。
+</span><span style="color:#75715e">//源码    
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;hasRole(&#39;ROLE_&#34;</span><span style="color:#f92672">+</span>role<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&#39;)&#34;</span><span style="color:#f92672">;</span>
+List<span style="color:#f92672">&lt;</span>GrantedAuthority<span style="color:#f92672">&gt;</span> auths<span style="color:#f92672">=</span>AuthorityUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">commaSeparatedStringToAuthorityList</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin,ROLE_role&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>注意 : 配置文件中不需要添加”ROLE_”,因为上述的底层源码会自动添加与之进行匹配。</p>
+<h4 id="64-hasanyrole-方法">6.4 hasAnyRole 方法</h4>
+<p>表示用户具备任何一个条件都可以访问。</p>
+<p>给用户添加角色:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//用户对象不为空返回当前用户
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span>user<span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">(),</span>AuthorityUtils<span style="color:#f92672">.</span><span style="color:#a6e22e">commaSeparatedStringToAuthorityList</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin,role,ROLE_admin,ROLE_role&#34;</span><span style="color:#f92672">));</span>
+</code></pre></div><p>修改配置文件 :</p>
+<pre><code>.antMatchers(&quot;/test/admin&quot;).hasAnyRole(&quot;role&quot;)
+</code></pre><h3 id="7-用户授权自定义403页面">7. 用户授权(自定义403页面)</h3>
+<p>在配置类里面进行配置即可。</p>
+<pre><code>http.execptionHandling().accessDeniedPage(&quot;/unauth&quot;);
+</code></pre><h3 id="8-用户授权注解使用">8. 用户授权(注解使用)</h3>
+<h4 id="81-securedhttpsgithubcomsecured">8.1 <a href="https://github.com/Secured">@Secured</a></h4>
+<p>判断是否具有角色,另外需要注意的是这里匹配的字符串需要添加前缀”ROLE_”。</p>
+<p>使用注解要提前开启注解功能。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SpringBootApplication</span>
+<span style="color:#a6e22e">@EnableGlobalMethodSecurity</span><span style="color:#f92672">(</span>securedEnabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemosecurityApplication</span><span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">){</span>
+        SpringApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">(</span>DemosecurityApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span>args<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在控制器方法上添加Controller</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;testSecured&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ResponseBody</span>
+<span style="color:#a6e22e">@Secured</span><span style="color:#f92672">({</span><span style="color:#e6db74">&#34;ROLE_normal&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;ROLE_admin&#34;</span><span style="color:#f92672">})</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">helloUser</span><span style="color:#f92672">(){</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;hello,user&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#a6e22e">@Secured</span><span style="color:#f92672">({</span><span style="color:#e6db74">&#34;ROLE_normal&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;Role_管理员&#34;</span><span style="color:#f92672">})</span>
+</code></pre></div><h4 id="82-preauthorizehttpsgithubcompreauthorize">8.2 <a href="https://github.com/PreAuthorize">@PreAuthorize</a></h4>
+<p>先开启注解功能</p>
+<p><a href="https://github.com/EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</a>(prePostEnabled=true)</p>
+<p><a href="https://github.com/PreAuthorize">@PreAuthorize</a> : 注解适合进入方法前的权限验证,<a href="https://github.com/PreAuthorize">@PreAuthorize</a> 可以将登录用户的roles/permissions参数传入到方法中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/preAuthorize&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ResponseBody</span>
+<span style="color:#a6e22e">@PreAuthorize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hasAnyAuthority(&#39;menu:system&#39;)&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">preAuthorize</span><span style="color:#f92672">(){</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;preAuthorize&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;preAuthorize&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="83-postauthorizehttpsgithubcompostauthorize">8.3 <a href="https://github.com/PostAuthorize">@PostAuthorize</a></h4>
+<p>先开启注解功能:</p>
+<p><a href="https://github.com/EnableGlobalMethodSecurity">@EnableGlobalMethodSecurity</a>(prePostEnabled=true)</p>
+<p><a href="https://github.com/PostAuthorize">@PostAuthorize</a> 注解使用并不多,在方法执行后再进行权限验证，适合验证带有返回值的权限</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/testPostAuthorize&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ResponseBody</span>
+<span style="color:#a6e22e">@PostAuthorzie</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hasAnyAuthorize(&#39;menu:system&#39;)&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">preAuthorize</span><span style="color:#f92672">(){</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;test-PostAuthorize&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PostAuthorize&#34;</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="84-postfilterhttpsgithubcompostfilter">8.4 <a href="https://github.com/PostFilter">@PostFilter</a></h4>
+<p><a href="https://github.com/PostFilter">@PostFilter</a> : 权限验证之后对数据进行过滤,留下用户名是admin1的数据</p>
+<p>表达式中的filterObject引用的是方法返回值List中的某一个元素</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;getAll&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@PreAuthorize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hasRole(&#39;ROLE_管理员&#39;)&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@PostFilter</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;filterObject.username==&#39;admin1&#39;&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ResponseBody</span>
+<span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>UserInfo<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getAllUser</span><span style="color:#f92672">(){</span>
+    ArrayList<span style="color:#f92672">&lt;</span>UserInfo<span style="color:#f92672">&gt;</span> list<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+    list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> UserInfo<span style="color:#f92672">(</span>1l<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;admin1&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;6666&#34;</span><span style="color:#f92672">));</span>
+    list<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> UserInfo<span style="color:#f92672">(</span>2l<span style="color:#f92672">,</span><span style="color:#e6db74">&#34;admin2&#34;</span><span style="color:#f92672">,</span><span style="color:#e6db74">&#34;6666&#34;</span><span style="color:#f92672">));</span>
+    <span style="color:#66d9ef">return</span> list<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="85-prefilterhttpsgithubcomprefilter">8.5 <a href="https://github.com/PreFilter">@PreFilter</a></h4>
+<p><a href="https://github.com/PreFilter">@PreFilter</a> : 进入控制器之前对数据进行过滤</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;getTestPreFilter&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@PreAuthorize</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hasRole(&#39;ROLE_管理员&#39;)&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@PreFilter</span><span style="color:#f92672">(</span>value<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;filterObject.id%2==0&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#a6e22e">@ResonseBody</span>
+<span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>UserInfo<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getTestPreFilter</span><span style="color:#f92672">(</span><span style="color:#a6e22e">@RequestBody</span> List<span style="color:#f92672">&lt;</span>UserInfo<span style="color:#f92672">&gt;</span> list<span style="color:#f92672">){</span>
+    list<span style="color:#f92672">.</span><span style="color:#a6e22e">forEach</span><span style="color:#f92672">(</span>t<span style="color:#f92672">-&gt;{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">()+</span><span style="color:#e6db74">&#34;\t&#34;</span><span style="color:#f92672">+</span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">});</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="9-用户注销">9. 用户注销</h3>
+<p>在配置类中添加退出映射地址</p>
+<pre><code>http.logout().logoutUrl(&quot;/logout&quot;).logoutSuccessUrl(&quot;/index&quot;).permitAll();
+</code></pre><h3 id="10-自动登录">10. 自动登录</h3>
+<p><img src="D:%5CHugo%5Chugo_0.75.1_Windows-64bit%5Cblog%5Ccontent%5Cposts%5CSpringSecurity%5CrikcLoverikcLoveimage-20210210005345863.png" alt="image-20210210005345863"></p>
+<p><img src="D:%5CHugo%5Chugo_0.75.1_Windows-64bit%5Cblog%5Ccontent%5Cposts%5CSpringSecurity%5CrikcLoverikcLoveimage-20210210005636400.png" alt="image-20210210005636400"></p>
+<p>第一步 : 创建数据库表</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>persisent_logins<span style="color:#f92672">`</span>(
+    <span style="color:#f92672">`</span>username<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">64</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#f92672">`</span>series<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">64</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#f92672">`</span>token<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">64</span>) <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>,
+    <span style="color:#f92672">`</span>last_used<span style="color:#f92672">`</span> <span style="color:#66d9ef">timestamp</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CURRENT_TIMESTAMP</span>,
+    <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>(<span style="color:#f92672">`</span>series<span style="color:#f92672">`</span>)
+)ENGINE<span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8;
+</code></pre></div><p>第二步 : 配置类,注入数据源,配置操作数据库对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Autowired</span>
+<span style="color:#66d9ef">private</span> DataSource dataSource<span style="color:#f92672">;</span>
+<span style="color:#a6e22e">@Bean</span>
+<span style="color:#66d9ef">public</span> PersistentTokenRepository <span style="color:#a6e22e">persistentTokenRespository</span><span style="color:#f92672">(){</span>
+    JdbcTokenRepositoryImpl jdbcTokenRepositoryImpl <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> JdbcTokenRepositoryImpl<span style="color:#f92672">();</span>
+    jdbcTokenRepositoryImpl<span style="color:#f92672">.</span><span style="color:#a6e22e">setDataSource</span><span style="color:#f92672">(</span>dataSource<span style="color:#f92672">);</span>
+    <span style="color:#75715e">//自动生成数据库表
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//jdbcTokenRepositoryImpl.setCreateTableOnStartup(true);
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> jdbcTokenRepositoryImpl<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">.</span><span style="color:#a6e22e">and</span><span style="color:#f92672">().</span><span style="color:#a6e22e">rememberMe</span><span style="color:#f92672">().</span><span style="color:#a6e22e">tokenRespository</span><span style="color:#f92672">(</span>persistentTokenRepository<span style="color:#f92672">())</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">tokenValiditySeconds</span><span style="color:#f92672">(</span>60<span style="color:#f92672">)</span><span style="color:#75715e">//设置有效时长单位是秒
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">.</span><span style="color:#a6e22e">userDetailsService</span><span style="color:#f92672">(</span>userDetailsService<span style="color:#f92672">)</span>
+</code></pre></div><p>第三步 : 页面添加记住我复选框</p>
+<pre><code>记住我 :&lt;input type=&quot;checkbox&quot; name=&quot;remember-me&quot; title=&quot;记住密码&quot;/&gt;&lt;br/&gt;
+此处 : name 属性必须为 remember-me,不能改为其他值
+</code></pre><h3 id="11-csrf功能">11. CSRF功能</h3>
+<p>跨域请求伪造(英语 : Cross-site request forgery),也被称为one-clickattack或者session riding,通常缩写为CSRF或者XSRF,是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟跨网站脚本(XSS)相比,XSS利用的是用户对指定网站的信任，CSRF利用的是网站对用户网页浏览器的信任。</p>
+<p>跨域请求攻击，简单的说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作(如发邮件，发消息，甚至财产操作如转账和购买商品)。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。这利用了Web中用户身份验证的一个漏洞 : <strong>==简单的身份验证只能保证请求发自某个用户的浏览器,却不能保证请求本身是用户自愿发出的。==</strong></p>
+<p>从Spring Security 4.0 开始，默认情况下会开启CSRF保护，以防止CSRF攻击应用程序，Spring Security CSRF 会针对PATCH,POST,PUT和DELETE方法进行防护。</p>
+<p>Spring Security 实现CSRF的原理 :</p>
+<ul>
+<li>生成csrfToken保存到HttpSession或者Cookie中.</li>
+</ul>
+<p>案例 :</p>
+<p>在登录页面添加一个隐藏域 :</p>
+<pre><code>&lt;input type=&quot;hidden&quot; th:if=&quot;${_csrf}!=null&quot; th:value=&quot;${_csrf.token}&quot; name=&quot;_csrf&quot;/&gt;
+</code></pre><p>关闭安全配置的类中的csrf :</p>
+<pre><code>//http.csrf().disable();
+</code></pre><p>添加依赖</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!--对thymeleaf添加 Spring Security标签支持--&gt;</span>
+<span style="color:#f92672">&lt;dependency&gt;</span>
+    <span style="color:#f92672">&lt;groupId&gt;</span>org.thymeleaf.extras<span style="color:#f92672">&lt;/groupId&gt;</span>
+    <span style="color:#f92672">&lt;artifactId&gt;</span>thymeleaf-extras-springsecurity5<span style="color:#f92672">&lt;/artifactId&gt;</span>
+<span style="color:#f92672">&lt;/dependency&gt;</span>
+</code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://kayleh.top">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://kayleh.top/js/github-style.js"></script>
+
+
+
+</html>

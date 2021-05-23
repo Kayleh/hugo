@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kayleh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 May 2021 23:44:09 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 May 2021 11:56:08 +0800</lastBuildDate><atom:link href="https://kayleh.top/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>todoList</title>
       <link>https://kayleh.top/note/</link>
@@ -19,8 +19,22 @@
   SQLException：TimeZone
   解决方式:在连接数据库的url后加上serverTimezone=UTC，完整的url为:
 url=jdbc:mysql://localhost:3306/spring_cache?useUnicode=true&amp;amp;characterEncoding=UTF8&amp;amp;serverTimezone=UTC     mysqldump 设置字符集
-  mysqldump -u root -p --default-character-set=utf8mb4 dev &amp;gt; D:/dev.sql     mybatis-plus：SQL脚本固定字段
+  mysqldump -u root -p --default-character-set=utf8mb4 dev &amp;gt; D:/dev.sql -------- alter table `table_name` convert to character set utf8mb4;     mybatis-plus：SQL脚本固定字段
 CREATE TABLE `table` ( `_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT &amp;#39;??定义表&amp;#39;, `id` varchar(50) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;主键Id&amp;#39;, `deleted` bit(1) NOT NULL DEFAULT b&amp;#39;0&amp;#39; COMMENT &amp;#39;是否删除&amp;#39;, `version` int(11) NOT NULL DEFAULT &amp;#39;0&amp;#39; COMMENT &amp;#39;乐观锁&amp;#39;, `create_userid` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;创建用户Id&amp;#39;, `create_username` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;创建用户名称&amp;#39;, `create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT &amp;#39;创建时间&amp;#39;, `update_userid` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;更新用户Id&amp;#39;, `update_username` varchar(255) NOT NULL DEFAULT &amp;#39;&amp;#39; COMMENT &amp;#39;更新用户名称&amp;#39;, `update_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT &amp;#39;更新时间&amp;#39;, PRIMARY KEY (`_id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT=&amp;#39;?</description>
+    </item>
+    
+    <item>
+      <title>SpringSecurity</title>
+      <link>https://kayleh.top/springsecurity/</link>
+      <pubDate>Fri, 21 May 2021 11:56:08 +0800</pubDate>
+      
+      <guid>https://kayleh.top/springsecurity/</guid>
+      <description>SpringBoot整合SpringSecurity  https://www.kuangstudy.com/bbs/1369251751735095298
+ Spring Security课程介绍 1. 框架概述 📕 Spring Security是基于Spring框架,提供了一套Web应用安全性的完整解决方案。正如你可能知道的关于安全方面的两个主要区域是”认证”和”授权”(或者访问控制),一般来说，Web应用的安全性主要包括用户认证和用户授权两个部分,这两点也是Spring Security的重要核心功能。
+ 用户认证指的是 : 验证某个用户是否为系统中的合法主体,也就是说用户能否访问该系统。用户认证一般要求用户提供用户名和密码。系统通过校验用户名和密码来完成认证过程。==通俗点说就是系统认为用户是否能登录。== 用户授权指的是 : 验证某个用户是否有权限执行某个操作。在同一系统中，不同用户所具有的权限是不同的。比如对一个文件来说，有的用户只能进行读取，而有的用户可以修改。一般来说，系统会为不同的用户分配不同的角色，而每个角色对应一系列的权限。==通俗点就是系统判断用户是否有权限去做某些事情。==  📕 Spring Security 特点 :
+ 和Spring无缝整合。 全面的权限控制 专门为Web开发而设计  旧版本不能脱离Web环境使用 新版本对整个框架进行了分层抽取，分成了核心模块和Web模块,单独引入核心模块就可以脱离Web环境。   重量级。  2. 入门案例   创建SpringBoot工程,引入相关依赖
+&amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.1.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;/parent&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;!--Web 依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-web&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!--Spring Security的相关依赖--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-security&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt;   编写Controller进行测试
+@RestController public class TestController { @GetMapping(&amp;#34;/add&amp;#34;) public String add() { return &amp;#34;hello Security&amp;#34;; } }   3.</description>
     </item>
     
     <item>
